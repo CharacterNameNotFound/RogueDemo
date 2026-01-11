@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: a5e832f6ca4222c45b2b979a8d681a1a
   m_currentHash:
     serializedVersion: 2
-    Hash: b10a0731622f338572217519b68c70ba
+    Hash: e41ad89ef8299e018391bff0fe68d0f8
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -106,14 +106,12 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
-    - GeneralCharacterData
-    - Operator
-    - Agent
-    - ConsecutiveCampaignData
-    - Agent
     - Locale
     - Locale-en
     - Locale-es
+    - Locale-es
+    - CharacterData
+    - StoryData
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 96f0fc14a1eba634aa722b244e2ce25d, type: 2}

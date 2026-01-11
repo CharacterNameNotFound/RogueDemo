@@ -15,7 +15,8 @@
         "Game.UITools.GenericViewRoutines",
         "Configurations.BuildConfigurations",
         "GameWideSystems.GameSceneManagement",
-        "GameWideSystems.InputManager"
+        "GameWideSystems.InputManager",
+        "GUID:cefdda83e1ef4f3ea37451fc897980e4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

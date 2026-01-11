@@ -14,6 +14,7 @@ namespace GameWideSystems.UIManagement.Screen
         public bool IsPreloaded { get; set; }
 
         protected UniTaskCompletionSource CompletionSource; // produces a token that corresponds to screen lifetime
+        protected CancellationToken CancellationToken; // produces a token that corresponds to screen lifetime
         
         public void SetScreenBuilder(IUIScreenBuilder screenBuilder)
         {
@@ -27,6 +28,8 @@ namespace GameWideSystems.UIManagement.Screen
         public virtual UniTask<UniTask> OnBeforeOpen(IScreenParams screenParams, CancellationToken cancellationToken)
         {
             CompletionSource = new UniTaskCompletionSource();
+            CancellationToken = CompletionSource.Task.ToCancellationToken();
+            
             return UniTask.FromResult(CompletionSource.Task);
         }
         
