@@ -1,0 +1,26 @@
+{
+    "name": "Game.Routines.PlayStart",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d227bc0e5dae4990a150777da0094b5c",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:18ce40574f49d77478f5737a136a4d3a",
+        "GUID:bc777b61f4cd4c5999168fae0ee6b485",
+        "GUID:cefdda83e1ef4f3ea37451fc897980e4",
+        "GUID:0bb2df3bd50e30b41b22812b1da1149e",
+        "GUID:84651a3751eca9349aac36a66bba901b",
+        "GUID:4beb4f92acd2f57448edf31055d5537d",
+        "GUID:9e24947de15b9834991c9d8411ea37cf",
+        "GUID:2feea519814e3c84ebf8659063cd1400",
+        "GUID:5845716bdc4893942a4cf4dd5351060d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

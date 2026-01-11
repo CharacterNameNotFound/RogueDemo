@@ -1,0 +1,20 @@
+{
+    "name": "Game.GameSaveSystem",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:7d84e5452f310464db6cb792848fcc15",
+        "GUID:b9e8ecda759a4e5fb0c515f254e0cb21",
+        "GUID:67a9c38b0010d6249a899dac1e593911",
+        "GUID:5845716bdc4893942a4cf4dd5351060d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

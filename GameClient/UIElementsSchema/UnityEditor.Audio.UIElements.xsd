@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="UnityEditor.Audio.UIElements" elementFormDefault="qualified" targetNamespace="UnityEditor.Audio.UIElements" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="UnityEditor.UIElements.xsd" namespace="UnityEditor.UIElements" />
+  <xs:import schemaLocation="UnityEngine.UIElements.xsd" namespace="UnityEngine.UIElements" />
+  <xs:complexType name="AudioContainerElementClipFieldType">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="UnityEditor.UIElements" base="q1:ObjectFieldType">
+        <xs:sequence>
+          <xs:element xmlns:q2="UnityEngine.UIElements" ref="q2:VisualElement" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AudioContainerElementClipField" xmlns:q3="UnityEditor.UIElements" substitutionGroup="q3:ObjectField" type="tns:AudioContainerElementClipFieldType" />
+  <xs:complexType name="AudioLevelMeterType">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="UnityEngine.UIElements" base="q4:VisualElementType">
+        <xs:sequence>
+          <xs:element ref="q4:VisualElement" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AudioLevelMeter" xmlns:q5="UnityEngine.UIElements" substitutionGroup="q5:VisualElement" type="tns:AudioLevelMeterType" />
+  <xs:complexType name="TickmarksType">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="UnityEngine.UIElements" base="q6:VisualElementType">
+        <xs:sequence>
+          <xs:element ref="q6:VisualElement" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Tickmarks" xmlns:q7="UnityEngine.UIElements" substitutionGroup="q7:VisualElement" type="tns:TickmarksType" />
+  <xs:complexType name="AudioRandomRangeSliderTrackerType">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="UnityEngine.UIElements" base="q8:VisualElementType">
+        <xs:sequence>
+          <xs:element ref="q8:VisualElement" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AudioRandomRangeSliderTracker" xmlns:q9="UnityEngine.UIElements" substitutionGroup="q9:VisualElement" type="tns:AudioRandomRangeSliderTrackerType" />
+</xs:schema>
