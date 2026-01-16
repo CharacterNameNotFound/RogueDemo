@@ -1,0 +1,60 @@
+{
+  "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Item, Game.GameMode.StorySession",
+  "Tags": {
+    "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Components.Tags.TagComponent, Game.GameMode.StorySession",
+    "TagsList": [
+      1,
+      3
+    ]
+  },
+  "ItemBody": null,
+  "Stats": {
+    "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Components.StatsComponent, Game.GameMode.StorySession",
+    "Attack": {
+      "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+      "Stats": [
+        3.0,
+        0.0,
+        0.0,
+        4.0
+      ]
+    },
+    "Defence": {
+      "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+      "Stats": [
+        5.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "Healing": {
+      "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+      "Stats": [
+        0.0,
+        2.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "CooldownComponent": {
+    "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Components.CooldownComponent, Game.GameMode.StorySession",
+    "ItemCooldown": {
+      "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+      "Stats": [
+        0.0,
+        3.0,
+        4.0,
+        0.0
+      ]
+    }
+  },
+  "CooldownTriggers": [
+    {
+      "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Components.Triggers.DamageOnCooldownComponent, Game.GameMode.StorySession"
+    }
+  ],
+  "ConditionTriggers": [],
+  "StatusRegistryComponent": null
+}

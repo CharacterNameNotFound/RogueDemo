@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.Data;
+using Game.GameMode.StorySession.Data.Character;
 using Game.Utilities.Constants;
 using UnityEngine;
 using UnityEngine.AddressableAssets;

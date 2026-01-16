@@ -40,6 +40,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4492032a14514a44f9ab0c32be6ea0ca
+    m_Address: Assets/Content/GameMode/StorySelector/Data/Stories/StoryData_2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - StoryData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 59a52dadfdcec8044a2000dcb501e542
     m_Address: Assets/Content/GameMode/StorySelector/Data/Characters/CharacterData_3.asset
     m_ReadOnly: 0

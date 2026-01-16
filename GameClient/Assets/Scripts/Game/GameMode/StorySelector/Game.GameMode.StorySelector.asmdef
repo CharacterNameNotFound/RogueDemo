@@ -16,7 +16,8 @@
         "Configurations.BuildConfigurations",
         "GameWideSystems.GameSceneManagement",
         "GameWideSystems.InputManager",
-        "GUID:cefdda83e1ef4f3ea37451fc897980e4"
+        "GUID:cefdda83e1ef4f3ea37451fc897980e4",
+        "GUID:0a8dc079ec64743408f8c7d72bd078dc"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

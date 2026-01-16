@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - ItemPrototype
   layers:
   - Default
   - TransparentFX
@@ -41,13 +42,16 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: World background
+  - name: Background
     uniqueID: 2425851827
     locked: 0
-  - name: Starpaths
+  - name: Decorations
+    uniqueID: 3598240335
+    locked: 0
+  - name: Gameboard
     uniqueID: 3272947299
     locked: 0
-  - name: Star
+  - name: VFX
     uniqueID: 2530327565
     locked: 0
   m_RenderingLayers:
