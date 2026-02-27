@@ -58,6 +58,7 @@ namespace Game.GameMode.MainHub.Controller
         public async UniTask Load(IGameStateSerializationData gameStateSerializationData, CancellationToken cancellationToken = default)
         {
             await _uiManager.OpenScreenRequest(_mainHubScreenBuilder, null, out _).PlayWith(_uiManager, cancellationToken);
+            await _loadingScreenManager.Hide(true, cancellationToken);
         }
 
         public UniTask Close(CancellationToken cancellationToken = default)

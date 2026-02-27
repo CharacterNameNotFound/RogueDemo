@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d3c528370d14aef83e4f1d7ed123128, type: 3}
   m_Name: StoryData_1
   m_EditorClassIdentifier: Game.GameMode.StorySelector::Game.GameMode.StorySession.Data.StoryData
-  <StoryId>k__BackingField: story_1
+  <StoryId>k__BackingField: Stories/BaseStory.asset
   _storyImage:
     m_AssetGUID: aab71295cb5121546b3aaf595ef676ff
     m_SubObjectName: story_1_image_0

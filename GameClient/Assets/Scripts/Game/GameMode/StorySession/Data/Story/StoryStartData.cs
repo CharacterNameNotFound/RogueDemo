@@ -5,5 +5,10 @@ namespace Game.GameMode.StorySession.Data.Story
         public string StoryID;
         public string CharacterID;
 
+        public StoryStartData(string storyID, string characterID)
+        {
+            StoryID = storyID;
+            CharacterID = characterID;
+        }
     }
 }

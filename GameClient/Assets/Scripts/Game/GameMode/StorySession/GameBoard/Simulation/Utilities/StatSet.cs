@@ -5,7 +5,16 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Utilities
     [Serializable]
     public class StatSet
     {
-        private const int StatCount = 4;
+        public enum StatSetComponent
+        {
+            BaseValue, // base value original to object
+            ConsumableBonus, // permanent bonuses
+            AuraBonus, // semi-permanent bonuses
+            CombatBonus, // combat only bonus
+            Special, // just in case buffer
+        }
+        
+        private const int StatCount = 5;
         
         public float[] Stats;
 
@@ -34,7 +43,7 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Utilities
             }
         }
         
-        public StatSet(float baseValue, float consumableBonus = 0, float auraBonus = 0, float combatBonus = 0)
+        public StatSet(float baseValue, float consumableBonus = 0, float auraBonus = 0, float combatBonus = 0, float special = 0)
         {
             Stats = new float[StatCount];
             
@@ -42,6 +51,7 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Utilities
             Stats[1] = consumableBonus;
             Stats[2] = auraBonus;
             Stats[3] = combatBonus;
+            Stats[4] = special;
         }
 
         public StatSet GetCopy()

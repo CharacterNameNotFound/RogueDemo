@@ -5,6 +5,6 @@ namespace Game.Utilities.SceneDataProviding
     public interface ISceneAddressableDataProvider
     {
         public AssetReferenceDto MainScene { get; }
-        public AssetReferenceDto SpaceAdventureScene { get; }
+        public AssetReferenceDto StorySessionScene { get; }
     }
 }

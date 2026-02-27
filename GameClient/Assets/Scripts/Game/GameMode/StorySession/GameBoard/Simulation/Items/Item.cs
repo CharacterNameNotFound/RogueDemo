@@ -1,20 +1,20 @@
 using System.Collections.Generic;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Components;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Components.Tags;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Components.Triggers;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.Tags;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Structure;
 
 namespace Game.GameMode.StorySession.GameBoard.Simulation.Items
 {
     public class Item
     {
-        public TagComponent Tags;
-        public ItemBodyComponent ItemBody;
-        public StatsComponent Stats;
-        public CooldownComponent CooldownComponent;
-        public List<TriggerComponent> CooldownTriggers = new();
-        public List<TriggerComponent> ConditionTriggers = new();
+        public TagList Tags;
+        public List<Trigger> Triggers;
+        public ItemStatSet ItemStats;
 
-        public StatusRegistryComponent StatusRegistryComponent;
+        public Item()
+        {
+            Triggers = new();
+        }
     }
     
 }

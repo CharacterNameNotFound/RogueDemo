@@ -1,3 +1,4 @@
+using Game.GameMode.StorySession.Controller;
 using GameWideSystems.GameSceneManagement;
 using GameWideSystems.GameStateManagement;
 using GameWideSystems.InputManager;
@@ -10,15 +11,18 @@ namespace Game.GameMode.StorySelector.UI
         public InputControlFacade InputControlFacade;
         public GameStateManager GameStateManager;
         public ILoadingScreenManager LoadingScreenManager;
+        public StorySessionGameMode.Factory SessionGameModeFactory;
         
         public StorySelectorScreenDependencies(
             InputControlFacade inputControlFacade, 
             GameStateManager gameStateManager, 
-            ILoadingScreenManager loadingScreenManager)
+            ILoadingScreenManager loadingScreenManager, 
+            StorySessionGameMode.Factory sessionGameModeFactory)
         {
             InputControlFacade = inputControlFacade;
             GameStateManager = gameStateManager;
             LoadingScreenManager = loadingScreenManager;
+            SessionGameModeFactory = sessionGameModeFactory;
         }
     }
 }

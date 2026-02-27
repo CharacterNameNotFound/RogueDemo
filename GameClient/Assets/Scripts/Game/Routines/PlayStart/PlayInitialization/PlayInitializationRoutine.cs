@@ -40,7 +40,7 @@ namespace Game.Routines.PlayStart.PlayInitialization
         {
             _inputControlFacade.SetInputsAvailable(false);
             
-            await _gameSceneManager.OpenScene(_sceneAddressableDataProvider.SpaceAdventureScene, LoadSceneMode.Single,
+            await _gameSceneManager.OpenScene(_sceneAddressableDataProvider.StorySessionScene, LoadSceneMode.Single,
                 new LoadingScreenParams(false, _loadingScreenManager), cancellationToken: cancellationToken);
 
 

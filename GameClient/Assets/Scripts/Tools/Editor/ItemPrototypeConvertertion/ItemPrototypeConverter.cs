@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
-using Game.GameMode.StorySession.GameBoard.Prototyping.Items.Abstract;
+using Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special;
+using Game.GameMode.StorySession.GameBoard.Prototyping.Items.Structure;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items;
 using Newtonsoft.Json;
 using UnityEditor;
@@ -26,8 +27,8 @@ namespace Tools.Editor.ItemPrototypeConvertertion
 
         private void OnGUI()
         {
+            _pathToRead = EditorGUILayout.TextField(new GUIContent("Path to Read"), _pathToRead);
             _pathToWrite = EditorGUILayout.TextField(new GUIContent("Path to Write"), _pathToWrite);
-            _pathToRead = EditorGUILayout.TextField(new GUIContent("Path to read"), _pathToRead);
 
             if (GUILayout.Button("Convert"))
             {
@@ -38,7 +39,11 @@ namespace Tools.Editor.ItemPrototypeConvertertion
 
         private void Convert()
         {
-            List<GameObject> foundPrefabs = new List<GameObject>();
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All,
+                Formatting = Formatting.Indented
+            };
             
             string[] prefabGUIDS = AssetDatabase.FindAssets("t:Prefab", new[] { _pathToRead });
             
@@ -48,44 +53,46 @@ namespace Tools.Editor.ItemPrototypeConvertertion
             
                 GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
             
-                if (prefab != null && prefab.CompareTag("ItemPrototype"))
+                if (prefab != null && prefab.CompareTag($"ItemPrototype"))
                 {
-                    foundPrefabs.Add(prefab);
+                    string savePath = _pathToWrite + path.Substring(_pathToRead.Length);
+                    ProcessPrefab(prefab, savePath, settings);
                 }
-            }
-
-            if (foundPrefabs.Count == 0)
-            {
-                return;
             }
             
-            var settings = new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.Objects,
-                Formatting = Formatting.Indented
-            };
+            AssetDatabase.Refresh();
+        }
 
-            foreach (GameObject prefab in foundPrefabs)
-            {
-                Item item = new Item();
+        public void ProcessPrefab(GameObject prefab, string path, JsonSerializerSettings settings)
+        {
+            Item item = new Item();
                 
-                ItemComponentPrototypeComponent[] itemComponents = prefab.GetComponents<ItemComponentPrototypeComponent>();
-
-                foreach (ItemComponentPrototypeComponent itemComponent in itemComponents)
-                {
-                    itemComponent.WriteToItem(item);
-                }
-
-                string json = JsonConvert.SerializeObject(item, settings);
                 
-                File.WriteAllText(Path.Combine(_pathToWrite, prefab.name + ".json"),json);
+            // todo: add validation
+            TriggerPrototype[] itemComponents = prefab.GetComponents<TriggerPrototype>();
 
-                var a = JsonConvert.DeserializeObject<Item>(JsonConvert.SerializeObject(item, settings));
-
+            foreach (TriggerPrototype itemComponent in itemComponents)
+            {
+                item.Triggers.Add(itemComponent.GetTrigger());
             }
+
+            if (prefab.TryGetComponent(out StatListPrototype stats))
+            {
+                item.ItemStats = stats.GetItemStatSet();
+            }
+                
+            if (prefab.TryGetComponent(out TagListPrototype tagList))
+            {
+                item.Tags = tagList.GetTagList();
+            }
+
+            string json = JsonConvert.SerializeObject(item, settings);
+                
+            File.WriteAllText(Path.Combine(path, prefab.name + ".json"),json);
             
             
         }
+        
         
 
     }

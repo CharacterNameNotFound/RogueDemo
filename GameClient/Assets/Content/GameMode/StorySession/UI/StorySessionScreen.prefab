@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6351123518565004851}
+  - component: {fileID: -4146458569311897793}
   - component: {fileID: 1747732259311039762}
   - component: {fileID: 1951885807031993139}
   - component: {fileID: 6601700500681252068}
@@ -41,6 +42,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &-4146458569311897793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813581616070947225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabe850ec7a54626b35d10c275296c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.UI.StorySessionScreenController
+  <RootCanvasGroup>k__BackingField: {fileID: 1951885807031993139}
 --- !u!223 &1747732259311039762
 Canvas:
   m_ObjectHideFlags: 0
@@ -134,7 +148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1680709541815265475
 RectTransform:
   m_ObjectHideFlags: 0
@@ -387,7 +401,6 @@ GameObject:
   - component: {fileID: 1346708200341127099}
   - component: {fileID: 3439156701192602563}
   - component: {fileID: 5540544827293600746}
-  - component: {fileID: 2956537899468953142}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -514,17 +527,3 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2956537899468953142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7028692743587056989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c6e3f65c51c474e9315638baccbad98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _translationCategory: 0
-  _localizationReference: play_button

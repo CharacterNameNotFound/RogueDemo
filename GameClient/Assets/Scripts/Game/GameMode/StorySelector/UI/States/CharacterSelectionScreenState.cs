@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.GameMode.StorySession.Controller;
 using Game.GameMode.StorySession.Data;
 using Game.GameMode.StorySession.Data.Character;
+using Game.GameMode.StorySession.Data.Story;
 using Game.Utilities.Constants;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -34,8 +36,8 @@ namespace Game.GameMode.StorySelector.UI.States
             _selectCharacter.onClick.AddListener(StartSession);
             _back.onClick.AddListener(SwapScreen);
             
-            _left.onClick.AddListener(() => ChangeToSideAsync(-1, Context.CancellationToken).Forget());
-            _right.onClick.AddListener(() => ChangeToSideAsync(1, Context.CancellationToken).Forget());
+            _left.onClick.AddListener(() => ChangeToSideAsync(-1, cancellationToken).Forget());
+            _right.onClick.AddListener(() => ChangeToSideAsync(1, cancellationToken).Forget());
 
             _characterDatas = await Addressables.LoadAssetsAsync<CharacterData>(nameof(AddressableTags.CharacterData))
                 .ToUniTask(cancellationToken: cancellationToken);
@@ -48,7 +50,14 @@ namespace Game.GameMode.StorySelector.UI.States
         
         private void StartSession()
         {
+            StoryStartData storyStartData = new StoryStartData(Context.StoryID, Context.CharacterID);
+            StorySessionGameModeInitializationParameters gmParams =
+                new StorySessionGameModeInitializationParameters(storyStartData);
             
+            Dependencies.GameStateManager.AppendGameState(
+                Dependencies.SessionGameModeFactory.Create(),
+                initializationParameters: gmParams)
+                .Forget();
         }
 
         private void SwapScreen()
@@ -91,10 +100,6 @@ namespace Game.GameMode.StorySelector.UI.States
         private async UniTask SwapImageToIndex(IList<CharacterData> characterData, int index, CancellationToken cancellationToken)
         {
             Sprite sprite = await characterData[index].CharacterPortrait.Load<Sprite>(cancellationToken);
-            if (Context.CancellationToken.IsCancellationRequested)
-            {
-                return;
-            }
             
             Addressables.Release(_characterPortrait.sprite);
             _characterPortrait.sprite = sprite;

@@ -80,7 +80,7 @@ namespace Game.GameMode.Login.UI.Screens
                 true, 
                 null, 
                 null,
-                Application.exitCancellationToken);
+                cancellationToken);
             
             LoginScreenDependencies.InputControlFacade.SetInputsAvailable(true);
         }

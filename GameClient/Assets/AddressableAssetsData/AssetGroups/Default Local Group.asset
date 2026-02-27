@@ -25,6 +25,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f3a69bb9756bf24d8709738601cc77e
+    m_Address: Stories/BaseStory.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 24306bba513c99e489afeec0c3fda081
     m_Address: Assets/GameConfigurations/Structure/Prefabs
     m_ReadOnly: 0
@@ -37,6 +42,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 413cb7d62c206dc4a9cf0792e7b700d1
     m_Address: Assets/GameConfigurations/Structure/Prefabs/AudioSorce.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4419545008be5b942998544701f7d899
+    m_Address: Assets/Content/GameMode/StorySession/Prefabs/GameBoard.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -83,6 +93,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - CharacterData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0fb677758ae70b4ca4688eaa2f9d2b3
+    m_Address: Assets/Content/GameMode/StorySession/UI/StorySessionScreen.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c823341693ca3cb49bf5e8ceb72f5080
     m_Address: Assets/Content/GameMode/StorySelector/UI/StorySelection.prefab

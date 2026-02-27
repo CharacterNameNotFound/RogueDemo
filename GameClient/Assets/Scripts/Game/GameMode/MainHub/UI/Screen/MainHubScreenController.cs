@@ -1,7 +1,5 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using GameWideSystems.GameSceneManager;
-using GameWideSystems.InputManager;
 using GameWideSystems.UIManagement;
 using GameWideSystems.UIManagement.Screen;
 using UnityEngine;

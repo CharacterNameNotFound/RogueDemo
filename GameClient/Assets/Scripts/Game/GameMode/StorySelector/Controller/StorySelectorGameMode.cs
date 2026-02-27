@@ -39,14 +39,15 @@ namespace Game.GameMode.StorySelector.Controller
             await _loadingScreenManager.Hide(true, cancellationToken);
         }
 
-        public UniTask Load(IGameStateSerializationData gameStateSerializationData, CancellationToken cancellationToken = default)
+        public async UniTask Load(IGameStateSerializationData gameStateSerializationData, CancellationToken cancellationToken = default)
         {
-            return UniTask.CompletedTask;
+            await _uiManager.OpenScreenRequest(_storySelectorScreenBuilder, null, out _).PlayWith(_uiManager, cancellationToken);
+            await _loadingScreenManager.Hide(true, cancellationToken);
         }
 
         public UniTask Unload(CancellationToken cancellationToken = default)
         {
-            return UniTask.CompletedTask;
+            return Close(cancellationToken);
         }
 
         public async UniTask Close(CancellationToken cancellationToken = default)

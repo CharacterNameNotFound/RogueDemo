@@ -2,6 +2,7 @@
 using Game.GameMode.Login.UI.Screens;
 using Game.GameMode.MainHub.UI.Screen;
 using Game.GameMode.StorySelector.UI;
+using Game.GameMode.StorySession.UI;
 using Zenject;
 
 namespace Structure.GameInstalling
@@ -14,6 +15,7 @@ namespace Structure.GameInstalling
             InstallMainScreen();
 
             InstallStorySelection();
+            InstallStorySession();
         }
 
         private void InstallLogInScreen()
@@ -32,6 +34,12 @@ namespace Structure.GameInstalling
         {
             Container.Bind<StorySelectorScreenBuilder>().To<StorySelectorScreenBuilder>().AsSingle();
             Container.Bind<StorySelectorScreenDependencies>().To<StorySelectorScreenDependencies>().AsSingle();
+        }
+        
+        private void InstallStorySession()
+        {
+            Container.Bind<StorySessionScreenBuilder>().To<StorySessionScreenBuilder>().AsSingle();
+            Container.Bind<StorySessionScreenDependencies>().To<StorySessionScreenDependencies>().AsSingle();
         }
 
         

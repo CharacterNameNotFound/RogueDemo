@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d3c528370d14aef83e4f1d7ed123128, type: 3}
   m_Name: StoryData_2
   m_EditorClassIdentifier: Game.GameMode.StorySelector::Game.GameMode.StorySession.Data.StoryData
-  <StoryId>k__BackingField: story_2
+  <SortingOrder>k__BackingField: 1
+  <StoryId>k__BackingField: Stories/BaseStory.asset
   _storyImage:
     m_AssetGUID: e32ad4b66880b59428c0f92962a1fc6d
     m_SubObjectName: story_2_image_0

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caac29c0c91d4b97a95ca836e57e28fd, type: 3}
   m_Name: GameLevelScriptableObjectClassInstaller
   m_EditorClassIdentifier: Assembly-CSharp::Structure.UniversalScriptableObjectClassInstaller
-  _dataObject: []
+  _dataObject:
+  - {fileID: 11400000, guid: 236ef67d1f1ad1544855b1925dc76348, type: 2}

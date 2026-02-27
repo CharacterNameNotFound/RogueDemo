@@ -24,8 +24,7 @@ namespace Game.GameMode.StorySelector.UI
             Context = new StorySelectorScreenContext(
                 _characterSelectionScreenState, 
                 _storySelectionScreenState, 
-                this,
-                cancellationToken);
+                this);
             
             await _characterSelectionScreenState.Initialize(Context, Dependencies, cancellationToken);
             await _storySelectionScreenState.Initialize(Context, Dependencies, cancellationToken);

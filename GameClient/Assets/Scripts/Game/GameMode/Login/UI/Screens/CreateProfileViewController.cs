@@ -60,7 +60,7 @@ namespace Game.GameMode.Login.UI.Screens
 
             await LoginScreenDependencies.LoadingScreenManager.Show(cancellationToken);
             await LoginScreenDependencies.GameStateManager.SwapTopState(LoginScreenDependencies.MainHubGameModeFactory.Create(),
-                cancellationToken: Application.exitCancellationToken);
+                cancellationToken: cancellationToken);
             LoginScreenDependencies.InputControlFacade.SetInputsAvailable(true);
         }
         

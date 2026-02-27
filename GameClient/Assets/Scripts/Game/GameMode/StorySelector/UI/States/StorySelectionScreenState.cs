@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.Data;
 using Game.GameMode.StorySession.Data.Story;
 using Game.Utilities.Constants;
 using UnityEngine;
@@ -34,12 +33,14 @@ namespace Game.GameMode.StorySelector.UI.States
             _selectStory.onClick.AddListener(SwapScreen);
             _return.onClick.AddListener(Return);
             
-            _left.onClick.AddListener(() => ChangeToSideAsync(-1, Context.CancellationToken).Forget());
-            _right.onClick.AddListener(() => ChangeToSideAsync(1, Context.CancellationToken).Forget());
+            _left.onClick.AddListener(() => ChangeToSideAsync(-1, cancellationToken).Forget());
+            _right.onClick.AddListener(() => ChangeToSideAsync(1, cancellationToken).Forget());
             
             _storyDatas = await Addressables.LoadAssetsAsync<StoryData>(nameof(AddressableTags.StoryData))
                 .ToUniTask(cancellationToken: cancellationToken);
-
+            
+            _storyDatas = _storyDatas.OrderBy(item => item.SortingOrder).ToList();
+            
             Sprite sprite = await _storyDatas[0].StoryImage.Load<Sprite>(cancellationToken);
             _storyImage.sprite = sprite;
             
@@ -101,10 +102,6 @@ namespace Game.GameMode.StorySelector.UI.States
         private async UniTask SwapImageToIndex(IList<StoryData> storyDatas, int index, CancellationToken cancellationToken)
         {
             Sprite sprite = await storyDatas[index].StoryImage.Load<Sprite>(cancellationToken);
-            if (Context.CancellationToken.IsCancellationRequested)
-            {
-                return;
-            }
             
             Addressables.Release(_storyImage.sprite);
             _storyImage.sprite = sprite;

@@ -11,6 +11,7 @@ namespace Game.GameMode.Login.UI.Screens
         protected LoginScreenContext LoginScreenContext;
         protected LogInScreenDependencies  LoginScreenDependencies;
 
+
         public UniTask Initialize(LoginScreenContext context, LogInScreenDependencies dependencies, CancellationToken cancellationToken)
         {
             LoginScreenContext = context;

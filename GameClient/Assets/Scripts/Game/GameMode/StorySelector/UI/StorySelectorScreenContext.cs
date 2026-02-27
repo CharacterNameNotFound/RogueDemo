@@ -6,8 +6,6 @@ namespace Game.GameMode.StorySelector.UI
 {
     public class StorySelectorScreenContext : IUISMContext
     {
-        public CancellationToken CancellationToken;
-        
         public StorySelectorScreenController StorySelectorScreenController;
         
         public CharacterSelectionScreenState CharacterSelectionScreenState;
@@ -20,13 +18,11 @@ namespace Game.GameMode.StorySelector.UI
         public StorySelectorScreenContext(
             CharacterSelectionScreenState characterSelectionScreenState, 
             StorySelectionScreenState storySelectionScreenState, 
-            StorySelectorScreenController storySelectorScreenController, 
-            CancellationToken cancellationToken)
+            StorySelectorScreenController storySelectorScreenController)
         {
             CharacterSelectionScreenState = characterSelectionScreenState;
             StorySelectionScreenState = storySelectionScreenState;
             StorySelectorScreenController = storySelectorScreenController;
-            CancellationToken = cancellationToken;
         }
     }
 }

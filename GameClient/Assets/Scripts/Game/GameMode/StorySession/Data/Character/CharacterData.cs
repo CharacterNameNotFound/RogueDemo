@@ -9,8 +9,10 @@ namespace Game.GameMode.StorySession.Data.Character
         [field: SerializeField] public string CharacterId { get; private set; }
 
         [SerializeField] private AssetReferenceSprite _characterPortrait;
+        [SerializeField] private AssetReferenceSprite _characterStorySessionPortrait;
 
         public AssetReferenceDto CharacterPortrait => _characterPortrait.ToAssetReferenceDto();
+        public AssetReferenceDto CharacterStorySessionPortrait => _characterStorySessionPortrait.ToAssetReferenceDto();
 
     }
 }
