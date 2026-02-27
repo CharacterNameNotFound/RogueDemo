@@ -64,17 +64,24 @@ namespace Tools.Editor.ItemPrototypeConvertertion
             AssetDatabase.Refresh();
         }
 
-        public void ProcessPrefab(GameObject prefab, string path, JsonSerializerSettings settings)
+        private void ProcessPrefab(GameObject prefab, string path, JsonSerializerSettings settings)
         {
             Item item = new Item();
-                
-                
-            // todo: add validation
+
             TriggerPrototype[] itemComponents = prefab.GetComponents<TriggerPrototype>();
 
             foreach (TriggerPrototype itemComponent in itemComponents)
             {
                 item.Triggers.Add(itemComponent.GetTrigger());
+            }
+            
+            if (prefab.TryGetComponent(out ItemCore itemCore))
+            {
+                item.ItemID = itemCore.ItemId;
+                item.ItemName = itemCore.ItemName;
+                item.ItemRarity = itemCore.ItemRarity;
+                item.UpgradedItemId = itemCore.UpgradedItem?.ItemId;
+                item.DowngradedItemId = itemCore.DowngradedItem?.ItemId;
             }
 
             if (prefab.TryGetComponent(out StatListPrototype stats))

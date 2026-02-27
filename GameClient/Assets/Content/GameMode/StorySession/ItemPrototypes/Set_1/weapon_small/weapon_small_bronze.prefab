@@ -67,11 +67,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7949106507283742266}
+  - component: {fileID: -8666746465287308309}
   - component: {fileID: 4772569043822553358}
   - component: {fileID: 8219299219744447910}
   - component: {fileID: 283141784943870736}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: weapon_small_bronze
   m_TagString: ItemPrototype
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,6 +94,23 @@ Transform:
   - {fileID: 1045187576734680235}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8666746465287308309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330554014568712252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebcdda705a3e407caa09df47930d5efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special.ItemCore
+  ItemId: weapon_small_bronze
+  ItemName: weapon_small
+  ItemRarity: 0
+  UpgradedItem: {fileID: 0}
+  DowngradedItem: {fileID: 0}
 --- !u!114 &4772569043822553358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d20b8561ce426c888af63e4768e07a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special.TagListPrototype
-  ItemTags: 
+  ItemTags: 0000000003000000
 --- !u!114 &8219299219744447910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +198,7 @@ MonoBehaviour:
         - 0
         - 0
     IsCooldownItem: 0
+    CurrentCharge: 0
     ChargeModifiers:
       ItemValues:
         Stats:

@@ -1,10 +1,18 @@
 {
   "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Item, Game.GameMode.StorySession",
+  "ItemID": "weapon_small_bronze",
+  "ItemName": "weapon_small",
+  "ItemRarity": 0,
+  "UpgradedItemId": null,
+  "DowngradedItemId": null,
   "Tags": {
     "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.Tags.TagList, Game.GameMode.StorySession",
     "TagsList": {
       "$type": "System.Collections.Generic.List`1[[Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.Tags.ItemTag, Game.GameMode.StorySession]], mscorlib",
-      "$values": []
+      "$values": [
+        0,
+        3
+      ]
     }
   },
   "Triggers": {
@@ -145,6 +153,7 @@
       }
     },
     "IsCooldownItem": false,
+    "CurrentCharge": 0.0,
     "ChargeModifiers": {
       "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
       "ItemValues": {

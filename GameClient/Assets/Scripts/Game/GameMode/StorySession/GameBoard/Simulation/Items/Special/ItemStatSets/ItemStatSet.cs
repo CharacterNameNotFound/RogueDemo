@@ -19,6 +19,7 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.ItemStat
         /// Should automatically charge
         /// </summary>
         public bool IsCooldownItem;
+        public float CurrentCharge;
         
         /// <summary>
         /// contains 
