@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Security.AccessControl;
 using Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special;
 using Game.GameMode.StorySession.GameBoard.Prototyping.Items.Structure;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items;
@@ -87,7 +88,12 @@ namespace Tools.Editor.ItemPrototypeConvertertion
             }
 
             string json = JsonConvert.SerializeObject(item, settings);
-                
+
+            path = path.Substring(0, path.LastIndexOf('/'));
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
             File.WriteAllText(Path.Combine(path, prefab.name + ".json"),json);
             
             
