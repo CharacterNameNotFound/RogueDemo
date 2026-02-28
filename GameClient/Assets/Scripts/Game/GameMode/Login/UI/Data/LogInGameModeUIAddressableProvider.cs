@@ -3,6 +3,7 @@ using Configurations.PlatformDependentFields.Implementations;
 using Game.GameMode.Login.UI.Screens;
 using GameWideSystems.UIManagement.Screen;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Utils.UtilityTypes.AssetReferencing;
 
 
@@ -12,9 +13,9 @@ namespace Game.GameMode.Login.UI.Data
     {
         [field: SerializeField] public PlatformDependentAssetReference ScreenReference { get; private set; }
         
-        public AssetReferenceDto GetScreenRuntimeKey(PlatformType platformType)
+        public AssetReference GetScreenRuntimeKey(PlatformType platformType)
         {
-            return ScreenReference.ToAssetReferenceDto(platformType);
+            return ScreenReference.Get(platformType);
         }
         
     }

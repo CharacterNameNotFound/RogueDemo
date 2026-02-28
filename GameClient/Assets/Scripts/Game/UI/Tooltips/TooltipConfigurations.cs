@@ -7,6 +7,6 @@ namespace Game.UI.Tooltips
     public class TooltipConfigurations : ScriptableObject, ITooltipConfigurationProvider
     {
         [field: SerializeField] public AssetReference TextTooltipPrefab { get; private set; }
-        public AssetReferenceDto TextTooltipPrefabReference => TextTooltipPrefab.ToAssetReferenceDto();
+        public AssetReference TextTooltipPrefabReference => TextTooltipPrefab;
     }
 }

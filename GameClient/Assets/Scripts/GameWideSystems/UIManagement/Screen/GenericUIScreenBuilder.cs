@@ -28,7 +28,7 @@ namespace GameWideSystems.UIManagement.Screen
         
         public async UniTask<UIScreenBase> Build(Transform creationHolder, Camera uiCamera, CancellationToken cancellationToken)
         {
-            AssetReferenceDto uiReference = _gameModeAddressableProvider.GetScreenRuntimeKey(_buildConfigurationsProvider.PlatformType);
+            AssetReference uiReference = _gameModeAddressableProvider.GetScreenRuntimeKey(_buildConfigurationsProvider.PlatformType);
             GameObject screen = await uiReference.Instantiate(new InstantiationParameters(creationHolder, false), cancellationToken);
 
             screen.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;

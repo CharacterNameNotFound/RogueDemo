@@ -18,7 +18,7 @@ namespace GameWideSystems.GameSceneManager
             _inputControlFacade = inputControlFacade;
         }
 
-        public async UniTask<SceneInstance> OpenScene(AssetReferenceDto sceneAddressableKy,
+        public async UniTask<SceneInstance> OpenScene(AssetReference sceneAddressableKy,
             LoadSceneMode loadSceneMode,
             LoadingScreenParams loadingScreenParams = null,
             bool lockScreen = false,
@@ -53,7 +53,7 @@ namespace GameWideSystems.GameSceneManager
             await Addressables.UnloadSceneAsync(sceneReference.OperationHandle).ToUniTask(cancellationToken: cancellationToken);
         }
 
-        private async UniTask<SceneInstance> LoadingWithProgressReporting(AssetReferenceDto sceneAssetReference, LoadSceneMode loadSceneMode, LoadingScreenParams loadingScreenParams, CancellationToken cancellationToken = default)
+        private async UniTask<SceneInstance> LoadingWithProgressReporting(AssetReference sceneAssetReference, LoadSceneMode loadSceneMode, LoadingScreenParams loadingScreenParams, CancellationToken cancellationToken = default)
         {
             await loadingScreenParams.LoadingScreenManager.Show(cancellationToken);
 
@@ -67,7 +67,7 @@ namespace GameWideSystems.GameSceneManager
             return scene;
         }
 
-        private UniTask<SceneInstance> LoadSceneInternal(AssetReferenceDto sceneAssetReference, LoadSceneMode loadSceneMode, CancellationToken cancellationToken = default)
+        private UniTask<SceneInstance> LoadSceneInternal(AssetReference sceneAssetReference, LoadSceneMode loadSceneMode, CancellationToken cancellationToken = default)
         {
             return sceneAssetReference.LoadScene(loadSceneMode, cancellationToken: cancellationToken);
         }

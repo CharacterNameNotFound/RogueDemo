@@ -10,7 +10,7 @@ namespace Game.Utilities.SceneDataProviding
         [field: SerializeField] public AssetReference Main { get; private set; }
         [field: SerializeField] public AssetReference StorySession { get; private set; }
         
-        public AssetReferenceDto MainScene => Main.ToAssetReferenceDto();
-        public AssetReferenceDto StorySessionScene => StorySession.ToAssetReferenceDto();
+        public AssetReference MainScene => Main;
+        public AssetReference StorySessionScene => StorySession;
     }
 }

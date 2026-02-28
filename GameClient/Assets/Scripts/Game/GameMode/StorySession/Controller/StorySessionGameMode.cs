@@ -36,7 +36,7 @@ namespace Game.GameMode.StorySession.Controller
         public async UniTask Initialize(GameStateInitializationParameters parameters, CancellationToken cancellationToken = default)
         {
             _gmParams = (StorySessionGameModeInitializationParameters) parameters;
-            _story = await _gmParams.StoryStartData.StoryID.ToAssetReferenceDto().Load<IStoryBase>(cancellationToken);
+            _story = await _gmParams.StoryStartData.StoryID.Load<IStoryBase>(cancellationToken);
             
             ProjectContext.Instance.Container.Inject(_story);
             await _story.StartStory(cancellationToken);

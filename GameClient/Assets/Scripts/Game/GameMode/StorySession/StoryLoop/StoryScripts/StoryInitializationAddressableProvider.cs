@@ -8,7 +8,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts
     {
         [SerializeField] private AssetReferenceGameObject _gameBoardPrefab;
 
-        public AssetReferenceDto GameBoardPrefab => _gameBoardPrefab.ToAssetReferenceDto();
+        public AssetReference GameBoardPrefab => _gameBoardPrefab;
 
     }
 }

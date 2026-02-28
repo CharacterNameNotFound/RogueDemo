@@ -1,11 +1,12 @@
+using UnityEngine.AddressableAssets;
 using Utils.UtilityTypes.AssetReferencing;
 
 namespace GameWideSystems.AudioManager
 {
     public interface IAudioManagerConfigurationsProvider
     {
-        public AssetReferenceDto SFXAudioPrefab { get; }
+        public AssetReference SFXAudioPrefab { get; }
         public int SFXPoolSize { get; }
-        public AssetReferenceDto MusicAudioPrefab { get; }
+        public AssetReference MusicAudioPrefab { get; }
     }
 }

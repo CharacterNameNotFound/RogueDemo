@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Utils.UtilityTypes.AssetReferencing;
@@ -10,9 +12,12 @@ namespace Game.GameMode.StorySession.Data.Character
 
         [SerializeField] private AssetReferenceSprite _characterPortrait;
         [SerializeField] private AssetReferenceSprite _characterStorySessionPortrait;
+        [SerializeField] private List<AssetReference> _itemSets;
 
-        public AssetReferenceDto CharacterPortrait => _characterPortrait.ToAssetReferenceDto();
-        public AssetReferenceDto CharacterStorySessionPortrait => _characterStorySessionPortrait.ToAssetReferenceDto();
+        public AssetReferenceSprite CharacterPortrait => _characterPortrait;
+        public AssetReferenceSprite CharacterStorySessionPortrait => _characterStorySessionPortrait;
+        public List<AssetReference> ItemSets => _itemSets;
+
 
     }
 }

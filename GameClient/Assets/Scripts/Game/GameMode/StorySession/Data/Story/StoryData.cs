@@ -11,7 +11,7 @@ namespace Game.GameMode.StorySession.Data.Story
 
         [SerializeField] private AssetReferenceSprite _storyImage;
 
-        public AssetReferenceDto StoryImage => _storyImage.ToAssetReferenceDto();
+        public AssetReference StoryImage => _storyImage;
         
     }
 }

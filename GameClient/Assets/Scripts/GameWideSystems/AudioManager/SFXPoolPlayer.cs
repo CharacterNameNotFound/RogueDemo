@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Utils.UtilityTypes.AssetReferencing;
 using Utils.UtilityTypes.ObjectPooling;
 
@@ -12,7 +13,7 @@ namespace GameWideSystems.AudioManager
     {
         private GameObjectPool<AudioPlayer> _audioSourcePool;
         
-        public SFXPoolPlayer(AssetReferenceDto sfxAudioPrefab, Transform sfxPoolTransform)
+        public SFXPoolPlayer(AssetReference sfxAudioPrefab, Transform sfxPoolTransform)
         {
             _audioSourcePool = new GameObjectPool<AudioPlayer>(
                 new List<AudioPlayer>(),

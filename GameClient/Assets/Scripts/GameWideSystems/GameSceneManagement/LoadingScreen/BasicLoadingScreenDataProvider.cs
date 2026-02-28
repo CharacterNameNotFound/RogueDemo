@@ -7,6 +7,6 @@ namespace GameWideSystems.GameSceneManager.LoadingScreen
     public class BasicLoadingScreenDataProvider : ScriptableObject, IBasicLoadingScreenDataProvider
     {
         [field: SerializeField] public AssetReferenceGameObject BasicLoadingScreen { get; private set; }
-        public AssetReferenceDto BasicLoadingScreenAddressableKey => BasicLoadingScreen.ToAssetReferenceDto();
+        public AssetReference BasicLoadingScreenAddressableKey => BasicLoadingScreen;
     }
 }

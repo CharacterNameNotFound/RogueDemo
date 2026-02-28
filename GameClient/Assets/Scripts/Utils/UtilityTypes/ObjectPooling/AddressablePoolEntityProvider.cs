@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using Utils.UtilityTypes.AssetReferencing;
 
@@ -9,9 +10,9 @@ namespace Utils.UtilityTypes.ObjectPooling
 {
     public class AddressablePoolEntityProvider<T> : IPoolEntityBuilder<T> where T : Component
     {
-        private AssetReferenceDto _assetReference;
+        private AssetReference _assetReference;
         
-        public AddressablePoolEntityProvider(AssetReferenceDto assetReference)
+        public AddressablePoolEntityProvider(AssetReference assetReference)
         {
             _assetReference = assetReference;
         }

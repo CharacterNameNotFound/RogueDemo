@@ -10,8 +10,8 @@ namespace GameWideSystems.AudioManager
         [SerializeField] private AssetReference _musicAudioPrefabReference;
         [field: SerializeField] public int SFXPoolSize { get; private set; }
 
-        public AssetReferenceDto SFXAudioPrefab => _sfxAudioPrefabReference.ToAssetReferenceDto();
-        public AssetReferenceDto MusicAudioPrefab  => _sfxAudioPrefabReference.ToAssetReferenceDto();
+        public AssetReference SFXAudioPrefab => _sfxAudioPrefabReference;
+        public AssetReference MusicAudioPrefab  => _sfxAudioPrefabReference;
         
     }
 }

@@ -1,3 +1,4 @@
+using UnityEngine.AddressableAssets;
 using Utils.UtilityTypes.AssetReferencing;
 
 namespace Game.UI.Tooltips
@@ -5,6 +6,6 @@ namespace Game.UI.Tooltips
     public interface ITooltipConfigurationProvider
     {
         // if we're going to have only game objects here we have no need to bother ourselves with a key
-        public AssetReferenceDto TextTooltipPrefabReference { get; }
+        public AssetReference TextTooltipPrefabReference { get; }
     }
 }

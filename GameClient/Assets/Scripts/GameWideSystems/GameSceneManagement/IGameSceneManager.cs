@@ -9,7 +9,7 @@ namespace GameWideSystems.GameSceneManager
 {
     public interface IGameSceneManager
     {
-        public UniTask<SceneInstance> OpenScene(AssetReferenceDto sceneAddressableKy, LoadSceneMode loadSceneMode,
+        public UniTask<SceneInstance> OpenScene(AssetReference sceneAddressableKy, LoadSceneMode loadSceneMode,
             LoadingScreenParams loadingScreenParams = null, bool lockScreen = false,
             CancellationToken cancellationToken = default);
         public UniTask UnloadScene(AssetReference sceneReference, CancellationToken cancellationToken = default);
