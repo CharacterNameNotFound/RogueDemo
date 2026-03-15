@@ -20,23 +20,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0629985612e5cd441aaf442d4bb6096b
-    m_Address: Assets/Sprites/Portrets/character_1_portret.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1f3a69bb9756bf24d8709738601cc77e
-    m_Address: Stories/BaseStory.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 24306bba513c99e489afeec0c3fda081
     m_Address: Assets/GameConfigurations/Structure/Prefabs
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2d519ee61599bb54287d8a8ff2f48219
-    m_Address: Assets/Sprites/Portrets/character_2_portret.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -50,25 +35,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4492032a14514a44f9ab0c32be6ea0ca
-    m_Address: Assets/Content/GameMode/StorySelector/Data/Stories/StoryData_2.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - StoryData
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 59a52dadfdcec8044a2000dcb501e542
-    m_Address: Assets/Content/GameMode/StorySelector/Data/Characters/CharacterData_3.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - CharacterData
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 66b21c21959c1194cbf2f2897c038c32
-    m_Address: Assets/Sprites/Portrets/character_3_portret.png
+  - m_GUID: 4f76735b7aa272c4bb20635ddf20862c
+    m_Address: Assets/Sprites/Story/Items/Large_item_placeholder.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7e49e6ed95dd0234cb245a3bfe70a85f
-    m_Address: Assets/Scenes/SpaceAdventrue.unity
+  - m_GUID: 81ec366f5b66f3147bccbe7b54bc3df2
+    m_Address: Assets/Sprites/Story/Items/Medium_item_placeholder.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 919c02dabf1e5774d89a026758e44811
+    m_Address: Assets/Sprites/Story/Items/Small_item_placeholder.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -77,23 +55,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a9e9a34dc595d4d43ae6766ea79838b6
-    m_Address: Assets/Content/GameMode/StorySelector/Data/Stories/StoryData.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - StoryData
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: aab71295cb5121546b3aaf595ef676ff
-    m_Address: Assets/Sprites/StoryImages/story_1_image.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b69035f3d5ceb6f4898b308e9b5e0676
-    m_Address: Assets/Content/GameMode/StorySelector/Data/Characters/CharacterData.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - CharacterData
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c0fb677758ae70b4ca4688eaa2f9d2b3
     m_Address: Assets/Content/GameMode/StorySession/UI/StorySessionScreen.prefab
     m_ReadOnly: 0
@@ -101,17 +62,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c823341693ca3cb49bf5e8ceb72f5080
     m_Address: Assets/Content/GameMode/StorySelector/UI/StorySelection.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cc63e136f18e62944822f523dd28e2df
-    m_Address: Assets/Content/GameMode/StorySelector/Data/Characters/CharacterData_2.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - CharacterData
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e32ad4b66880b59428c0f92962a1fc6d
-    m_Address: Assets/Sprites/StoryImages/story_2_image.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

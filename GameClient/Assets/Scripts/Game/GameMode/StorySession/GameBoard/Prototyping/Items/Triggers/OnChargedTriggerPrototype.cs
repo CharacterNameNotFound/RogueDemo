@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Game.GameMode.StorySession.GameBoard.Prototyping.Items.Structure;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Structure;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Triggers;
 

@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Items Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Items
+  m_TableCollectionNameGuidString: e3bd70bec18034d4899d400f171a87d0
+  m_Entries:
+  - m_Id: 135443660345344
+    m_Key: knife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 135443719065600
+    m_Key: torch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 135443719065601
+    m_Key: king_mace
+    m_Metadata:
+      m_Items: []
+  - m_Id: 135443719065602
+    m_Key: ram
+    m_Metadata:
+      m_Items: []
+  - m_Id: 135443723259904
+    m_Key: poisoned_dagger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 135443723259905
+    m_Key: dagger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 135443723259906
+    m_Key: rapier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 135443723259907
+    m_Key: hand_axe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 135443723259908
+    m_Key: vampiric_stiletto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 135443723259909
+    m_Key: twin_blades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 135443723259910
+    m_Key: practice_sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 135443723259911
+    m_Key: runic_blade
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1363048128453541979
+  references:
+    version: 2
+    RefIds:
+    - rid: 1363048128453541979
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1772451728874

@@ -1,0 +1,337 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &182142207221126626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1045187576734680235}
+  - component: {fileID: 9112827985173233151}
+  - component: {fileID: 2878795356011170270}
+  - component: {fileID: 5235037151731544303}
+  m_Layer: 0
+  m_Name: Effector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1045187576734680235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182142207221126626}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7949106507283742266}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9112827985173233151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182142207221126626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c1b6669803541a39150dbb5e2bf4193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Effectors.DealDamageEffectorPrototype
+  IsCritAvailable: 1
+  TargetSelectorPrototypes: {fileID: 2878795356011170270}
+  StatProviderPrototype: {fileID: 5235037151731544303}
+--- !u!114 &2878795356011170270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182142207221126626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bdabd786b274c588febbce03c8eeca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.TargetSelectors.EnemyTargetSelectorPrototype
+--- !u!114 &5235037151731544303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182142207221126626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6609424c75433aaf5d44f83bc69f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.StatProviders.UniversalItemStatProviderPrototype
+  ItemStatType: 1
+  Multiplier: 1
+--- !u!1 &3330554014568712252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7949106507283742266}
+  - component: {fileID: -8666746465287308309}
+  - component: {fileID: 4772569043822553358}
+  - component: {fileID: 283141784943870736}
+  - component: {fileID: 3823007306679590159}
+  m_Layer: 0
+  m_Name: vampiric_stiletto_gold
+  m_TagString: ItemPrototype
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7949106507283742266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330554014568712252}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1045187576734680235}
+  - {fileID: 4315420509520990861}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8666746465287308309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330554014568712252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebcdda705a3e407caa09df47930d5efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special.ItemCore
+  ItemId: vampiric_stiletto_gold
+  ItemName: vampiric_stiletto
+  ItemRarity: 2
+  ItemSize: 2
+  UpgradedItem: {fileID: -8666746465287308309, guid: 48b2fd0316c1d6c42a4e6efd7be752ec, type: 3}
+  DowngradedItem: {fileID: -8666746465287308309, guid: ca4bc452491e19f478eecf33c8aaa3b9, type: 3}
+  ItemImage:
+    m_AssetGUID: 81ec366f5b66f3147bccbe7b54bc3df2
+    m_SubObjectName: Medium_item_placeholder_0
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1
+--- !u!114 &4772569043822553358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330554014568712252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d20b8561ce426c888af63e4768e07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special.TagListPrototype
+  ItemTags: 0100000003000000
+--- !u!114 &283141784943870736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330554014568712252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070bf38e346f476e954bf7608ba03d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Triggers.OnChargedTriggerPrototype
+  Effectors:
+  - {fileID: 9112827985173233151}
+  - {fileID: 9208701568154163092}
+--- !u!114 &3823007306679590159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330554014568712252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b02196a315497ca2b916e3b8ef5638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.StatRegisterers.UniversalStatRegisterer
+  StatEntries:
+  - ItemStatType: 0
+    ItemStatSet:
+      ItemValues:
+        Stats:
+        - 8
+        - 0
+        - 0
+        - 0
+        - 0
+      ItemPercentiles:
+        Stats:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+  - ItemStatType: 1
+    ItemStatSet:
+      ItemValues:
+        Stats:
+        - 40
+        - 0
+        - 0
+        - 0
+        - 0
+      ItemPercentiles:
+        Stats:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+  - ItemStatType: 9
+    ItemStatSet:
+      ItemValues:
+        Stats:
+        - 7
+        - 0
+        - 0
+        - 0
+        - 0
+      ItemPercentiles:
+        Stats:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+  - ItemStatType: 10
+    ItemStatSet:
+      ItemValues:
+        Stats:
+        - 1
+        - 0
+        - 0
+        - 0
+        - 0
+      ItemPercentiles:
+        Stats:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+  - ItemStatType: 8
+    ItemStatSet:
+      ItemValues:
+        Stats:
+        - 1
+        - 0
+        - 0
+        - 0
+        - 0
+      ItemPercentiles:
+        Stats:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+  IsCooldownItem: 1
+  CurrentCharge: 0
+--- !u!1 &6047856444836774020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4315420509520990861}
+  - component: {fileID: 9208701568154163092}
+  - component: {fileID: 8361736227108902333}
+  - component: {fileID: 8229808350632414002}
+  m_Layer: 0
+  m_Name: Heal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4315420509520990861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6047856444836774020}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7949106507283742266}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9208701568154163092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6047856444836774020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7f93dfbe7f4c6ab842a2a8cc053474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Effectors.HealEffectorPrototype
+  IsCritAvailable: 1
+  TargetSelectorPrototypes: {fileID: 8361736227108902333}
+  StatProviderPrototype: {fileID: 8229808350632414002}
+--- !u!114 &8361736227108902333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6047856444836774020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bdabd786b274c588febbce03c8eeca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.TargetSelectors.EnemyTargetSelectorPrototype
+--- !u!114 &8229808350632414002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6047856444836774020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6609424c75433aaf5d44f83bc69f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.StatProviders.UniversalItemStatProviderPrototype
+  ItemStatType: 1
+  Multiplier: 1

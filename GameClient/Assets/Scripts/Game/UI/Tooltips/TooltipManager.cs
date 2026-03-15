@@ -37,7 +37,7 @@ namespace Game.UI.Tooltips
             return tooltipObjectProvider.ExtendBy(pregenRequired, cancellationToken);
         }
         
-        public async UniTask<T> ShopTooltip<T>(TooltipType tooltipType, TooltipParams tooltipParams, CancellationToken cancellationToken) where T : TooltipBase
+        public async UniTask<T> ShowTooltip<T>(TooltipType tooltipType, TooltipParams tooltipParams, CancellationToken cancellationToken) where T : TooltipBase
         {
             if (!_tooltipPools.TryGetValue(tooltipType, out TooltipPool pool))
             {

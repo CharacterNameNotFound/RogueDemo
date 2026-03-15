@@ -17,9 +17,12 @@ namespace Utils.UtilityTypes.ObjectPooling
         public override async UniTask ExtendBy(int count, CancellationToken cancellationToken)
         {
             await base.ExtendBy(count, cancellationToken);
+            
+            Transform parent = _pooledObjectHostProvider.GetHost();
+            
             for (int i = 0; i < count; i++)
             {
-                _pool[_pool.Count - 1 - i].transform.SetParent(_pooledObjectHostProvider.GetHost());
+                _pool[_pool.Count - 1 - i].transform.SetParent(parent);
                 _pool[_pool.Count - 1 - i].gameObject.SetActive(false);
             }
         }

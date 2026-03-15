@@ -4,6 +4,7 @@
     {
         Main,
         ErrorMessages,
-        StoryUI
+        StoryUI,
+        Items
     }
 }

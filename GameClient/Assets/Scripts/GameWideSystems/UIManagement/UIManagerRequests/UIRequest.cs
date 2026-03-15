@@ -15,6 +15,8 @@ namespace GameWideSystems.UIManagement.UIManagerRequests
         // ToDo (low): It will be preferable to pool, so we can use them anytime without garbage creation
         internal readonly List<IUIAction> Actions = new();
         
+        internal UIManager UIManager;
+        
         public void AppendAction(IUIAction action)
         {
             if (Actions.Count > 0 && !Validate(action, Actions.Last()))
@@ -29,23 +31,23 @@ namespace GameWideSystems.UIManagement.UIManagerRequests
         /// Start handling task queue
         /// </summary>
         /// <returns> Opened a screen life UniTask handle </returns>
-        public virtual async UniTask<UniTask> Handle(UIManager uiManager, CancellationToken cancellationToken)
+        public virtual async UniTask<UniTask> Handle(CancellationToken cancellationToken)
         {
             if (IsLockInputs)
             {
-                uiManager.InputControlFacade.SetInputsAvailable(false);
+                UIManager.InputControlFacade.SetInputsAvailable(false);
             }
             
             UniTask screenHandle = UniTask.CompletedTask;
             
             foreach (IUIAction item in Actions)
             {
-                screenHandle = await item.Handle(uiManager, cancellationToken);
+                screenHandle = await item.Handle(UIManager, cancellationToken);
             }
 
             if (IsLockInputs)
             {
-                uiManager.InputControlFacade.SetInputsAvailable(true);
+                UIManager.InputControlFacade.SetInputsAvailable(true);
             }
             
             return screenHandle;
@@ -56,9 +58,9 @@ namespace GameWideSystems.UIManagement.UIManagerRequests
             return currentAction.ActionType != UIActionType.Close || lastAction.ActionType != UIActionType.Open;
         }
 
-        public UniTask<UniTask> PlayWith(UIManager uiManager, CancellationToken cancellationToken)
+        public UniTask<UniTask> Play(CancellationToken cancellationToken)
         {
-            return Handle(uiManager, cancellationToken);
+            return Handle(cancellationToken);
         }
     }
 }

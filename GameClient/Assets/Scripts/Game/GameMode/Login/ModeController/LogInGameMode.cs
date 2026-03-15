@@ -42,7 +42,7 @@ namespace Game.GameMode.Login.ModeController
             await _gameSceneManager.OpenScene(_sceneAddressableDataProvider.MainScene, LoadSceneMode.Single,
                 new LoadingScreenParams(false, _loadingScreenManager), cancellationToken: cancellationToken);
 
-            await _uiManager.OpenScreenRequest(_logInScreenBuilder, null, out _).PlayWith(_uiManager, cancellationToken);
+            await _uiManager.OpenScreenRequest(_logInScreenBuilder, null, out _).Play(cancellationToken);
             await _loadingScreenManager.Hide(true, cancellationToken);
         }
 
@@ -58,7 +58,7 @@ namespace Game.GameMode.Login.ModeController
 
         public UniTask Close(CancellationToken cancellationToken = default)
         {
-            return UIRequestBuilder.CloseTopRequest().PlayWith(_uiManager, cancellationToken);
+            return _uiManager.CloseTopRequest().Play(cancellationToken);
         }
 
         public UniTask<bool> TryGetSaveState(out IGameStateSerializationData gameStateSerializationData,

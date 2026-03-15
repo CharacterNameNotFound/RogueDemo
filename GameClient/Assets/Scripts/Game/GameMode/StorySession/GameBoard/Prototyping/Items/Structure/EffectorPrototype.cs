@@ -6,6 +6,7 @@ namespace Game.GameMode.StorySession.GameBoard.Prototyping.Items.Structure
 {
     public abstract class EffectorPrototype : MonoBehaviour
     {
+        
         public abstract Effector GetEffector();
     }
 }

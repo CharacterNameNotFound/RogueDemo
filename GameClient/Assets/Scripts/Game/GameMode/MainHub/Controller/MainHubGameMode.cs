@@ -46,7 +46,7 @@ namespace Game.GameMode.MainHub.Controller
         {
             await _gameSceneManager.OpenScene(_sceneAddressableDataProvider.MainScene, LoadSceneMode.Single,
                 new LoadingScreenParams(false, _loadingScreenManager), cancellationToken: cancellationToken);
-            await _uiManager.OpenScreenRequest(_mainHubScreenBuilder, null, out _).PlayWith(_uiManager, cancellationToken);
+            await _uiManager.OpenScreenRequest(_mainHubScreenBuilder, null, out _).Play(cancellationToken);
             await _loadingScreenManager.Hide(true, cancellationToken);
         }
 
@@ -57,13 +57,13 @@ namespace Game.GameMode.MainHub.Controller
 
         public async UniTask Load(IGameStateSerializationData gameStateSerializationData, CancellationToken cancellationToken = default)
         {
-            await _uiManager.OpenScreenRequest(_mainHubScreenBuilder, null, out _).PlayWith(_uiManager, cancellationToken);
+            await _uiManager.OpenScreenRequest(_mainHubScreenBuilder, null, out _).Play(cancellationToken);
             await _loadingScreenManager.Hide(true, cancellationToken);
         }
 
         public UniTask Close(CancellationToken cancellationToken = default)
         {
-            return UIRequestBuilder.CloseTopRequest().PlayWith(_uiManager, cancellationToken);
+            return _uiManager.CloseTopRequest().Play(cancellationToken);
         }
 
         public UniTask<bool> TryGetSaveState(out IGameStateSerializationData gameStateSerializationData,

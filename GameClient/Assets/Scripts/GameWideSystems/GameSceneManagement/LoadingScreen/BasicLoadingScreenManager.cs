@@ -46,6 +46,7 @@ namespace GameWideSystems.GameSceneManager.LoadingScreen
             Canvas canvas = _loadingScreen.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceCamera;
             canvas.worldCamera = _cameraManager.UICamera;
+            canvas.sortingOrder = 10000;
             
             LoadingScreen = _loadingScreen.GetComponent<ILoadingScreen>();
             await LoadingScreen.Show(cancellationToken);

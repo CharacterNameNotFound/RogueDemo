@@ -6,11 +6,14 @@ namespace Game.GameMode.StorySession.GameBoard.Prototyping.Items.Effectors
 {
     public class ShieldEffectorPrototype : EffectorPrototype
     {
+        public bool IsCritAvailable = true;
+        
         public TargetSelectorPrototype TargetSelectorPrototypes;
+        public StatProviderPrototype StatProviderPrototype;
         
         public override Effector GetEffector()
         {
-            return new ShieldEffector(TargetSelectorPrototypes.GetTargetSelector());
+            return new ShieldEffector(TargetSelectorPrototypes.GetTargetSelector(), StatProviderPrototype.GetStatProvider(), IsCritAvailable);
         }
         
     }

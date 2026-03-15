@@ -8,7 +8,7 @@ namespace Game.GameMode.StorySession.GameBoard.Prototyping.Items.TargetSelectors
     {
         public override TargetSelector GetTargetSelector()
         {
-            return new OwnerSelector();
+            return new OwnerTargetSelector();
         }
     }
 }

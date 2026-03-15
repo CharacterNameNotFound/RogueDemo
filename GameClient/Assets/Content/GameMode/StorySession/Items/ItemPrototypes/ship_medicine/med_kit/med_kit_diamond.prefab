@@ -1,0 +1,276 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &182142207221126626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1045187576734680235}
+  - component: {fileID: 8018535308146780354}
+  - component: {fileID: 2878795356011170270}
+  - component: {fileID: 631041017852332013}
+  m_Layer: 0
+  m_Name: Effector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1045187576734680235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182142207221126626}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7949106507283742266}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8018535308146780354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182142207221126626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7f93dfbe7f4c6ab842a2a8cc053474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Effectors.HealEffectorPrototype
+  IsCritAvailable: 1
+  TargetSelectorPrototypes: {fileID: 2878795356011170270}
+  StatProviderPrototype: {fileID: 631041017852332013}
+--- !u!114 &2878795356011170270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182142207221126626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bdabd786b274c588febbce03c8eeca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.TargetSelectors.EnemyTargetSelectorPrototype
+--- !u!114 &631041017852332013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182142207221126626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6609424c75433aaf5d44f83bc69f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.StatProviders.UniversalItemStatProviderPrototype
+  ItemStatType: 3
+  Multiplier: 1
+--- !u!1 &3330554014568712252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7949106507283742266}
+  - component: {fileID: -8666746465287308309}
+  - component: {fileID: 4772569043822553358}
+  - component: {fileID: 283141784943870736}
+  - component: {fileID: 657342466212981220}
+  m_Layer: 0
+  m_Name: med_kit_diamond
+  m_TagString: ItemPrototype
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7949106507283742266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330554014568712252}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1045187576734680235}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8666746465287308309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330554014568712252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebcdda705a3e407caa09df47930d5efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special.ItemCore
+  ItemId: med_kit_diamond
+  ItemName: med_kit
+  ItemRarity: 3
+  ItemSize: 2
+  UpgradedItem: {fileID: 0}
+  DowngradedItem: {fileID: -8666746465287308309, guid: d3616ce3fb738bc4ab6e66d8ce861f09, type: 3}
+  ItemImage:
+    m_AssetGUID: 81ec366f5b66f3147bccbe7b54bc3df2
+    m_SubObjectName: Medium_item_placeholder_0
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1
+--- !u!114 &4772569043822553358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330554014568712252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d20b8561ce426c888af63e4768e07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special.TagListPrototype
+  ItemTags: 0100000005000000
+--- !u!114 &283141784943870736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330554014568712252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070bf38e346f476e954bf7608ba03d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Triggers.OnChargedTriggerPrototype
+  Effectors:
+  - {fileID: 8018535308146780354}
+--- !u!114 &657342466212981220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330554014568712252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b02196a315497ca2b916e3b8ef5638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.StatRegisterers.UniversalStatRegisterer
+  StatEntries:
+  - ItemStatType: 0
+    ItemStatSet:
+      ItemValues:
+        Stats:
+        - 16
+        - 0
+        - 0
+        - 0
+        - 0
+      ItemPercentiles:
+        Stats:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+  - ItemStatType: 3
+    ItemStatSet:
+      ItemValues:
+        Stats:
+        - 50
+        - 0
+        - 0
+        - 0
+        - 0
+      ItemPercentiles:
+        Stats:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+  - ItemStatType: 6
+    ItemStatSet:
+      ItemValues:
+        Stats:
+        - 25
+        - 0
+        - 0
+        - 0
+        - 0
+      ItemPercentiles:
+        Stats:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+  - ItemStatType: 9
+    ItemStatSet:
+      ItemValues:
+        Stats:
+        - 7
+        - 0
+        - 0
+        - 0
+        - 0
+      ItemPercentiles:
+        Stats:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+  - ItemStatType: 10
+    ItemStatSet:
+      ItemValues:
+        Stats:
+        - 1
+        - 0
+        - 0
+        - 0
+        - 0
+      ItemPercentiles:
+        Stats:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+  - ItemStatType: 8
+    ItemStatSet:
+      ItemValues:
+        Stats:
+        - 1
+        - 0
+        - 0
+        - 0
+        - 0
+      ItemPercentiles:
+        Stats:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+  IsCooldownItem: 1
+  CurrentCharge: 0

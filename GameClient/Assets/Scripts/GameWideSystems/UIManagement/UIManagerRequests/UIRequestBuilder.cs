@@ -12,6 +12,9 @@ namespace GameWideSystems.UIManagement.UIManagerRequests
             out ScreenHolder openedScreen)
         {
             UIRequest uiRequest = UIRequest.New;
+            uiRequest.UIManager = uiManager;
+            
+            
             if (screenBuilder.ScreenType == ScreenType.Screen)
             {
                 uiRequest.CloseAll();
@@ -26,12 +29,15 @@ namespace GameWideSystems.UIManagement.UIManagerRequests
             return uiRequest;
         }
 
-        public static UIRequest SwapTopScreenRequest( 
+        public static UIRequest SwapTopScreenRequest(
+            this UIManager uiManager,
             IUIScreenBuilder screenBuilder, 
             IScreenParams screenParams,
             out ScreenHolder openedScreen)
         {
             UIRequest uiRequest = UIRequest.New;
+            uiRequest.UIManager = uiManager;
+            
             if (screenBuilder.ScreenType == ScreenType.Dialog)
             {
                 uiRequest.CloseAll();
@@ -45,14 +51,20 @@ namespace GameWideSystems.UIManagement.UIManagerRequests
             return uiRequest;
         }
 
-        public static UIRequest CloseTopRequest()
+        public static UIRequest CloseTopRequest(this UIManager uiManager)
         {
-            return UIRequest.New.CloseTop().LoadTopScreen();
+            UIRequest uiRequest = UIRequest.New;
+            uiRequest.UIManager = uiManager;
+            
+            return uiRequest.CloseTop().LoadTopScreen();
         }
 
-        public static UIRequest CloseAllRequest(ScreenType screenType = ScreenType.Screen)
+        public static UIRequest CloseAllRequest(this UIManager uiManager, ScreenType screenType = ScreenType.Screen)
         {
-            return UIRequest.New.CloseAll(screenType);
+            UIRequest uiRequest = UIRequest.New;
+            uiRequest.UIManager = uiManager;
+            
+            return uiRequest.CloseAll(screenType);
         }
         
     }

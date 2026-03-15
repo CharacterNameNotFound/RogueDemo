@@ -51,8 +51,12 @@ TagManager:
   - name: Gameboard
     uniqueID: 3272947299
     locked: 0
+  - name: Items
+    uniqueID: 3149993483
+    locked: 0
   - name: VFX
     uniqueID: 2530327565
     locked: 0
   m_RenderingLayers:
   - Default
+  m_MigratedRenderPipelines: []

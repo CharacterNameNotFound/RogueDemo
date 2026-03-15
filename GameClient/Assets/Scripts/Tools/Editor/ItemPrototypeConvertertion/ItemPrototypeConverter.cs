@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.AccessControl;
 using Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special;
+using Game.GameMode.StorySession.GameBoard.Prototyping.Items.StatRegisterers;
 using Game.GameMode.StorySession.GameBoard.Prototyping.Items.Structure;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items;
 using Newtonsoft.Json;
@@ -43,7 +44,7 @@ namespace Tools.Editor.ItemPrototypeConvertertion
             var settings = new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.All,
-                Formatting = Formatting.Indented
+                Formatting = Formatting.Indented,
             };
             
             string[] prefabGUIDS = AssetDatabase.FindAssets("t:Prefab", new[] { _pathToRead });
@@ -82,11 +83,13 @@ namespace Tools.Editor.ItemPrototypeConvertertion
                 item.ItemRarity = itemCore.ItemRarity;
                 item.UpgradedItemId = itemCore.UpgradedItem?.ItemId;
                 item.DowngradedItemId = itemCore.DowngradedItem?.ItemId;
+                item.ItemSpriteRuntimeKey = itemCore.ItemImage.RuntimeKey;
+                item.ItemSize = itemCore.ItemSize;
             }
-
-            if (prefab.TryGetComponent(out StatListPrototype stats))
+            
+            if (prefab.TryGetComponent(out UniversalStatRegisterer stats))
             {
-                item.ItemStats = stats.GetItemStatSet();
+                stats.AppendStats(item.ItemStats);
             }
                 
             if (prefab.TryGetComponent(out TagListPrototype tagList))

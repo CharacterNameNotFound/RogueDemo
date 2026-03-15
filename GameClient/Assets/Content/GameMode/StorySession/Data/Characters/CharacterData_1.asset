@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1242b88565b343ee95b241ec4d91f192, type: 3}
   m_Name: CharacterData_1
   m_EditorClassIdentifier: Game.GameMode.StorySelector::Game.GameMode.StorySession.Data.CharacterData
-  <CharacterId>k__BackingField: character_1
+  <CharacterId>k__BackingField: character_data/character_1
   _characterPortrait:
     m_AssetGUID: 0629985612e5cd441aaf442d4bb6096b
     m_SubObjectName: character_1_portret_0
@@ -20,3 +20,10 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
+  _characterStorySessionPortrait:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  _itemSets: []

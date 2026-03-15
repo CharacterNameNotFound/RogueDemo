@@ -1,6 +1,7 @@
 using System.Threading;
 using Game.GameMode.StorySelector.UI.States;
 using GameWideSystems.UIManagement.Screen.StateMachineGeneric;
+using UnityEngine.AddressableAssets;
 
 namespace Game.GameMode.StorySelector.UI
 {
@@ -11,7 +12,7 @@ namespace Game.GameMode.StorySelector.UI
         public CharacterSelectionScreenState CharacterSelectionScreenState;
         public StorySelectionScreenState StorySelectionScreenState;
 
-        public string StoryID;
+        public AssetReference StoryID;
         public string CharacterID;
         
         

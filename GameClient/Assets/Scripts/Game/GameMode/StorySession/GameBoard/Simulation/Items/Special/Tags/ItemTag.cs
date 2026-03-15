@@ -4,9 +4,14 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.Tags
     {
         Small,
         Medium,
-        Big,
+        Large,
         Weapon,
-        Defence,
-        Healing
+        Shield,
+        Healing,
+        Fire,
+        Poison,
+        Slow,
+        Haste,
+        Regeneration,
     }
 }

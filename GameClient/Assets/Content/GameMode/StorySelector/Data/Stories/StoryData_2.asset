@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: StoryData_2
   m_EditorClassIdentifier: Game.GameMode.StorySelector::Game.GameMode.StorySession.Data.StoryData
   <SortingOrder>k__BackingField: 1
-  <StoryId>k__BackingField: Stories/BaseStory.asset
+  <StoryId>k__BackingField:
+    m_AssetGUID: 1f3a69bb9756bf24d8709738601cc77e
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _storyImage:
     m_AssetGUID: e32ad4b66880b59428c0f92962a1fc6d
     m_SubObjectName: story_2_image_0

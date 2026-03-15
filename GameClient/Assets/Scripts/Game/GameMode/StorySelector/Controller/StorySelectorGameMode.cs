@@ -35,13 +35,13 @@ namespace Game.GameMode.StorySelector.Controller
 
         public async UniTask Start(GameStateStartParameters parameters, CancellationToken cancellationToken = default)
         {
-            await _uiManager.OpenScreenRequest(_storySelectorScreenBuilder, null, out _).PlayWith(_uiManager, cancellationToken);
+            await _uiManager.OpenScreenRequest(_storySelectorScreenBuilder, null, out _).Play(cancellationToken);
             await _loadingScreenManager.Hide(true, cancellationToken);
         }
 
         public async UniTask Load(IGameStateSerializationData gameStateSerializationData, CancellationToken cancellationToken = default)
         {
-            await _uiManager.OpenScreenRequest(_storySelectorScreenBuilder, null, out _).PlayWith(_uiManager, cancellationToken);
+            await _uiManager.OpenScreenRequest(_storySelectorScreenBuilder, null, out _).Play(cancellationToken);
             await _loadingScreenManager.Hide(true, cancellationToken);
         }
 
@@ -52,7 +52,7 @@ namespace Game.GameMode.StorySelector.Controller
 
         public async UniTask Close(CancellationToken cancellationToken = default)
         {
-            await UIRequestBuilder.CloseTopRequest().PlayWith(_uiManager, cancellationToken);
+            await _uiManager.CloseTopRequest().Play(cancellationToken);
         }
 
         public UniTask<bool> TryGetSaveState(out IGameStateSerializationData gameStateSerializationData,

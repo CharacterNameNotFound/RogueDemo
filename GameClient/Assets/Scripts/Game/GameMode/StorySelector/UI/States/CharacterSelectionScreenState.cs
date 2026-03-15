@@ -53,11 +53,14 @@ namespace Game.GameMode.StorySelector.UI.States
             StoryStartData storyStartData = new StoryStartData(Context.StoryID, Context.CharacterID);
             StorySessionGameModeInitializationParameters gmParams =
                 new StorySessionGameModeInitializationParameters(storyStartData);
+
+            Dependencies.LoadingScreenManager.Show(Application.exitCancellationToken);
             
             Dependencies.GameStateManager.AppendGameState(
                 Dependencies.SessionGameModeFactory.Create(),
                 initializationParameters: gmParams)
                 .Forget();
+            
         }
 
         private void SwapScreen()

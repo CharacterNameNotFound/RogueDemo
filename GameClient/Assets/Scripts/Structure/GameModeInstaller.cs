@@ -18,17 +18,10 @@ namespace Structure.GameInstalling
             
             Container.BindFactory<StorySelectorGameMode, StorySelectorGameMode.Factory>().FromFactory<StorySelectorGameModeFactory>();
 
-            InstallStorySession();
-        }
-
-        private void InstallStorySession()
-        {
             Container.BindFactory<StorySessionGameMode, StorySessionGameMode.Factory>().FromFactory<StorySessionGameModeFactory>();
-            
-            Container.Bind<GameBoardHolder>().To<GameBoardHolder>().AsSingle();
-            
-            
+
         }
+        
 
 
         

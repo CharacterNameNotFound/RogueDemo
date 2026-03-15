@@ -13,6 +13,7 @@ namespace Structure
             Container.Install<GameLevelSystemInstaller>();
             Container.Install<ScreenBuilderInstaller>();
             Container.Install<TooltipInstaller>();
+            Container.Install<StoryInstaller>();
             
             // installing cheats
             Container.Bind<CheatConsoleController>().To<CheatConsoleController>().FromNew().AsSingle();

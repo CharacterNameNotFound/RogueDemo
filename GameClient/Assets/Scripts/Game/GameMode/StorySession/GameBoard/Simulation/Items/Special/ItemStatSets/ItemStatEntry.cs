@@ -8,5 +8,11 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.ItemStat
     {
         public StatSet ItemValues; // item values
         public StatSet ItemPercentiles; // percentile modifiers
+
+        public ItemStatEntry(StatSet itemValues, StatSet itemPercentiles)
+        {
+            ItemValues = itemValues;
+            ItemPercentiles = itemPercentiles;
+        }
     }
 }
