@@ -6,6 +6,7 @@ using GameWideSystems.GameSceneManager;
 using GameWideSystems.GameSceneManager.LoadingScreen;
 using GameWideSystems.GameStateManagement;
 using GameWideSystems.LocalizationWrapper;
+using GameWideSystems.RNGManagement;
 using GameWideSystems.SessionManagement.Sessions;
 using GameWideSystems.UIManagement;
 using UnityEngine;
@@ -34,6 +35,7 @@ namespace Structure.GameInstalling
             InstallSession();
             InstallGenericHosts();
             InstallCameraManager();
+            InstallRandom();
         }
 
         private void InstallGenericHosts()
@@ -85,6 +87,11 @@ namespace Structure.GameInstalling
         private void InstallCameraManager()
         {
             Container.Bind<ICameraManager>().FromComponentInNewPrefab(_cameraManager).AsSingle();
+        }
+        
+        private void InstallRandom()
+        {
+            Container.Bind<IRNGManager>().To<RNGManager>().AsSingle();
         }
         
     }

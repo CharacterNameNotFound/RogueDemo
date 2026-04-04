@@ -67,3 +67,5 @@ GameClient/IndexingPerformanceReport/
 GameClient/UserSettings/Search.settings
 
 GameClient/UserSettings/
+
+GameClient/.utmp/

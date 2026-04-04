@@ -8,7 +8,7 @@ using Game.GameMode.StorySession.GameBoard.Simulation.Items;
 using Game.GameMode.StorySession.StoryLoop.StoryRoutines.DataProviders;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs;
 using Game.GameMode.StorySession.StoryLoop.StoryStructure.ItemOrganization;
-using Unity.Plastic.Newtonsoft.Json;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Utils.UtilityTypes.AssetReferencing;
@@ -17,15 +17,18 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryRoutines
 {
     public class BuildAndRegisterDecksRoutine
     {
-        private DeckOrganizer _deckOrganizer;
-        private ItemRegistry _itemRegistry;
+        private IDeckOrganizer _deckOrganizer;
+        private IItemRegistry _itemRegistry;
+        private JsonSerializerSettings _jsonSerializerSettings;
 
         public BuildAndRegisterDecksRoutine(
-            DeckOrganizer deckOrganizer, 
-            ItemRegistry itemRegistry)
+            IDeckOrganizer deckOrganizer, 
+            IItemRegistry itemRegistry, 
+            JsonSerializerSettings jsonSerializerSettings)
         {
             _deckOrganizer = deckOrganizer;
             _itemRegistry = itemRegistry;
+            _jsonSerializerSettings = jsonSerializerSettings;
         }
 
         public async UniTask BuildBasicItemsAndRegistries(List<AssetReference> neutralItemSetsReferences,
@@ -42,19 +45,13 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryRoutines
 
             ItemSet[] itemSets = await UniTask.WhenAll(itemSetsTasks).AttachExternalCancellation(cancellationToken);
             
-            var settings = new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.All,
-                Formatting = Formatting.Indented,
-            };
-            
             List<Item> items = new List<Item>();
             
             foreach (ItemSet itemSet in itemSets)
             {
                 foreach (TextAsset itemTextAsset in itemSet.TextAssets)
                 {
-                    Item item = JsonConvert.DeserializeObject<Item>(itemTextAsset.text, settings);
+                    Item item = JsonConvert.DeserializeObject<Item>(itemTextAsset.text, _jsonSerializerSettings);
                 
                     items.Add(item);
                 }
@@ -65,7 +62,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryRoutines
                 Addressables.Release(itemSet);
             }
             
-            _itemRegistry.Initialize(items.ToDictionary(item => item.ItemID));
+            _itemRegistry.Initialize(items.ToDictionary(item => item.ItemId));
 
             ItemRarity[] rarities = (ItemRarity[]) Enum.GetValues(typeof(ItemRarity));
             Dictionary<ItemRarity, List<string>> decks = new Dictionary<ItemRarity, List<string>>();
@@ -81,7 +78,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryRoutines
                 
                 for (int i = 0; i < deckBuildingConfigs.CardCopiesCount; i++)
                 {
-                    deck.Add(item.ItemID);
+                    deck.Add(item.ItemId);
                 }
                 
             }
@@ -92,7 +89,6 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryRoutines
                     );
 
             _deckOrganizer.Initialize(itemDecks);
-            
         }
 
         private void AppendItemSetLoading(List<UniTask<ItemSet>> itemSetsTasks, List<AssetReference> itemSetsReferences, CancellationToken cancellationToken)

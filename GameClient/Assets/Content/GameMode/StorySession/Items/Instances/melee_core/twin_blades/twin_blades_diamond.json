@@ -1,6 +1,7 @@
 {
   "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Item, Game.GameMode.StorySession",
-  "ItemID": "twin_blades_diamond",
+  "ItemId": "twin_blades_diamond",
+  "ItemSetId": "melee_core",
   "ItemName": "twin_blades",
   "ItemRarity": 3,
   "ItemSize": 3,

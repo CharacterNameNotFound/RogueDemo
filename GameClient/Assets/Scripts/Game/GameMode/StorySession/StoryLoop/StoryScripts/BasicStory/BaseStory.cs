@@ -20,11 +20,9 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
         private GameBoardInitializationRoutine _boardInitializationRoutine;
         private InitializeStoryServicesRoutine _initializeStoryServicesRoutine;
 
-        
-        
+
         private StoryInitializationData _storyInitializationData;
 
-        
         [Inject]
         private void InjectDependencies(
             ILoadingScreenManager loadingScreenManager,
@@ -32,7 +30,8 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             BuildAndRegisterDecksRoutine buildAndRegisterDecksRoutine,
             UIManager uiManager,
             StorySessionScreenBuilder storySessionScreenBuilder,
-            GameBoardInitializationRoutine boardInitializationRoutine
+            GameBoardInitializationRoutine boardInitializationRoutine,
+            InitializeStoryServicesRoutine initializeStoryServicesRoutine
             )
         {
             _loadingScreenManager = loadingScreenManager;
@@ -41,11 +40,13 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             _uiManager = uiManager;
             _storySessionScreenBuilder = storySessionScreenBuilder;
             _boardInitializationRoutine = boardInitializationRoutine;
+            _initializeStoryServicesRoutine = initializeStoryServicesRoutine;
         }
 
         public async UniTask Initialize(StoryInitializationData storyInitializationData, CancellationToken cancellationToken)
         {
             _storyInitializationData = storyInitializationData;
+            
             
             // Loading game board
             await _boardInitializationRoutine.Initialize(cancellationToken);
@@ -58,6 +59,10 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             // Empty for now
             
             
+            // generate encounters
+            
+            
+            
             // generate decks
             await _buildAndRegisterItemsRoutine.BuildBasicItemsAndRegistries(
                 _baseStoryConfigs.NeutralItemSets, 
@@ -66,9 +71,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
                 _baseStoryConfigs, 
                 cancellationToken);
             
-            // generate events
 
-            
             // generate bosses
 
             

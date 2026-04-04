@@ -14,6 +14,7 @@ namespace Structure
             Container.Install<ScreenBuilderInstaller>();
             Container.Install<TooltipInstaller>();
             Container.Install<StoryInstaller>();
+            Container.Install<UtilityInstaller>();
             
             // installing cheats
             Container.Bind<CheatConsoleController>().To<CheatConsoleController>().FromNew().AsSingle();

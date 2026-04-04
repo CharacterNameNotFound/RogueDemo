@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using Game.Cheats;
 using Game.GameMode.Initializer;
 using GameWideSystems.AudioManager;
+using GameWideSystems.GameSceneManagement;
 using GameWideSystems.GameStateManagement;
 using GameWideSystems.LocalizationWrapper;
 using UnityEngine;
@@ -17,20 +18,24 @@ namespace Game.GameInitialization
         private GameStateManager _gameStateManager;
         private ILocalizationManager _localizationManager;
         private CheatConsoleController _cheatConsoleController;
-        
+        private ILoadingScreenManager _loadingScreenManager;
+
+
         [Inject]
         private void Construct(
-            AudioManager audioManager, 
-            InitializationGameMode initializationGameMode, 
-            GameStateManager gameStateManager, 
-            ILocalizationManager localizationManager, 
-            CheatConsoleController cheatConsoleController)
+            AudioManager audioManager,
+            InitializationGameMode initializationGameMode,
+            GameStateManager gameStateManager,
+            ILocalizationManager localizationManager,
+            CheatConsoleController cheatConsoleController,
+            ILoadingScreenManager loadingScreenManager)
         {
             _audioManager = audioManager;
             _initializationGameMode = initializationGameMode;
             _gameStateManager = gameStateManager;
             _localizationManager = localizationManager;
             _cheatConsoleController = cheatConsoleController;
+            _loadingScreenManager = loadingScreenManager;
         }
         
         private void Start()
@@ -42,6 +47,7 @@ namespace Game.GameInitialization
         {
             Transform proceduralHolderTransform = FindAnyObjectByType<ProjectContext>().transform;
 
+            await _loadingScreenManager.Show(cancellationToken);
             await _cheatConsoleController.Initialize();
             await _audioManager.Initialize(proceduralHolderTransform, cancellationToken);
             await _localizationManager.Initialize();

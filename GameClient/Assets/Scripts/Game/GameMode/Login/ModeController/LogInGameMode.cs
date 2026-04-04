@@ -39,8 +39,7 @@ namespace Game.GameMode.Login.ModeController
 
         public async UniTask Start(GameStateStartParameters parameters, CancellationToken cancellationToken = default)
         {
-            await _gameSceneManager.OpenScene(_sceneAddressableDataProvider.MainScene, LoadSceneMode.Single,
-                new LoadingScreenParams(false, _loadingScreenManager), cancellationToken: cancellationToken);
+            await _gameSceneManager.OpenScene(_sceneAddressableDataProvider.MainScene, LoadSceneMode.Single, cancellationToken: cancellationToken);
 
             await _uiManager.OpenScreenRequest(_logInScreenBuilder, null, out _).Play(cancellationToken);
             await _loadingScreenManager.Hide(true, cancellationToken);

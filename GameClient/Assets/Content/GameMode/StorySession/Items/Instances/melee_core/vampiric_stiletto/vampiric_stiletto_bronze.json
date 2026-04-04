@@ -1,6 +1,7 @@
 {
   "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Item, Game.GameMode.StorySession",
-  "ItemID": "vampiric_stiletto_bronze",
+  "ItemId": "vampiric_stiletto_bronze",
+  "ItemSetId": "melee_core",
   "ItemName": "vampiric_stiletto",
   "ItemRarity": 0,
   "ItemSize": 2,

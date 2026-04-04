@@ -8,7 +8,9 @@ namespace Game.Session
     {
         private const string SaveFolderSuffix = "Saves";
         private const string InProfileSavesPaths = "save_files";
+
         
+        // saves
         private readonly string _saveSource;
         private readonly string _inventorySource;
         
@@ -36,6 +38,17 @@ namespace Game.Session
         {
             return Path.Combine(_saveSource, profileName);
         }
+
+        public string LookUpTableArchiveLocation()
+        {
+            return Path.Combine(Application.streamingAssetsPath, "LockUpTables");
+        }
+        
+        public string LooUpTableLocation()
+        {
+            return Path.Combine(Application.persistentDataPath, "LockUpTables");
+        }
+        
         
     }
 }

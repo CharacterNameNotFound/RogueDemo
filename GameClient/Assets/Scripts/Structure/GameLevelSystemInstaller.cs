@@ -1,3 +1,4 @@
+using Game.ManagementSystems.LookUpTableManagement;
 using Game.Routines.ProfileOperations.ProfileCreation;
 using Game.Routines.ProfileOperations.ProfileLoading;
 using Game.Session;
@@ -15,6 +16,7 @@ namespace Structure.GameInstalling
             InstallSessionManagement();
             InstallRoutines();
             InstallPathProviders();
+            InstallDataBases();
         }
 
         private void InstallSessionManagement()
@@ -32,6 +34,11 @@ namespace Structure.GameInstalling
         private void InstallPathProviders()
         {
             Container.Bind<GenericPathProvider>().To<GenericPathProvider>().AsSingle();
+        }
+
+        private void InstallDataBases()
+        {
+            Container.Bind<ILookUpTableManager>().To<LookUpTableManager>().AsSingle();
         }
         
     }

@@ -1,6 +1,7 @@
 {
   "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Item, Game.GameMode.StorySession",
-  "ItemID": "sail_bronze",
+  "ItemId": "sail_bronze",
+  "ItemSetId": "ship_medicine",
   "ItemName": "sail",
   "ItemRarity": 0,
   "ItemSize": 3,

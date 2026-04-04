@@ -1,6 +1,7 @@
 {
   "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Item, Game.GameMode.StorySession",
-  "ItemID": "spare_planks_gold",
+  "ItemId": "spare_planks_gold",
+  "ItemSetId": "ship_medicine",
   "ItemName": "spare_planks",
   "ItemRarity": 2,
   "ItemSize": 2,

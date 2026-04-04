@@ -1,0 +1,504 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: ItemRegistry
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: ItemRegistry
+  m_GUID: fb37356d34ecd804fabd291ed2d7a5a6
+  m_SerializeEntries:
+  - m_GUID: 069e55171daeb444a88e3dd3e3937dad
+    m_Address: item/dagger_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0770346a9adf8494e9f204c721522aad
+    m_Address: item/runic_blade_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c12b044ea7d29c449ef64cfc8d1ad24
+    m_Address: item/knife_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d3f506f45dfe4d42a44a8562be3dd35
+    m_Address: item/rum_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0fc219edd0e9c364dbe1c0d3b9e8dcd0
+    m_Address: item/ram_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 13ea57749d4b50a4fa7c38acac7455f1
+    m_Address: item/healing_salve_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1467c99f938b723478fb4ce7f957d74b
+    m_Address: item/bandage_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14686828a00d1c144a11ea5164533740
+    m_Address: item/healing_salve_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1535a080ba0a3d84ea3f540cb1f539df
+    m_Address: item/rapier_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 188be8a53c6972048a5b96213c15cfe9
+    m_Address: item/vampiric_stiletto_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 18dd9bb0b2ea6124f95e0576bc0fa811
+    m_Address: item/torch_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 192022ffcd3ad9745acb4564f32ff74c
+    m_Address: item/bandage_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 195d922527d545e48b1d72b5db9c08c8
+    m_Address: item/rope_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b0c4e543a7492048a2c40714b29a20a
+    m_Address: item/bottled_squid_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1bad15144426d5146b3e1ac62ebb230f
+    m_Address: item/bottled_squid_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d68f07929d68b242a96ff7d3ab5aaca
+    m_Address: item/healing_salve_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 24761c238cc2b3e46971d2dde697283b
+    m_Address: item/sail_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26940f5a50f0bdb4b93c9f60b40a1046
+    m_Address: item/practice_sword_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ab440d083a961e4ca2e84c4d7d475da
+    m_Address: item/boards_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c0b484acc050da47b2f689c67f6c4ec
+    m_Address: item/poisoned_dagger_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2fa825bed072cc5488f3eecdebfe998a
+    m_Address: item/spare_planks_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3048521eb740f0440a528293671e79c1
+    m_Address: item/sail_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 319e32e4397bd0541a76427e352f678c
+    m_Address: item/fire_wine_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 32d83404098322d43b55f697b6ee9b85
+    m_Address: item/med_kit_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e9e831ed9a5d9c41a88fb127bdcac67
+    m_Address: item/king_mace_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 475bc39996d63974a8461c6a366c01cf
+    m_Address: item/bottled_squid_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 487cb2d5c30a3694e9b759dd314cfb3a
+    m_Address: item/twin_blades_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b2156b203744774f8d6c4caacc38193
+    m_Address: item/ram_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4babf3b6ab4319640bf0e7dd06bce2a8
+    m_Address: item/med_kit_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ecb7f3ddc5e57b459e39f904934d413
+    m_Address: item/rum_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4edfdf449781b8d4fa130c8b62fda164
+    m_Address: item/knife_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4f74987afce81254aac2a49832ad202e
+    m_Address: item/runic_blade_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58ff25a42a5682a41a7e7b5a22ca8b1e
+    m_Address: item/healing_salve_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 59e216aa9967f864e98cabdea0afa436
+    m_Address: item/hand_axe_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5af2c48c447e96a48a1a231b282a4d9a
+    m_Address: item/runic_blade_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61cac35aeaaee8f41a488ea4de94a304
+    m_Address: item/bandage_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62545246c62701f448ff33ae622cb5d8
+    m_Address: item/vampiric_stiletto_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63a8b352902a3224ba6c4ec6037976a8
+    m_Address: item/sail_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 642997e9fd82e8540ba57d8514f25ef7
+    m_Address: item/king_mace_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 65cca89d46afd4d439c8980560f380fb
+    m_Address: item/dagger_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 68bf3a2c21009b24ca3071f50a1c65ec
+    m_Address: item/hand_axe_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e9169d0dea6ea34c991e87207533e80
+    m_Address: item/poisoned_dagger_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f9981b76337f7047ab6e6ac66a80c37
+    m_Address: item/boards_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 707be0ad5d0331c4381754533a022e02
+    m_Address: item/fire_wine_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70e1b56a48015f743ac045420fe6659e
+    m_Address: item/ale_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7157aad54ffc28e48a8043b28766412c
+    m_Address: item/vampiric_stiletto_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71fa8a9fc1c8dcf4ea0f7c119648154d
+    m_Address: item/rapier_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 74c4c43b075484a46aca3f1da1d54937
+    m_Address: item/rope_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 761475a06dc84b24da4eabb13bd24261
+    m_Address: item/saw_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e1be2f003471bc48bf35416b67d981f
+    m_Address: item/king_mace_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f77797dbd6a9114a94560a65ad9f9d1
+    m_Address: item/ram_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 808e50300fedbe040bfa4dc073261d5b
+    m_Address: item/boards_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a6c72ba94897784187be0ba978a9bf2
+    m_Address: item/rapier_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c9079cb6ef88b7439659737af12f409
+    m_Address: item/sail_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 90494d13c62094342a40192e7f810156
+    m_Address: item/ale_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 906133852804bbe4a943fcd2f29b461d
+    m_Address: item/spare_planks_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 96404be4380f0644b8a6317dfb528cea
+    m_Address: item/poisoned_dagger_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 990e3f301f461f047b5254074bdec06c
+    m_Address: item/practice_sword_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ab8bc001b6bf8549b2ef26a1d70b7f3
+    m_Address: item/practice_sword_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9bf161e8486d13e4d8f1714e74fcda36
+    m_Address: item/med_kit_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ee8c830ad1356940bc48e10de81fa10
+    m_Address: item/vampiric_stiletto_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a08682fa5771c19499fd877d991c0f7c
+    m_Address: item/knife_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a268a071a36cb2041af9d07978265649
+    m_Address: item/dagger_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a3e7ea6b6d0fe624ca7a06501ba64db9
+    m_Address: item/rapier_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a56e217a2be590d4084c3b1986492337
+    m_Address: item/practice_sword_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac45e1aece02a9443bd05cf40992d707
+    m_Address: item/fire_wine_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: adf12eb99b0bb9446a8cdbf780edb1cc
+    m_Address: item/twin_blades_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ae2a8c796ba8bfb449828ea33c3a10d3
+    m_Address: item/spare_planks_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b206f124f6e40d14cb00efb8ebbe62c5
+    m_Address: item/boards_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: badb16b35976f404683cd5d393d38189
+    m_Address: item/med_kit_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bdfb8d6e76511b0408a4d9e510222e43
+    m_Address: item/dagger_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0a0bd23374aea442990e8ce01f4933a
+    m_Address: item/rum_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c15f42a304d1371458b35f5c2cf1de6f
+    m_Address: item/rope_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c204c31cd8d00e6458bb06c64c6e2dec
+    m_Address: item/saw_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2e2c52b55a610445829718b35469cd5
+    m_Address: item/bandage_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c50d0dbb0b4b52047b6e5f339da394fb
+    m_Address: item/torch_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5ac26fc187d0974bafc10fb8f6cf687
+    m_Address: item/torch_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c84ecfb403f065e49a2e5b1a1e724724
+    m_Address: item/saw_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc1f01fae601fae4b9b3cbbb1fc4525e
+    m_Address: item/spare_planks_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d0f8e3656fe58e843a1971f58daf84d4
+    m_Address: item/rope_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d2866860d66130e44b4810a06172c4a5
+    m_Address: item/runic_blade_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d3dd2545af693814b8d188f33d40b701
+    m_Address: item/torch_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4e86f8c37db8bc41a1d3f7b46dfa32b
+    m_Address: item/twin_blades_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db868ecb88a3507479f527e2b2c8db21
+    m_Address: item/ram_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: df5f3cf3fd80ac0498d9aed3995f7afd
+    m_Address: item/bottled_squid_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e53be9f2edfa22447ab4cb5bfbc31e54
+    m_Address: item/hand_axe_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e86948e976229494d913f530f755cda7
+    m_Address: item/ale_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e8b19e9aea5d2104cbdcf42e406b1b3f
+    m_Address: item/fire_wine_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea9b331d55821f14789c31c1ff7e2216
+    m_Address: item/knife_bronze
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ead98f3a7ae882c4185f68b304384dc7
+    m_Address: item/twin_blades_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee3641b7b170a00448f9f07ea253e755
+    m_Address: item/ale_diamond
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f168380621338454d9c4a0d2a838be1b
+    m_Address: item/saw_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa5167162445976468bc62ab6d83c47c
+    m_Address: item/poisoned_dagger_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb4a9a423f6907644a7a3f4b559e1fbc
+    m_Address: item/ale_gold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb6681f0b5fff1548a5495deac927d0d
+    m_Address: item/king_mace_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fe4eec93164432541bb381778a5b753d
+    m_Address: item/hand_axe_silver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a4c062d370950784897b17f1e135e0df, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: cb126b7fca606344f998c129dba0e5bf, type: 2}
+    - {fileID: 11400000, guid: 94622370f554771428da6411cbba2438, type: 2}
+    - {fileID: 11400000, guid: 63d8af39a6325414591867e250585589, type: 2}

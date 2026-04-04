@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Default Local Group_PlayAssetDeliverySchema
   m_EditorClassIdentifier: 
   m_Group: {fileID: 11400000, guid: f113f57faa6d8394da87be51adf37e40, type: 2}
-  m_AssetPackDeliveryType: 2
+  m_AssetPackDeliveryType: 1
   m_CustomAssetPackName: 
   m_IncludeInCustomAssetPack: 0
-  m_Settings: {fileID: 0}
+  m_Settings: {fileID: 11400000, guid: eddd594a994725347bca5489c2c7861d, type: 2}

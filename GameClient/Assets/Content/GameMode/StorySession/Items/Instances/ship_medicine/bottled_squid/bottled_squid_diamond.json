@@ -1,6 +1,7 @@
 {
   "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Item, Game.GameMode.StorySession",
-  "ItemID": "bottled_squid_diamond",
+  "ItemId": "bottled_squid_diamond",
+  "ItemSetId": "ship_medicine",
   "ItemName": "bottled_squid",
   "ItemRarity": 3,
   "ItemSize": 3,

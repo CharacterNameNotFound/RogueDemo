@@ -1,6 +1,7 @@
 {
   "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Item, Game.GameMode.StorySession",
-  "ItemID": "rapier_bronze",
+  "ItemId": "rapier_bronze",
+  "ItemSetId": "melee_core",
   "ItemName": "rapier",
   "ItemRarity": 0,
   "ItemSize": 2,

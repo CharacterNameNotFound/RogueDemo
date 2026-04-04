@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization
 {
-    public class ItemLineOrganizer
+    public class ItemLineOrganizer : IItemLineOrganizer
     {
         
         public void Organize(ItemLineComponent itemLineComponent, ItemContainerComponent[] itemConfiguration, bool updatedStored)

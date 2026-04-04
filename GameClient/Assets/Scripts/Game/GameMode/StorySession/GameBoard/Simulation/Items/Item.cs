@@ -8,7 +8,8 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items
 {
     public class Item
     {
-        public string ItemID;
+        public string ItemId;
+        public string ItemSetId;
         public string ItemName;
         public ItemRarity ItemRarity;
         public int ItemSize = 1;

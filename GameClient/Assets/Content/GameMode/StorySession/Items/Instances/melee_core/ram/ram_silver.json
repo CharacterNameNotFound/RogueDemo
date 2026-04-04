@@ -1,6 +1,7 @@
 {
   "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Item, Game.GameMode.StorySession",
-  "ItemID": "ram_silver",
+  "ItemId": "ram_silver",
+  "ItemSetId": "melee_core",
   "ItemName": "ram",
   "ItemRarity": 1,
   "ItemSize": 3,

@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Game.Utilities.Shuffling;
+using GameWideSystems.RNGManagement;
 
 namespace Game.GameMode.StorySession.StoryLoop.StoryStructure.ItemOrganization
 {
@@ -16,6 +18,11 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryStructure.ItemOrganization
         public void AppendToActive(List<string> items)
         {
             ActiveItems.AddRange(items);
+        }
+
+        public void Shuffle(IRNGProvider rngProvider)
+        {
+            ActiveItems.ShuffleListDurstenfeld(rngProvider);
         }
         
     }

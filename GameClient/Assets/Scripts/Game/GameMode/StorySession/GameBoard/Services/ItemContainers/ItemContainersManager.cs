@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Utils.UtilityTypes.ObjectPooling;
 
 namespace Game.GameMode.StorySession.GameBoard.Services.ItemContainers
 {
-    public class ItemContainersManager
+    public class ItemContainersManager : IItemContainersManager
     {
         private ItemContainersPoolConfig _config;
         private IPooledObjectHostProvider _pooledObjectHostProvider;
@@ -38,14 +37,14 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemContainers
                 new AddressablePoolEntityProvider<ItemContainerComponent>(_config.MediumItemContainerRef),
                 _pooledObjectHostProvider);
 
-            asyncWork.Add(_mediumPool.ExtendBy(_config.SmallItemsCount, cancellationToken));
+            asyncWork.Add(_mediumPool.ExtendBy(_config.MediumItemsCount, cancellationToken));
             
             _largePool = new ItemContainerPool(
                 new List<ItemContainerComponent>(_config.LargeItemsCount),
                 new AddressablePoolEntityProvider<ItemContainerComponent>(_config.LargeItemContainerRef),
                 _pooledObjectHostProvider);
 
-            asyncWork.Add(_largePool.ExtendBy(_config.SmallItemsCount, cancellationToken));
+            asyncWork.Add(_largePool.ExtendBy(_config.LargeItemsCount, cancellationToken));
 
             await UniTask.WhenAll(asyncWork).AttachExternalCancellation(cancellationToken);
             
@@ -61,7 +60,7 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemContainers
             _mediumPool = null;
             
             _largePool.ReleaseAll();
-            _mediumPool = null;
+            _largePool = null;
 
         }
         

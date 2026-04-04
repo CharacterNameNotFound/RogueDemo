@@ -3,10 +3,12 @@ using System.IO;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.Login.ModeController;
+using Game.ManagementSystems.LookUpTableManagement;
 using Game.Session;
 using Game.UI.Tooltips;
 using GameWideSystems.CameraManagement;
 using GameWideSystems.GameStateManagement;
+using UnityEngine;
 
 namespace Game.GameMode.Initializer
 {
@@ -17,26 +19,34 @@ namespace Game.GameMode.Initializer
         private LogInGameMode.Factory _logInGameModeFactory;
         private TextTooltipRegisterer _textTooltipRegisterer;
         private ICameraManager _cameraManager;
+        private ILookUpTableManager _lookUpTableManager;
 
-        public InitializationGameMode(GenericPathProvider genericPathProvider, GameStateManager gameStateManager, LogInGameMode.Factory logInGameModeFactory, TextTooltipRegisterer textTooltipRegisterer, ICameraManager cameraManager)
+        public InitializationGameMode(
+            GenericPathProvider genericPathProvider, 
+            GameStateManager gameStateManager, 
+            LogInGameMode.Factory logInGameModeFactory, 
+            TextTooltipRegisterer textTooltipRegisterer, 
+            ICameraManager cameraManager, 
+            ILookUpTableManager lookUpTableManager)
         {
             _genericPathProvider = genericPathProvider;
             _gameStateManager = gameStateManager;
             _logInGameModeFactory = logInGameModeFactory;
             _textTooltipRegisterer = textTooltipRegisterer;
             _cameraManager = cameraManager;
+            _lookUpTableManager = lookUpTableManager;
         }
 
-        public UniTask Initialize(GameStateInitializationParameters parameters, CancellationToken cancellationToken)
+        public async UniTask Initialize(GameStateInitializationParameters parameters, CancellationToken cancellationToken)
         {
             _cameraManager.Initialize();
-            TryInitializeFirstRun();
-            return UniTask.CompletedTask;
+            await TryInitializeFirstRun(Application.exitCancellationToken);
         }
 
         public UniTask Start(GameStateStartParameters parameters, CancellationToken cancellationToken = default)
         {
             _textTooltipRegisterer.Register();
+            
             return _gameStateManager.AppendGameState(_logInGameModeFactory.Create(), cancellationToken: cancellationToken);
         }
 
@@ -62,12 +72,15 @@ namespace Game.GameMode.Initializer
             return UniTask.FromResult<bool>(false);
         }
         
-        private void TryInitializeFirstRun()
+        // first run references first run for session, as this game mode is a fallback for soft restart 
+        private async UniTask TryInitializeFirstRun(CancellationToken cancellationToken)
         {
             if (!Directory.Exists(_genericPathProvider.SaveFilesPath()))
             {
                 Directory.CreateDirectory(_genericPathProvider.SaveFilesPath());
             }
+
+            await _lookUpTableManager.LoadLookUpTables(cancellationToken);
         }
         
     }

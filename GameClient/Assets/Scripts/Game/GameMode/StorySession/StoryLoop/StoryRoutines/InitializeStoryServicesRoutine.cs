@@ -7,10 +7,10 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryRoutines
 {
     public class InitializeStoryServicesRoutine
     {
-        private ItemContainersManager _containersManager;
+        private IItemContainersManager _containersManager;
 
 
-        public InitializeStoryServicesRoutine(ItemContainersManager containersManager)
+        public InitializeStoryServicesRoutine(IItemContainersManager containersManager)
         {
             _containersManager = containersManager;
         }

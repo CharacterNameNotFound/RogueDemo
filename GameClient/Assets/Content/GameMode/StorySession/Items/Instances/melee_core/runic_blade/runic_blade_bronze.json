@@ -1,6 +1,7 @@
 {
   "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Item, Game.GameMode.StorySession",
-  "ItemID": "runic_blade_bronze",
+  "ItemId": "runic_blade_bronze",
+  "ItemSetId": "melee_core",
   "ItemName": "runic_blade",
   "ItemRarity": 0,
   "ItemSize": 3,

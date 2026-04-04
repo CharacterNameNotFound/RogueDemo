@@ -1,0 +1,20 @@
+{
+    "name": "Game.ManagementSystems.LookUpTableManagement",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1ccfbc947ef1f434c8e59df50efec15b",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:593a5b492d29ac6448b1ebf7f035ef33",
+        "GUID:aff01ebcc898e244490de8d6183cafd0",
+        "GUID:5845716bdc4893942a4cf4dd5351060d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

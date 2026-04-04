@@ -13,5 +13,52 @@ MonoBehaviour:
   m_Name: melee_core
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.Data.Items.ItemSet
   ItemSetId: item_sets/melee_core
-  TextAsset:
-  - {fileID: 4900000, guid: ca66f89ecc81cd24cb46380aee2eec42, type: 3}
+  TextAssets:
+  - {fileID: 4900000, guid: a268a071a36cb2041af9d07978265649, type: 3}
+  - {fileID: 4900000, guid: 069e55171daeb444a88e3dd3e3937dad, type: 3}
+  - {fileID: 4900000, guid: bdfb8d6e76511b0408a4d9e510222e43, type: 3}
+  - {fileID: 4900000, guid: 65cca89d46afd4d439c8980560f380fb, type: 3}
+  - {fileID: 4900000, guid: 68bf3a2c21009b24ca3071f50a1c65ec, type: 3}
+  - {fileID: 4900000, guid: 59e216aa9967f864e98cabdea0afa436, type: 3}
+  - {fileID: 4900000, guid: e53be9f2edfa22447ab4cb5bfbc31e54, type: 3}
+  - {fileID: 4900000, guid: fe4eec93164432541bb381778a5b753d, type: 3}
+  - {fileID: 4900000, guid: 642997e9fd82e8540ba57d8514f25ef7, type: 3}
+  - {fileID: 4900000, guid: 3e9e831ed9a5d9c41a88fb127bdcac67, type: 3}
+  - {fileID: 4900000, guid: 7e1be2f003471bc48bf35416b67d981f, type: 3}
+  - {fileID: 4900000, guid: fb6681f0b5fff1548a5495deac927d0d, type: 3}
+  - {fileID: 4900000, guid: ea9b331d55821f14789c31c1ff7e2216, type: 3}
+  - {fileID: 4900000, guid: a08682fa5771c19499fd877d991c0f7c, type: 3}
+  - {fileID: 4900000, guid: 0c12b044ea7d29c449ef64cfc8d1ad24, type: 3}
+  - {fileID: 4900000, guid: 4edfdf449781b8d4fa130c8b62fda164, type: 3}
+  - {fileID: 4900000, guid: 2c0b484acc050da47b2f689c67f6c4ec, type: 3}
+  - {fileID: 4900000, guid: 6e9169d0dea6ea34c991e87207533e80, type: 3}
+  - {fileID: 4900000, guid: 96404be4380f0644b8a6317dfb528cea, type: 3}
+  - {fileID: 4900000, guid: fa5167162445976468bc62ab6d83c47c, type: 3}
+  - {fileID: 4900000, guid: 9ab8bc001b6bf8549b2ef26a1d70b7f3, type: 3}
+  - {fileID: 4900000, guid: 990e3f301f461f047b5254074bdec06c, type: 3}
+  - {fileID: 4900000, guid: a56e217a2be590d4084c3b1986492337, type: 3}
+  - {fileID: 4900000, guid: 26940f5a50f0bdb4b93c9f60b40a1046, type: 3}
+  - {fileID: 4900000, guid: 0fc219edd0e9c364dbe1c0d3b9e8dcd0, type: 3}
+  - {fileID: 4900000, guid: 4b2156b203744774f8d6c4caacc38193, type: 3}
+  - {fileID: 4900000, guid: 7f77797dbd6a9114a94560a65ad9f9d1, type: 3}
+  - {fileID: 4900000, guid: db868ecb88a3507479f527e2b2c8db21, type: 3}
+  - {fileID: 4900000, guid: 8a6c72ba94897784187be0ba978a9bf2, type: 3}
+  - {fileID: 4900000, guid: 71fa8a9fc1c8dcf4ea0f7c119648154d, type: 3}
+  - {fileID: 4900000, guid: a3e7ea6b6d0fe624ca7a06501ba64db9, type: 3}
+  - {fileID: 4900000, guid: 1535a080ba0a3d84ea3f540cb1f539df, type: 3}
+  - {fileID: 4900000, guid: d2866860d66130e44b4810a06172c4a5, type: 3}
+  - {fileID: 4900000, guid: 0770346a9adf8494e9f204c721522aad, type: 3}
+  - {fileID: 4900000, guid: 4f74987afce81254aac2a49832ad202e, type: 3}
+  - {fileID: 4900000, guid: 5af2c48c447e96a48a1a231b282a4d9a, type: 3}
+  - {fileID: 4900000, guid: c5ac26fc187d0974bafc10fb8f6cf687, type: 3}
+  - {fileID: 4900000, guid: c50d0dbb0b4b52047b6e5f339da394fb, type: 3}
+  - {fileID: 4900000, guid: 18dd9bb0b2ea6124f95e0576bc0fa811, type: 3}
+  - {fileID: 4900000, guid: d3dd2545af693814b8d188f33d40b701, type: 3}
+  - {fileID: 4900000, guid: d4e86f8c37db8bc41a1d3f7b46dfa32b, type: 3}
+  - {fileID: 4900000, guid: adf12eb99b0bb9446a8cdbf780edb1cc, type: 3}
+  - {fileID: 4900000, guid: ead98f3a7ae882c4185f68b304384dc7, type: 3}
+  - {fileID: 4900000, guid: 487cb2d5c30a3694e9b759dd314cfb3a, type: 3}
+  - {fileID: 4900000, guid: 7157aad54ffc28e48a8043b28766412c, type: 3}
+  - {fileID: 4900000, guid: 9ee8c830ad1356940bc48e10de81fa10, type: 3}
+  - {fileID: 4900000, guid: 188be8a53c6972048a5b96213c15cfe9, type: 3}
+  - {fileID: 4900000, guid: 62545246c62701f448ff33ae622cb5d8, type: 3}

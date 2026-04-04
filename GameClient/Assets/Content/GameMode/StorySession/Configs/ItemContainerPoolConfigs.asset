@@ -15,3 +15,21 @@ MonoBehaviour:
   <SmallItemsCount>k__BackingField: 36
   <MediumItemsCount>k__BackingField: 18
   <LargeItemsCount>k__BackingField: 12
+  <SmallItemContainerRef>k__BackingField:
+    m_AssetGUID: c0809f33dc228d743bd46fdbcf6e4596
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  <MediumItemContainerRef>k__BackingField:
+    m_AssetGUID: 124cf36265d3cf042882057f8554bd57
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  <LargeItemContainerRef>k__BackingField:
+    m_AssetGUID: 55a034c5f87c9c54c97d71a4c6d42a29
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

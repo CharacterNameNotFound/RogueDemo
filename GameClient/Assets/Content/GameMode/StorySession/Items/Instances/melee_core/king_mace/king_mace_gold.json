@@ -1,6 +1,7 @@
 {
   "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Item, Game.GameMode.StorySession",
-  "ItemID": "king_mace_gold",
+  "ItemId": "king_mace_gold",
+  "ItemSetId": "melee_core",
   "ItemName": "king_mace",
   "ItemRarity": 2,
   "ItemSize": 2,

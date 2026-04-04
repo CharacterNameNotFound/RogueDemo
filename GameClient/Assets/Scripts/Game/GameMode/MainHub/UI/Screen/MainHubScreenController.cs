@@ -51,8 +51,7 @@ namespace Game.GameMode.MainHub.UI.Screen
             
             Dependencies.InputControlFacade.SetInputsAvailable(true);
         }
-
-
+        
         
     }
 }

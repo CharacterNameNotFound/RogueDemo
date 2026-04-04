@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 124cf36265d3cf042882057f8554bd57
+    m_Address: Assets/Content/GameMode/StorySession/Prefabs/MediumItemContainer.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 24306bba513c99e489afeec0c3fda081
     m_Address: Assets/GameConfigurations/Structure/Prefabs
     m_ReadOnly: 0
@@ -40,6 +45,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 55a034c5f87c9c54c97d71a4c6d42a29
+    m_Address: Assets/Content/GameMode/StorySession/Prefabs/LargeItemContainer.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 81ec366f5b66f3147bccbe7b54bc3df2
     m_Address: Assets/Sprites/Story/Items/Medium_item_placeholder.png
     m_ReadOnly: 0
@@ -52,6 +62,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9c9edd22259c7b242a49a1fb0bf523a1
     m_Address: GameMode/MainHub/MainHub.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0809f33dc228d743bd46fdbcf6e4596
+    m_Address: Assets/Content/GameMode/StorySession/Prefabs/SmallItemContainer.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
