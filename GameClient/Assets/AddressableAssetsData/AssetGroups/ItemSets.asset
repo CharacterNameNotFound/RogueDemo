@@ -16,13 +16,13 @@ MonoBehaviour:
   m_GUID: 6361352ad972a60458bfc60c78e85e7d
   m_SerializeEntries:
   - m_GUID: ba2e71aa160be7c4cbfe5c896ec88da4
-    m_Address: item_sets/melee_core
+    m_Address: item_set/melee_core
     m_ReadOnly: 0
     m_SerializedLabels:
     - ItemSet
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f299729c4c5175c4f9fd753d8effa19c
-    m_Address: item_sets/ship_medicine
+    m_Address: item_set/ship_medicine
     m_ReadOnly: 0
     m_SerializedLabels:
     - ItemSet

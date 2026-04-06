@@ -5,8 +5,10 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Utilities
     [Serializable]
     public class StatSet
     {
+        // used for enumeration
         public enum StatSetComponent
         {
+            None = -1,
             BaseValue, // base value original to object
             ConsumableBonus, // permanent bonuses
             AuraBonus, // semi-permanent bonuses

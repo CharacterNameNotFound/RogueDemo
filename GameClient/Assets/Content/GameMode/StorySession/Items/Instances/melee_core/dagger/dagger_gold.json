@@ -5,7 +5,7 @@
   "ItemName": "dagger",
   "ItemRarity": 2,
   "ItemSize": 1,
-  "UpgradedItemId": "dagger_bronze",
+  "UpgradedItemId": "dagger_diamond",
   "DowngradedItemId": "dagger_silver",
   "ItemSpriteRuntimeKey": "919c02dabf1e5774d89a026758e44811[Small_item_0]",
   "Tags": {

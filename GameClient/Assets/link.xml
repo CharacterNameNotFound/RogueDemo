@@ -19,4 +19,6 @@
 			<type fullname="System.ComponentModel.SingleConverter" preserve="all"/>
 			<type fullname="System.ComponentModel.DoubleConverter" preserve="all"/>
        </assembly>
+       <assembly fullname="Game.GameMode.StorySession" preserve="all">
+       </assembly>
 </linker>

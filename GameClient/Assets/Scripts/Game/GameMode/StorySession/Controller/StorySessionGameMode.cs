@@ -22,6 +22,7 @@ namespace Game.GameMode.StorySession.Controller
 
         private StorySessionGameModeInitializationParameters _gmParams;
         private IStoryBase _story;
+        private CharacterData _characterData;
 
         public StorySessionGameMode()
         {
@@ -34,9 +35,9 @@ namespace Game.GameMode.StorySession.Controller
             _story = await _gmParams.StoryStartData.StoryID.Load<IStoryBase>(cancellationToken);
             
             ProjectContext.Instance.Container.Inject(_story);
-
-            CharacterData characterData = await _gmParams.StoryStartData.CharacterID.Load<CharacterData>(cancellationToken); 
-            await _story.Initialize(new BaseStoryInitializationData(characterData), cancellationToken);
+            
+            _characterData = await _gmParams.StoryStartData.CharacterID.Load<CharacterData>(cancellationToken); 
+            await _story.Initialize(new BaseStoryInitializationData(_characterData), cancellationToken);
         }
 
         public UniTask Start(GameStateStartParameters parameters, CancellationToken cancellationToken = default)
@@ -57,6 +58,7 @@ namespace Game.GameMode.StorySession.Controller
 
         public UniTask Close(CancellationToken cancellationToken = default)
         {
+            Addressables.Release(_characterData);
             return UniTask.CompletedTask;
         }
 

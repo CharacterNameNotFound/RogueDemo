@@ -1,5 +1,7 @@
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization;
+using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
+using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStatSetToItemStatValueConverters;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.StoryLoop.StoryRoutines;
 using Game.GameMode.StorySession.StoryLoop.StoryStructure.ItemOrganization;
@@ -25,6 +27,10 @@ namespace Structure
             Container.Bind<IItemLineOrganizer>().To<ItemLineOrganizer>().AsSingle();
             Container.Bind<IItemContainersManager>().To<ItemContainersManager>().AsSingle();
             Container.Bind<IItemLoader>().To<ItemLoader>().AsSingle();
+            
+            Container.Bind<IItemStatGetter>().To<ItemStatGetter>().AsSingle();
+
+            InstallStatCalculators();
         }
         
         private void InstallRoutines()
@@ -34,6 +40,15 @@ namespace Structure
             Container.Bind<GameBoardInitializationRoutine>().To<GameBoardInitializationRoutine>().AsSingle();
             
         }
+        
+        private void InstallStatCalculators()
+        {
+            Container.Bind<GenericStatCalculator>().To<GenericStatCalculator>().AsSingle();
+            Container.Bind<IItemStatSetToItemStatValueCalculator>().To<MaxChargeStatCalculator>().AsCached();
+            
+        }
+
+        
         
     }
 }

@@ -1,6 +1,6 @@
 {
   "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Item, Game.GameMode.StorySession",
-  "ItemId": "dagger_bronze",
+  "ItemId": "dagger_diamond",
   "ItemSetId": "melee_core",
   "ItemName": "dagger",
   "ItemRarity": 3,

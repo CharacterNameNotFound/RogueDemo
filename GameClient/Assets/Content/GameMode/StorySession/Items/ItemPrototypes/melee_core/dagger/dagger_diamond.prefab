@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebcdda705a3e407caa09df47930d5efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special.ItemCore
-  ItemId: dagger_bronze
+  ItemId: dagger_diamond
   ItemName: dagger
   ItemRarity: 3
   ItemSize: 1

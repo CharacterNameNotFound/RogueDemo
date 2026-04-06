@@ -34,6 +34,11 @@ namespace Game.ManagementSystems.LookUpTableManagement
 
                 string itemTable = _lookUpTableConfigProvider.GetLookUpTablePath(LookUpTableGroup.Items);
 
+                if (File.Exists(itemTable))
+                {
+                    File.Delete(itemTable);
+                }
+                
                 SQLiteConnection db = new SQLiteConnection(itemTable, 
                     SQLiteOpenFlags.Create 
                         | SQLiteOpenFlags.FullMutex 
@@ -41,6 +46,9 @@ namespace Game.ManagementSystems.LookUpTableManagement
                 
                 db.Close();
                 cancellationToken.ThrowIfCancellationRequested();
+                
+                _openedDBs.Add(LookUpTableGroup.Items, itemTable);
+                
             }
             catch (Exception e)
             {

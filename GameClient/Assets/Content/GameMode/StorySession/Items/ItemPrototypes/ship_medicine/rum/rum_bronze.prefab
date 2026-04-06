@@ -122,7 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4708119738604b1983d3d089f423e4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Effectors.HasteEffectorPrototype
-  IsCritAvailable: 0
   TargetSelectorPrototypes: {fileID: 8393877913451232646}
   HasteDurationProvider: {fileID: 5037206705999118715}
 --- !u!114 &8393877913451232646
@@ -217,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebcdda705a3e407caa09df47930d5efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special.ItemCore
-  ItemId: ale_bronze
+  ItemId: rum_bronze
   ItemName: rum
   ItemRarity: 0
   ItemSize: 2

@@ -1,4 +1,6 @@
 using Game.ManagementSystems.LookUpTableManagement;
+using Game.Routines.ItemLoadingOperations;
+using Game.Routines.ItemLoadingOperations.ItemTagToTableEntryConverters;
 using Game.Routines.ProfileOperations.ProfileCreation;
 using Game.Routines.ProfileOperations.ProfileLoading;
 using Game.Session;
@@ -28,7 +30,11 @@ namespace Structure.GameInstalling
         {
             Container.Bind<IProfileCreationRoutine>().To<OfflineProfileCreationRoutine>().AsSingle();
             Container.Bind<IProfileLoadingRoutine>().To<OfflineProfileLoadingRoutine>().AsSingle();
+            
+            
+            Container.Bind<IItemLookUpTableLoader>().To<LoadItemFromItemSets>().AsSingle();
 
+            InstallDataBaseFillers();
         }
 
         private void InstallPathProviders()
@@ -40,6 +46,20 @@ namespace Structure.GameInstalling
         {
             Container.Bind<ILookUpTableManager>().To<LookUpTableManager>().AsSingle();
         }
+
+        private void InstallDataBaseFillers()
+        {
+            Container.Bind<IItemTagToTableEntryConverter>().To<SizeItemTableConverter>().AsCached();
+            Container.Bind<IItemTagToTableEntryConverter>().To<WeaponItemFromItemSets>().AsCached();
+            Container.Bind<IItemTagToTableEntryConverter>().To<ShieldItemFromItemSets>().AsCached();
+            Container.Bind<IItemTagToTableEntryConverter>().To<HealingItemFromItemSets>().AsCached();
+            Container.Bind<IItemTagToTableEntryConverter>().To<FireItemFromItemSets>().AsCached();
+            Container.Bind<IItemTagToTableEntryConverter>().To<PoisonItemFromItemSets>().AsCached();
+            Container.Bind<IItemTagToTableEntryConverter>().To<SlowItemFromItemSets>().AsCached();
+            Container.Bind<IItemTagToTableEntryConverter>().To<HasteItemFromItemSets>().AsCached();
+            Container.Bind<IItemTagToTableEntryConverter>().To<RegenerationItemFromItemSets>().AsCached();
+        }
+        
         
     }
 }

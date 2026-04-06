@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Game.GameMode.StorySession.GameBoard.Prototyping.Items.Structure;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
 
 namespace Game.GameMode.StorySession.GameBoard.Prototyping.Items.StatRegisterers
 {
@@ -11,7 +12,7 @@ namespace Game.GameMode.StorySession.GameBoard.Prototyping.Items.StatRegisterers
         public class UniversalStatRegistererEntry
         {
             public ItemStatType ItemStatType;
-            public ItemStatEntry ItemStatSet;
+            public ItemStatEntry ItemStatSet = new(new StatSet(), new StatSet(1,1,1,1,1));
         }
 
         public List<UniversalStatRegistererEntry> StatEntries;

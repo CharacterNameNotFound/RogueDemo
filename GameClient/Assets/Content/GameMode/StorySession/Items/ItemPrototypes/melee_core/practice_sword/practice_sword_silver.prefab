@@ -123,12 +123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebcdda705a3e407caa09df47930d5efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special.ItemCore
-  ItemId: practice_sword_bronze
+  ItemId: practice_sword_silver
   ItemName: practice_sword
   ItemRarity: 1
   ItemSize: 3
-  UpgradedItem: {fileID: -8666746465287308309, guid: 456ca595952e4da4daed07b079318951, type: 3}
-  DowngradedItem: {fileID: 0}
+  UpgradedItem: {fileID: -8666746465287308309, guid: 49b37177bbbc5e74c9e504dea6f6ba4f, type: 3}
+  DowngradedItem: {fileID: -8666746465287308309, guid: 3a886182449623d4abd69bbd832288b7, type: 3}
   ItemImage:
     m_AssetGUID: 4f76735b7aa272c4bb20635ddf20862c
     m_SubObjectName: Large_item_placeholder_0

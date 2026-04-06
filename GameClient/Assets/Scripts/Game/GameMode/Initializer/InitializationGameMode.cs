@@ -4,6 +4,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.Login.ModeController;
 using Game.ManagementSystems.LookUpTableManagement;
+using Game.Routines.ItemLoadingOperations;
 using Game.Session;
 using Game.UI.Tooltips;
 using GameWideSystems.CameraManagement;
@@ -20,6 +21,7 @@ namespace Game.GameMode.Initializer
         private TextTooltipRegisterer _textTooltipRegisterer;
         private ICameraManager _cameraManager;
         private ILookUpTableManager _lookUpTableManager;
+        private IItemLookUpTableLoader _itemLookUpTableLoader;
 
         public InitializationGameMode(
             GenericPathProvider genericPathProvider, 
@@ -27,7 +29,8 @@ namespace Game.GameMode.Initializer
             LogInGameMode.Factory logInGameModeFactory, 
             TextTooltipRegisterer textTooltipRegisterer, 
             ICameraManager cameraManager, 
-            ILookUpTableManager lookUpTableManager)
+            ILookUpTableManager lookUpTableManager, 
+            IItemLookUpTableLoader itemLookUpTableLoader)
         {
             _genericPathProvider = genericPathProvider;
             _gameStateManager = gameStateManager;
@@ -35,6 +38,7 @@ namespace Game.GameMode.Initializer
             _textTooltipRegisterer = textTooltipRegisterer;
             _cameraManager = cameraManager;
             _lookUpTableManager = lookUpTableManager;
+            _itemLookUpTableLoader = itemLookUpTableLoader;
         }
 
         public async UniTask Initialize(GameStateInitializationParameters parameters, CancellationToken cancellationToken)
@@ -81,6 +85,7 @@ namespace Game.GameMode.Initializer
             }
 
             await _lookUpTableManager.LoadLookUpTables(cancellationToken);
+            await _itemLookUpTableLoader.BuildItemLookUp(cancellationToken);
         }
         
     }

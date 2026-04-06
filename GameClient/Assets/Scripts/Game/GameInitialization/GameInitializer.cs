@@ -1,4 +1,6 @@
-﻿using System.Threading;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.Cheats;
 using Game.GameMode.Initializer;
@@ -38,9 +40,9 @@ namespace Game.GameInitialization
             _loadingScreenManager = loadingScreenManager;
         }
         
-        private void Start()
+        private IEnumerator Start()
         {
-            Initialize(Application.exitCancellationToken).Forget();
+            yield return Initialize(Application.exitCancellationToken);
         }
         
         private async UniTask Initialize(CancellationToken cancellationToken)
