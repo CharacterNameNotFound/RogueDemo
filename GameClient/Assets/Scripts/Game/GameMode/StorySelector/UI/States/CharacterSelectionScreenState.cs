@@ -56,7 +56,7 @@ namespace Game.GameMode.StorySelector.UI.States
 
             Dependencies.LoadingScreenManager.Show(Application.exitCancellationToken);
             
-            Dependencies.GameStateManager.AppendGameState(
+            Dependencies.GameStateManager.SwapTopState(
                 Dependencies.SessionGameModeFactory.Create(),
                 initializationParameters: gmParams)
                 .Forget();
@@ -77,6 +77,8 @@ namespace Game.GameMode.StorySelector.UI.States
             _right.onClick.RemoveAllListeners();
 
             Addressables.Release(_characterPortrait.sprite);
+            
+            Addressables.Release(_characterDatas);
         }
         
         private async UniTask ChangeToSideAsync(int changeValue, CancellationToken cancellationToken)

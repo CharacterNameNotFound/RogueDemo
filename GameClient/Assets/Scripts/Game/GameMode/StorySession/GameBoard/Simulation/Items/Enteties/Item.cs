@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.ItemStatSets;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.Tags;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Structure;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structure;
 
-
-namespace Game.GameMode.StorySession.GameBoard.Simulation.Items
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties
 {
     public class Item
     {

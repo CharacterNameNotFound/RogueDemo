@@ -1,9 +1,9 @@
-using Game.GameMode.StorySession.GameBoard.Prototyping.Items.Structure;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.ItemStatSets;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.StatProviders;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Structure;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatProviders;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structure;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.Structure;
 
-namespace Game.GameMode.StorySession.GameBoard.Prototyping.Items.StatProviders
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.StatProviders
 {
     public class UniversalItemStatProviderPrototype : StatProviderPrototype
     {

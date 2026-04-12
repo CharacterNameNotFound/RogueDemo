@@ -1,7 +1,7 @@
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.ItemStatSets;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Structure;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structure;
 
-namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.StatProviders
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatProviders
 {
     public class UniversalItemStatProvider : StatProvider
     {

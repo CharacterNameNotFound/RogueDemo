@@ -5,6 +5,9 @@
         Main,
         ErrorMessages,
         StoryUI,
-        Items
+        Items,
+        ItemDescription,
+        Merchants,
+        BattleEncounters,
     }
 }

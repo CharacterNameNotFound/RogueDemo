@@ -1,4 +1,4 @@
-namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.ItemStatSets
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets
 {
     public enum ItemStatType
     {

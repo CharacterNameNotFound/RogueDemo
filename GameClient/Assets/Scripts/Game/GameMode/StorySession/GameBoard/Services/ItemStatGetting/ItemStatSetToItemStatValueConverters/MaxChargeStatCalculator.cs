@@ -1,4 +1,4 @@
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
 using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStat
 {
     public class MaxChargeStatCalculator : GenericStatCalculator
     {
-        public ItemStatType ProcessedStat => ItemStatType.MaxCharge;
+        public override ItemStatType ProcessedStat => ItemStatType.MaxCharge;
 
         protected override float CalculateGeneric(ItemStatEntry itemValues, StatSet.StatSetComponent baseCalculateDepth,
             StatSet.StatSetComponent multiplicationCalculateDepth)

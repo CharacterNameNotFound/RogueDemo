@@ -4,10 +4,13 @@ using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.Data.Items;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items;
+using Game.GameMode.StorySession.GameBoard.Simulation.Encounters;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
+using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
 using Game.GameMode.StorySession.StoryLoop.StoryRoutines.DataProviders;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs;
-using Game.GameMode.StorySession.StoryLoop.StoryStructure.ItemOrganization;
+using Game.GameMode.StorySession.Utilities;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -17,23 +20,33 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryRoutines
 {
     public class BuildAndRegisterDecksRoutine
     {
-        private IDeckOrganizer _deckOrganizer;
+        
+        private ItemDeckOrganizer _itemDeckOrganizer;
         private IItemRegistry _itemRegistry;
+
+        private EncounterDeckOrganizer _encounterDeckOrganizer;
+        private IEncounterRegistry _encounterRegistry;
+        
         private JsonSerializerSettings _jsonSerializerSettings;
 
         public BuildAndRegisterDecksRoutine(
-            IDeckOrganizer deckOrganizer, 
+            ItemDeckOrganizer itemDeckOrganizer, 
             IItemRegistry itemRegistry, 
-            JsonSerializerSettings jsonSerializerSettings)
+            JsonSerializerSettings jsonSerializerSettings, 
+            EncounterDeckOrganizer encounterDeckOrganizer, 
+            IEncounterRegistry encounterRegistry)
         {
-            _deckOrganizer = deckOrganizer;
+            _itemDeckOrganizer = itemDeckOrganizer;
             _itemRegistry = itemRegistry;
             _jsonSerializerSettings = jsonSerializerSettings;
+            _encounterDeckOrganizer = encounterDeckOrganizer;
+            _encounterRegistry = encounterRegistry;
         }
 
-        public async UniTask BuildBasicItemsAndRegistries(List<AssetReference> neutralItemSetsReferences,
+        public async UniTask BuildAndRegistriesItems(
+            List<AssetReference> neutralItemSetsReferences,
             List<AssetReference> characterItemSetsReferences,
-            IDeckBuildingConfigs deckBuildingConfigs,
+            IItemDeckBuildingConfigs itemDeckBuildingConfigs,
             IStoryContentProvider storyContentProvider,
             CancellationToken cancellationToken)
         {
@@ -76,26 +89,81 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryRoutines
             {
                 List<string> deck = decks[item.ItemRarity];
                 
-                for (int i = 0; i < deckBuildingConfigs.CardCopiesCount; i++)
+                for (int i = 0; i < itemDeckBuildingConfigs.CardCopiesCount; i++)
                 {
                     deck.Add(item.ItemId);
                 }
                 
             }
 
-            Dictionary<ItemRarity, ItemDeck> itemDecks = decks.ToDictionary(
+            Dictionary<ItemRarity, IDeck<string>> itemDecks = decks.ToDictionary(
                     item => item.Key, 
-                    item => new ItemDeck(item.Value)
+                    item => (IDeck<string>) new ItemDeck(item.Value)
                     );
 
-            _deckOrganizer.Initialize(itemDecks);
+            _itemDeckOrganizer.Initialize(itemDecks);
         }
 
-        private void AppendItemSetLoading(List<UniTask<ItemSet>> itemSetsTasks, List<AssetReference> itemSetsReferences, CancellationToken cancellationToken)
+        public async UniTask BuildAndRegisterEncounters(
+            List<AssetReference> characterEncounterSets, 
+            List<AssetReference> storyEncounterSet, 
+            IEncounterDeckBuildingConfigs encounterDeckBuildingConfigs, 
+            CancellationToken cancellationToken)
+        {
+            List<UniTask<EncounterSet>> encounterSetTasks = new();
+            List<UniTask<Encounter>> encounterTasks = new();
+
+            AppendItemSetLoading(encounterSetTasks, characterEncounterSets, cancellationToken);
+            AppendItemSetLoading(encounterSetTasks, storyEncounterSet, cancellationToken);
+
+            // Loading encounter sets
+            EncounterSet[] itemSets = await UniTask.WhenAll(encounterSetTasks).AttachExternalCancellation(cancellationToken);
+
+            // Selecting and loading encounters
+            foreach (AssetReference item in itemSets.SelectMany(item => item.Encounters))
+            {
+                encounterTasks.Add(item.Load<Encounter>(cancellationToken));
+            }
+
+            Encounter[] encounters = await UniTask.WhenAll(encounterTasks).AttachExternalCancellation(cancellationToken);
+            
+            _encounterRegistry.Register(encounters.ToList());
+            
+            // we no longer need encounter sets, so we can release them
+            foreach (EncounterSet item in itemSets)
+            {
+                Addressables.Release(item);
+            }
+
+            EncounterType[] encounterTypes = (EncounterType[]) Enum.GetValues(typeof(EncounterType));
+            Dictionary<EncounterType, List<string>> decks = new Dictionary<EncounterType, List<string>>();
+
+            foreach (EncounterType item in encounterTypes)
+            {
+                decks.Add(item, new List<string>());
+            }
+            
+            foreach (Encounter item in encounters)
+            {
+                List<string> deck = decks[item.EncounterType];
+                
+                deck.Add(item.EncounterId);
+            }
+
+            Dictionary<EncounterType, IDeck<string>> encounterDeck = decks.ToDictionary(
+                    item => item.Key, 
+                    item => (IDeck<string>) new EncounterDeck(item.Value)
+                    );
+
+            _encounterDeckOrganizer.Initialize(encounterDeck);
+        }
+        
+
+        private void AppendItemSetLoading<T>(List<UniTask<T>> itemSetsTasks, List<AssetReference> itemSetsReferences, CancellationToken cancellationToken)
         {
             foreach (AssetReference reference in itemSetsReferences)
             {
-                UniTask<ItemSet> item  = reference.Load<ItemSet>(cancellationToken);
+                UniTask<T> item  = reference.Load<T>(cancellationToken);
                 itemSetsTasks.Add(item);
             }
         }

@@ -25,6 +25,9 @@ namespace Game.GameMode.StorySelector.UI.States
         
         private IList<StoryData> _storyDatas;
         
+        // needed for Addressable.Release
+        private IList<StoryData> _storyDatasHandle;
+        
         public override async UniTask Initialize(StorySelectorScreenContext context, StorySelectorScreenDependencies dependencies,
             CancellationToken cancellationToken)
         {
@@ -36,10 +39,10 @@ namespace Game.GameMode.StorySelector.UI.States
             _left.onClick.AddListener(() => ChangeToSideAsync(-1, cancellationToken).Forget());
             _right.onClick.AddListener(() => ChangeToSideAsync(1, cancellationToken).Forget());
             
-            _storyDatas = await Addressables.LoadAssetsAsync<StoryData>(nameof(AddressableTags.StoryData))
+            _storyDatasHandle = await Addressables.LoadAssetsAsync<StoryData>(nameof(AddressableTags.StoryData))
                 .ToUniTask(cancellationToken: cancellationToken);
             
-            _storyDatas = _storyDatas.OrderBy(item => item.SortingOrder).ToList();
+            _storyDatas = _storyDatasHandle.OrderBy(item => item.SortingOrder).ToList();
             
             Sprite sprite = await _storyDatas[0].StoryImage.Load<Sprite>(cancellationToken);
             _storyImage.sprite = sprite;
@@ -76,6 +79,7 @@ namespace Game.GameMode.StorySelector.UI.States
             _right.onClick.RemoveAllListeners();
 
             Addressables.Release(_storyImage.sprite);
+            Addressables.Release(_storyDatasHandle);
         }
         
         private async UniTask ChangeToSideAsync(int changeValue, CancellationToken cancellationToken)

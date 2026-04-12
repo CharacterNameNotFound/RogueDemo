@@ -1,4 +1,5 @@
 using Game.GameMode.StorySession.GameBoard.Simulation.Items;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 
 namespace Game.Routines.ItemLoadingOperations.ItemTagToTableEntryConverters
 {

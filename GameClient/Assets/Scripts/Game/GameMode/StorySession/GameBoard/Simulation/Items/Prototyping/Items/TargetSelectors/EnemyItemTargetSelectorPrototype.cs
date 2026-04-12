@@ -1,8 +1,8 @@
-using Game.GameMode.StorySession.GameBoard.Prototyping.Items.Structure;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Structure;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.TargetSelectors;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structure;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.TargetSelectors;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.Structure;
 
-namespace Game.GameMode.StorySession.GameBoard.Prototyping.Items.TargetSelectors
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.TargetSelectors
 {
     public class EnemyItemTargetSelectorPrototype : TargetSelectorPrototype
     {

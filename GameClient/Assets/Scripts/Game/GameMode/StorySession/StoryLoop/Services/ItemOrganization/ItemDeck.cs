@@ -1,29 +1,12 @@
 using System.Collections.Generic;
-using Game.Utilities.Shuffling;
-using GameWideSystems.RNGManagement;
+using Game.GameMode.StorySession.Utilities;
 
-namespace Game.GameMode.StorySession.StoryLoop.StoryStructure.ItemOrganization
+namespace Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization
 {
-    public class ItemDeck
+    public class ItemDeck : Deck<string>
     {
-        public List<string> ActiveItems;
-        public List<string> DiscardedItems;
-
-        public ItemDeck(List<string> items)
+        public ItemDeck(List<string> items) : base(items)
         {
-            ActiveItems = items;
-            DiscardedItems = new List<string>(items.Count);
         }
-
-        public void AppendToActive(List<string> items)
-        {
-            ActiveItems.AddRange(items);
-        }
-
-        public void Shuffle(IRNGProvider rngProvider)
-        {
-            ActiveItems.ShuffleListDurstenfeld(rngProvider);
-        }
-        
     }
 }

@@ -20,8 +20,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 124cf36265d3cf042882057f8554bd57
-    m_Address: Assets/Content/GameMode/StorySession/Prefabs/MediumItemContainer.prefab
+  - m_GUID: 0fd7d647057e693479af95da0a7a37d0
+    m_Address: Assets/Sprites/Story/Encounter/Bosses/burn_boss_1_vertical_portrait.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 116e49689efc55f46839ae61bf5d9c28
+    m_Address: Assets/Sprites/Story/Encounter/Bosses/healing_boss_1_vertical_portrait.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 194fb158f96618e4b94fbdb7d3679dd7
+    m_Address: Assets/Sprites/Story/Encounter/Bosses/weapon_boss_1_vertical_portrait.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19d200a516a8abd41841e4b757cdeab0
+    m_Address: Assets/Sprites/Story/Encounter/Bosses/Horizontal/boss_horizontal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b5f59a4b8976dd469bed90c4c4e4326
+    m_Address: Assets/Sprites/Story/Encounter/Bosses/healing_boss_3_vertical_portrait.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -30,33 +50,38 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 270953e055a8c5e4c93e829958324532
+    m_Address: encounter/healing_boss_circle_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 413cb7d62c206dc4a9cf0792e7b700d1
     m_Address: Assets/GameConfigurations/Structure/Prefabs/AudioSorce.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4419545008be5b942998544701f7d899
-    m_Address: Assets/Content/GameMode/StorySession/Prefabs/GameBoard.prefab
+  - m_GUID: 47dba3585f5195d448d5c033b12fc61d
+    m_Address: Assets/Sprites/Story/Encounter/Bosses/burn_boss_2_vertical_portrait.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4f76735b7aa272c4bb20635ddf20862c
-    m_Address: Assets/Sprites/Story/Items/Large_item_placeholder.png
+  - m_GUID: 4b556da4ca1e2644085ec38fba8b777e
+    m_Address: encounter/healing_boss_circle_3
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 55a034c5f87c9c54c97d71a4c6d42a29
-    m_Address: Assets/Content/GameMode/StorySession/Prefabs/LargeItemContainer.prefab
+  - m_GUID: 81949eab3025dbe489f1362e54de93f3
+    m_Address: encounter/weapon_boss_circle_2
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 81ec366f5b66f3147bccbe7b54bc3df2
-    m_Address: Assets/Sprites/Story/Items/Medium_item_placeholder.png
+  - m_GUID: 85fe1c5ac646bc048a2033e4aee70ddb
+    m_Address: Assets/Sprites/Story/Encounter/Bosses/weapon_boss_3_vertical_portrait.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 919c02dabf1e5774d89a026758e44811
-    m_Address: Assets/Sprites/Story/Items/Small_item_placeholder.png
+  - m_GUID: 95cda7957c086e746bb1797b9a873766
+    m_Address: encounter_sets/merchant_encounter_set
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -65,8 +90,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c0809f33dc228d743bd46fdbcf6e4596
-    m_Address: Assets/Content/GameMode/StorySession/Prefabs/SmallItemContainer.prefab
+  - m_GUID: a4f0aed9f481a6f4f835d8f0d86a259e
+    m_Address: Assets/Sprites/Story/Encounter/Bosses/healing_boss_2_vertical_portrait.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a6643ce53391f874c9e90f96e5c5c52e
+    m_Address: encounter/healing_boss_circle_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac483b2acdad3534dbdee8db593e0e90
+    m_Address: Assets/Sprites/Story/Encounter/Bosses/burn_boss_3_vertical_portrait.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1e42d07423dfec4496d837b97b22561
+    m_Address: encounter/burn_boss_circle_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b4a69c8130924e74fbbad900b2c1631b
+    m_Address: encounter/weapon_boss_circle_3
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -75,13 +120,33 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c18e91a431c5bca438f4457e4c925343
+    m_Address: encounter/burn_boss_circle_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c823341693ca3cb49bf5e8ceb72f5080
     m_Address: Assets/Content/GameMode/StorySelector/UI/StorySelection.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2309db1ab1721340932e49b6ec04158
+    m_Address: encounter/weapon_boss_circle_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e3e6fd78a003da049bf35ae8854bc905
     m_Address: GameMode/LogInScreen/WidescreenLogInScreen.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eacf4f1a11a91fd4793d06c27a256974
+    m_Address: encounter/burn_boss_circle_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f3e05b797a398894e9f7a19c8a366e0a
+    m_Address: Assets/Sprites/Story/Encounter/Bosses/weapon_boss_2_vertical_portrait.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -91,4 +156,3 @@ MonoBehaviour:
     m_Schemas:
     - {fileID: 11400000, guid: 4bd3787be55c3c64fa2157f6cb66baaf, type: 2}
     - {fileID: 11400000, guid: 12fa0d75d9d6b9f469537544d7417b3b, type: 2}
-    - {fileID: 11400000, guid: 663e239ab81d7e44192399611e05ed50, type: 2}

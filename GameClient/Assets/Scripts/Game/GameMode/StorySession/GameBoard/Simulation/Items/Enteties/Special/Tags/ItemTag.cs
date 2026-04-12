@@ -1,4 +1,4 @@
-namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.Tags
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags
 {
     public enum ItemTag
     {

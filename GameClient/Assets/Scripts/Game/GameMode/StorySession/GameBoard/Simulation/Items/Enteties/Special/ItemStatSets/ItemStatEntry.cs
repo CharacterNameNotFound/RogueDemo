@@ -1,7 +1,7 @@
 using System;
 using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
 
-namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.ItemStatSets
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets
 {
     [Serializable]
     public class ItemStatEntry

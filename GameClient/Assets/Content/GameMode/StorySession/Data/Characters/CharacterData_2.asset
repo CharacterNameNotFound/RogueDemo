@@ -12,18 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1242b88565b343ee95b241ec4d91f192, type: 3}
   m_Name: CharacterData_2
   m_EditorClassIdentifier: Game.GameMode.StorySelector::Game.GameMode.StorySession.Data.CharacterData
-  <CharacterId>k__BackingField: character_data/character_3
-  _characterPortrait:
+  <CharacterId>k__BackingField: character_data/character_2
+  <CharacterPortrait>k__BackingField:
     m_AssetGUID: 2d519ee61599bb54287d8a8ff2f48219
     m_SubObjectName: character_2_portret_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
-  _characterStorySessionPortrait:
-    m_AssetGUID: 
+  <CharacterStorySessionPortrait>k__BackingField:
+    m_AssetGUID: 2381535cf06cc7e428a4f4c75c20f7a2
+    m_SubObjectName: Character_2_story_portrait_0
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1
+  <ItemSets>k__BackingField:
+  - m_AssetGUID: ba2e71aa160be7c4cbfe5c896ec88da4
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
-  _itemSets: []
+  - m_AssetGUID: f299729c4c5175c4f9fd753d8effa19c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  <EncounterSets>k__BackingField:
+  - m_AssetGUID: 95cda7957c086e746bb1797b9a873766
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

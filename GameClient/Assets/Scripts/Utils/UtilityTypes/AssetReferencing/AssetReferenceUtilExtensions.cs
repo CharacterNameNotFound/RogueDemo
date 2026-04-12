@@ -5,6 +5,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
+using Utils.UtilityTypes.Result;
 
 namespace Utils.UtilityTypes.AssetReferencing
 {
@@ -43,6 +44,13 @@ namespace Utils.UtilityTypes.AssetReferencing
             AsyncOperationHandle<T> operation = Addressables.LoadAssetAsync<T>(address);
             await operation.ToUniTask(cancellationToken: cancellationToken);
             return operation.Result;
+        }
+        
+        public static async UniTask<RequestResult<T>> LoadRequest<T>(this string address, CancellationToken cancellationToken)
+        {
+            AsyncOperationHandle<T> operation = Addressables.LoadAssetAsync<T>(address);
+            await operation.ToUniTask(cancellationToken: cancellationToken);
+            return operation.Result.AsRequestResult();
         }
         
     }

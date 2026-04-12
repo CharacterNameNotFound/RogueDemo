@@ -1,6 +1,5 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -8,7 +7,7 @@ using UnityEngine.AddressableAssets;
 using Utils.UtilityTypes.AssetReferencing;
 using Utils.UtilityTypes.Result;
 
-namespace Game.GameMode.StorySession.StoryLoop.StoryStructure.ItemOrganization
+namespace Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization
 {
     public class ItemLoader : IItemLoader
     {

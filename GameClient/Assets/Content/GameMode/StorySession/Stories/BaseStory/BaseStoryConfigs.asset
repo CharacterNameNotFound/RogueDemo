@@ -12,6 +12,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6c33ebf36347c1bc2cb4ccba9464cd, type: 3}
   m_Name: BaseStoryConfigs
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.BaseStoryConfigs
-  _neutralItemSets: []
-  _encounterGroups: []
-  _bossEncounters: []
+  <NeutralItemSets>k__BackingField: []
+  <EncounterSets>k__BackingField: []
+  <FirstBossEncounters>k__BackingField:
+  - m_AssetGUID: eacf4f1a11a91fd4793d06c27a256974
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 270953e055a8c5e4c93e829958324532
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: e2309db1ab1721340932e49b6ec04158
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  <SecondBossEncounters>k__BackingField:
+  - m_AssetGUID: c18e91a431c5bca438f4457e4c925343
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: a6643ce53391f874c9e90f96e5c5c52e
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 81949eab3025dbe489f1362e54de93f3
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  <ThirdBossEncounters>k__BackingField:
+  - m_AssetGUID: b1e42d07423dfec4496d837b97b22561
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 4b556da4ca1e2644085ec38fba8b777e
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b4a69c8130924e74fbbad900b2c1631b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  <CardCopiesCount>k__BackingField: 2

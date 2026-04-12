@@ -1,6 +1,6 @@
 namespace Game.GameMode.StorySession.StoryLoop.StoryRoutines.DataProviders
 {
-    public interface IDeckBuildingConfigs
+    public interface IItemDeckBuildingConfigs
     {
         public int CardCopiesCount { get; }
     }

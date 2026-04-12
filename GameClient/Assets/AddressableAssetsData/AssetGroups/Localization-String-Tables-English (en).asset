@@ -21,8 +21,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3dbe19678f707df449735c1b4e93be67
+    m_Address: BattleEncounters_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3ff39c2136b77504abc1998c4664db8f
     m_Address: Items_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62edc9cc9f79ef544b78c621ccce3cf8
+    m_Address: Merchants_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

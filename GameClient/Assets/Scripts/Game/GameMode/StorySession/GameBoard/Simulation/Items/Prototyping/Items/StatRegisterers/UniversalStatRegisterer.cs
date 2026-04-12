@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Game.GameMode.StorySession.GameBoard.Prototyping.Items.Structure;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.Structure;
 using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
 
-namespace Game.GameMode.StorySession.GameBoard.Prototyping.Items.StatRegisterers
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.StatRegisterers
 {
     public class UniversalStatRegisterer : StatRegistererPrototype
     {

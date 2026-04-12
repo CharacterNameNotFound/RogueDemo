@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using System.Linq;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.Tags;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags;
 using UnityEngine;
 
-namespace Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.Special
 {
     public class TagListPrototype : MonoBehaviour
     {

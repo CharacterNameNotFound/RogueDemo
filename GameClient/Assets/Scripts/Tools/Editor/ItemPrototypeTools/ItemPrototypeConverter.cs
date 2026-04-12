@@ -1,8 +1,9 @@
 using System.IO;
-using Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special;
-using Game.GameMode.StorySession.GameBoard.Prototyping.Items.StatRegisterers;
-using Game.GameMode.StorySession.GameBoard.Prototyping.Items.Structure;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.Special;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.StatRegisterers;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.Structure;
 using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;

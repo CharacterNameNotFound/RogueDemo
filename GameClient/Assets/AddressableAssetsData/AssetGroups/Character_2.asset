@@ -15,12 +15,17 @@ MonoBehaviour:
   m_GroupName: Character_2
   m_GUID: 13057c2ad4e4fe6408271d5602685fcb
   m_SerializeEntries:
+  - m_GUID: 2381535cf06cc7e428a4f4c75c20f7a2
+    m_Address: Assets/Sprites/Story/CharacterPortraits/Character_2_story_portrait.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2d519ee61599bb54287d8a8ff2f48219
     m_Address: Assets/Sprites/Portrets/character_2_portret.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 59a52dadfdcec8044a2000dcb501e542
+  - m_GUID: cc63e136f18e62944822f523dd28e2df
     m_Address: character_data/character_2
     m_ReadOnly: 0
     m_SerializedLabels:

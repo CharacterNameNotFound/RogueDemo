@@ -1,5 +1,6 @@
 using Game.GameMode.StorySession.Data.LookUpEntries.Items;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 
 namespace Game.Routines.ItemLoadingOperations.ItemTagToTableEntryConverters
 {

@@ -1,0 +1,232 @@
+{
+  "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Item, Game.GameMode.StorySession",
+  "ItemId": "rope_silver",
+  "ItemSetId": "ship_medicine",
+  "ItemName": "rope",
+  "ItemRarity": 1,
+  "ItemSize": 2,
+  "UpgradedItemId": "rope_gold",
+  "DowngradedItemId": "rope_bronze",
+  "ItemSpriteRuntimeKey": "81ec366f5b66f3147bccbe7b54bc3df2[Medium_item_placeholder_0]",
+  "Tags": {
+    "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags.TagList, Game.GameMode.StorySession",
+    "TagsList": {
+      "$type": "System.Collections.Generic.List`1[[Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags.ItemTag, Game.GameMode.StorySession]], mscorlib",
+      "$values": [
+        1,
+        8
+      ]
+    }
+  },
+  "Triggers": {
+    "$type": "System.Collections.Generic.List`1[[Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structure.Trigger, Game.GameMode.StorySession]], mscorlib",
+    "$values": [
+      {
+        "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Triggers.OnChargedTrigger, Game.GameMode.StorySession",
+        "Effectors": {
+          "$type": "System.Collections.Generic.List`1[[Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structure.Effector, Game.GameMode.StorySession]], mscorlib",
+          "$values": [
+            {
+              "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Effectors.SlowEffector, Game.GameMode.StorySession",
+              "TargetSelector": {
+                "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.TargetSelectors.EnemyItemTargetSelector, Game.GameMode.StorySession",
+                "TargetCount": {
+                  "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatProviders.UniversalItemStatProvider, Game.GameMode.StorySession",
+                  "Multiplier": 1.0
+                },
+                "SelectNonCooldownItems": false
+              },
+              "SlowDurationProvider": {
+                "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatProviders.UniversalItemStatProvider, Game.GameMode.StorySession",
+                "Multiplier": 1.0
+              },
+              "IsCritAvailable": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "ItemStats": {
+    "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets.ItemStatSet, Game.GameMode.StorySession",
+    "Stats": {
+      "$type": "System.Collections.Generic.Dictionary`2[[Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets.ItemStatType, Game.GameMode.StorySession],[Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession]], mscorlib",
+      "Value": {
+        "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
+        "ItemValues": {
+          "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+          "Stats": {
+            "$type": "System.Single[], mscorlib",
+            "$values": [
+              4.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "ItemPercentiles": {
+          "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+          "Stats": {
+            "$type": "System.Single[], mscorlib",
+            "$values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "SlowTargetCount": {
+        "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
+        "ItemValues": {
+          "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+          "Stats": {
+            "$type": "System.Single[], mscorlib",
+            "$values": [
+              2.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "ItemPercentiles": {
+          "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+          "Stats": {
+            "$type": "System.Single[], mscorlib",
+            "$values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "SlowDuration": {
+        "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
+        "ItemValues": {
+          "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+          "Stats": {
+            "$type": "System.Single[], mscorlib",
+            "$values": [
+              2.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "ItemPercentiles": {
+          "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+          "Stats": {
+            "$type": "System.Single[], mscorlib",
+            "$values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "MaxCharge": {
+        "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
+        "ItemValues": {
+          "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+          "Stats": {
+            "$type": "System.Single[], mscorlib",
+            "$values": [
+              8.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "ItemPercentiles": {
+          "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+          "Stats": {
+            "$type": "System.Single[], mscorlib",
+            "$values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "ChargeSpeed": {
+        "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
+        "ItemValues": {
+          "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+          "Stats": {
+            "$type": "System.Single[], mscorlib",
+            "$values": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "ItemPercentiles": {
+          "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+          "Stats": {
+            "$type": "System.Single[], mscorlib",
+            "$values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "UsageCount": {
+        "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
+        "ItemValues": {
+          "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+          "Stats": {
+            "$type": "System.Single[], mscorlib",
+            "$values": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "ItemPercentiles": {
+          "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Utilities.StatSet, Game.GameMode.StorySession",
+          "Stats": {
+            "$type": "System.Single[], mscorlib",
+            "$values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    "IsCooldownItem": true,
+    "CurrentCharge": 0.0
+  }
+}

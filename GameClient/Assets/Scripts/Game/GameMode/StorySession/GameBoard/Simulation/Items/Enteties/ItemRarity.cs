@@ -1,4 +1,4 @@
-namespace Game.GameMode.StorySession.GameBoard.Simulation.Items
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties
 {
     public enum ItemRarity
     {

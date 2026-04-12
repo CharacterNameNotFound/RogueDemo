@@ -1,27 +1,33 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.GameMode.StorySession.Data.Character;
 using Game.GameMode.StorySession.StoryLoop.StoryRoutines;
+using Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services;
 using Game.GameMode.StorySession.UI;
 using GameWideSystems.GameSceneManagement;
 using GameWideSystems.UIManagement;
 using GameWideSystems.UIManagement.UIManagerRequests;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using Utils.UtilityTypes.AssetReferencing;
 using Zenject;
 
 namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
 {
     public class BaseStory : ScriptableObject, IStoryBase
     {
-        private BuildAndRegisterDecksRoutine _buildAndRegisterItemsRoutine;
+        private BuildAndRegisterDecksRoutine _buildAndRegisterDecksRoutine;
         private ILoadingScreenManager _loadingScreenManager;
         private BaseStoryConfigs _baseStoryConfigs;
         private UIManager _uiManager;
         private StorySessionScreenBuilder _storySessionScreenBuilder;
         private GameBoardInitializationRoutine _boardInitializationRoutine;
         private InitializeStoryServicesRoutine _initializeStoryServicesRoutine;
+        private BaseStoryBossSelector _baseStoryBossSelector;
 
 
         private StoryInitializationData _storyInitializationData;
+        private BaseStoryContext _baseStoryContext;
 
         [Inject]
         private void InjectDependencies(
@@ -31,21 +37,26 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             UIManager uiManager,
             StorySessionScreenBuilder storySessionScreenBuilder,
             GameBoardInitializationRoutine boardInitializationRoutine,
-            InitializeStoryServicesRoutine initializeStoryServicesRoutine
+            InitializeStoryServicesRoutine initializeStoryServicesRoutine,
+            BaseStoryBossSelector baseStoryBossSelector
             )
         {
             _loadingScreenManager = loadingScreenManager;
             _baseStoryConfigs = baseStoryConfigs;
-            _buildAndRegisterItemsRoutine = buildAndRegisterDecksRoutine;
+            _buildAndRegisterDecksRoutine = buildAndRegisterDecksRoutine;
             _uiManager = uiManager;
             _storySessionScreenBuilder = storySessionScreenBuilder;
             _boardInitializationRoutine = boardInitializationRoutine;
             _initializeStoryServicesRoutine = initializeStoryServicesRoutine;
+            _baseStoryBossSelector = baseStoryBossSelector;
         }
 
         public async UniTask Initialize(StoryInitializationData storyInitializationData, CancellationToken cancellationToken)
         {
             _storyInitializationData = storyInitializationData;
+            _baseStoryContext = new BaseStoryContext();
+            
+            _baseStoryContext.CharacterData = await storyInitializationData.CharacterId.Load<CharacterData>(cancellationToken);
             
             
             // Loading game board
@@ -60,24 +71,28 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             
             
             // generate encounters
-            
+            await _buildAndRegisterDecksRoutine.BuildAndRegisterEncounters(
+                _baseStoryContext.CharacterData.EncounterSets, 
+                _baseStoryConfigs.EncounterSets, 
+                _baseStoryConfigs, 
+                cancellationToken);
             
             
             // generate decks
-            await _buildAndRegisterItemsRoutine.BuildBasicItemsAndRegistries(
+            await _buildAndRegisterDecksRoutine.BuildAndRegistriesItems(
                 _baseStoryConfigs.NeutralItemSets, 
-                storyInitializationData.CharacterData.ItemSets, 
+                _baseStoryContext.CharacterData.ItemSets, 
                 _baseStoryConfigs, 
                 _baseStoryConfigs, 
                 cancellationToken);
             
 
             // generate bosses
+            await _baseStoryBossSelector.SelectBosses(_baseStoryConfigs, _baseStoryContext, cancellationToken);
 
-            
             // save decks, events, bosses
 
-            
+
             // build first cycle and save
 
 
@@ -120,7 +135,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
 
         public UniTask CleanUp(CancellationToken cancellationToken)
         {
-            
+            Addressables.Release(_baseStoryContext.CharacterData);
             
             return UniTask.CompletedTask;
         }

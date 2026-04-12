@@ -29,6 +29,11 @@ namespace GameWideSystems.LocalizationWrapper
             _localTables = result.ToDictionary(table => table.TableCollectionName);
         }
         
+        public bool TryGetLocalized(LocalizedLineKey key, out string localizedLine)
+        {
+            return TryGetLocalized(key.Key, key.Category, out  localizedLine);
+        }
+        
         public bool TryGetLocalized(string key, TranslationCategory category, out string localizedLine)
         {
             if (!GetTableEntry(key, category, out StringTableEntry enty))
@@ -39,6 +44,11 @@ namespace GameWideSystems.LocalizationWrapper
 
             localizedLine = enty.GetLocalizedString();
             return true;
+        }
+        
+        public bool TryGetLocalized(LocalizedLineKey key, object replacements, out string localizedLine)
+        {
+            return TryGetLocalized(key.Key, key.Category, replacements, out  localizedLine);
         }
 
         public bool TryGetLocalized(string key, TranslationCategory category, object replacements, out string localizedLine)

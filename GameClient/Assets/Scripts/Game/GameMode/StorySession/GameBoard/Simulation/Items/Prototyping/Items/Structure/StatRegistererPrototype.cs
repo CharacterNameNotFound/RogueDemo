@@ -1,9 +1,7 @@
-using System.Collections.Generic;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
 using UnityEngine;
 
-namespace Game.GameMode.StorySession.GameBoard.Prototyping.Items.Structure
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.Structure
 {
     public abstract class StatRegistererPrototype : MonoBehaviour
     {

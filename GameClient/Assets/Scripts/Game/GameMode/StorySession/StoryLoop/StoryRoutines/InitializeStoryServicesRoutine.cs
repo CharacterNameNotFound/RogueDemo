@@ -1,7 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
-using Game.GameMode.StorySession.StoryLoop.StoryStructure.ItemOrganization;
 
 namespace Game.GameMode.StorySession.StoryLoop.StoryRoutines
 {

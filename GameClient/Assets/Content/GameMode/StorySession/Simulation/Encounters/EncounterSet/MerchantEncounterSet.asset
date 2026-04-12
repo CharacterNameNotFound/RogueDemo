@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acd7ddf8e3c4fb1a2635479e3b55aba, type: 3}
+  m_Name: MerchantEncounterSet
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.Data.Items.EncounterSet
+  <Encounters>k__BackingField:
+  - m_AssetGUID: 6f43a894405a47d44bfcd5cc0a41cd83
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 527455851391c7442a68e99b04c6226c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 36a8ea703c0364d428090e9e90397233
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

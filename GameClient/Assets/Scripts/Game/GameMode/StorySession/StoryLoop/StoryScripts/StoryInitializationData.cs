@@ -4,11 +4,11 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts
 {
     public class StoryInitializationData
     {
-        public CharacterData CharacterData;
+        public string CharacterId;
 
-        public StoryInitializationData(CharacterData characterData)
+        public StoryInitializationData(string characterId)
         {
-            CharacterData = characterData;
+            CharacterId = characterId;
         }
     }
 }

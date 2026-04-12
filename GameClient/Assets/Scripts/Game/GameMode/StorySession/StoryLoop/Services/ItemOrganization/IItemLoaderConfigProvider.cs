@@ -1,4 +1,4 @@
-namespace Game.GameMode.StorySession.StoryLoop.StoryStructure.ItemOrganization
+namespace Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization
 {
     public interface IItemLoaderConfigProvider
     {

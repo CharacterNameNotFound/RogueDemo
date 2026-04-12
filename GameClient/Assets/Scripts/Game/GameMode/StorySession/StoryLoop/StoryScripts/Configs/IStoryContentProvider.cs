@@ -7,7 +7,9 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs
     {
         public List<AssetReference> NeutralItemSets { get; }
 
-        public List<AssetReference> EncounterGroups { get; }
-        public List<AssetReference> BossEncounters { get; }
+        public List<AssetReference> EncounterSets { get; }
+        public List<AssetReference> FirstBossEncounters { get; }
+        public List<AssetReference> SecondBossEncounters { get; }
+        public List<AssetReference> ThirdBossEncounters { get; }
     }
 }

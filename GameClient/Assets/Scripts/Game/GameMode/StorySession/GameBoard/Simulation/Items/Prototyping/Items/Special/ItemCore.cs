@@ -1,8 +1,8 @@
-using Game.GameMode.StorySession.GameBoard.Simulation.Items;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.Special
 {
     public class ItemCore : MonoBehaviour
     {

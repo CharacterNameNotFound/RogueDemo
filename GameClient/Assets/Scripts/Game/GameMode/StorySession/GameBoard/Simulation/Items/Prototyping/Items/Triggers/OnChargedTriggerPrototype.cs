@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using Game.GameMode.StorySession.GameBoard.Prototyping.Items.Structure;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Structure;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Triggers;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structure;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Triggers;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.Structure;
 
-namespace Game.GameMode.StorySession.GameBoard.Prototyping.Items.Triggers
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.Triggers
 {
     public class OnChargedTriggerPrototype : TriggerPrototype
     {

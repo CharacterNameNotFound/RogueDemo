@@ -3,8 +3,10 @@ using Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStatSetToItemStatValueConverters;
 using Game.GameMode.StorySession.GameBoard.View;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
+using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
 using Game.GameMode.StorySession.StoryLoop.StoryRoutines;
-using Game.GameMode.StorySession.StoryLoop.StoryStructure.ItemOrganization;
+using Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services;
 using Zenject;
 
 namespace Structure
@@ -22,15 +24,25 @@ namespace Structure
         private void InstallServices()
         {
             Container.Bind<GameBoardHolder>().To<GameBoardHolder>().AsSingle();
+            
+            // Items and deck
             Container.Bind<IItemRegistry>().To<ItemRegistry>().AsSingle();
-            Container.Bind<IDeckOrganizer>().To<DeckOrganizer>().AsSingle();
+            Container.Bind<ItemDeckOrganizer>().To<ItemDeckOrganizer>().AsSingle();
             Container.Bind<IItemLineOrganizer>().To<ItemLineOrganizer>().AsSingle();
             Container.Bind<IItemContainersManager>().To<ItemContainersManager>().AsSingle();
             Container.Bind<IItemLoader>().To<ItemLoader>().AsSingle();
             
             Container.Bind<IItemStatGetter>().To<ItemStatGetter>().AsSingle();
+            
+            // Encounters
+            Container.Bind<IEncounterRegistry>().To<EncounterRegistry>().AsSingle();
+            Container.Bind<EncounterDeck>().To<EncounterDeck>().AsSingle();
+            Container.Bind<EncounterDeckOrganizer>().To<EncounterDeckOrganizer>().AsSingle();
+            Container.Bind<IEncounterLoader>().To<EncounterLoader>().AsSingle();
+            
 
             InstallStatCalculators();
+            InstallBasicStory();
         }
         
         private void InstallRoutines()
@@ -48,6 +60,11 @@ namespace Structure
             
         }
 
+        private void InstallBasicStory()
+        {
+            Container.Bind<BaseStoryBossSelector>().To<BaseStoryBossSelector>().AsCached();
+            
+        }
         
         
     }

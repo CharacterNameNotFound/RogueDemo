@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Special.ItemStatSets
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets
 {
     [Serializable]
     public class ItemStatSet

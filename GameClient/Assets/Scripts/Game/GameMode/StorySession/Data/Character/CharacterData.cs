@@ -8,14 +8,11 @@ namespace Game.GameMode.StorySession.Data.Character
     {
         [field: SerializeField] public string CharacterId { get; private set; }
 
-        [SerializeField] private AssetReferenceSprite _characterPortrait;
-        [SerializeField] private AssetReferenceSprite _characterStorySessionPortrait;
-        [SerializeField] private List<AssetReference> _itemSets;
-
-        public AssetReferenceSprite CharacterPortrait => _characterPortrait;
-        public AssetReferenceSprite CharacterStorySessionPortrait => _characterStorySessionPortrait;
-        public List<AssetReference> ItemSets => _itemSets;
-
+        [field: SerializeField] public AssetReferenceSprite CharacterPortrait { get; private set; }
+        [field: SerializeField] public AssetReferenceSprite CharacterStorySessionPortrait { get; private set; }
+        [field: SerializeField] public List<AssetReference> ItemSets { get; private set; }
+        [field: SerializeField] public List<AssetReference> EncounterSets { get; private set; }
+        
 
     }
 }

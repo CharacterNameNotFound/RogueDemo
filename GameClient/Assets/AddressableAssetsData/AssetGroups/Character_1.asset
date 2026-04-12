@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 27e5e6ad683e25a47b55e2fe04f0bd0f
+    m_Address: Assets/Sprites/Story/CharacterPortraits/Character_1_story_portrait.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b69035f3d5ceb6f4898b308e9b5e0676
     m_Address: character_data/character_1
     m_ReadOnly: 0
@@ -32,4 +37,3 @@ MonoBehaviour:
     m_Schemas:
     - {fileID: 11400000, guid: 41550b2552685e04fb2487c518b39513, type: 2}
     - {fileID: 11400000, guid: 3582ba46cb0b0724c8d3a176249303d4, type: 2}
-    - {fileID: 11400000, guid: 70a617bba580c3740967e9a70062440e, type: 2}

@@ -1,6 +1,6 @@
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Structure;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structure;
 
-namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.TargetSelectors
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.TargetSelectors
 {
     public class OwnerItemTargetSelector : TargetSelector
     {

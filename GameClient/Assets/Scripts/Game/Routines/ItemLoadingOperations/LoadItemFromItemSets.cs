@@ -5,7 +5,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.Data.Items;
 using Game.GameMode.StorySession.Data.LookUpEntries.Items;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.ManagementSystems.LookUpTableManagement;
 using Game.Routines.ItemLoadingOperations.ItemTagToTableEntryConverters;
 using Game.Utilities.Constants;
@@ -54,7 +54,8 @@ namespace Game.Routines.ItemLoadingOperations
 
             await CreateTables(dbConnection, cancellationToken);
 
-            List<object> inserts = new();
+            // We need to avoid transactions, so next best is form packs of inserts limiting amount of calls 
+            List<object> inserts = new(100);
 
             foreach (IResourceLocation location in itemSetLocations)
             {
@@ -77,19 +78,16 @@ namespace Game.Routines.ItemLoadingOperations
                 .GetTypes()
                 .Where(item => item.Namespace == namespaceName);
 
-            await dbConnection.RunInTransactionAsync(transaction =>
-            {
-                foreach (Type type in tableTypes)
-                {
-                    transaction.CreateTable(type);
-                }
-            }).AsUniTask().AttachExternalCancellation(cancellationToken);
+            await dbConnection.CreateTablesAsync(types: tableTypes.ToArray())
+                .AsUniTask()
+                .AttachExternalCancellation(cancellationToken);;
         }
 
         private async UniTask LoadAndRegisterItems(string key, SQLiteAsyncConnection dbConnection, List<object> inserts, CancellationToken cancellationToken)
         {
             ItemSet itemSet = await key.Load<ItemSet>(cancellationToken);
 
+            // GetBytes could be called only from main thread, so we need to read all items and form inserts
             foreach (TextAsset textAsset in itemSet.TextAssets)
             {
                 ProcessItemFile(textAsset, inserts);

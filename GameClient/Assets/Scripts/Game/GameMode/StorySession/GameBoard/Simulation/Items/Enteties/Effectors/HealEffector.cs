@@ -1,7 +1,6 @@
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.StatProviders;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Structure;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structure;
 
-namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Effectors
+namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Effectors
 {
     public class HealEffector : Effector
     {
