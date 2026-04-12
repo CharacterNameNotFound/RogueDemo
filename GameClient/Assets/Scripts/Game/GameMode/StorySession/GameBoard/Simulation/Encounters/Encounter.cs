@@ -6,14 +6,17 @@ namespace Game.GameMode.StorySession.GameBoard.Encounters
 {
     public abstract class Encounter : ScriptableObject
     {
+        [field: SerializeField] public string Name { get; protected set; }
+        [field: SerializeField] public string Description { get; protected set; }
+        [field: SerializeField] public AssetReferenceSprite Portrait { get; protected set; }
+
         public abstract EncounterType EncounterType { get; }
         
-        [field: SerializeField] public AssetReferenceSprite Portrait;
-
         public virtual string[] GetPreloadedItemIds()
         {
             return Array.Empty<string>();
         }
+        
         
 
     }

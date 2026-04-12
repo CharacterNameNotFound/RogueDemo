@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.GameMode.StorySession.StoryLoop.StoryStructure.ItemOrganization
+namespace Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization
 {
     public class ItemLoaderConfig : ScriptableObject, IItemLoaderConfigProvider
     {
