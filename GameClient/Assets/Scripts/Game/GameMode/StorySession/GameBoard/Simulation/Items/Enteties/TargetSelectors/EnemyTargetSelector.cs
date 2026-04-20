@@ -4,6 +4,9 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.TargetS
 {
     public class EnemyTargetSelector : TargetSelector
     {
-        
+        public override TargetSelector GetCopy()
+        {
+            return new EnemyTargetSelector();
+        }
     }
 }

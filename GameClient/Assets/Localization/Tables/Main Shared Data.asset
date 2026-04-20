@@ -27,6 +27,10 @@ MonoBehaviour:
     m_Key: select_button
     m_Metadata:
       m_Items: []
+  - m_Id: 106502597569089536
+    m_Key: continue_button
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

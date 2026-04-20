@@ -21,6 +21,8 @@ namespace GameWideSystems.RNGManagement
             mersenneTwister = new MersenneTwister();
             _rngProviders.Add(RNGGroup.Battle, new RandomSourceWrap(mersenneTwister));
             
+            mersenneTwister = new MersenneTwister();
+            _rngProviders.Add(RNGGroup.Encounter, new RandomSourceWrap(mersenneTwister));
         }
 
 

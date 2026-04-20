@@ -1,13 +1,12 @@
-using UnityEngine.AddressableAssets;
-
 namespace Game.GameMode.StorySession.Data.Story
 {
     public class StoryStartData
     {
-        public AssetReference StoryID;
+        // doubles as addressable key
+        public string StoryID;
         public string CharacterID;
 
-        public StoryStartData(AssetReference storyID, string characterID)
+        public StoryStartData(string storyID, string characterID)
         {
             StoryID = storyID;
             CharacterID = characterID;

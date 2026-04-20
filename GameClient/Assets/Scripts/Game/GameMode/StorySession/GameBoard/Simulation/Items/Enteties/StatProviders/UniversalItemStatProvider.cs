@@ -14,5 +14,10 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatPro
             _itemStatType = itemStatType;
             Multiplier = multiplier;
         }
+
+        public override StatProvider GetCopy()
+        {
+            return new UniversalItemStatProvider(_itemStatType, Multiplier);
+        }
     }
 }

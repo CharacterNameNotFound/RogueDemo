@@ -12,6 +12,15 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special
         {
             TagsList = tagsList;
         }
-        
+
+        public bool ContainsTag(ItemTag itemTag)
+        {
+            return TagsList.Contains(itemTag);
+        }
+
+        public TagList GetCopy()
+        {
+            return new TagList(TagsList);
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -49,6 +50,34 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemContainers
             await UniTask.WhenAll(asyncWork).AttachExternalCancellation(cancellationToken);
             
 
+        }
+
+        public UniTask<ItemContainerComponent> GetBySize(int itemItemSize, CancellationToken cancellationToken)
+        {
+            return itemItemSize switch
+            {
+                1 => _smallPool.GetObject(cancellationToken),
+                2 => _mediumPool.GetObject(cancellationToken),
+                3 => _largePool.GetObject(cancellationToken),
+                _ => throw new ArgumentOutOfRangeException(nameof(itemItemSize), itemItemSize, null)
+            };
+        }
+
+        public void Return(ItemContainerComponent itemContainerComponent)
+        {
+            switch (itemContainerComponent.Size)
+            {
+                case 1:
+                    _smallPool.ReturnToPool(itemContainerComponent);
+                    break;
+                case 2:
+                    _mediumPool.ReturnToPool(itemContainerComponent);
+                    break;
+                case 3:
+                    _largePool.ReturnToPool(itemContainerComponent);
+                    break;
+            }
+            
         }
 
         public void CleanUp()

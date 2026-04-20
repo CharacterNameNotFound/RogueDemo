@@ -1,5 +1,6 @@
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.Utilities;
+using Game.GameMode.StorySession.Utilities.Decks;
 using GameWideSystems.RNGManagement;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization

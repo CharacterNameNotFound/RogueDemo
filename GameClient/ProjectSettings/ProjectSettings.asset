@@ -804,7 +804,7 @@ PlayerSettings:
     PS5: DOTWEEN;TextMeshPro
     QNX: DOTWEEN;TextMeshPro
     ReservedCFE: DOTWEEN;TextMeshPro
-    Standalone: DOTWEEN;TextMeshPro
+    Standalone: DOTWEEN;TextMeshPro;ENABLE_LOGGING;UNITASK_DOTWEEN_SUPPORT
     VisionOS: DOTWEEN;TextMeshPro
     WebGL: DOTWEEN;TextMeshPro
     Windows Store Apps: DOTWEEN

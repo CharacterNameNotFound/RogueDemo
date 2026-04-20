@@ -12,5 +12,10 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.TargetS
             TargetCount = targetCount;
             SelectNonCooldownItems = selectNonCooldownItems;
         }
+
+        public override TargetSelector GetCopy()
+        {
+            return new OwnerItemTargetSelector(TargetCount.GetCopy(), SelectNonCooldownItems);
+        }
     }
 }

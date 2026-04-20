@@ -12,7 +12,7 @@ namespace Game.GameMode.StorySelector.UI
         public CharacterSelectionScreenState CharacterSelectionScreenState;
         public StorySelectionScreenState StorySelectionScreenState;
 
-        public AssetReference StoryID;
+        public string StoryID;
         public string CharacterID;
         
         

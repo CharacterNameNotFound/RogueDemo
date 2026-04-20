@@ -10,5 +10,10 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.TargetS
         {
             SelectNonCooldownItems = selectNonCooldownItems;
         }
+
+        public override TargetSelector GetCopy()
+        {
+            return new AllOwnerItemsSelector(SelectNonCooldownItems);
+        }
     }
 }

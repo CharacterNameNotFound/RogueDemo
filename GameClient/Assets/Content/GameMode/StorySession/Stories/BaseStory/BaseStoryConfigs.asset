@@ -63,3 +63,5 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
   <CardCopiesCount>k__BackingField: 2
+  <StoryDayLength>k__BackingField: 6
+  <StoryDayCount>k__BackingField: 10

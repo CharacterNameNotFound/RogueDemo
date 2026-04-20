@@ -16,5 +16,10 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Effecto
             HasteDurationProvider = hasteDurationProvider;
             IsCritAvailable = isCritAvailable;
         }
+
+        public override Effector GetCopy()
+        {
+            return new HasteEffector(TargetSelector.GetCopy(), HasteDurationProvider.GetCopy(), IsCritAvailable);
+        }
     }
 }

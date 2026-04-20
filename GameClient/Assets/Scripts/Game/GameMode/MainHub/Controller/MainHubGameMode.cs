@@ -37,9 +37,9 @@ namespace Game.GameMode.MainHub.Controller
             _loadingScreenManager = loadingScreenManager;
         }
         
-        public UniTask Initialize(GameStateInitializationParameters parameters, CancellationToken cancellationToken)
+        public UniTask<bool> Initialize(GameStateInitializationParameters parameters, CancellationToken cancellationToken)
         {
-            return UniTask.CompletedTask;
+            return UniTask.FromResult(true);
         }
 
         public async UniTask Start(GameStateStartParameters parameters, CancellationToken cancellationToken = default)
@@ -50,15 +50,17 @@ namespace Game.GameMode.MainHub.Controller
             await _loadingScreenManager.Hide(true, cancellationToken);
         }
 
+        public async UniTask Load(IGameStateSerializationData gameStateSerializationData, CancellationToken cancellationToken = default)
+        {
+            await _gameSceneManager.OpenScene(_sceneAddressableDataProvider.MainScene, LoadSceneMode.Single,
+                new LoadingScreenParams(false, _loadingScreenManager), cancellationToken: cancellationToken);
+            await _uiManager.OpenScreenRequest(_mainHubScreenBuilder, null, out _).Play(cancellationToken);
+            await _loadingScreenManager.Hide(true, cancellationToken);
+        }
+        
         public UniTask Unload(CancellationToken cancellationToken = default)
         {
             return Close(cancellationToken);
-        }
-
-        public async UniTask Load(IGameStateSerializationData gameStateSerializationData, CancellationToken cancellationToken = default)
-        {
-            await _uiManager.OpenScreenRequest(_mainHubScreenBuilder, null, out _).Play(cancellationToken);
-            await _loadingScreenManager.Hide(true, cancellationToken);
         }
 
         public UniTask Close(CancellationToken cancellationToken = default)

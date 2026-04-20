@@ -33,7 +33,7 @@ namespace GameWideSystems.UIManagement
             IScreenParams screenParams,
             bool isSilent,
             ScreenHolder openedScreen,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken)
         {
             if (!PreloadedScreens.Remove(screenBuilder.GetType(), out var screenGO))
             {

@@ -5,10 +5,13 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts
     public class StoryInitializationData
     {
         public string CharacterId;
-
-        public StoryInitializationData(string characterId)
+        public bool TryReadSaveFile;
+        
+        
+        public StoryInitializationData(string characterId, bool tryReadSaveFile)
         {
             CharacterId = characterId;
+            TryReadSaveFile = tryReadSaveFile;
         }
     }
 }

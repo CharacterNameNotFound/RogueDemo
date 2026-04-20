@@ -41,10 +41,12 @@ namespace Game.GameMode.Initializer
             _itemLookUpTableLoader = itemLookUpTableLoader;
         }
 
-        public async UniTask Initialize(GameStateInitializationParameters parameters, CancellationToken cancellationToken)
+        public async UniTask<bool> Initialize(GameStateInitializationParameters parameters, CancellationToken cancellationToken)
         {
             _cameraManager.Initialize();
             await TryInitializeFirstRun(Application.exitCancellationToken);
+            
+            return true;
         }
 
         public UniTask Start(GameStateStartParameters parameters, CancellationToken cancellationToken = default)

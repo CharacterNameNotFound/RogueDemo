@@ -13,5 +13,10 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Effecto
             RegenerationStatProvider = regenerationStatProvider;
             IsCritAvailable = isCritAvailable;
         }
+
+        public override Effector GetCopy()
+        {
+            return new RegenerationEffector(TargetSelector.GetCopy(), RegenerationStatProvider.GetCopy(), IsCritAvailable);
+        }
     }
 }

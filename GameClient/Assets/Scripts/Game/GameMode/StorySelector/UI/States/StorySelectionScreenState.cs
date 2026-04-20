@@ -47,7 +47,7 @@ namespace Game.GameMode.StorySelector.UI.States
             Sprite sprite = await _storyDatas[0].StoryImage.Load<Sprite>(cancellationToken);
             _storyImage.sprite = sprite;
             
-            Context.StoryID = _storyDatas[_selectedIndex].StoryId;
+            Context.StoryID = _storyDatas[_selectedIndex].StoryId.RuntimeKey.ToString();
         }
 
         private void SwapScreen()
@@ -97,7 +97,7 @@ namespace Game.GameMode.StorySelector.UI.States
                 return;
             }
 
-            Context.StoryID = _storyDatas[_selectedIndex].StoryId;
+            Context.StoryID = _storyDatas[_selectedIndex].StoryId.RuntimeKey.ToString();
             await SwapImageToIndex(_storyDatas, _selectedIndex, cancellationToken);
             
             ToggleButtons(true);

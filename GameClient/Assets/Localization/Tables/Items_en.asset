@@ -66,6 +66,54 @@ MonoBehaviour:
     m_Localized: Runic blade
     m_Metadata:
       m_Items: []
+  - m_Id: 15002569801928704
+    m_Localized: Bandage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705920
+    m_Localized: Ale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705921
+    m_Localized: Healing salve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705922
+    m_Localized: Boards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705923
+    m_Localized: Rum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705924
+    m_Localized: Fire wine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705925
+    m_Localized: Bottled squid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705926
+    m_Localized: Ropes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705927
+    m_Localized: Saw
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705928
+    m_Localized: Med kit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705929
+    m_Localized: Sail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705930
+    m_Localized: Spare planks
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

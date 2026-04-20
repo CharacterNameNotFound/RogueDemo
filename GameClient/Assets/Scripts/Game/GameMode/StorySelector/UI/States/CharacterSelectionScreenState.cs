@@ -1,15 +1,21 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.Controller;
 using Game.GameMode.StorySession.Data;
 using Game.GameMode.StorySession.Data.Character;
 using Game.GameMode.StorySession.Data.Story;
+using Game.GameMode.StorySession.Services.SaveManagement;
 using Game.Utilities.Constants;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
+using Utils.DiscInteraction;
 using Utils.UtilityTypes.AssetReferencing;
+using Utils.UtilityTypes.Result;
 
 namespace Game.GameMode.StorySelector.UI.States
 {
@@ -26,6 +32,7 @@ namespace Game.GameMode.StorySelector.UI.States
 
         private int _selectedIndex;
         
+        private IList<CharacterData> _characterDatasHandle;
         private IList<CharacterData> _characterDatas;
         
         public override async UniTask Initialize(StorySelectorScreenContext context, StorySelectorScreenDependencies dependencies,
@@ -33,34 +40,43 @@ namespace Game.GameMode.StorySelector.UI.States
         {
             await base.Initialize(context, dependencies, cancellationToken);
             
-            _selectCharacter.onClick.AddListener(StartSession);
+            _selectCharacter.onClick.AddListener( () => StartSession().Forget());
             _back.onClick.AddListener(SwapScreen);
             
             _left.onClick.AddListener(() => ChangeToSideAsync(-1, cancellationToken).Forget());
             _right.onClick.AddListener(() => ChangeToSideAsync(1, cancellationToken).Forget());
 
-            _characterDatas = await Addressables.LoadAssetsAsync<CharacterData>(nameof(AddressableTags.CharacterData))
+            _characterDatasHandle = await Addressables.LoadAssetsAsync<CharacterData>(nameof(AddressableTags.CharacterData))
                 .ToUniTask(cancellationToken: cancellationToken);
 
+            _characterDatas = _characterDatasHandle.OrderBy(item => item.Index).ToList();
+            
             Sprite sprite = await _characterDatas[0].CharacterPortrait.Load<Sprite>(cancellationToken);
             _characterPortrait.sprite = sprite;
             
             Context.CharacterID = _characterDatas[_selectedIndex].CharacterId;
         }
         
-        private void StartSession()
+        private async UniTask StartSession()
         {
             StoryStartData storyStartData = new StoryStartData(Context.StoryID, Context.CharacterID);
             StorySessionGameModeInitializationParameters gmParams =
-                new StorySessionGameModeInitializationParameters(storyStartData);
+                new StorySessionGameModeInitializationParameters(storyStartData, false);
 
-            Dependencies.LoadingScreenManager.Show(Application.exitCancellationToken);
+            await Dependencies.LoadingScreenManager.Show(Application.exitCancellationToken);
+
+            GeneralSessionSaveData generalSessionSaveData = new GeneralSessionSaveData(Context.StoryID, Context.CharacterID, Application.version);
+            ProcedureResult result = await Dependencies.GeneralSaveManager.WriteSave(generalSessionSaveData, Application.exitCancellationToken);
+
+            if (result.IsFailure())
+            {
+                throw result.Exception;
+            }
             
             Dependencies.GameStateManager.SwapTopState(
                 Dependencies.SessionGameModeFactory.Create(),
                 initializationParameters: gmParams)
                 .Forget();
-            
         }
 
         private void SwapScreen()
@@ -78,7 +94,7 @@ namespace Game.GameMode.StorySelector.UI.States
 
             Addressables.Release(_characterPortrait.sprite);
             
-            Addressables.Release(_characterDatas);
+            Addressables.Release(_characterDatasHandle);
         }
         
         private async UniTask ChangeToSideAsync(int changeValue, CancellationToken cancellationToken)

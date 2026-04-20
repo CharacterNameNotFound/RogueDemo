@@ -7,6 +7,7 @@ namespace Game.GameMode.StorySession.Data.Character
     public class CharacterData : ScriptableObject
     {
         [field: SerializeField] public string CharacterId { get; private set; }
+        [field: SerializeField] public int Index { get; private set; }
 
         [field: SerializeField] public AssetReferenceSprite CharacterPortrait { get; private set; }
         [field: SerializeField] public AssetReferenceSprite CharacterStorySessionPortrait { get; private set; }

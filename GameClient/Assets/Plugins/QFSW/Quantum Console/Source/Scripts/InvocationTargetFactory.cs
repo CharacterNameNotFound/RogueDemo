@@ -28,7 +28,7 @@ namespace QFSW.QC
                 case MonoTargetType.Single:
                 {
 #if UNITY_6000_0_OR_NEWER
-                    Object target = Object.FindFirstObjectByType(classType);
+                    Object target = Object.FindAnyObjectByType(classType);
 #else
                     Object target = Object.FindObjectOfType(classType);
 #endif
@@ -45,7 +45,7 @@ namespace QFSW.QC
                 case MonoTargetType.All:
                 {
 #if UNITY_6000_0_OR_NEWER
-                    return Object.FindObjectsByType(classType, FindObjectsSortMode.None)
+                    return Object.FindObjectsByType(classType)
 #else
                     return Object.FindObjectsOfType(classType)
 #endif

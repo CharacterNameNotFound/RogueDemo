@@ -17,6 +17,13 @@ namespace Utils.UtilityTypes.AssetReferencing
             await operation.ToUniTask(cancellationToken: cancellationToken);
             return operation.Result;
         }
+        
+        public static async UniTask<T> Load<T>(this object runtimeKey, CancellationToken cancellationToken)
+        {
+            AsyncOperationHandle<T> operation = Addressables.LoadAssetAsync<T>(runtimeKey);
+            await operation.ToUniTask(cancellationToken: cancellationToken);
+            return operation.Result;
+        }
 
         public static async UniTask<T> Instantiate<T>(this AssetReference assetReferenceDto, InstantiationParameters instantiationParameters, CancellationToken cancellationToken)
         {

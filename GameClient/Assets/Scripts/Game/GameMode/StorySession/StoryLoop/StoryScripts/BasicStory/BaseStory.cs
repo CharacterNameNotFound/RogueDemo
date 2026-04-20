@@ -1,10 +1,18 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.Data.Character;
+using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
+using Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization;
+using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection;
+using Game.GameMode.StorySession.StoryLoop.Services.StoryFinalization;
 using Game.GameMode.StorySession.StoryLoop.StoryRoutines;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services;
+using Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.GameSaving;
 using Game.GameMode.StorySession.UI;
 using GameWideSystems.GameSceneManagement;
+using GameWideSystems.InputManager;
 using GameWideSystems.UIManagement;
 using GameWideSystems.UIManagement.UIManagerRequests;
 using UnityEngine;
@@ -22,13 +30,20 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
         private UIManager _uiManager;
         private StorySessionScreenBuilder _storySessionScreenBuilder;
         private GameBoardInitializationRoutine _boardInitializationRoutine;
-        private InitializeStoryServicesRoutine _initializeStoryServicesRoutine;
         private BaseStoryBossSelector _baseStoryBossSelector;
+        private BaseStorySaveManager _baseStorySaveManager;
+        private BaseStoryDayGenerator _baseStoryDayGenerator;
+        private IStoryFinalizer _storyFinalizer;
+        private IEncounterSelector _encounterSelector;
+        private IEncounterPlayer _encounterPlayer;
+        private IItemContainersManager _containersManager;
+        private IItemPresenter _itemPresenter;
+        private ItemManipulationInputLayer _itemManipulationInputLayer;
+        private IInputHost _inputHost;
 
-
-        private StoryInitializationData _storyInitializationData;
         private BaseStoryContext _baseStoryContext;
 
+        // ToDo: initialization will need to sliced somewhat
         [Inject]
         private void InjectDependencies(
             ILoadingScreenManager loadingScreenManager,
@@ -37,8 +52,16 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             UIManager uiManager,
             StorySessionScreenBuilder storySessionScreenBuilder,
             GameBoardInitializationRoutine boardInitializationRoutine,
-            InitializeStoryServicesRoutine initializeStoryServicesRoutine,
-            BaseStoryBossSelector baseStoryBossSelector
+            BaseStoryBossSelector baseStoryBossSelector,
+            BaseStorySaveManager baseStorySaveManager,
+            BaseStoryDayGenerator baseStoryDayGenerator,
+            IStoryFinalizer storyFinalizer,
+            IEncounterSelector encounterSelector,
+            IEncounterPlayer encounterPlayer,
+            IItemContainersManager containersManager,
+            IItemPresenter itemPresenter,
+            ItemManipulationInputLayer itemManipulationInputLayer,
+            IInputHost inputHost
             )
         {
             _loadingScreenManager = loadingScreenManager;
@@ -47,85 +70,72 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             _uiManager = uiManager;
             _storySessionScreenBuilder = storySessionScreenBuilder;
             _boardInitializationRoutine = boardInitializationRoutine;
-            _initializeStoryServicesRoutine = initializeStoryServicesRoutine;
             _baseStoryBossSelector = baseStoryBossSelector;
+            _baseStorySaveManager = baseStorySaveManager;
+            _baseStoryDayGenerator = baseStoryDayGenerator;
+            _storyFinalizer = storyFinalizer;
+            _encounterSelector = encounterSelector;
+            _encounterPlayer = encounterPlayer;
+            _containersManager = containersManager;
+            _itemPresenter = itemPresenter;
+            _itemManipulationInputLayer = itemManipulationInputLayer;
+            _inputHost = inputHost;
         }
 
         public async UniTask Initialize(StoryInitializationData storyInitializationData, CancellationToken cancellationToken)
         {
-            _storyInitializationData = storyInitializationData;
             _baseStoryContext = new BaseStoryContext();
-            
-            _baseStoryContext.CharacterData = await storyInitializationData.CharacterId.Load<CharacterData>(cancellationToken);
-            
-            
-            // Loading game board
-            await _boardInitializationRoutine.Initialize(cancellationToken);
-            
-            // generate object pools
-            await _initializeStoryServicesRoutine.InitializePools(cancellationToken);
-            
-            
-            // generate and save curses
-            // Empty for now
-            
-            
-            // generate encounters
-            await _buildAndRegisterDecksRoutine.BuildAndRegisterEncounters(
-                _baseStoryContext.CharacterData.EncounterSets, 
-                _baseStoryConfigs.EncounterSets, 
-                _baseStoryConfigs, 
-                cancellationToken);
-            
-            
-            // generate decks
-            await _buildAndRegisterDecksRoutine.BuildAndRegistriesItems(
-                _baseStoryConfigs.NeutralItemSets, 
-                _baseStoryContext.CharacterData.ItemSets, 
-                _baseStoryConfigs, 
-                _baseStoryConfigs, 
-                cancellationToken);
-            
 
-            // generate bosses
-            await _baseStoryBossSelector.SelectBosses(_baseStoryConfigs, _baseStoryContext, cancellationToken);
-
-            // save decks, events, bosses
-
-
-            // build first cycle and save
-
-
+            await (storyInitializationData.TryReadSaveFile ? ReadSaveFile(cancellationToken) : GenerateSessionData(storyInitializationData, cancellationToken));
+            
         }
 
         public async UniTask StartStory(CancellationToken cancellationToken)
         {
-            await _uiManager.OpenScreenRequest(_storySessionScreenBuilder, null, out _).Play(cancellationToken);
+            await _uiManager.OpenScreenRequest(_storySessionScreenBuilder, null, out ScreenHolder screen).Play(cancellationToken);
 
-            
-            
+            StorySessionScreenController screenController = (StorySessionScreenController) screen.ScreenBase;
+            await screenController.SetBossImages(_baseStoryContext.Bosses, cancellationToken);
+
             // removing loading screen
             await _loadingScreenManager.Hide(true, cancellationToken);
             //////////////////////////
-            
+
+
             // playing bosses animation
+            await screenController.PlayBossIntro(cancellationToken);
             
-            
-            // play entrance animation
-            
-            
-            
+            // starting game loop from game mode
         }
+        
 
-        public UniTask Load(CancellationToken cancellationToken)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public UniTask Loop(CancellationToken cancellationToken)
+        public async UniTask Loop(CancellationToken cancellationToken)
         {
             // save each cycle
-            throw new System.NotImplementedException();
+            do
+            {
+                _itemManipulationInputLayer.SetActive(true);
+                int turn = _baseStoryContext.Cycle * _baseStoryConfigs.StoryDayLength + _baseStoryContext.Step;
+                int selectedEncounterIndex = await _encounterSelector.StartEncounterSelection(_baseStoryContext.StoryEncounters[turn], cancellationToken);
+                string encounterId = _baseStoryContext.StoryEncounters[turn][selectedEncounterIndex];
+
+                await _encounterPlayer.PlayEncounter(encounterId, _baseStoryContext, cancellationToken);
+
+                // updating turn counters
+                _baseStoryContext.Step++;
+
+                if (_baseStoryContext.Step == _baseStoryConfigs.StoryDayLength)
+                {
+                    _baseStoryContext.Step = 0;
+                    _baseStoryContext.Cycle++;
+                    
+                    _itemManipulationInputLayer.SetActive(false);
+                    await _baseStorySaveManager.Save(_baseStoryContext, cancellationToken);
+                    _itemManipulationInputLayer.SetActive(true);
+                }
+
+            } while (!_storyFinalizer.IsFinalizationRequested());
+            _itemManipulationInputLayer.SetActive(false);
         }
 
         public UniTask Finish(CancellationToken cancellationToken)
@@ -139,6 +149,76 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             
             return UniTask.CompletedTask;
         }
+        
+        
+        private async UniTask GenerateSessionData(
+            StoryInitializationData storyInitializationData,
+            CancellationToken cancellationToken)
+        {
+            _baseStoryContext.CharacterData = await storyInitializationData.CharacterId.Load<CharacterData>(cancellationToken);
+            
+            // generate and save curses
+            // Empty for now
+            
+            
+            // generate encounters decks
+            await _buildAndRegisterDecksRoutine.BuildAndRegisterEncounters(
+                _baseStoryContext.CharacterData.EncounterSets, 
+                _baseStoryConfigs.EncounterSets, 
+                _baseStoryConfigs, 
+                cancellationToken);
+            
+            
+            // generate item decks
+            await _buildAndRegisterDecksRoutine.BuildAndRegistriesItems(
+                _baseStoryConfigs.NeutralItemSets, 
+                _baseStoryContext.CharacterData.ItemSets, 
+                _baseStoryConfigs, 
+                _baseStoryConfigs, 
+                cancellationToken);
+            
+
+            // generate bosses
+            await _baseStoryBossSelector.SelectBosses(_baseStoryConfigs, _baseStoryContext, cancellationToken);
+
+            // build first cycle
+            _baseStoryDayGenerator.GenerateFirstDayEntry(_baseStoryContext, _baseStoryConfigs);
+            
+            
+            
+            // Unity managed systems
+            await InitializeUnityManagedSystems(cancellationToken);
+            
+            
+            // save decks, events, bosses
+            await _baseStorySaveManager.Save(_baseStoryContext, cancellationToken);
+        }
+
+        private async UniTask ReadSaveFile(CancellationToken cancellationToken)
+        {
+            await _baseStorySaveManager.Load(_baseStoryContext, cancellationToken);
+            
+            // Unity managed systems
+            await InitializeUnityManagedSystems(cancellationToken);
+            
+        }
+
+        private async UniTask InitializeUnityManagedSystems(CancellationToken cancellationToken)
+        {
+            // Loading game board
+            await _boardInitializationRoutine.Initialize(_baseStoryContext.CharacterData, cancellationToken);
+            
+            // generate object pools
+            await _containersManager.Initialize(cancellationToken);
+            await _itemPresenter.Initialize(cancellationToken);
+            
+            // generating encounter selection related
+            await _encounterSelector.Initialize(cancellationToken);
+            
+            _inputHost.AddInputLayer(_itemManipulationInputLayer);
+            
+        }
+        
         
     }
 }

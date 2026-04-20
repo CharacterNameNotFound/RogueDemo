@@ -1,5 +1,6 @@
 using Game.GameMode.StorySelector.Controller;
-using Game.GameSaveSystem;
+using Game.GameMode.StorySession.Controller;
+using Game.GameMode.StorySession.Services.SaveManagement;
 using GameWideSystems.GameSceneManagement;
 using GameWideSystems.GameStateManagement;
 using GameWideSystems.InputManager;
@@ -12,22 +13,25 @@ namespace Game.GameMode.MainHub.UI.Screen
         public InputControlFacade InputControlFacade { get; }
         public GameStateManager GameStateManager { get;}
         public ILoadingScreenManager LoadingScreenManager { get; }
-        public IBlobManager BlobManager { get; }
         public StorySelectorGameMode.Factory StorySelectorGameModeFactory { get; }
+        public StorySessionGameMode.Factory StorySessionGameModeFactory { get; }
+        public IGeneralSaveManager GeneralSaveManager { get; }
 
 
         public MainHubScreenDependencies(
             InputControlFacade inputControlFacade, 
             GameStateManager gameStateManager, 
             ILoadingScreenManager loadingScreenManager, 
-            IBlobManager blobManager, 
-            StorySelectorGameMode.Factory storySelectorGameModeFactory)
+            StorySelectorGameMode.Factory storySelectorGameModeFactory, 
+            IGeneralSaveManager generalSaveManager, 
+            StorySessionGameMode.Factory storySessionGameModeFactory)
         {
             InputControlFacade = inputControlFacade;
             GameStateManager = gameStateManager;
             LoadingScreenManager = loadingScreenManager;
-            BlobManager = blobManager;
             StorySelectorGameModeFactory = storySelectorGameModeFactory;
+            GeneralSaveManager = generalSaveManager;
+            StorySessionGameModeFactory = storySessionGameModeFactory;
         }
     }
 }

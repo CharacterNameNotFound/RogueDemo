@@ -25,7 +25,7 @@ namespace QFSW.QC.Suggestors
         protected override IEnumerable<string> GetItems(SuggestionContext context, SuggestorOptions options)
         {
 #if UNITY_6000_0_OR_NEWER
-            return Object.FindObjectsByType(context.TargetType, FindObjectsSortMode.None)
+            return Object.FindObjectsByType(context.TargetType)
 #else
             return Object.FindObjectsOfType(context.TargetType)
 #endif

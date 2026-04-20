@@ -20,8 +20,8 @@ namespace Game.ManagementSystems.LookUpTableManagement
             _lookUpTableConfigProvider = lookUpTableConfigProvider;
         }
 
-        // for now I will just fill it out and hold open db all the time, as it is core of the game anyway
-        public async UniTask<ProcedureResult> LoadLookUpTables(CancellationToken cancellationToken)
+        // for now, I will just fill it out and hold open db all the time, as it is core of the game anyway
+        public UniTask<ProcedureResult> LoadLookUpTables(CancellationToken cancellationToken)
         {
             string folderPath = _lookUpTableConfigProvider.GetLookUpTablesFolderPath();
             
@@ -56,7 +56,7 @@ namespace Game.ManagementSystems.LookUpTableManagement
                 throw;
             }
 
-            return ProcedureResultBuilder.Success();
+            return ProcedureResultBuilder.Success().AsUniTask();
         }
 
         public RequestResult<SQLiteAsyncConnection> GetAsyncLookUpDB(LookUpTableGroup tableGroup, CancellationToken cancellationToken)

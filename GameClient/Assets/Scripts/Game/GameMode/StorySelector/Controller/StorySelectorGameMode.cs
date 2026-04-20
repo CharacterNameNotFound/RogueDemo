@@ -28,9 +28,9 @@ namespace Game.GameMode.StorySelector.Controller
         }
 
 
-        public UniTask Initialize(GameStateInitializationParameters parameters, CancellationToken cancellationToken = default)
+        public UniTask<bool> Initialize(GameStateInitializationParameters parameters, CancellationToken cancellationToken = default)
         {
-            return UniTask.CompletedTask;
+            return UniTask.FromResult(true);
         }
 
         public async UniTask Start(GameStateStartParameters parameters, CancellationToken cancellationToken = default)

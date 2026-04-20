@@ -23,6 +23,14 @@ MonoBehaviour:
     m_Key: character_selection_screen
     m_Metadata:
       m_Items: []
+  - m_Id: 34106306562560000
+    m_Key: boss_screen_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34106306604503040
+    m_Key: hide_bosses_button_text
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

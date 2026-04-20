@@ -20,15 +20,22 @@ MonoBehaviour:
     Key: small_character_items_description
     Category: 5
   <Portrait>k__BackingField:
-    m_AssetGUID: 650a52e6a1dd576408770de686f0aa55
-    m_SubObjectName: Merchant_0
+    m_AssetGUID: 72161438f85ce4943b38dfbf8cc2050d
+    m_SubObjectName: SmallMerchant_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
   <IsRepeatable>k__BackingField: 1
+  MerchantPortrait:
+    m_AssetGUID: ed593b67345e94e43a35abf9df0d52e4
+    m_SubObjectName: Event_1_portrait_0
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1
   <CountSelector>k__BackingField: 0
-  <ItemCount>k__BackingField: 12
+  <ItemCount>k__BackingField: 3
   <BoardSlotCount>k__BackingField: 0
   <OnlyExactTagSequence>k__BackingField: 0
   <IncludedGroups>k__BackingField: 1

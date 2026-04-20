@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
@@ -9,7 +10,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization
 {
     public class ItemRegistry : IItemRegistry
     {
-        private Dictionary<string, Item> _items = new();
+        private Dictionary<string, Item> _items;
         
         private IItemLoader _itemLoader;
 
@@ -21,6 +22,13 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization
         public void Initialize(Dictionary<string, Item> items)
         {
             _items = items;
+        }
+
+        public UniTask InitializeWithIds(IEnumerable<string> ids, CancellationToken cancellationToken)
+        {
+            _items = new Dictionary<string, Item>(ids.Count());
+
+            return AppendItemsById(ids, cancellationToken);
         }
 
         public bool TryGetById(string id, out Item item)
@@ -52,7 +60,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization
         }
 
         /// <summary>
-        /// This metod should be used with caution, if you want to make multiple parallel calls, use AppendItemsById, to avoid concurecy aroud dictionary
+        /// This method should be used with caution, if you want to make multiple parallel calls, use AppendItemsById, to avoid concurrency around dictionary
         /// </summary>
         public async UniTask<RequestResult<bool>> AppendItemById(string id, CancellationToken cancellationToken)
         {
@@ -112,11 +120,16 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization
             return _items.TryAdd(item.ItemId, item);
         }
         
+        public List<string> GetAllRegisteredIds()
+        {
+            return _items.Keys.ToList();
+        }
 
         public void CleanUp()
         {
             
         }
+
         
     }
 }

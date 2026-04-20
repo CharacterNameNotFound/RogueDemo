@@ -13,5 +13,10 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Effecto
             DamageStatProvider = damageStatProvider;
             IsCritAvailable = isCritAvailable;
         }
+
+        public override Effector GetCopy()
+        {
+            return new DealDamageEffector(TargetSelector.GetCopy(), DamageStatProvider.GetCopy(), IsCritAvailable);
+        }
     }
 }

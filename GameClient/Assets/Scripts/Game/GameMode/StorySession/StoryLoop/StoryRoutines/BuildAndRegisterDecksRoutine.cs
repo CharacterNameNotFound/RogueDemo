@@ -4,13 +4,15 @@ using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.Data.Items;
-using Game.GameMode.StorySession.GameBoard.Simulation.Encounters;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
+using Game.GameMode.StorySession.StoryLoop.Encounters;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
 using Game.GameMode.StorySession.StoryLoop.StoryRoutines.DataProviders;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs;
 using Game.GameMode.StorySession.Utilities;
+using Game.GameMode.StorySession.Utilities.Decks;
+using GameWideSystems.RNGManagement;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -26,7 +28,8 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryRoutines
 
         private EncounterDeckOrganizer _encounterDeckOrganizer;
         private IEncounterRegistry _encounterRegistry;
-        
+
+        private IRNGManager _rngManager;
         private JsonSerializerSettings _jsonSerializerSettings;
 
         public BuildAndRegisterDecksRoutine(
@@ -34,13 +37,16 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryRoutines
             IItemRegistry itemRegistry, 
             JsonSerializerSettings jsonSerializerSettings, 
             EncounterDeckOrganizer encounterDeckOrganizer, 
-            IEncounterRegistry encounterRegistry)
+            IEncounterRegistry encounterRegistry, 
+            IRNGManager rngManager
+            )
         {
             _itemDeckOrganizer = itemDeckOrganizer;
             _itemRegistry = itemRegistry;
             _jsonSerializerSettings = jsonSerializerSettings;
             _encounterDeckOrganizer = encounterDeckOrganizer;
             _encounterRegistry = encounterRegistry;
+            _rngManager = rngManager;
         }
 
         public async UniTask BuildAndRegistriesItems(
@@ -96,12 +102,14 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryRoutines
                 
             }
 
+            IRNGProvider randomProvider = _rngManager.GetRandomProvider(RNGGroup.CardShuffler);
             Dictionary<ItemRarity, IDeck<string>> itemDecks = decks.ToDictionary(
                     item => item.Key, 
-                    item => (IDeck<string>) new ItemDeck(item.Value)
+                    item => (IDeck<string>) new ItemDeck(item.Value, randomProvider)
                     );
 
             _itemDeckOrganizer.Initialize(itemDecks);
+            _itemDeckOrganizer.ShuffleAll();
         }
 
         public async UniTask BuildAndRegisterEncounters(
@@ -127,7 +135,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryRoutines
 
             Encounter[] encounters = await UniTask.WhenAll(encounterTasks).AttachExternalCancellation(cancellationToken);
             
-            _encounterRegistry.Register(encounters.ToList());
+            _encounterRegistry.Initialize(encounters.ToList());
             
             // we no longer need encounter sets, so we can release them
             foreach (EncounterSet item in itemSets)
@@ -150,12 +158,14 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryRoutines
                 deck.Add(item.EncounterId);
             }
 
+            IRNGProvider randomProvider = _rngManager.GetRandomProvider(RNGGroup.CardShuffler);
             Dictionary<EncounterType, IDeck<string>> encounterDeck = decks.ToDictionary(
                     item => item.Key, 
-                    item => (IDeck<string>) new EncounterDeck(item.Value)
+                    item => (IDeck<string>) new EncounterDeck(item.Value, randomProvider)
                     );
 
             _encounterDeckOrganizer.Initialize(encounterDeck);
+            _encounterDeckOrganizer.ShuffleAll();
         }
         
 

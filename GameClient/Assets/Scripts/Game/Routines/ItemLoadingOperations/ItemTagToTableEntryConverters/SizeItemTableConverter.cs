@@ -9,7 +9,7 @@ namespace Game.Routines.ItemLoadingOperations.ItemTagToTableEntryConverters
         
         public bool TryGetInsertObject(Item item, out object insert)
         {
-            insert = new BasicsItemLookUpEntry(item.ItemId, item.ItemSize, item.ItemSetId is null);
+            insert = new BasicsItemLookUpEntry(item.ItemId, item.ItemSize, item.ItemSetId is null, (int) item.ItemRarity);
 
             return true;
         }

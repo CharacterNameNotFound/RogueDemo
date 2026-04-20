@@ -13,5 +13,10 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Effecto
             HealStatProvider = healStatProvider;
             IsCritAvailable = isCritAvailable;
         }
+
+        public override Effector GetCopy()
+        {
+            return new HealEffector(TargetSelector.GetCopy(), HealStatProvider.GetCopy(), IsCritAvailable);
+        }
     }
 }

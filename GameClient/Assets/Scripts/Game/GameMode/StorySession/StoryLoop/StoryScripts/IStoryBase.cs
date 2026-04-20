@@ -7,7 +7,6 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts
     {
         public UniTask Initialize(StoryInitializationData storyInitializationData, CancellationToken cancellationToken);
         public UniTask StartStory(CancellationToken cancellationToken);
-        public UniTask Load(CancellationToken cancellationToken);
         public UniTask Loop(CancellationToken cancellationToken);
         public UniTask Finish(CancellationToken cancellationToken);
         public UniTask CleanUp(CancellationToken cancellationToken);

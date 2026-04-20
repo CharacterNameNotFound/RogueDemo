@@ -13,5 +13,10 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Effecto
             ShieldStatProvider = shieldStatProvider;
             IsCritAvailable = isCritAvailable;
         }
+
+        public override Effector GetCopy()
+        {
+            return new ShieldEffector(TargetSelector.GetCopy(), ShieldStatProvider.GetCopy(), IsCritAvailable);
+        }
     }
 }

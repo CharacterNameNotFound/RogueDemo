@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
+using Newtonsoft.Json;
 using Utils.UtilityTypes.Result;
 
 namespace Utils.DiscInteraction
@@ -15,7 +15,7 @@ namespace Utils.DiscInteraction
         /// <summary>
         /// Read all files in directory
         /// </summary>
-        public static async UniTask<RequestResult<IEnumerable<T>>> ReadAndConvertAllJson<T>(string path, CancellationToken cancellationToken)
+        public static async UniTask<RequestResult<IEnumerable<T>>> ReadAndConvertAllJson<T>(string path, JsonSerializerSettings settings, CancellationToken cancellationToken)
         {
             try
             {
@@ -30,7 +30,7 @@ namespace Utils.DiscInteraction
                 foreach (string item in files)
                 {
                     string json = await File.ReadAllTextAsync(item, Encoding.Unicode, cancellationToken).AsUniTask();
-                    result.Add(JsonUtility.FromJson<T>(json));
+                    result.Add(JsonConvert.DeserializeObject<T>(json, settings));
                 }
                 
                 return result.AsEnumerable().AsRequestResult();
@@ -41,12 +41,12 @@ namespace Utils.DiscInteraction
             }
         }
         
-        public static async UniTask<RequestResult<T>> ReadAndConvertJson<T>(string path, CancellationToken cancellationToken)
+        public static async UniTask<RequestResult<T>> ReadAndConvertJson<T>(string path, JsonSerializerSettings settings, CancellationToken cancellationToken)
         {
             try
             {
                 string json = await File.ReadAllTextAsync(path, Encoding.Unicode, cancellationToken).AsUniTask();
-                return JsonUtility.FromJson<T>(json).AsRequestResult();
+                return JsonConvert.DeserializeObject<T>(json, settings).AsRequestResult();
             }
             catch (Exception exception)
             {

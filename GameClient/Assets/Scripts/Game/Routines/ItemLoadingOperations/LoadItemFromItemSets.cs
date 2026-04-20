@@ -80,7 +80,7 @@ namespace Game.Routines.ItemLoadingOperations
 
             await dbConnection.CreateTablesAsync(types: tableTypes.ToArray())
                 .AsUniTask()
-                .AttachExternalCancellation(cancellationToken);;
+                .AttachExternalCancellation(cancellationToken);
         }
 
         private async UniTask LoadAndRegisterItems(string key, SQLiteAsyncConnection dbConnection, List<object> inserts, CancellationToken cancellationToken)

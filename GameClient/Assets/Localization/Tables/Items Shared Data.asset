@@ -63,6 +63,54 @@ MonoBehaviour:
     m_Key: runic_blade
     m_Metadata:
       m_Items: []
+  - m_Id: 15002569801928704
+    m_Key: bandage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705920
+    m_Key: ale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705921
+    m_Key: healing_salve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705922
+    m_Key: boards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705923
+    m_Key: rum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705924
+    m_Key: fire_wine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705925
+    m_Key: bottled_squid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705926
+    m_Key: rope
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705927
+    m_Key: saw
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705928
+    m_Key: med_kit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705929
+    m_Key: sail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002569818705930
+    m_Key: spare_planks
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

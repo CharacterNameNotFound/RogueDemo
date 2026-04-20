@@ -39,6 +39,38 @@ MonoBehaviour:
     m_Key: large_character_items_description
     m_Metadata:
       m_Items: []
+  - m_Id: 1831705631723520
+    m_Key: weapon_character_items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1831705661083648
+    m_Key: weapon_character_items_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1831705661083649
+    m_Key: shield_character_items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1831705661083650
+    m_Key: shield_character_items_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1831705661083651
+    m_Key: healing_character_items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1831705661083652
+    m_Key: healing_character_items_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1831705661083653
+    m_Key: fire_character_items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1831705661083654
+    m_Key: fire_character_items_description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

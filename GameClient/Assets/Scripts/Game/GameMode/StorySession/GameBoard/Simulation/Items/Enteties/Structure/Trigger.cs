@@ -2,6 +2,6 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structu
 {
     public abstract class Trigger
     {
-        
+        public abstract Trigger GetCopy();
     }
 }

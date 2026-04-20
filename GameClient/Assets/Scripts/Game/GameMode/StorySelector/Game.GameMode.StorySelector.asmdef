@@ -17,7 +17,10 @@
         "GameWideSystems.GameSceneManagement",
         "GameWideSystems.InputManager",
         "GUID:cefdda83e1ef4f3ea37451fc897980e4",
-        "GUID:0a8dc079ec64743408f8c7d72bd078dc"
+        "GUID:0a8dc079ec64743408f8c7d72bd078dc",
+        "GUID:7d84e5452f310464db6cb792848fcc15",
+        "GUID:67a9c38b0010d6249a899dac1e593911",
+        "GUID:b9e8ecda759a4e5fb0c515f254e0cb21"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

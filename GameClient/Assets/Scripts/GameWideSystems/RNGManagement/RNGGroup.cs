@@ -4,6 +4,7 @@ namespace GameWideSystems.RNGManagement
     {
         Default,
         CardShuffler,
-        Battle
+        Battle,
+        Encounter
     }
 }

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533f34fec0174fa68db5ccb3df582df9, type: 3}
+  m_Name: ItemPresenterConfigs
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting.ItemPresenterConfigs
+  <BronzeFrame>k__BackingField:
+    m_AssetGUID: 7061df58904746c46b7443e32bc03f1e
+    m_SubObjectName: Bronze_frame_0
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1
+  <SilverFrame>k__BackingField:
+    m_AssetGUID: c86286d2363076542a670e767422f3a0
+    m_SubObjectName: Silver_frame_0
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1
+  <GoldenFrame>k__BackingField:
+    m_AssetGUID: 2b885b4eeb952da4692416bef10d4f87
+    m_SubObjectName: Golden_frame_0
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1
+  <DiamondFrame>k__BackingField:
+    m_AssetGUID: c9f4fab164cc0b34d9fbf1810d3ee372
+    m_SubObjectName: Diamond_frame_0
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1
+  <LegendaryFrame>k__BackingField:
+    m_AssetGUID: 936afb0e5693c124fa84dc70dadbc18a
+    m_SubObjectName: LegendaryFrame_frame_0
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1

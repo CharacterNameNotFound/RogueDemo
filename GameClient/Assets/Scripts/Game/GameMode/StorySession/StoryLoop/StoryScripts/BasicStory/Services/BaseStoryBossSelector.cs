@@ -1,6 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.GameBoard.Simulation.Encounters;
+using Game.GameMode.StorySession.StoryLoop.Encounters;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
 using GameWideSystems.RNGManagement;
 using Utils.UtilityTypes.AssetReferencing;
@@ -24,19 +24,19 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services
         {
             IRNGProvider rngGenerator = _rngManager.GetRandomProvider(RNGGroup.Default);
 
-            baseStoryContext.Bosses = new string[3];
+            baseStoryContext.Bosses = new BattleEncounter[3];
 
             int firstBossKey = rngGenerator.Range(0, baseStoryConfigs.FirstBossEncounters.Count);
             int secondBossKey = rngGenerator.Range(0, baseStoryConfigs.SecondBossEncounters.Count);
             int thirdBossKey = rngGenerator.Range(0, baseStoryConfigs.ThirdBossEncounters.Count);
 
-            Encounter firstBoss = await baseStoryConfigs.FirstBossEncounters[firstBossKey].Load<Encounter>(cancellationToken);
-            Encounter secondBoss = await baseStoryConfigs.FirstBossEncounters[secondBossKey].Load<Encounter>(cancellationToken);
-            Encounter thirdBoss = await baseStoryConfigs.FirstBossEncounters[thirdBossKey].Load<Encounter>(cancellationToken);
+            BattleEncounter firstBoss = await baseStoryConfigs.FirstBossEncounters[firstBossKey].Load<BattleEncounter>(cancellationToken);
+            BattleEncounter secondBoss = await baseStoryConfigs.SecondBossEncounters[secondBossKey].Load<BattleEncounter>(cancellationToken);
+            BattleEncounter thirdBoss = await baseStoryConfigs.ThirdBossEncounters[thirdBossKey].Load<BattleEncounter>(cancellationToken);
 
-            baseStoryContext.Bosses[0] = firstBoss.EncounterId;
-            baseStoryContext.Bosses[1] = secondBoss.EncounterId;
-            baseStoryContext.Bosses[2] = thirdBoss.EncounterId;
+            baseStoryContext.Bosses[0] = firstBoss;
+            baseStoryContext.Bosses[1] = secondBoss;
+            baseStoryContext.Bosses[2] = thirdBoss;
 
             _encounterRegistry.Append(firstBoss);
             _encounterRegistry.Append(secondBoss);

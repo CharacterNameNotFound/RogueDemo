@@ -31,7 +31,7 @@ namespace QFSW.QC.Extras
             if (!_consoleInstance)
             {
 #if UNITY_6000_0_OR_NEWER
-                _consoleInstance = FindFirstObjectByType<QuantumConsole>();
+                _consoleInstance = FindAnyObjectByType<QuantumConsole>();
 #else
                 _consoleInstance = FindObjectOfType<QuantumConsole>();
 #endif

@@ -13,6 +13,10 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Effecto
             FireStatProvider = fireStatProvider;
             IsCritAvailable = isCritAvailable;
         }
-        
+
+        public override Effector GetCopy()
+        {
+            return new FireEffector(TargetSelector.GetCopy(), FireStatProvider.GetCopy(), IsCritAvailable);
+        }
     }
 }

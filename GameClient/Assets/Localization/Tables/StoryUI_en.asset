@@ -26,6 +26,14 @@ MonoBehaviour:
     m_Localized: Character selection screen
     m_Metadata:
       m_Items: []
+  - m_Id: 34106306562560000
+    m_Localized: Bosses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34106306604503040
+    m_Localized: Hide
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

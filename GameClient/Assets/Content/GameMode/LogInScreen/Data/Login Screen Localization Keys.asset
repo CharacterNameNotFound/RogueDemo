@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daea81f33214406dafcf5e9cb3ba1d09, type: 3}
   m_Name: Login Screen Localization Keys
   m_EditorClassIdentifier: 
+  <LocalizationGroup>k__BackingField: 1
   <EmptyProfileName>k__BackingField: empty_profile_name
   <ProfileNameAlreadyInUse>k__BackingField: profile_name_in_use
   <InvalidProfileNameSymbols>k__BackingField: invalid_profile_name

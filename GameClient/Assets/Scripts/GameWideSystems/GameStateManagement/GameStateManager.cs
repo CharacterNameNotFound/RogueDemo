@@ -121,7 +121,18 @@ namespace GameWideSystems.GameStateManagement
             }
 
             _gameStates.Push(new GameStateToken(gameStateController));
-            await gameStateController.Initialize(initializationParameters, cancellationToken);
+            bool isInitializedSuccessful = await gameStateController.Initialize(initializationParameters, cancellationToken);
+
+            if (!isInitializedSuccessful)
+            {
+                if (lockInput)
+                {
+                    _inputControlFacade.SetInputsAvailable(true);
+                }
+                
+                return;
+            }
+            
             await gameStateController.Start(startParameters, cancellationToken);
             
             if (lockInput)

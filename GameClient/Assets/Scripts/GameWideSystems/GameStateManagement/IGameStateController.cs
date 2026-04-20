@@ -8,7 +8,7 @@ namespace GameWideSystems.GameStateManagement
         /// <summary>
         /// Use for data loading
         /// </summary>
-        public UniTask Initialize(GameStateInitializationParameters parameters, CancellationToken cancellationToken = default);
+        public UniTask<bool> Initialize(GameStateInitializationParameters parameters, CancellationToken cancellationToken = default);
         /// <summary>
         /// Use for view related operations
         /// </summary>

@@ -1,6 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.GameBoard.Simulation.Encounters;
+using Game.GameMode.StorySession.StoryLoop.Encounters;
 using Utils.UtilityTypes.AssetReferencing;
 using Utils.UtilityTypes.Result;
 

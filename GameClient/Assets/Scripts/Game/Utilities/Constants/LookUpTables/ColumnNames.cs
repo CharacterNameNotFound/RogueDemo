@@ -5,6 +5,7 @@ namespace Game.Utilities.Constants.LookUpTables
         public const string Id = "id";
         public const string ItemSize = "item_size";
         public const string IsNeutral = "is_neutral";
+        public const string Rarity = "rarity";
         public const string Damage = "damage";
         public const string Shield = "shield";
         public const string Healing = "healing";

@@ -1,5 +1,4 @@
-﻿using Game.GameSaveSystem;
-using GameWideSystems.AudioManager;
+﻿using GameWideSystems.AudioManager;
 using GameWideSystems.CameraManagement;
 using GameWideSystems.GameSceneManagement;
 using GameWideSystems.GameSceneManager;
@@ -46,9 +45,7 @@ namespace Structure.GameInstalling
         private void InstallSession()
         {
             Container.Bind<SessionHolder>().To<SessionHolder>().AsSingle();
-            Container.Bind<IBlobManager>().To<BlobManager>().AsSingle();
-            Container.Bind<BlobReader>().To<BlobReader>().AsSingle();
-            Container.Bind<BlobWriter>().To<BlobWriter>().AsSingle();
+
         }
 
         private void InstallUIManager()

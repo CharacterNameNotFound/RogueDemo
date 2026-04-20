@@ -31,10 +31,10 @@ namespace Game.GameMode.Login.ModeController
             _loadingScreenManager = loadingScreenManager;
         }
 
-        public UniTask Initialize(GameStateInitializationParameters parameters,
+        public UniTask<bool> Initialize(GameStateInitializationParameters parameters,
             CancellationToken cancellationToken)
         {
-            return UniTask.CompletedTask;
+            return UniTask.FromResult(true);
         }
 
         public async UniTask Start(GameStateStartParameters parameters, CancellationToken cancellationToken = default)

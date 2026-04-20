@@ -2,6 +2,6 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structu
 {
     public abstract class TargetSelector
     {
-        
+        public abstract TargetSelector GetCopy();
     }
 }

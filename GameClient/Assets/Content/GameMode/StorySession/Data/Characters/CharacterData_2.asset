@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CharacterData_2
   m_EditorClassIdentifier: Game.GameMode.StorySelector::Game.GameMode.StorySession.Data.CharacterData
   <CharacterId>k__BackingField: character_data/character_2
+  <Index>k__BackingField: 2
   <CharacterPortrait>k__BackingField:
     m_AssetGUID: 2d519ee61599bb54287d8a8ff2f48219
     m_SubObjectName: character_2_portret_0

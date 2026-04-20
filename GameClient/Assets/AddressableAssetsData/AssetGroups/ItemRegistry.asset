@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: fb37356d34ecd804fabd291ed2d7a5a6
   m_SerializeEntries:
   - m_GUID: 069e55171daeb444a88e3dd3e3937dad
-    m_Address: item/dagger_bronze
+    m_Address: item/dagger_diamond
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 26940f5a50f0bdb4b93c9f60b40a1046
-    m_Address: item/practice_sword_bronze
+    m_Address: item/practice_sword_silver
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 70e1b56a48015f743ac045420fe6659e
-    m_Address: item/ale_bronze
+    m_Address: item/rum_bronze
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 990e3f301f461f047b5254074bdec06c
-    m_Address: item/practice_sword_bronze
+    m_Address: item/practice_sword_diamond
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a56e217a2be590d4084c3b1986492337
-    m_Address: item/practice_sword_bronze
+    m_Address: item/practice_sword_gold
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -501,4 +501,3 @@ MonoBehaviour:
     m_Schemas:
     - {fileID: 11400000, guid: cb126b7fca606344f998c129dba0e5bf, type: 2}
     - {fileID: 11400000, guid: 94622370f554771428da6411cbba2438, type: 2}
-    - {fileID: 11400000, guid: 63d8af39a6325414591867e250585589, type: 2}

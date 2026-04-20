@@ -15,8 +15,18 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: a5e832f6ca4222c45b2b979a8d681a1a
   m_SerializeEntries:
+  - m_GUID: 023a42956a851774fa91d50a0bf8a7a6
+    m_Address: Assets/Sprites/Story/Encounter/Merchants/LargeMerchant.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 033ec9a3aeaf71b42b0a310ed9e8f3bf
     m_Address: Tooltips/TextTooltip.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0bde09e592a536849bc6604e42d390fd
+    m_Address: Assets/Content/GameMode/StorySession/Prefabs/EncounterSelectorObject.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -45,6 +55,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1ef4f695064059342a7193a4b70c4a33
+    m_Address: encounter/healing_character_items
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 24306bba513c99e489afeec0c3fda081
     m_Address: Assets/GameConfigurations/Structure/Prefabs
     m_ReadOnly: 0
@@ -52,6 +67,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 270953e055a8c5e4c93e829958324532
     m_Address: encounter/healing_boss_circle_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b885b4eeb952da4692416bef10d4f87
+    m_Address: Assets/Sprites/Story/Items/Special/Golden_frame.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 345093790dc50544898f457601e23cc6
+    m_Address: Assets/Sprites/Story/Encounter/Merchants/WeaponMerchant.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -70,6 +95,26 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7061df58904746c46b7443e32bc03f1e
+    m_Address: Assets/Sprites/Story/Items/Special/Bronze_frame.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 72161438f85ce4943b38dfbf8cc2050d
+    m_Address: Assets/Sprites/Story/Encounter/Merchants/SmallMerchant.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7caed23dcc6417048b680424251d0fb6
+    m_Address: Assets/Sprites/Story/Encounter/Merchants/ShieldMerchant.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8008623ab8203c6468c25a8c2b92e8cb
+    m_Address: Assets/Sprites/Story/Encounter/Merchants/HealingMerchant.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 81949eab3025dbe489f1362e54de93f3
     m_Address: encounter/weapon_boss_circle_2
     m_ReadOnly: 0
@@ -80,13 +125,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 936afb0e5693c124fa84dc70dadbc18a
+    m_Address: Assets/Sprites/Story/Items/Special/Legendary_frame.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 95cda7957c086e746bb1797b9a873766
     m_Address: encounter_sets/merchant_encounter_set
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9affb2d71c6a51443ad6e398924d83a2
+    m_Address: Assets/Sprites/Story/Encounter/Merchants/MediumMerchant.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9c9edd22259c7b242a49a1fb0bf523a1
     m_Address: GameMode/MainHub/MainHub.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f4555ada7afa464e92b87f58342548f
+    m_Address: encounter/weapon_character_items
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -130,6 +190,31 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c86286d2363076542a670e767422f3a0
+    m_Address: Assets/Sprites/Story/Items/Special/Silver_frame.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9f4fab164cc0b34d9fbf1810d3ee372
+    m_Address: Assets/Sprites/Story/Items/Special/Diamond_frame.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d2cb653af0ccba74c88ba9c5bebdfa59
+    m_Address: encounter/shield_character_items
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d5bb714e7ad2978479de939d2920b699
+    m_Address: Assets/Sprites/Story/Encounter/Merchants/FireMerchant.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ddd0724b15556bd4a97e55e85cc9e482
+    m_Address: encounter/fire_character_items
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e2309db1ab1721340932e49b6ec04158
     m_Address: encounter/weapon_boss_circle_1
     m_ReadOnly: 0
@@ -142,6 +227,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: eacf4f1a11a91fd4793d06c27a256974
     m_Address: encounter/burn_boss_circle_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed593b67345e94e43a35abf9df0d52e4
+    m_Address: Assets/Sprites/Story/Events/Event_1_portrait.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

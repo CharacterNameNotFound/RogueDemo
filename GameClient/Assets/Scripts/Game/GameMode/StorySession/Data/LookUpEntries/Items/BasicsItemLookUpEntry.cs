@@ -15,11 +15,15 @@ namespace Game.GameMode.StorySession.Data.LookUpEntries.Items
         [Column(ColumnNames.IsNeutral)]
         public bool IsNeutral { get; set; }
 
-        public BasicsItemLookUpEntry(string itemId, int size, bool isNeutral)
+        [Column(ColumnNames.Rarity)] 
+        public int Rarity { get; set; }
+
+        public BasicsItemLookUpEntry(string itemId, int size, bool isNeutral, int rarity)
         {
             ItemId = itemId;
             Size = size;
             IsNeutral = isNeutral;
+            Rarity = rarity;
         }
         
     }

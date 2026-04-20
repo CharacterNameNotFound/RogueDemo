@@ -13,5 +13,10 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Effecto
             PoisonStatProvider = poisonStatProvider;
             IsCritAvailable = isCritAvailable;
         }
+
+        public override Effector GetCopy()
+        {
+            return new PoisonEffector(TargetSelector.GetCopy(), PoisonStatProvider.GetCopy(), IsCritAvailable);
+        }
     }
 }

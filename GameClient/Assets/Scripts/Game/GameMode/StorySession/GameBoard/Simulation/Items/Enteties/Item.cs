@@ -26,6 +26,36 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties
             ItemStats = new();
         }
         
+        private Item(List<Trigger> triggers)
+        {
+            Triggers = triggers;
+        }
+
+        public Item GetCopy()
+        {
+            List<Trigger> triggers = new();
+
+            foreach (Trigger trigger in Triggers)
+            {
+                triggers.Add(trigger.GetCopy());
+            }
+            
+            Item item = new Item(triggers);
+
+            item.ItemId = ItemId;
+            item.ItemSetId = ItemSetId;
+            item.ItemName = ItemName;
+            item.ItemRarity = ItemRarity;
+            item.ItemSize = ItemSize;
+            item.UpgradedItemId = UpgradedItemId;
+            item.DowngradedItemId = DowngradedItemId;
+            item.ItemSpriteRuntimeKey = ItemSpriteRuntimeKey;
+            
+            item.Tags = Tags.GetCopy();
+            item.ItemStats = ItemStats.GetCopy();
+
+            return item;
+        }
     }
     
 }

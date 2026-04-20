@@ -14,7 +14,79 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
   m_TableCollectionName: BattleEncounters
   m_TableCollectionNameGuidString: d73675a6ca67d8245b6b435c78652fe9
-  m_Entries: []
+  m_Entries:
+  - m_Id: 363658328870912
+    m_Key: weapon_boss_circle_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658391785472
+    m_Key: weapon_boss_circle_1_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658391785473
+    m_Key: weapon_boss_circle_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658391785474
+    m_Key: weapon_boss_circle_2_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658400174080
+    m_Key: weapon_boss_circle_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658400174081
+    m_Key: weapon_boss_circle_3_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658400174082
+    m_Key: healing_boss_circle_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658400174083
+    m_Key: healing_boss_circle_1_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658400174084
+    m_Key: healing_boss_circle_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658400174085
+    m_Key: healing_boss_circle_2_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658400174086
+    m_Key: healing_boss_circle_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658400174087
+    m_Key: healing_boss_circle_3_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658400174088
+    m_Key: burn_boss_circle_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658400174089
+    m_Key: burn_boss_circle_1_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658400174090
+    m_Key: burn_boss_circle_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658400174091
+    m_Key: burn_boss_circle_2_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658400174092
+    m_Key: burn_boss_circle_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363658400174093
+    m_Key: burn_boss_circle_3_description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

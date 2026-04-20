@@ -13,5 +13,10 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Effecto
             SlowDurationProvider = slowDurationProvider;
             IsCritAvailable = isCritAvailable;
         }
+        
+        public override Effector GetCopy()
+        {
+            return new SlowEffector(TargetSelector.GetCopy(), SlowDurationProvider.GetCopy(), IsCritAvailable);
+        }
     }
 }

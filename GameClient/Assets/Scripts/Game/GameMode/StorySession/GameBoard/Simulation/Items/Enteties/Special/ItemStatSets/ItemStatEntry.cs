@@ -14,5 +14,10 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special
             ItemValues = itemValues;
             ItemPercentiles = itemPercentiles;
         }
+
+        public ItemStatEntry GetCopy()
+        {
+            return new ItemStatEntry(ItemValues.GetCopy(), ItemPercentiles.GetCopy());
+        }
     }
 }

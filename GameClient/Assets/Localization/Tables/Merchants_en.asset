@@ -42,6 +42,38 @@ MonoBehaviour:
     m_Localized: Large items from current character
     m_Metadata:
       m_Items: []
+  - m_Id: 1831705631723520
+    m_Localized: Weapon Character Items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1831705661083648
+    m_Localized: Weapon items from current character
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1831705661083649
+    m_Localized: Shield Character Items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1831705661083650
+    m_Localized: Shield items from current character
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1831705661083651
+    m_Localized: Healing Character Items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1831705661083652
+    m_Localized: Healing items from current character
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1831705661083653
+    m_Localized: Fire Character Items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1831705661083654
+    m_Localized: Fire items from current character
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

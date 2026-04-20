@@ -112,6 +112,7 @@ namespace GameWideSystems.InputManager.ReadingCores.Pointer
 
             if (_isSwipe || _isLongTapStarted)
             {
+                _pointerReaderEventHost.BroadcastFinalization();
                 return;
             }
             
