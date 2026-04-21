@@ -4,7 +4,7 @@ using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using UnityEngine;
 using Utils.UtilityTypes.LifeCycle;
 
-namespace Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization
+namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization
 {
     public class ItemLineComponent : MonoBehaviour, IInitializableGameObject
     {

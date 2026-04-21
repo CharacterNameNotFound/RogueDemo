@@ -2,7 +2,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.Data.Character;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
-using Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization;
+using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection;
@@ -11,6 +11,7 @@ using Game.GameMode.StorySession.StoryLoop.StoryRoutines;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.GameSaving;
 using Game.GameMode.StorySession.UI;
+using Game.GameMode.StorySession.Utilities.WorldInteractables;
 using GameWideSystems.GameSceneManagement;
 using GameWideSystems.InputManager;
 using GameWideSystems.UIManagement;
@@ -40,6 +41,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
         private IItemPresenter _itemPresenter;
         private ItemManipulationInputLayer _itemManipulationInputLayer;
         private IInputHost _inputHost;
+        private WorldInteractableInputLayer _worldInteractableInputLayer;
 
         private BaseStoryContext _baseStoryContext;
 
@@ -61,7 +63,8 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             IItemContainersManager containersManager,
             IItemPresenter itemPresenter,
             ItemManipulationInputLayer itemManipulationInputLayer,
-            IInputHost inputHost
+            IInputHost inputHost,
+            WorldInteractableInputLayer worldInteractableInputLayer
             )
         {
             _loadingScreenManager = loadingScreenManager;
@@ -80,6 +83,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             _itemPresenter = itemPresenter;
             _itemManipulationInputLayer = itemManipulationInputLayer;
             _inputHost = inputHost;
+            _worldInteractableInputLayer = worldInteractableInputLayer;
         }
 
         public async UniTask Initialize(StoryInitializationData storyInitializationData, CancellationToken cancellationToken)
@@ -216,7 +220,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             await _encounterSelector.Initialize(cancellationToken);
             
             _inputHost.AddInputLayer(_itemManipulationInputLayer);
-            
+            _worldInteractableInputLayer.SetActive(true);
         }
         
         

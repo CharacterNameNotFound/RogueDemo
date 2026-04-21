@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
-using Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization;
+using Game.GameMode.StorySession.GameBoard.Simulation.Facades;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.View;
+using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -21,6 +22,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
         private IItemPresenterConfigs _itemPresenterConfigs;
         private IItemLineOrganizer _itemLineOrganizer;
         private GameBoardHolder _gameBoardHolder;
+        private IItemRenderingFacade _itemRenderingFacade;
 
         private Sprite[] _frameSprites;
         
@@ -29,13 +31,15 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             IItemRegistry itemRegistry, 
             IItemPresenterConfigs itemPresenterConfigs, 
             IItemLineOrganizer itemLineOrganizer, 
-            GameBoardHolder gameBoardHolder)
+            GameBoardHolder gameBoardHolder, 
+            IItemRenderingFacade itemRenderingFacade)
         {
             _containersManager = containersManager;
             _itemRegistry = itemRegistry;
             _itemPresenterConfigs = itemPresenterConfigs;
             _itemLineOrganizer = itemLineOrganizer;
             _gameBoardHolder = gameBoardHolder;
+            _itemRenderingFacade = itemRenderingFacade;
         }
 
         public async UniTask Initialize(CancellationToken cancellationToken)
@@ -49,7 +53,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             _frameSprites[4] = await _itemPresenterConfigs.LegendaryFrame.Load<Sprite>(cancellationToken);
         }
         
-        public async UniTask ShowItems(List<string> itemIds, CancellationToken cancellationToken)
+        public async UniTask ShowItems(IEnumerable<string> itemIds, CancellationToken cancellationToken)
         {
             List<ItemContainerComponent> itemContainers = new List<ItemContainerComponent>();
             
@@ -71,8 +75,9 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
                 itemContainer.StoredItem = item;
 
                 itemContainer.FrameRenderer.sprite = _frameSprites[(int)item.ItemRarity];
-                // release
                 itemContainer.ItemRenderer.sprite = await item.ItemSpriteRuntimeKey.Load<Sprite>(cancellationToken);
+                
+                _itemRenderingFacade.UpdateCharge(itemContainer, 1);
             }
 
             ItemContainerComponent[] itemLineConfiguration = new ItemContainerComponent[12];
@@ -91,6 +96,23 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
 
             _itemLineOrganizer.Organize(_gameBoardHolder.GameBoardComponent.ItemLineViewController.EncounterItemLine, itemLineConfiguration, true);
 
+        }
+
+        public void RemoveItemsImmediate(IEnumerable<ItemContainerComponent> itemContainerComponents)
+        {
+            foreach (ItemContainerComponent container in itemContainerComponents)
+            {
+                _containersManager.Return(container);
+            }
+        }
+
+        public void RemoveEncounterItemsImmediate()
+        {
+            ItemContainerComponent[] itemContainerComponents = _gameBoardHolder.GameBoardComponent.ItemLineViewController.EncounterItemLine.GetComponentsInChildren<ItemContainerComponent>();
+            foreach (ItemContainerComponent item in itemContainerComponents)
+            {
+                _containersManager.Return(item);
+            }
         }
 
         public void CleanUp()

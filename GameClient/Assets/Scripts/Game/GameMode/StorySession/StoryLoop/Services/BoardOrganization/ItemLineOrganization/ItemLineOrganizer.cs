@@ -2,7 +2,7 @@ using System.Linq;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using UnityEngine;
 
-namespace Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization
+namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization
 {
     
     // ToDo: some functions could be modified and reused, for simplicity sake letting them be

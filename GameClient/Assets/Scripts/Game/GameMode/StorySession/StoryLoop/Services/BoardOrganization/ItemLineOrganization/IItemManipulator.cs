@@ -2,7 +2,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 
-namespace Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization
+namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization
 {
     /// <summary>
     /// Interface for item and item line manipulation, that requires dependencies (like reference to game field)
@@ -11,6 +11,7 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization
     {
         public UniTask Initialize(CancellationToken cancellationToken);
         public bool TryGetItemLineForItem(ItemContainerComponent item, out ItemLineComponent line);
+        public UniTask<bool> TryCompleteItemTransition(ItemLineComponent original, ItemLineComponent target, ItemContainerComponent item, CancellationToken cancellationToken);
         public void CleanUp();
     }
 }

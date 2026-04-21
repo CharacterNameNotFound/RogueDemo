@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using UnityEngine;
 
@@ -17,26 +18,31 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board
         public BattleBoardView BattleView;
         public InventoryBoardView InventoryBoardView;
 
+        private Dictionary<BoardType, GameObject> _views;
+        
+        private void Awake()
+        {
+            _views = new Dictionary<BoardType, GameObject>()
+            {
+                { BoardType.Encounter, EncounterView.Host.gameObject},
+                { BoardType.Battle, BattleView.Host.gameObject},
+                { BoardType.Inventory, InventoryBoardView.Host.gameObject}
+            };
+        }
+
+        public void HideView(BoardType boardType)
+        {
+            _views[boardType].SetActive(false);
+        }
+        
         public void SwitchToView(BoardType boardType)
         {
-            EncounterView.Host.gameObject.SetActive(false);
-            BattleView.Host.gameObject.SetActive(false);
-            InventoryBoardView.Host.gameObject.SetActive(false);
-
-            switch (boardType)
+            foreach (GameObject item in _views.Values)
             {
-                case BoardType.Encounter:
-                    EncounterView.Host.gameObject.SetActive(true);
-                    break;
-                case BoardType.Battle:
-                    BattleView.Host.gameObject.SetActive(true);
-                    break;
-                case BoardType.Inventory:
-                    InventoryBoardView.Host.gameObject.SetActive(true);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(boardType), boardType, null);
+                item.SetActive(false);
             }
+            
+            _views[boardType].SetActive(true);
         }
         
     }

@@ -1,10 +1,11 @@
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
-using Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStatSetToItemStatValueConverters;
+using Game.GameMode.StorySession.GameBoard.Simulation.Facades;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.Services.SaveManagement;
 using Game.GameMode.StorySession.StoryLoop.Encounters.Merchants.ItemRaritySelection;
+using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
@@ -30,8 +31,8 @@ namespace Structure
             InstallInputs();
             InstallEvents();
             InstallBalancing();
+            InstallSimulation();
         }
-        
 
         private void InstallServices()
         {
@@ -107,6 +108,12 @@ namespace Structure
         {
             Container.Bind<IItemRaritySelector>().To<ItemRaritySelector>().AsSingle();
         }
+        
+        private void InstallSimulation()
+        {
+            Container.Bind<IItemRenderingFacade>().To<ItemRenderingFacade>().AsSingle();
+        }
+        
         
     }
 }

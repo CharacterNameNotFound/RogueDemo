@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.View;
 
-namespace Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization
+namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization
 {
     public class ItemManipulator : IItemManipulator
     {
@@ -36,6 +36,12 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization
 
             line = null;
             return false;
+        }
+
+        public async UniTask<bool> TryCompleteItemTransition(ItemLineComponent original, ItemLineComponent target, ItemContainerComponent item,
+            CancellationToken cancellationToken)
+        {
+            return true;
         }
 
         public void CleanUp()

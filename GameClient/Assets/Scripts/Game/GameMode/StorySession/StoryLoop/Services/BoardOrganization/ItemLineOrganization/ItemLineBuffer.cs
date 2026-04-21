@@ -1,6 +1,6 @@
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 
-namespace Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization
+namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization
 {
     public class ItemLineBuffer
     {

@@ -1,3 +1,5 @@
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.View;
 using GameWideSystems.CameraManagement;
@@ -5,7 +7,7 @@ using GameWideSystems.InputManager;
 using GameWideSystems.InputManager.GestureReaders.Pointer;
 using UnityEngine;
 
-namespace Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization
+namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization
 {
     // ToDo: swipe handling over-bloats class,splint into classes, 
     public class ItemManipulationInputLayer : IInputHandlerLayer
@@ -166,13 +168,9 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization
                 return false;
             }
             
-            TryUpdateLine();
+            FinalizeItemMovement(Application.exitCancellationToken).Forget();
             
-            _targetItem.RenderEndMovement();
             
-            _targetItem = null;
-            
-            _isSwipeStarted = false;
             return true;
         }
         
@@ -241,20 +239,7 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization
         
         private void TryUpdateLine()
         {
-            _itemLineWorkBuffer.ClearBuffer();
             
-            if (_isSecondItemLineEngaged)
-            {
-                _secondItemLine = null;
-                _isSecondItemLineEngaged = false;
-                
-                _originalItemLineStateBuffer.ClearBuffer();
-                _secondItemLineBuffer.ClearBuffer();
-                return;
-            }
-
-            _itemLineOrganizer.Organize(_originalItemLine, _originalItemLineStateBuffer.ItemBuffer, true);
-            _originalItemLineStateBuffer.ClearBuffer();
         }
         
         private bool TryGetTarget(Vector3 coords, out ItemContainerComponent item)
@@ -270,7 +255,34 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization
             return _itemManipulator.TryGetItemLineForItem(item, out _originalItemLine);
         }
 
-        
+        private async UniTask FinalizeItemMovement(CancellationToken cancellationToken)
+        {
+            TryUpdateLine();
+            
+            _itemLineWorkBuffer.ClearBuffer();
+
+            var isTransactionCompleted = await _itemManipulator.TryCompleteItemTransition(_originalItemLine,
+                _secondItemLine, _targetItem, cancellationToken);
+            
+            if (_isSecondItemLineEngaged)
+            {
+                _secondItemLine = null;
+                _isSecondItemLineEngaged = false;
+                
+                _originalItemLineStateBuffer.ClearBuffer();
+                _secondItemLineBuffer.ClearBuffer();
+                return;
+            }
+
+            _itemLineOrganizer.Organize(_originalItemLine, _originalItemLineStateBuffer.ItemBuffer, true);
+            _originalItemLineStateBuffer.ClearBuffer();
+            
+            _targetItem.RenderEndMovement();
+            
+            _targetItem = null;
+            
+            _isSwipeStarted = false;
+        }
         
     }
 }

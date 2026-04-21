@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization;
+using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using UnityEngine;
 using Utils.UtilityTypes.LifeCycle;
 

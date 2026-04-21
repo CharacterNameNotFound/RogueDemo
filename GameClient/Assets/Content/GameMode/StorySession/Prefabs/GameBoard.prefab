@@ -987,6 +987,7 @@ GameObject:
   - component: {fileID: 399032065471897986}
   - component: {fileID: 5815009821765188880}
   - component: {fileID: 5637472894880439526}
+  - component: {fileID: 6355593187884917317}
   m_Layer: 0
   m_Name: InventoryButton
   m_TagString: Untagged
@@ -1115,6 +1116,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6355593187884917317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3938489962086943682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 849189f2aa06440fbfa8e3d17b93c5b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.Utilities.WorldInteractebles.WorldButton
 --- !u!1 &4117522694558462503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1139,7 @@ GameObject:
   - component: {fileID: 7404062229571239889}
   - component: {fileID: 8227976184105370725}
   - component: {fileID: 8327705569758355212}
+  - component: {fileID: 3733351565012770188}
   m_Layer: 0
   m_Name: GameBoard
   m_TagString: Untagged
@@ -1168,9 +1182,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8ea8fe1111419fbc925cba15599d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.View.GameBoardComponent
-  <EncounterBoard>k__BackingField: {fileID: 4693213416703602369}
-  <PlayerBoard>k__BackingField: {fileID: 3666670259978395410}
-  <ItemLineViewController>k__BackingField: {fileID: 8327705569758355212}
+  EncounterBoard: {fileID: 4693213416703602369}
+  PlayerBoard: {fileID: 3666670259978395410}
+  ItemLineViewController: {fileID: 8327705569758355212}
+  GameBoardInteractables: {fileID: 3733351565012770188}
 --- !u!114 &8327705569758355212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1186,6 +1201,20 @@ MonoBehaviour:
   PlayerItemLine: {fileID: 1040222305957641782}
   InventoryItemLine: {fileID: 3538085188405669177}
   EncounterItemLine: {fileID: 4549594677162167547}
+--- !u!114 &3733351565012770188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4117522694558462503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 582d9fd19d56444b814d4f13cbd5ad4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.View.Board.GameBoardInteractables
+  NextEventButton: {fileID: 4410371509154810148}
+  InventoryButton: {fileID: 6355593187884917317}
 --- !u!1 &4248930620787238234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,6 +1409,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4406477406856772848}
   - component: {fileID: 804988378672715400}
+  - component: {fileID: 4410371509154810148}
+  - component: {fileID: 4779414715030050341}
   m_Layer: 0
   m_Name: NextButtonSpace
   m_TagString: Untagged
@@ -1462,6 +1493,64 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &4410371509154810148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5680443928300062345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 849189f2aa06440fbfa8e3d17b93c5b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.Utilities.WorldInteractebles.WorldButton
+--- !u!61 &4779414715030050341
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5680443928300062345}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &5870093281659230769
 GameObject:
   m_ObjectHideFlags: 0

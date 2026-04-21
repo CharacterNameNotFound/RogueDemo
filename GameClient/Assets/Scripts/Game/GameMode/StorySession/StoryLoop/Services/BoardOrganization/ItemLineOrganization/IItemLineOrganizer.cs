@@ -1,7 +1,7 @@
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using UnityEngine;
 
-namespace Game.GameMode.StorySession.GameBoard.Services.ItemLineOrganization
+namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization
 {
     /// <summary>
     /// Interface for item and item line manipulation, that requires no dependencies (like reference to game field)
