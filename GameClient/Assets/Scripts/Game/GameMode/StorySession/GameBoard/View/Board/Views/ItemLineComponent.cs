@@ -1,18 +1,18 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.GameMode.StorySession.GameBoard.Configurations;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using UnityEngine;
 using Utils.UtilityTypes.LifeCycle;
 
-namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization
+namespace Game.GameMode.StorySession.GameBoard.View.Board.Views
 {
     public class ItemLineComponent : MonoBehaviour, IInitializableGameObject
     {
-        public const int MaxItemCapacity = 12;
-        
-        [field: SerializeField] public int ItemCapacity { get; private set; }
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
         [field: SerializeField] public bool IsPlayerModifyAvailable { get; private set; }
+        public int ItemCapacity => ItemConfigurations.ItemCapacity;
+        
 
         public ItemContainerComponent[] ItemContainerComponents;
 
@@ -23,9 +23,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         {
             ItemContainerComponents = new ItemContainerComponent[ItemCapacity];
 
-            ItemCapacity = Mathf.Min(MaxItemCapacity, ItemCapacity);
-
-            StepX = SpriteRenderer.bounds.size.x / 12f;
+            StepX = SpriteRenderer.bounds.size.x / ItemCapacity;
             FirstItemX = SpriteRenderer.bounds.min.x + StepX / 2;
             
             return UniTask.CompletedTask;

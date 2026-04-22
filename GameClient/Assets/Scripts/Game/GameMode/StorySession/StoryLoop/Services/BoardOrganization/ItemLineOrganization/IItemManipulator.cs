@@ -1,6 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
+using Game.GameMode.StorySession.GameBoard.View.Board.Views;
+using UnityEngine;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization
 {
@@ -11,7 +12,24 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
     {
         public UniTask Initialize(CancellationToken cancellationToken);
         public bool TryGetItemLineForItem(ItemContainerComponent item, out ItemLineComponent line);
-        public UniTask<bool> TryCompleteItemTransition(ItemLineComponent original, ItemLineComponent target, ItemContainerComponent item, CancellationToken cancellationToken);
+        
+        public UniTask<bool> TryCompleteItemTransition(
+            Vector3 worldPosition, 
+            ItemLineComponent original, 
+            ItemLineComponent targetLine, 
+            ItemLineBuffer targetLineBuffer, 
+            ItemContainerComponent item, 
+            ItemLineBuffer workerItemLineBuffer, 
+            CancellationToken cancellationToken);
+        
+        public bool TryUpdateItemLines(
+            Vector3 worldPosition, 
+            ItemLineComponent original, 
+            ItemLineComponent targetLine, 
+            ItemLineBuffer targetLineBuffer, 
+            ItemContainerComponent item, 
+            ItemLineBuffer workerItemLineBuffer);
+        
         public void CleanUp();
     }
 }

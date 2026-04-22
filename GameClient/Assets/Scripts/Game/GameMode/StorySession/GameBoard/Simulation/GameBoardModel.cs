@@ -4,11 +4,11 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation
 {
     public class GameBoardModel
     {
-        public ItemBoardModel PlayerBoard;
-        public ItemBoardModel PlayerStashBoard;
-        public ItemBoardModel EncounterBoard;
+        public ItemBoardModel PlayerBoard = new();
+        public ItemBoardModel PlayerStashBoard = new();
+        public ItemBoardModel EncounterBoard = new();
 
         public PlayerStats PlayerStats = new();
-
+        
     }
 }

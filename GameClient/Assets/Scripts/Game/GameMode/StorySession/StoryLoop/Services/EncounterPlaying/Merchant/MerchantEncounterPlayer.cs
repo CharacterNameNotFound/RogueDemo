@@ -6,6 +6,7 @@ using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board;
 using Game.GameMode.StorySession.StoryLoop.Encounters;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
+using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs;
 using Game.GameMode.StorySession.Utilities.WorldInteractables.Awaiters;
 using UnityEngine;
@@ -39,16 +40,16 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Merchan
             
             ProjectContext.Instance.Container.Inject(merchantEncounter);
             
-            List<string> itemList = await merchantEncounter.GetItemList(storyContext, cancellationToken);
+            IEnumerable<string> itemList = await merchantEncounter.GetItemList(storyContext, cancellationToken);
             await _itemPresenter.ShowItems(itemList, cancellationToken);
 
             await InteractablePressWaiter.WaitForPress(
-                _gameBoardHolder.GameBoardComponent.GameBoardInteractables.NextEventButton, 
+                _gameBoardHolder.GameBoardComponent.GameBoardInteractables.EventEncounterScreenButton, 
                 cancellationToken);
             
             
             _itemPresenter.RemoveEncounterItemsImmediate();
-            _gameBoardHolder.GameBoardComponent.EncounterBoard.HideView(EncounterBoard.BoardType.Encounter);
+            _gameBoardHolder.GameBoardComponent.EncounterBoard.HideCurrentView();
             Addressables.Release(portrait);
             
         }

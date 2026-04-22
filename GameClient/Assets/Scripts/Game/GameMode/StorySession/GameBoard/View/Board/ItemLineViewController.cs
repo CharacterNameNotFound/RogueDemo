@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
+using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using UnityEngine;
 using Utils.UtilityTypes.LifeCycle;
 
@@ -9,6 +9,12 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board
 {
     public class ItemLineViewController : MonoBehaviour, IInitializableGameObject
     {
+        public enum OppositeItemLineType
+        {
+            Stash,
+            Encounter
+        }
+        
         public ItemLineComponent PlayerItemLine;
         public ItemLineComponent InventoryItemLine;
         public ItemLineComponent EncounterItemLine;
@@ -24,6 +30,12 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board
         public IEnumerable<ItemLineComponent> EnumerateItemLines()
         {
             return _itemLines;
+        }
+
+        public void SwapOppositeItemLine(OppositeItemLineType oppositeItemLineType)
+        {
+            InventoryItemLine.gameObject.SetActive(oppositeItemLineType == OppositeItemLineType.Stash);
+            EncounterItemLine.gameObject.SetActive(oppositeItemLineType == OppositeItemLineType.Encounter);
         }
 
         

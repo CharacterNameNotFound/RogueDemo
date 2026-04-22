@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.View;
+using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.Encounters;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;

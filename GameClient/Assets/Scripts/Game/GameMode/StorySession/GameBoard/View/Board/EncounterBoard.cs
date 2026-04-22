@@ -11,14 +11,16 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board
         {
             Encounter,
             Battle,
-            Inventory
+            Stash
         }
         
         public EncounterBoardView EncounterView;
         public BattleBoardView BattleView;
-        public InventoryBoardView InventoryBoardView;
+        public StashBoardView StashBoardView;
 
         private Dictionary<BoardType, GameObject> _views;
+
+        private BoardType? _currentBoard;
         
         private void Awake()
         {
@@ -26,23 +28,39 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board
             {
                 { BoardType.Encounter, EncounterView.Host.gameObject},
                 { BoardType.Battle, BattleView.Host.gameObject},
-                { BoardType.Inventory, InventoryBoardView.Host.gameObject}
+                { BoardType.Stash, StashBoardView.Host.gameObject}
             };
         }
 
-        public void HideView(BoardType boardType)
+        public BoardType? GetCurrentView()
         {
-            _views[boardType].SetActive(false);
+            return _currentBoard;
         }
         
-        public void SwitchToView(BoardType boardType)
+        public void SwitchToView(BoardType? boardType)
         {
-            foreach (GameObject item in _views.Values)
+            HideCurrentView();
+
+            if (!boardType.HasValue)
             {
-                item.SetActive(false);
+                HideCurrentView();
+                return;
+            }
+
+            _currentBoard = boardType;
+            _views[boardType.Value].SetActive(true);
+        }
+
+        public void HideCurrentView()
+        {
+            if (!_currentBoard.HasValue)
+            {
+                return;
             }
             
-            _views[boardType].SetActive(true);
+            _views[_currentBoard.Value].SetActive(false);
+            _currentBoard = null;
+
         }
         
     }

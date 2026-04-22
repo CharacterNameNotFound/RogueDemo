@@ -5,6 +5,7 @@ using Game.GameMode.StorySession.StoryLoop.Encounters;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Battle;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Merchant;
+using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs;
 using Utils.UtilityTypes.Result;
 

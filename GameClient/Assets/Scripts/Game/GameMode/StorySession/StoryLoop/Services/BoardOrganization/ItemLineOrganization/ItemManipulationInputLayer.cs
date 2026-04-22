@@ -2,6 +2,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.View;
+using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using GameWideSystems.CameraManagement;
 using GameWideSystems.InputManager;
 using GameWideSystems.InputManager.GestureReaders.Pointer;
@@ -19,6 +20,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         private IItemLineOrganizer _itemLineOrganizer;
         private IItemManipulator _itemManipulator;
         private GameBoardHolder _gameBoardHolder;
+        private InputControlFacade _inputControlFacade;
         
         
         private bool _isActive = false;
@@ -40,12 +42,14 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             ICameraManager cameraManager, 
             IItemLineOrganizer itemLineOrganizer, 
             IItemManipulator itemManipulator, 
-            GameBoardHolder gameBoardHolder)
+            GameBoardHolder gameBoardHolder, 
+            InputControlFacade inputControlFacade)
         {
             _cameraManager = cameraManager;
             _itemLineOrganizer = itemLineOrganizer;
             _itemManipulator = itemManipulator;
             _gameBoardHolder = gameBoardHolder;
+            _inputControlFacade = inputControlFacade;
 
             _originalItemLineStateBuffer = new();
             _secondItemLineBuffer = new();
@@ -141,22 +145,9 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
                 EngageSecondLine(targetedLine);
             }
             
-            // add between lines item swap implementation here
-            
-            
-            if (!_itemLineOrganizer.TryGetLineIndexForPosition(_secondItemLine, worldPoint, out int index))
-            {
-                // as we already located second line, there should not be case for getting in here but just in case
-                return true;
-            }
 
             _itemLineWorkBuffer.ClearBuffer();
-            if (!_itemLineOrganizer.TryBuildItemConfiguration(_secondItemLineBuffer.ItemBuffer, _targetItem, ref index, ref _itemLineWorkBuffer.ItemBuffer))
-            {
-                return true;
-            }
-            
-            _itemLineOrganizer.Organize(_secondItemLine, _itemLineWorkBuffer.ItemBuffer, true);
+            _itemManipulator.TryUpdateItemLines(worldPoint, _originalItemLine, targetedLine, _secondItemLineBuffer, _targetItem, _itemLineWorkBuffer);
             
             return true;
         }
@@ -168,7 +159,10 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
                 return false;
             }
             
-            FinalizeItemMovement(Application.exitCancellationToken).Forget();
+            Vector3 worldPoint = _cameraManager.MainCamera.ScreenToWorldPoint(swipeEnd.CurrentPosition);
+            _targetItem.transform.position = new Vector3(worldPoint.x, worldPoint.y, _targetItem.transform.position.z);
+            
+            FinalizeItemMovement(worldPoint, Application.exitCancellationToken).Forget();
             
             
             return true;
@@ -237,11 +231,6 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             _secondItemLine = null;
         }
         
-        private void TryUpdateLine()
-        {
-            
-        }
-        
         private bool TryGetTarget(Vector3 coords, out ItemContainerComponent item)
         {
             Collider2D target = Physics2D.OverlapPoint(coords);
@@ -255,22 +244,33 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             return _itemManipulator.TryGetItemLineForItem(item, out _originalItemLine);
         }
 
-        private async UniTask FinalizeItemMovement(CancellationToken cancellationToken)
+        private async UniTask FinalizeItemMovement(Vector3 worldPoint, CancellationToken cancellationToken)
         {
-            TryUpdateLine();
+            _inputControlFacade.SetInputsAvailable(false);
             
             _itemLineWorkBuffer.ClearBuffer();
-
-            var isTransactionCompleted = await _itemManipulator.TryCompleteItemTransition(_originalItemLine,
-                _secondItemLine, _targetItem, cancellationToken);
             
             if (_isSecondItemLineEngaged)
             {
+                bool isTransactionSuccess = await _itemManipulator.TryCompleteItemTransition(
+                    worldPoint, 
+                    _originalItemLine, 
+                    _secondItemLine, 
+                    _secondItemLineBuffer, 
+                    _targetItem, 
+                    _itemLineWorkBuffer,
+                    cancellationToken);
+                
+                _targetItem.transform.SetParent(_secondItemLine.transform);
+                
                 _secondItemLine = null;
                 _isSecondItemLineEngaged = false;
                 
+                _itemLineWorkBuffer.ClearBuffer();
                 _originalItemLineStateBuffer.ClearBuffer();
                 _secondItemLineBuffer.ClearBuffer();
+                
+                _inputControlFacade.SetInputsAvailable(true);
                 return;
             }
 
@@ -282,6 +282,8 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             _targetItem = null;
             
             _isSwipeStarted = false;
+            
+            _inputControlFacade.SetInputsAvailable(true);
         }
         
     }

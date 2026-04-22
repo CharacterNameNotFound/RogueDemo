@@ -2,6 +2,8 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.View;
+using Game.GameMode.StorySession.GameBoard.View.Board.Views;
+using UnityEngine;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization
 {
@@ -38,11 +40,53 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             return false;
         }
 
-        public async UniTask<bool> TryCompleteItemTransition(ItemLineComponent original, ItemLineComponent target, ItemContainerComponent item,
+
+        public async UniTask<bool> TryCompleteItemTransition(
+            Vector3 worldPosition, 
+            ItemLineComponent original, 
+            ItemLineComponent targetLine, 
+            ItemLineBuffer targetLineBuffer, 
+            ItemContainerComponent item, 
+            ItemLineBuffer workerItemLineBuffer,
             CancellationToken cancellationToken)
         {
+            
+            
+            
+            bool canUpdate = TryUpdateItemLines(worldPosition, original, targetLine, targetLineBuffer, item, workerItemLineBuffer);
+            
+                
             return true;
         }
+        
+
+        public bool TryUpdateItemLines(
+            Vector3 worldPosition, 
+            ItemLineComponent original, 
+            ItemLineComponent targetLine, 
+            ItemLineBuffer targetLineBuffer, 
+            ItemContainerComponent item, 
+            ItemLineBuffer workerItemLineBuffer)
+        {
+            // add between lines item swap implementation here
+            
+            
+            if (!_lineOrganizer.TryGetLineIndexForPosition(targetLine, worldPosition, out int index))
+            {
+                return false;
+            }
+            
+            workerItemLineBuffer.ClearBuffer();
+            if (!_lineOrganizer.TryBuildItemConfiguration(targetLineBuffer.ItemBuffer, item, ref index, ref workerItemLineBuffer.ItemBuffer))
+            {
+                return false;
+            }
+            
+            _lineOrganizer.Organize(targetLine, workerItemLineBuffer.ItemBuffer, true);
+            
+            return true;
+        }
+        
 
         public void CleanUp()
         {

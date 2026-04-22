@@ -1,4 +1,5 @@
-using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
+using Game.GameMode.StorySession.GameBoard.Configurations;
+using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization
 {
@@ -8,7 +9,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
 
         public ItemLineBuffer()
         {
-            ItemBuffer = new ItemContainerComponent[ItemLineComponent.MaxItemCapacity];
+            ItemBuffer = new ItemContainerComponent[ItemConfigurations.ItemCapacity];
         }
 
         public ItemContainerComponent[] CopyFrom(ItemLineComponent original)

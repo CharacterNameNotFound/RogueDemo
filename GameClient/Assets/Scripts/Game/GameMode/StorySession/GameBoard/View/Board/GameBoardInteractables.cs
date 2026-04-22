@@ -5,7 +5,8 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board
 {
     public class GameBoardInteractables : MonoBehaviour
     {
-        public WorldButton NextEventButton;
+        public WorldButton EventEncounterScreenButton;
+        public WorldButton BattleScreenButton;
         public WorldButton InventoryButton;
     }
 }

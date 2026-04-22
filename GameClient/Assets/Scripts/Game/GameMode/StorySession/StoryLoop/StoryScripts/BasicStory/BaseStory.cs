@@ -2,6 +2,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.Data.Character;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
+using Game.GameMode.StorySession.StoryLoop.Encounters.PlayerStashEncounter;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
@@ -42,6 +43,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
         private ItemManipulationInputLayer _itemManipulationInputLayer;
         private IInputHost _inputHost;
         private WorldInteractableInputLayer _worldInteractableInputLayer;
+        private IPlayerStashController _playerStashController;
 
         private BaseStoryContext _baseStoryContext;
 
@@ -64,7 +66,8 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             IItemPresenter itemPresenter,
             ItemManipulationInputLayer itemManipulationInputLayer,
             IInputHost inputHost,
-            WorldInteractableInputLayer worldInteractableInputLayer
+            WorldInteractableInputLayer worldInteractableInputLayer,
+            IPlayerStashController playerStashController
             )
         {
             _loadingScreenManager = loadingScreenManager;
@@ -84,6 +87,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             _itemManipulationInputLayer = itemManipulationInputLayer;
             _inputHost = inputHost;
             _worldInteractableInputLayer = worldInteractableInputLayer;
+            _playerStashController = playerStashController;
         }
 
         public async UniTask Initialize(StoryInitializationData storyInitializationData, CancellationToken cancellationToken)
@@ -218,7 +222,10 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             
             // generating encounter selection related
             await _encounterSelector.Initialize(cancellationToken);
-            
+
+            // Input related
+            await _playerStashController.Initialize(cancellationToken);
+                
             _inputHost.AddInputLayer(_itemManipulationInputLayer);
             _worldInteractableInputLayer.SetActive(true);
         }

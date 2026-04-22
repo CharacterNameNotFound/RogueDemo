@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Utils.UtilityTypes.ObjectPooling;
 
 namespace Game.GameMode.StorySession.GameBoard.Services.ItemContainers

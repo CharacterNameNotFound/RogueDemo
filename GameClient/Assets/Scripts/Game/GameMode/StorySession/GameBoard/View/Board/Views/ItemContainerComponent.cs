@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using Utils.UtilityTypes.ObjectPooling;
 
-namespace Game.GameMode.StorySession.GameBoard.Services.ItemContainers
+namespace Game.GameMode.StorySession.GameBoard.View.Board.Views
 {
     public class ItemContainerComponent : PoolableGameObject
     {

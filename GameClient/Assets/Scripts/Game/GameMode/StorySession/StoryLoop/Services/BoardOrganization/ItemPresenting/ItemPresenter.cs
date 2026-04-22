@@ -6,6 +6,7 @@ using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.Simulation.Facades;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.View;
+using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
 using UnityEngine;
@@ -108,11 +109,22 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
 
         public void RemoveEncounterItemsImmediate()
         {
-            ItemContainerComponent[] itemContainerComponents = _gameBoardHolder.GameBoardComponent.ItemLineViewController.EncounterItemLine.GetComponentsInChildren<ItemContainerComponent>();
-            foreach (ItemContainerComponent item in itemContainerComponents)
+            ItemContainerComponent[] itemContainerComponents = _gameBoardHolder.GameBoardComponent.ItemLineViewController.EncounterItemLine.ItemContainerComponents;
+
+            ItemContainerComponent temp = null;
+            
+            for (int i = 0; i < itemContainerComponents.Length; i++)
             {
-                _containersManager.Return(item);
+                if (temp != itemContainerComponents[i])
+                {
+                    temp = itemContainerComponents[i];
+                    _containersManager.Return(itemContainerComponents[i]);
+                    Addressables.Release(itemContainerComponents[i].ItemRenderer.sprite);
+                }
+
+                itemContainerComponents[i] = null;
             }
+            
         }
 
         public void CleanUp()

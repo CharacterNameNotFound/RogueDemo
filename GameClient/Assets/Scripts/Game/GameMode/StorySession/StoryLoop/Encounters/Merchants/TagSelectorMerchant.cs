@@ -12,6 +12,8 @@ using GameWideSystems.RNGManagement;
 using UnityEngine;
 using Zenject;
 using System.Linq;
+using Game.GameMode.StorySession.StoryLoop.Encounters.Merchants.Utilities;
+using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 
 namespace Game.GameMode.StorySession.StoryLoop.Encounters.Merchants
 {
@@ -24,53 +26,52 @@ namespace Game.GameMode.StorySession.StoryLoop.Encounters.Merchants
         [field: SerializeField] public ItemSelectionGroup IncludedGroups { get; set; }
         [field: SerializeField] public List<ItemTag> FilterTags { get; set; }
 
-        private ILookUpTableManager _lookUpTableManager;
         private ItemDeckOrganizer _itemDeckOrganizer;
         private IItemRaritySelector _itemRaritySelector;
-        private IRNGManager _rngManager;
         private IItemRegistry _itemRegistry;
+        private IMerchantItemExclusionListBuilder _merchantItemExclusionListBuilder;
         
         [Inject]
         private void InjectDependencies(
-            ILookUpTableManager lookUpTableManager,
             ItemDeckOrganizer itemDeckOrganizer,
             IItemRaritySelector itemRaritySelector,
-            IRNGManager rngManager,
-            IItemRegistry itemRegistry)
+            IItemRegistry itemRegistry,
+            IMerchantItemExclusionListBuilder merchantItemExclusionListBuilder)
         {
-            _lookUpTableManager = lookUpTableManager;
             _itemDeckOrganizer = itemDeckOrganizer;
             _itemRaritySelector = itemRaritySelector;
-            _rngManager = rngManager;
             _itemRegistry = itemRegistry;
+            _merchantItemExclusionListBuilder = merchantItemExclusionListBuilder;
         }
 
-        public override async UniTask<List<string>> GetItemList(IStoryContext storyContext, CancellationToken cancellationToken)
+        public override async UniTask<IEnumerable<string>> GetItemList(IStoryContext storyContext, CancellationToken cancellationToken)
         {
+            HashSet<string> excludedItems = await _merchantItemExclusionListBuilder.BuildIgnoredListIds(storyContext, cancellationToken);
+            
             if (IncludedGroups == ItemSelectionGroup.Deck)
             {
-                return GenerateByDeck(storyContext, cancellationToken);
+                return GenerateByDeck(storyContext, excludedItems, cancellationToken);
             }
             
             
             throw new NotImplementedException();
         }
 
-        private List<string> GenerateByDeck(IStoryContext storyContext, CancellationToken cancellationToken)
+        private HashSet<string> GenerateByDeck(IStoryContext storyContext, HashSet<string> excludedItems, CancellationToken cancellationToken)
         {
             List<ItemRarity> itemRarities = _itemRaritySelector.GetRarities(ItemCount, storyContext);
 
-            return PullFromCardsDeck(itemRarities);
+            return PullFromCardsDeck(itemRarities, excludedItems);
         }
 
-        private List<string> PullFromCardsDeck(List<ItemRarity> itemRarities)
+        private HashSet<string> PullFromCardsDeck(List<ItemRarity> itemRarities, HashSet<string> excludedItems)
         {
-            List<string> result = new();
+            HashSet<string> result = new();
             
             foreach (ItemRarity rarity in itemRarities)
             {
                 // ToDo: Implement owned filter
-                string itemId = DrawOneByRarity(rarity, result, new List<string>());
+                string itemId = DrawOneByRarity(rarity, result, excludedItems);
                 
                 result.Add(itemId);
             }
@@ -78,7 +79,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Encounters.Merchants
             return result;
         }
 
-        private string DrawOneByRarity(ItemRarity rarity, List<string> drawnList, List<string> ownedList)
+        private string DrawOneByRarity(ItemRarity rarity, HashSet<string> drawnList, HashSet<string> excludedItems)
         {
             int sanity = 10000;
             
@@ -86,7 +87,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Encounters.Merchants
             {
                 _itemDeckOrganizer.Draw(rarity, false, out string itemId);
 
-                if (drawnList.Contains(itemId) || ownedList.Contains(itemId))
+                if (drawnList.Contains(itemId) || excludedItems.Contains(itemId))
                 {
                     _itemDeckOrganizer.Return(rarity, itemId);
                     continue;

@@ -1,3 +1,4 @@
+using Game.GameMode.StorySession.GameBoard.Services.GameBoardManagement;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStatSetToItemStatValueConverters;
@@ -5,6 +6,8 @@ using Game.GameMode.StorySession.GameBoard.Simulation.Facades;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.Services.SaveManagement;
 using Game.GameMode.StorySession.StoryLoop.Encounters.Merchants.ItemRaritySelection;
+using Game.GameMode.StorySession.StoryLoop.Encounters.Merchants.Utilities;
+using Game.GameMode.StorySession.StoryLoop.Encounters.PlayerStashEncounter;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
@@ -52,8 +55,12 @@ namespace Structure
             Container.Bind<IItemLineOrganizer>().To<ItemLineOrganizer>().AsSingle();
             Container.Bind<IItemContainersManager>().To<ItemContainersManager>().AsSingle();
             Container.Bind<IItemLoader>().To<ItemLoader>().AsSingle();
+            Container.Bind<IItemBoardModelUpdater>().To<ItemBoardModelUpdater>().AsSingle();
+            Container.Bind<IItemIdCollector>().To<ItemIdCollector>().AsSingle();
             
             Container.Bind<IItemStatGetter>().To<ItemStatGetter>().AsSingle();
+            
+            Container.Bind<IPlayerStashController>().To<PlayerStashController>().AsSingle();
             
             // Encounters
             Container.Bind<IEncounterRegistry>().To<EncounterRegistry>().AsSingle();
@@ -62,6 +69,7 @@ namespace Structure
             Container.Bind<IEncounterLoader>().To<EncounterLoader>().AsSingle();
             Container.Bind<IMerchantEncounterPlayer>().To<MerchantEncounterPlayer>().AsSingle();
             Container.Bind<IBattleEncounterPlayer>().To<BattleEncounterPlayer>().AsSingle();
+            Container.Bind<IMerchantItemExclusionListBuilder>().To<MerchantItemExclusionListBuilder>().AsSingle();
             
 
             InstallStatCalculators();
