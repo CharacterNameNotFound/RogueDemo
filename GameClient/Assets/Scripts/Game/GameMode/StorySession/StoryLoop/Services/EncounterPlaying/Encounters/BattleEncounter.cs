@@ -1,8 +1,12 @@
 using System.Collections.Generic;
+using System.Threading;
+using Cysharp.Threading.Tasks;
+using Game.GameMode.StorySession.GameBoard.View.Board.Views;
+using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Game.GameMode.StorySession.StoryLoop.Encounters
+namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters
 {
     public class BattleEncounter : Encounter
     {
@@ -17,6 +21,14 @@ namespace Game.GameMode.StorySession.StoryLoop.Encounters
         
         public override EncounterType EncounterType => EncounterType.Battle;
         
-        
+        public override UniTask Play(IStoryContext storyContext, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override bool CanMoveItem(ItemContainerComponent itemContainer)
+        {
+            return false;
+        }
     }
 }

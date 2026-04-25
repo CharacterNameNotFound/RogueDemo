@@ -32,11 +32,17 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         private ItemContainerComponent _targetItem;
         private ItemLineComponent _originalItemLine;
         // it is called secondLine, but basically it is currently processed line, so it can be the same line as original
-        private ItemLineComponent _secondItemLine; 
+        private ItemLineComponent _secondItemLine;
+        private int _targetItemOriginalIndex;
+        // displacement from mouse to object world pivot
+        private Vector2 _mouseDragStartDisplacement;
+        // displacement from mouse to item point that will serve as first entry in item line 
+        private Vector2 _mouseDragStartToItemLinePivotDisplacement;
 
         private ItemLineBuffer _originalItemLineStateBuffer; // represent original state of line
         private ItemLineBuffer _secondItemLineBuffer; // represent original state of player line
         private ItemLineBuffer _itemLineWorkBuffer; // used as buffer for operations
+        private ItemLineBuffer _secondItemLineWorkBuffer; // used as buffer for operations
 
         public ItemManipulationInputLayer(
             ICameraManager cameraManager, 
@@ -54,6 +60,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             _originalItemLineStateBuffer = new();
             _secondItemLineBuffer = new();
             _itemLineWorkBuffer = new();
+            _secondItemLineWorkBuffer = new();
         }
 
         public void SetActive(bool isActive)
@@ -106,7 +113,10 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
 
             _originalItemLineStateBuffer.ClearBuffer();
             _originalItemLineStateBuffer.CopyFrom(_originalItemLine);
-            _itemLineOrganizer.RemoveItem(_originalItemLine, _targetItem);
+            _itemLineOrganizer.RemoveItem(_originalItemLine, _targetItem, out _targetItemOriginalIndex);
+
+            _mouseDragStartDisplacement = _targetItem.transform.position - worldPoint;
+            _mouseDragStartToItemLinePivotDisplacement = _targetItem.GetItemLinePivot() - worldPoint;
             
             _targetItem.RenderStarMovement();
             
@@ -121,7 +131,10 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
                 return false;
             }
             
-            Vector3 worldPoint = _cameraManager.MainCamera.ScreenToWorldPoint(swipeUpdate.CurrentPosition);
+            Vector3 mouseWorldPoint = _cameraManager.MainCamera.ScreenToWorldPoint(swipeUpdate.CurrentPosition);
+            Vector3 itemPivot = mouseWorldPoint + (Vector3) _mouseDragStartToItemLinePivotDisplacement;
+            Vector3 worldPoint = mouseWorldPoint + (Vector3) _mouseDragStartDisplacement;
+            
             _targetItem.transform.position = new Vector3(worldPoint.x, worldPoint.y, _targetItem.transform.position.z);
             
             if (!_itemManipulator.TryGetItemLineForItem(_targetItem, out ItemLineComponent targetedLine))
@@ -147,7 +160,10 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             
 
             _itemLineWorkBuffer.ClearBuffer();
-            _itemManipulator.TryUpdateItemLines(worldPoint, _originalItemLine, targetedLine, _secondItemLineBuffer, _targetItem, _itemLineWorkBuffer);
+            if (!_itemManipulator.TryUpdateItemLines(itemPivot, _originalItemLine, targetedLine, _secondItemLineBuffer, _targetItem, _itemLineWorkBuffer))
+            {
+                _itemLineOrganizer.Organize(_secondItemLine, _secondItemLineBuffer.ItemBuffer, true);
+            }
             
             return true;
         }
@@ -244,29 +260,44 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             return _itemManipulator.TryGetItemLineForItem(item, out _originalItemLine);
         }
 
-        private async UniTask FinalizeItemMovement(Vector3 worldPoint, CancellationToken cancellationToken)
+        private async UniTask FinalizeItemMovement(Vector3 mouseWorldPoint, CancellationToken cancellationToken)
         {
+            Vector3 itemPivot = mouseWorldPoint + (Vector3) _mouseDragStartToItemLinePivotDisplacement;
+            
             _inputControlFacade.SetInputsAvailable(false);
             
+            _isSwipeStarted = false;
+            
             _itemLineWorkBuffer.ClearBuffer();
+            _secondItemLineWorkBuffer.ClearBuffer();
             
             if (_isSecondItemLineEngaged)
             {
                 bool isTransactionSuccess = await _itemManipulator.TryCompleteItemTransition(
-                    worldPoint, 
+                    itemPivot,
+                    _targetItemOriginalIndex,
                     _originalItemLine, 
                     _secondItemLine, 
                     _secondItemLineBuffer, 
                     _targetItem, 
                     _itemLineWorkBuffer,
+                    _secondItemLineWorkBuffer,
                     cancellationToken);
+
+                if (!isTransactionSuccess)
+                {
+                    _itemLineOrganizer.Organize(_originalItemLine, _originalItemLineStateBuffer.ItemBuffer, true);
+                    _itemLineOrganizer.Organize(_secondItemLine, _secondItemLineBuffer.ItemBuffer, true);
+                }
                 
-                _targetItem.transform.SetParent(_secondItemLine.transform);
+                _targetItem.RenderEndMovement();
                 
                 _secondItemLine = null;
                 _isSecondItemLineEngaged = false;
                 
                 _itemLineWorkBuffer.ClearBuffer();
+                _secondItemLineWorkBuffer.ClearBuffer();
+                
                 _originalItemLineStateBuffer.ClearBuffer();
                 _secondItemLineBuffer.ClearBuffer();
                 
@@ -278,10 +309,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             _originalItemLineStateBuffer.ClearBuffer();
             
             _targetItem.RenderEndMovement();
-            
             _targetItem = null;
-            
-            _isSwipeStarted = false;
             
             _inputControlFacade.SetInputsAvailable(true);
         }

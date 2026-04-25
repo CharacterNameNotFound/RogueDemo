@@ -1,27 +1,54 @@
-using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.StoryLoop.Encounters;
+using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Battle;
-using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Merchant;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts;
-using Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs;
 using Utils.UtilityTypes.Result;
+using Zenject;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying
 {
     public class EncounterPlayer : IEncounterPlayer
     {
         private IEncounterRegistry _encounterRegistry;
-        private IMerchantEncounterPlayer _merchantEncounterPlayer;
         private IBattleEncounterPlayer _battleEncounterPlayer;
 
-        public EncounterPlayer(IEncounterRegistry encounterRegistry, IMerchantEncounterPlayer merchantEncounterPlayer, IBattleEncounterPlayer battleEncounterPlayer)
+
+        private Encounter _currentEncounter;
+            
+        
+        public EncounterPlayer(IEncounterRegistry encounterRegistry, IBattleEncounterPlayer battleEncounterPlayer)
         {
             _encounterRegistry = encounterRegistry;
-            _merchantEncounterPlayer = merchantEncounterPlayer;
             _battleEncounterPlayer = battleEncounterPlayer;
+        }
+
+        // for now just in case resetting state
+        public void Initialize()
+        {
+            _currentEncounter = null;
+        }
+
+        public bool CanMoveItem(ItemContainerComponent itemContainer)
+        {
+            if (_currentEncounter is null)
+            {
+                return true;
+            }
+            
+            return _currentEncounter.CanMoveItem(itemContainer);
+        }
+
+        public UniTask HandlePreItemMove(ItemContainerComponent itemContainer, CancellationToken cancellationToken)
+        {
+            if (_currentEncounter is null)
+            {
+                return UniTask.CompletedTask;
+            }
+            
+            return _currentEncounter.PreItemMove(cancellationToken);
         }
 
         public async UniTask PlayEncounter(string encounterId, IStoryContext storyContext, CancellationToken cancellationToken)
@@ -35,19 +62,12 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying
 
             Encounter encounter = requestResult.GetValue();
 
-            switch (encounter.EncounterType)
-            {
-                case EncounterType.Merchant:
-                    await _merchantEncounterPlayer.Play(encounter, storyContext, cancellationToken);
-                    break;
-                case EncounterType.Battle:
-                    await _battleEncounterPlayer.Play(encounter, storyContext, cancellationToken);
-                    break;
-                case EncounterType.Story:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            _currentEncounter = encounter;
+            ProjectContext.Instance.Container.Inject(_currentEncounter);
+
+            await _currentEncounter.Play(storyContext, cancellationToken);
+
+            _currentEncounter = null;
         }
         
         

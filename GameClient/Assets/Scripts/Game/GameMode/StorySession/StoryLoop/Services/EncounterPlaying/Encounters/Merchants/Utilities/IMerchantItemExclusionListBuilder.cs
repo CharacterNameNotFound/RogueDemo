@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts;
-using Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs;
 
-namespace Game.GameMode.StorySession.StoryLoop.Encounters.Merchants.Utilities
+namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Utilities
 {
     public interface IMerchantItemExclusionListBuilder
     {

@@ -1,12 +1,13 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs;
+using Game.GameMode.StorySession.GameBoard.View.Board.Views;
+using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using GameWideSystems.LocalizationWrapper;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Game.GameMode.StorySession.StoryLoop.Encounters
+namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters
 {
     public abstract class Encounter : ScriptableObject
     {
@@ -22,13 +23,21 @@ namespace Game.GameMode.StorySession.StoryLoop.Encounters
 
         public abstract EncounterType EncounterType { get; }
         
+        public abstract UniTask Play(IStoryContext storyContext, CancellationToken cancellationToken);
+        
         public virtual string[] GetPreloadedItemIds()
         {
             return Array.Empty<string>();
         }
         
-        
-        
-        
+        public virtual bool CanMoveItem(ItemContainerComponent itemContainer)
+        {
+            return true;
+        }
+
+        public UniTask PreItemMove(CancellationToken cancellationToken)
+        {
+            return UniTask.CompletedTask;
+        }
     }
 }

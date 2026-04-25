@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.StoryLoop.Encounters;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Utils.UtilityTypes.Result;

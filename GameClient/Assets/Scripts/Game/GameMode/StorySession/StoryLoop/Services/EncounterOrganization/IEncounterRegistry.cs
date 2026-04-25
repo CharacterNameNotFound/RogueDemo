@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.StoryLoop.Encounters;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
 using Utils.UtilityTypes.Result;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization

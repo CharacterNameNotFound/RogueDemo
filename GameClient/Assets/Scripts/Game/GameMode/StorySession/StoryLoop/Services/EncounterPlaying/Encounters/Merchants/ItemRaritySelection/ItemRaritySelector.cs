@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts;
-using Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs;
 using GameWideSystems.RNGManagement;
 
-namespace Game.GameMode.StorySession.StoryLoop.Encounters.Merchants.ItemRaritySelection
+namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.ItemRaritySelection
 {
     public class ItemRaritySelector : IItemRaritySelector
     {

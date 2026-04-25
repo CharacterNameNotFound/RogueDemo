@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Game.GameMode.StorySession.Data.Character;
 using Game.GameMode.StorySession.GameBoard.Simulation;
-using Game.GameMode.StorySession.StoryLoop.Encounters;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs;
 
 

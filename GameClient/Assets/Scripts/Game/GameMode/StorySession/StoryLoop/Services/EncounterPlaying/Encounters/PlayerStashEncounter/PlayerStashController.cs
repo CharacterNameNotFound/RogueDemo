@@ -4,7 +4,7 @@ using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board;
 using GameWideSystems.InputManager;
 
-namespace Game.GameMode.StorySession.StoryLoop.Encounters.PlayerStashEncounter
+namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.PlayerStashEncounter
 {
     public class PlayerStashController : IPlayerStashController
     {

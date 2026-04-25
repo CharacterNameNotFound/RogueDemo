@@ -2,10 +2,10 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.Data.Character;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
-using Game.GameMode.StorySession.StoryLoop.Encounters.PlayerStashEncounter;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.PlayerStashEncounter;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection;
 using Game.GameMode.StorySession.StoryLoop.Services.StoryFinalization;
 using Game.GameMode.StorySession.StoryLoop.StoryRoutines;
@@ -228,6 +228,9 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
                 
             _inputHost.AddInputLayer(_itemManipulationInputLayer);
             _worldInteractableInputLayer.SetActive(true);
+            
+            // resetting systems
+            _encounterPlayer.Initialize();
         }
         
         

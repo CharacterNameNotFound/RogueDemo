@@ -1,6 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.StoryLoop.Encounters;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs;
 

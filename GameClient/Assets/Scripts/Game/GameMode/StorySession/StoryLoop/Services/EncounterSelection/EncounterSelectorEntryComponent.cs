@@ -1,4 +1,4 @@
-using Game.GameMode.StorySession.StoryLoop.Encounters;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
 using UnityEngine;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection

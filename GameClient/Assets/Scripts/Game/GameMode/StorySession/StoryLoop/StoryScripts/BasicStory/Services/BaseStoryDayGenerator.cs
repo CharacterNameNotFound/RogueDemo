@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Game.GameMode.StorySession.StoryLoop.Encounters;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
 using GameWideSystems.RNGManagement;
 
 namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services

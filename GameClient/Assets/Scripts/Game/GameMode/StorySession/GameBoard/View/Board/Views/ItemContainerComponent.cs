@@ -24,6 +24,15 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board.Views
         {
             
         }
+
+        public Vector3 GetItemLinePivot()
+        {
+            Bounds bounds = ItemRenderer.bounds;
+
+            float pivotX = bounds.min.x + bounds.size.x / Size / 2f;
+
+            return new Vector3(pivotX, bounds.center.y, 0);
+        }
         
         public void RenderStarMovement()
         {

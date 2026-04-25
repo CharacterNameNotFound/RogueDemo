@@ -42,6 +42,18 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
                 ItemBuffer[i] = null;
             }
         }
-        
+
+        public bool HasValue()
+        {
+            for (int i = 0; i < ItemBuffer.Length; i++)
+            {
+                if (ItemBuffer[i] is null)
+                    continue;
+                
+                return true;
+            }
+
+            return false;
+        }
     }
 }

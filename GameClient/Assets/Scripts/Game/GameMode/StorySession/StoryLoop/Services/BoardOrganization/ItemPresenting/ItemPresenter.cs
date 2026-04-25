@@ -111,18 +111,25 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
         {
             ItemContainerComponent[] itemContainerComponents = _gameBoardHolder.GameBoardComponent.ItemLineViewController.EncounterItemLine.ItemContainerComponents;
 
-            ItemContainerComponent temp = null;
             
-            for (int i = 0; i < itemContainerComponents.Length; i++)
+            for (int i = 0; i < itemContainerComponents.Length;)
             {
-                if (temp != itemContainerComponents[i])
+                if (itemContainerComponents[i] is null)
                 {
-                    temp = itemContainerComponents[i];
-                    _containersManager.Return(itemContainerComponents[i]);
-                    Addressables.Release(itemContainerComponents[i].ItemRenderer.sprite);
+                    i++;
+                    continue;
                 }
 
-                itemContainerComponents[i] = null;
+                int step = itemContainerComponents[i].Size;
+                Addressables.Release(itemContainerComponents[i].ItemRenderer.sprite);
+                _containersManager.Return(itemContainerComponents[i]);
+                
+                for (int j = 0; j < step; j++)
+                {
+                    itemContainerComponents[j] = null;
+                }
+                
+                i += step;
             }
             
         }

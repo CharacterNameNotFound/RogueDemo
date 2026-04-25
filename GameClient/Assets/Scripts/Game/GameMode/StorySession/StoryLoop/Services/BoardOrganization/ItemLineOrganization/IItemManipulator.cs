@@ -10,16 +10,16 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
     /// </summary>
     public interface IItemManipulator
     {
-        public UniTask Initialize(CancellationToken cancellationToken);
         public bool TryGetItemLineForItem(ItemContainerComponent item, out ItemLineComponent line);
         
-        public UniTask<bool> TryCompleteItemTransition(
-            Vector3 worldPosition, 
-            ItemLineComponent original, 
-            ItemLineComponent targetLine, 
-            ItemLineBuffer targetLineBuffer, 
-            ItemContainerComponent item, 
-            ItemLineBuffer workerItemLineBuffer, 
+        public UniTask<bool> TryCompleteItemTransition(Vector3 worldPosition,
+            int targetItemOriginalIndex,
+            ItemLineComponent originalLine,
+            ItemLineComponent targetLine,
+            ItemLineBuffer targetLineBuffer,
+            ItemContainerComponent item,
+            ItemLineBuffer workerItemLineBuffer,
+            ItemLineBuffer secondWorkerItemLineBuffer,
             CancellationToken cancellationToken);
         
         public bool TryUpdateItemLines(
@@ -30,6 +30,5 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             ItemContainerComponent item, 
             ItemLineBuffer workerItemLineBuffer);
         
-        public void CleanUp();
     }
 }

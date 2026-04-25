@@ -1,7 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.StoryLoop.Encounters;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
 using GameWideSystems.RNGManagement;
 using Utils.UtilityTypes.AssetReferencing;
 

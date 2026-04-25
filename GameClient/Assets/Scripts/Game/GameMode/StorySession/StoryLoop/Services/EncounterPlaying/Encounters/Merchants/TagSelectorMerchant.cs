@@ -1,21 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags;
-using Game.GameMode.StorySession.StoryLoop.Encounters.Merchants.ItemRaritySelection;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.ItemRaritySelection;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Utilities;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
-using Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs;
-using Game.ManagementSystems.LookUpTableManagement;
-using GameWideSystems.RNGManagement;
+using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using UnityEngine;
 using Zenject;
-using System.Linq;
-using Game.GameMode.StorySession.StoryLoop.Encounters.Merchants.Utilities;
-using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 
-namespace Game.GameMode.StorySession.StoryLoop.Encounters.Merchants
+namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants
 {
     public class TagSelectorMerchant : MerchantEncounter
     {

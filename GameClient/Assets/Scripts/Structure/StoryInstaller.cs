@@ -5,14 +5,14 @@ using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStatSetT
 using Game.GameMode.StorySession.GameBoard.Simulation.Facades;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.Services.SaveManagement;
-using Game.GameMode.StorySession.StoryLoop.Encounters.Merchants.ItemRaritySelection;
-using Game.GameMode.StorySession.StoryLoop.Encounters.Merchants.Utilities;
-using Game.GameMode.StorySession.StoryLoop.Encounters.PlayerStashEncounter;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Battle;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.ItemRaritySelection;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Utilities;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.PlayerStashEncounter;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Merchant;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
@@ -67,7 +67,7 @@ namespace Structure
             Container.Bind<EncounterDeck>().To<EncounterDeck>().AsSingle();
             Container.Bind<EncounterDeckOrganizer>().To<EncounterDeckOrganizer>().AsSingle();
             Container.Bind<IEncounterLoader>().To<EncounterLoader>().AsSingle();
-            Container.Bind<IMerchantEncounterPlayer>().To<MerchantEncounterPlayer>().AsSingle();
+            Container.Bind<IMerchantEncounterRoutines>().To<MerchantEncounterRoutines>().AsSingle();
             Container.Bind<IBattleEncounterPlayer>().To<BattleEncounterPlayer>().AsSingle();
             Container.Bind<IMerchantItemExclusionListBuilder>().To<MerchantItemExclusionListBuilder>().AsSingle();
             

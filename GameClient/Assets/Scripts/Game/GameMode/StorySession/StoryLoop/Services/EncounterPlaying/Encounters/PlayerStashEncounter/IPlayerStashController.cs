@@ -1,7 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-namespace Game.GameMode.StorySession.StoryLoop.Encounters.PlayerStashEncounter
+namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.PlayerStashEncounter
 {
     public interface IPlayerStashController
     {

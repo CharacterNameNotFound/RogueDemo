@@ -1,4 +1,4 @@
-namespace Game.GameMode.StorySession.StoryLoop.Encounters
+namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters
 {
     public enum EncounterType
     {

@@ -1,4 +1,4 @@
-using Game.GameMode.StorySession.StoryLoop.Encounters;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
 using Game.GameMode.StorySession.Utilities;
 using Game.GameMode.StorySession.Utilities.Decks;
 using GameWideSystems.RNGManagement;
