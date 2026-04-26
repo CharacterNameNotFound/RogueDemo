@@ -121,7 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eddb3bc7f1e454abd4ccfcb2727947f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Effectors.SlowEffectorPrototype
-  IsCritAvailable: 0
   TargetSelectorPrototypes: {fileID: 1664968082000875385}
   SlowDurationProvider: {fileID: 5037206705999118715}
 --- !u!114 &5037206705999118715
@@ -208,8 +207,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: 0}
   DowngradedItem: {fileID: -8666746465287308309, guid: 10348672f5f631a429da9a6bff798169, type: 3}
   ItemImage:
-    m_AssetGUID: 4f76735b7aa272c4bb20635ddf20862c
-    m_SubObjectName: Large_item_placeholder_0
+    m_AssetGUID: cc4f3a059ba8b304cbb259c1eb3ae0e8
+    m_SubObjectName: bottled_squid_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

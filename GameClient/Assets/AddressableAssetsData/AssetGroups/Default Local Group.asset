@@ -25,6 +25,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 06e720a8d437c4344add10f2ce7323a0
+    m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/boards.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0bde09e592a536849bc6604e42d390fd
     m_Address: Assets/Content/GameMode/StorySession/Prefabs/EncounterSelectorObject.prefab
     m_ReadOnly: 0
@@ -95,6 +100,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 50fdac9527cbdb94d95909bd2b883166
+    m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/fire_wine.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7061df58904746c46b7443e32bc03f1e
     m_Address: Assets/Sprites/Story/Items/Special/Bronze_frame.png
     m_ReadOnly: 0
@@ -117,6 +127,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 81949eab3025dbe489f1362e54de93f3
     m_Address: encounter/weapon_boss_circle_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 845b864e81f6232409a41320b65670f3
+    m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/bandage.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -200,6 +215,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc4f3a059ba8b304cbb259c1eb3ae0e8
+    m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/bottled_squid.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d2cb653af0ccba74c88ba9c5bebdfa59
     m_Address: encounter/shield_character_items
     m_ReadOnly: 0
@@ -212,6 +232,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ddd0724b15556bd4a97e55e85cc9e482
     m_Address: encounter/fire_character_items
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e1d279c5a7dce6943b0b8ef9a2213591
+    m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/ale.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
