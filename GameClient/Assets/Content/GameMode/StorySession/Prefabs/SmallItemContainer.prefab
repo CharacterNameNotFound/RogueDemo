@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 7831360993198409118}
   - component: {fileID: 2701780854095937949}
   - component: {fileID: 9157794181627106270}
+  - component: {fileID: -611995744144747792}
   m_Layer: 0
   m_Name: SmallItemContainer
   m_TagString: Untagged
@@ -159,6 +160,7 @@ MonoBehaviour:
   <FrameRenderer>k__BackingField: {fileID: 8944506207786822392}
   <ChargeProgressRenderer>k__BackingField: {fileID: 691539254381693543}
   <SortingGroup>k__BackingField: {fileID: 7831360993198409118}
+  <Collider2D>k__BackingField: {fileID: 9157794181627106270}
 --- !u!61 &9157794181627106270
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -205,6 +207,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 6, y: 12}
   m_EdgeRadius: 0
+--- !u!50 &-611995744144747792
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5553565258445989063}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &5745059898940224510
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,14 +315,14 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1785766194076131560, guid: 7061df58904746c46b7443e32bc03f1e, type: 3}
+  m_Sprite: {fileID: -354502875583610408, guid: c9f4fab164cc0b34d9fbf1810d3ee372, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
   m_Size: {x: 6, y: 12}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
+  m_AdaptiveModeThreshold: 1
+  m_SpriteTileMode: 1
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []

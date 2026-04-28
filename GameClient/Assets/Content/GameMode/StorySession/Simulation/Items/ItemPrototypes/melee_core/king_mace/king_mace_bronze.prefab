@@ -130,8 +130,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: e216ca5859218614a82f9817c0751fc0, type: 3}
   DowngradedItem: {fileID: 0}
   ItemImage:
-    m_AssetGUID: 81ec366f5b66f3147bccbe7b54bc3df2
-    m_SubObjectName: Medium_item_placeholder_0
+    m_AssetGUID: 2f1685768811bb24cb3ecd63d60cdd05
+    m_SubObjectName: king_mace_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

@@ -5,7 +5,7 @@ using Cysharp.Threading.Tasks;
 
 namespace Utils.UtilityTypes.EventProcessing
 {
-    public class EventDispatcher<T> : IEventDispatcher<T> where T : EventArgs
+    public class EventDispatcher<T> : IEventDispatcher<T>
     {
         private readonly List<Func<T, CancellationToken, UniTask>> _eventRegistry = new();
         

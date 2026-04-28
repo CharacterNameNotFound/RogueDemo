@@ -7,7 +7,7 @@
   "ItemSize": 1,
   "UpgradedItemId": "dagger_gold",
   "DowngradedItemId": "dagger_bronze",
-  "ItemSpriteRuntimeKey": "919c02dabf1e5774d89a026758e44811[Small_item_0]",
+  "ItemSpriteRuntimeKey": "933c57a9d1dd6524ea67e54edc136927[dagger_0]",
   "Tags": {
     "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags.TagList, Game.GameMode.StorySession",
     "TagsList": {

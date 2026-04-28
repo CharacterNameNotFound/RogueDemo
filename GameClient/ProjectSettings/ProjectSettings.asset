@@ -792,7 +792,7 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Android: DOTWEEN;TextMeshPro
+    Android: DOTWEEN;TextMeshPro;UNITASK_DOTWEEN_SUPPORT
     EmbeddedLinux: DOTWEEN;TextMeshPro
     GameCoreScarlett: DOTWEEN;TextMeshPro
     GameCoreXboxOne: DOTWEEN;TextMeshPro
@@ -809,7 +809,7 @@ PlayerSettings:
     WebGL: DOTWEEN;TextMeshPro
     Windows Store Apps: DOTWEEN
     XboxOne: DOTWEEN;TextMeshPro
-    iPhone: DOTWEEN;TextMeshPro
+    iPhone: DOTWEEN;TextMeshPro;UNITASK_DOTWEEN_SUPPORT
     tvOS: DOTWEEN;TextMeshPro
   additionalCompilerArguments: {}
   platformArchitecture: {}

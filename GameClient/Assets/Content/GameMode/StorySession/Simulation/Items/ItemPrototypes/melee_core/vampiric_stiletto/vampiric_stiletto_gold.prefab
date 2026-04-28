@@ -131,8 +131,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: 48b2fd0316c1d6c42a4e6efd7be752ec, type: 3}
   DowngradedItem: {fileID: -8666746465287308309, guid: ca4bc452491e19f478eecf33c8aaa3b9, type: 3}
   ItemImage:
-    m_AssetGUID: 81ec366f5b66f3147bccbe7b54bc3df2
-    m_SubObjectName: Medium_item_placeholder_0
+    m_AssetGUID: 5dcbef28f4762064d92babb786c56520
+    m_SubObjectName: vampiric_stiletto_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

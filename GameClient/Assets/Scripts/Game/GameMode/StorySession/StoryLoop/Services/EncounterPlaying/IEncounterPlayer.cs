@@ -1,14 +1,18 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying
 {
     public interface IEncounterPlayer
     {
+        public Encounter CurrentEncounter { get; }
+        
         public void Initialize();
-        public bool CanMoveItem(ItemContainerComponent itemContainer);
+        public bool CanMoveItem(ItemContainerComponent itemContainer, ItemLineComponent originalItemLine);
+        public bool CanSellItem(ItemContainerComponent itemContainer);
         
         /// <summary>
         /// For cases when something needs to be done before item movement finalized, for example processing payment, or finalizing an event.

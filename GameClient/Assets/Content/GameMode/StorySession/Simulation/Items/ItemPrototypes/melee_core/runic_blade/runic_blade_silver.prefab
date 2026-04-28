@@ -131,8 +131,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: b940d7d3716c4ad44a1a11431c06dc9e, type: 3}
   DowngradedItem: {fileID: -8666746465287308309, guid: 251603ed690af4143bd8f74dbb59ee4c, type: 3}
   ItemImage:
-    m_AssetGUID: 4f76735b7aa272c4bb20635ddf20862c
-    m_SubObjectName: Large_item_placeholder_0
+    m_AssetGUID: f07a9b6581dab4148bbec6d0f64d4cee
+    m_SubObjectName: runic_blade_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 
@@ -339,7 +339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4708119738604b1983d3d089f423e4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Effectors.HasteEffectorPrototype
-  IsCritAvailable: 0
   TargetSelectorPrototypes: {fileID: 8157201951968305081}
   HasteDurationProvider: {fileID: 223309303727903021}
 --- !u!114 &8157201951968305081

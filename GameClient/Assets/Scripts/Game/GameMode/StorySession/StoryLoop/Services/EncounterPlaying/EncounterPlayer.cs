@@ -16,9 +16,9 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying
         private IBattleEncounterPlayer _battleEncounterPlayer;
 
 
-        private Encounter _currentEncounter;
-            
-        
+        public Encounter CurrentEncounter { get; private set; }
+
+
         public EncounterPlayer(IEncounterRegistry encounterRegistry, IBattleEncounterPlayer battleEncounterPlayer)
         {
             _encounterRegistry = encounterRegistry;
@@ -28,27 +28,37 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying
         // for now just in case resetting state
         public void Initialize()
         {
-            _currentEncounter = null;
+            CurrentEncounter = null;
         }
 
-        public bool CanMoveItem(ItemContainerComponent itemContainer)
+        public bool CanMoveItem(ItemContainerComponent itemContainer, ItemLineComponent originalItemLine)
         {
-            if (_currentEncounter is null)
+            if (CurrentEncounter is null)
             {
                 return true;
             }
             
-            return _currentEncounter.CanMoveItem(itemContainer);
+            return CurrentEncounter.CanMoveItem(itemContainer);
+        }
+
+        public bool CanSellItem(ItemContainerComponent itemContainer)
+        {
+            if (CurrentEncounter is null)
+            {
+                return true;
+            }
+            
+            return CurrentEncounter.CanSellItem(itemContainer);
         }
 
         public UniTask HandlePreItemMove(ItemContainerComponent itemContainer, CancellationToken cancellationToken)
         {
-            if (_currentEncounter is null)
+            if (CurrentEncounter is null)
             {
                 return UniTask.CompletedTask;
             }
             
-            return _currentEncounter.PreItemMove(cancellationToken);
+            return CurrentEncounter.PreItemMove(cancellationToken);
         }
 
         public async UniTask PlayEncounter(string encounterId, IStoryContext storyContext, CancellationToken cancellationToken)
@@ -62,12 +72,12 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying
 
             Encounter encounter = requestResult.GetValue();
 
-            _currentEncounter = encounter;
-            ProjectContext.Instance.Container.Inject(_currentEncounter);
+            CurrentEncounter = encounter;
+            ProjectContext.Instance.Container.Inject(CurrentEncounter);
 
-            await _currentEncounter.Play(storyContext, cancellationToken);
+            await CurrentEncounter.Play(storyContext, cancellationToken);
 
-            _currentEncounter = null;
+            CurrentEncounter = null;
         }
         
         

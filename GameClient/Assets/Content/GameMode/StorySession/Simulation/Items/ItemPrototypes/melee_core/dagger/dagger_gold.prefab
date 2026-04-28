@@ -130,8 +130,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: fcac96585d7437c46aee3fb70cf5ebc3, type: 3}
   DowngradedItem: {fileID: -8666746465287308309, guid: a2894ab7d6e24a4448896cd15222b477, type: 3}
   ItemImage:
-    m_AssetGUID: 919c02dabf1e5774d89a026758e44811
-    m_SubObjectName: Small_item_0
+    m_AssetGUID: 933c57a9d1dd6524ea67e54edc136927
+    m_SubObjectName: dagger_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 
 namespace Utils.UtilityTypes.EventProcessing
 {
-    public interface IEventDispatcher<T> where T : EventArgs
+    public interface IEventDispatcher<T>
     {
         public void RegisterHandler(Func<T, CancellationToken, UniTask> eventHandler);
         public UniTask Invoke(T args, CancellationToken cancellationToken);

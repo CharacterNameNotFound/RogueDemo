@@ -7,7 +7,7 @@
   "ItemSize": 2,
   "UpgradedItemId": "rope_diamond",
   "DowngradedItemId": "rope_silver",
-  "ItemSpriteRuntimeKey": "81ec366f5b66f3147bccbe7b54bc3df2[Medium_item_placeholder_0]",
+  "ItemSpriteRuntimeKey": "430ff6dda45b3794397e8043cb2aa965[rope_0]",
   "Tags": {
     "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags.TagList, Game.GameMode.StorySession",
     "TagsList": {

@@ -7,7 +7,7 @@
   "ItemSize": 3,
   "UpgradedItemId": "practice_sword_diamond",
   "DowngradedItemId": "practice_sword_silver",
-  "ItemSpriteRuntimeKey": "4f76735b7aa272c4bb20635ddf20862c[Large_item_placeholder_0]",
+  "ItemSpriteRuntimeKey": "a275f0018b2dbd5408dc80439547a134[practice_sword_0]",
   "Tags": {
     "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags.TagList, Game.GameMode.StorySession",
     "TagsList": {

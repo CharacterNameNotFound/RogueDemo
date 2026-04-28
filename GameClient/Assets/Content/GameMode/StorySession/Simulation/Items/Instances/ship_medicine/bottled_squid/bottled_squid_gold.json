@@ -7,7 +7,7 @@
   "ItemSize": 3,
   "UpgradedItemId": "bottled_squid_diamond",
   "DowngradedItemId": "bottled_squid_silver",
-  "ItemSpriteRuntimeKey": "4f76735b7aa272c4bb20635ddf20862c[Large_item_placeholder_0]",
+  "ItemSpriteRuntimeKey": "cc4f3a059ba8b304cbb259c1eb3ae0e8[bottled_squid_0]",
   "Tags": {
     "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags.TagList, Game.GameMode.StorySession",
     "TagsList": {

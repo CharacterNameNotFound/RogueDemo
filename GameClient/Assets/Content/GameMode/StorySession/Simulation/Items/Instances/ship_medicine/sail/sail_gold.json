@@ -7,7 +7,7 @@
   "ItemSize": 3,
   "UpgradedItemId": "sail_diamond",
   "DowngradedItemId": "sail_silver",
-  "ItemSpriteRuntimeKey": "4f76735b7aa272c4bb20635ddf20862c[Large_item_placeholder_0]",
+  "ItemSpriteRuntimeKey": "12417fb16c72dfb46982623e343a6696[sail_0]",
   "Tags": {
     "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags.TagList, Game.GameMode.StorySession",
     "TagsList": {

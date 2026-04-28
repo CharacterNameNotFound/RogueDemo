@@ -131,8 +131,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: cd1f7f6a65cf41048b3c22cf82b973c3, type: 3}
   DowngradedItem: {fileID: 0}
   ItemImage:
-    m_AssetGUID: 919c02dabf1e5774d89a026758e44811
-    m_SubObjectName: Small_item_0
+    m_AssetGUID: 80559193e30b995428b79ac1c7cd3fec
+    m_SubObjectName: poisoned_dagger_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

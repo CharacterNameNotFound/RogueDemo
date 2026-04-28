@@ -7,7 +7,7 @@
   "ItemSize": 1,
   "UpgradedItemId": "healing_salve_silver",
   "DowngradedItemId": null,
-  "ItemSpriteRuntimeKey": "919c02dabf1e5774d89a026758e44811[Small_item_0]",
+  "ItemSpriteRuntimeKey": "dfe58500416a3dd4abdd5d1ec228e3b7[healing_salve_0]",
   "Tags": {
     "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags.TagList, Game.GameMode.StorySession",
     "TagsList": {

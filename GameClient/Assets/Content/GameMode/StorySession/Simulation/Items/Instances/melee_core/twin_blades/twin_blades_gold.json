@@ -7,7 +7,7 @@
   "ItemSize": 3,
   "UpgradedItemId": "twin_blades_diamond",
   "DowngradedItemId": "twin_blades_silver",
-  "ItemSpriteRuntimeKey": "4f76735b7aa272c4bb20635ddf20862c[Large_item_placeholder_0]",
+  "ItemSpriteRuntimeKey": "fc830faa2ccdc964788f429ac57ae116[twin_blades_0]",
   "Tags": {
     "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags.TagList, Game.GameMode.StorySession",
     "TagsList": {

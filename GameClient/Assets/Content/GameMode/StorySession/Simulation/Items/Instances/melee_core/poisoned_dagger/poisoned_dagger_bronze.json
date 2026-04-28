@@ -7,7 +7,7 @@
   "ItemSize": 1,
   "UpgradedItemId": "poisoned_dagger_silver",
   "DowngradedItemId": null,
-  "ItemSpriteRuntimeKey": "919c02dabf1e5774d89a026758e44811[Small_item_0]",
+  "ItemSpriteRuntimeKey": "80559193e30b995428b79ac1c7cd3fec[poisoned_dagger_0]",
   "Tags": {
     "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags.TagList, Game.GameMode.StorySession",
     "TagsList": {

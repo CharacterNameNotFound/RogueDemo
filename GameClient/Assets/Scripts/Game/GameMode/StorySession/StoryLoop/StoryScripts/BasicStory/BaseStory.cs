@@ -44,6 +44,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
         private IInputHost _inputHost;
         private WorldInteractableInputLayer _worldInteractableInputLayer;
         private IPlayerStashController _playerStashController;
+        private IStoryContextProvider _storyContextProvider;
 
         private BaseStoryContext _baseStoryContext;
 
@@ -67,7 +68,8 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             ItemManipulationInputLayer itemManipulationInputLayer,
             IInputHost inputHost,
             WorldInteractableInputLayer worldInteractableInputLayer,
-            IPlayerStashController playerStashController
+            IPlayerStashController playerStashController,
+            IStoryContextProvider storyContextProvider
             )
         {
             _loadingScreenManager = loadingScreenManager;
@@ -88,11 +90,13 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             _inputHost = inputHost;
             _worldInteractableInputLayer = worldInteractableInputLayer;
             _playerStashController = playerStashController;
+            _storyContextProvider = storyContextProvider;
         }
 
         public async UniTask Initialize(StoryInitializationData storyInitializationData, CancellationToken cancellationToken)
         {
             _baseStoryContext = new BaseStoryContext();
+            _storyContextProvider.Set(_baseStoryContext);
 
             await (storyInitializationData.TryReadSaveFile ? ReadSaveFile(cancellationToken) : GenerateSessionData(storyInitializationData, cancellationToken));
             
@@ -225,7 +229,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
 
             // Input related
             await _playerStashController.Initialize(cancellationToken);
-                
+
             _inputHost.AddInputLayer(_itemManipulationInputLayer);
             _worldInteractableInputLayer.SetActive(true);
             

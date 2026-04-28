@@ -45,6 +45,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 12417fb16c72dfb46982623e343a6696
+    m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/sail.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 194fb158f96618e4b94fbdb7d3679dd7
     m_Address: Assets/Sprites/Story/Encounter/Bosses/weapon_boss_1_vertical_portrait.png
     m_ReadOnly: 0
@@ -65,8 +70,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1ff8cf2e9e5aff74882859ff8922d14e
+    m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/rapier.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 24306bba513c99e489afeec0c3fda081
     m_Address: Assets/GameConfigurations/Structure/Prefabs
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2462932a07ade614797c93ff12f39bbf
+    m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/med_kit.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -80,6 +95,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2f1685768811bb24cb3ecd63d60cdd05
+    m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/king_mace.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 337fccc98f6797947991561d1541cac4
+    m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/hand_axe.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 345093790dc50544898f457601e23cc6
     m_Address: Assets/Sprites/Story/Encounter/Merchants/WeaponMerchant.png
     m_ReadOnly: 0
@@ -87,6 +112,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 413cb7d62c206dc4a9cf0792e7b700d1
     m_Address: Assets/GameConfigurations/Structure/Prefabs/AudioSorce.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 430ff6dda45b3794397e8043cb2aa965
+    m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/rope.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -102,6 +132,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 50fdac9527cbdb94d95909bd2b883166
     m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/fire_wine.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5dcbef28f4762064d92babb786c56520
+    m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/vampiric_stiletto.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 64a3d6f8df98de24aa2fa92d0a2e123a
+    m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/ram.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -125,6 +165,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 80559193e30b995428b79ac1c7cd3fec
+    m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/poisoned_dagger.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 81949eab3025dbe489f1362e54de93f3
     m_Address: encounter/weapon_boss_circle_2
     m_ReadOnly: 0
@@ -137,6 +182,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 85fe1c5ac646bc048a2033e4aee70ddb
     m_Address: Assets/Sprites/Story/Encounter/Bosses/weapon_boss_3_vertical_portrait.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 867c04b68aeaf034782eea7ad46867b5
+    m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/torch.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 933c57a9d1dd6524ea67e54edc136927
+    m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/dagger.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -165,6 +220,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f700b8c82a09c14bad5f498f63925b6
+    m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/spare_planks.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a275f0018b2dbd5408dc80439547a134
+    m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/practice_sword.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a4f0aed9f481a6f4f835d8f0d86a259e
     m_Address: Assets/Sprites/Story/Encounter/Bosses/healing_boss_2_vertical_portrait.png
     m_ReadOnly: 0
@@ -187,6 +252,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b4a69c8130924e74fbbad900b2c1631b
     m_Address: encounter/weapon_boss_circle_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b897257c5d6e6624ab567ae8aa0145bf
+    m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/rum.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -230,8 +300,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db5b5b832307bee4dabbfdae265c7ded
+    m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/knife.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ddd0724b15556bd4a97e55e85cc9e482
     m_Address: encounter/fire_character_items
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dfe58500416a3dd4abdd5d1ec228e3b7
+    m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/healing_salve.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -260,8 +340,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f07a9b6581dab4148bbec6d0f64d4cee
+    m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/runic_blade.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f3e05b797a398894e9f7a19c8a366e0a
     m_Address: Assets/Sprites/Story/Encounter/Bosses/weapon_boss_2_vertical_portrait.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fab9fa2cddd6d7041b41e306f6ad6e1d
+    m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/saw.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc830faa2ccdc964788f429ac57ae116
+    m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/twin_blades.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

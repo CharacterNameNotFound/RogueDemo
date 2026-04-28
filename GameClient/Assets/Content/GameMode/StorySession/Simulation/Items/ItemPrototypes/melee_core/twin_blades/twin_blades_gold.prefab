@@ -130,8 +130,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: 7ef7556c7e7de6949a2b91641b1f111b, type: 3}
   DowngradedItem: {fileID: -8666746465287308309, guid: 87131eca8aa66d84b9c3f2fadaa8c00c, type: 3}
   ItemImage:
-    m_AssetGUID: 4f76735b7aa272c4bb20635ddf20862c
-    m_SubObjectName: Large_item_placeholder_0
+    m_AssetGUID: fc830faa2ccdc964788f429ac57ae116
+    m_SubObjectName: twin_blades_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

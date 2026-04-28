@@ -131,8 +131,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: 8c480392bd3c0db4db76fb7e517b3f5e, type: 3}
   DowngradedItem: {fileID: -8666746465287308309, guid: 95d0826302a0fc64dbcf77d6e0f09a1c, type: 3}
   ItemImage:
-    m_AssetGUID: 81ec366f5b66f3147bccbe7b54bc3df2
-    m_SubObjectName: Medium_item_placeholder_0
+    m_AssetGUID: 337fccc98f6797947991561d1541cac4
+    m_SubObjectName: hand_axe_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 
@@ -339,7 +339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eddb3bc7f1e454abd4ccfcb2727947f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Effectors.SlowEffectorPrototype
-  IsCritAvailable: 0
   TargetSelectorPrototypes: {fileID: 6505212785920683971}
   SlowDurationProvider: {fileID: 651216621047021380}
 --- !u!114 &6505212785920683971

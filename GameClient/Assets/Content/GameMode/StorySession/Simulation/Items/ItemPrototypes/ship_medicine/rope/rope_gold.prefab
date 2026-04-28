@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eddb3bc7f1e454abd4ccfcb2727947f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Effectors.SlowEffectorPrototype
-  IsCritAvailable: 0
   TargetSelectorPrototypes: {fileID: 4571262250101792335}
   SlowDurationProvider: {fileID: 2015861515483137255}
 --- !u!114 &4571262250101792335
@@ -147,8 +146,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: 0c3aebbcb3c3576438a53f7badf60b8c, type: 3}
   DowngradedItem: {fileID: -8666746465287308309, guid: cb5e0157495ad67438f3ed050d0bd709, type: 3}
   ItemImage:
-    m_AssetGUID: 81ec366f5b66f3147bccbe7b54bc3df2
-    m_SubObjectName: Medium_item_placeholder_0
+    m_AssetGUID: 430ff6dda45b3794397e8043cb2aa965
+    m_SubObjectName: rope_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

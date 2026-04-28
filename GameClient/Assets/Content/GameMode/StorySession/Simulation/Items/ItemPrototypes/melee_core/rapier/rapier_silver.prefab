@@ -130,8 +130,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: 1d7bbea721ea97545a8c9e913b122252, type: 3}
   DowngradedItem: {fileID: -8666746465287308309, guid: e25dcdf437353264c8e0e2075f30900c, type: 3}
   ItemImage:
-    m_AssetGUID: 81ec366f5b66f3147bccbe7b54bc3df2
-    m_SubObjectName: Medium_item_placeholder_0
+    m_AssetGUID: 1ff8cf2e9e5aff74882859ff8922d14e
+    m_SubObjectName: rapier_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

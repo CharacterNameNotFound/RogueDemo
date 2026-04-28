@@ -1,6 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
+using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using UnityEngine;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization
@@ -29,6 +30,11 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             ItemLineBuffer targetLineBuffer, 
             ItemContainerComponent item, 
             ItemLineBuffer workerItemLineBuffer);
-        
+
+        UniTask<bool> TrySellItem(Vector3 mouseWorldPoint,
+            ItemContainerComponent[] itemLine,
+            ItemLineComponent originalItemLine,
+            ItemContainerComponent item,
+            CancellationToken cancellationToken);
     }
 }

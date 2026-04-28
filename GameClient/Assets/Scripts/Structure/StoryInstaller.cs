@@ -18,8 +18,10 @@ using Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.StoryFinalization;
 using Game.GameMode.StorySession.StoryLoop.StoryRoutines;
+using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.GameSaving;
+using Game.GameMode.StorySession.Utilities.EventArguments;
 using Utils.UtilityTypes.EventProcessing;
 using Zenject;
 
@@ -45,9 +47,11 @@ namespace Structure
             Container.Bind<IEncounterPlayer>().To<EncounterPlayer>().AsSingle();
             Container.Bind<IItemManipulator>().To<ItemManipulator>().AsSingle();
             Container.Bind<IItemPresenter>().To<ItemPresenter>().AsSingle();
+            Container.Bind<IItemTransactionOperationController>().To<ItemTransactionOperationController>().AsSingle();
             
-            // views
+            // views and model
             Container.Bind<GameBoardHolder>().To<GameBoardHolder>().AsSingle();
+            Container.Bind<IStoryContextProvider>().To<StoryContextHolder>().AsSingle();
             
             // Items and deck
             Container.Bind<IItemRegistry>().To<ItemRegistry>().AsSingle();
@@ -109,7 +113,19 @@ namespace Structure
         
         private void InstallEvents()
         {
-            Container.Bind<IEventDispatcher<EventArgs>>().To<EventDispatcher<EventArgs>>().AsSingle();
+            Container.Bind<IItemTransactionEventPublisher>().To<ItemTransactionEventPublisher>().AsSingle();
+            
+            Container.Bind<IEventDispatcher<PostItemMovementArguments>>().To<EventDispatcher<PostItemMovementArguments>>().AsSingle();
+            Container.Bind<IEventDispatcher<PreItemMovementArguments>>().To<EventDispatcher<PreItemMovementArguments>>().AsSingle();
+            
+            Container.Bind<IEventDispatcher<PreItemSellArguments>>().To<EventDispatcher<PreItemSellArguments>>().AsSingle();
+            Container.Bind<IEventDispatcher<PostItemSellArguments>>().To<EventDispatcher<PostItemSellArguments>>().AsSingle();
+            
+            Container.Bind<IEventDispatcher<PreItemPurchaseArguments>>().To<EventDispatcher<PreItemPurchaseArguments>>().AsSingle();
+            Container.Bind<IEventDispatcher<PostItemPurchaseArguments>>().To<EventDispatcher<PostItemPurchaseArguments>>().AsSingle();
+            
+            Container.Bind<IEventDispatcher<PreItemUpgradeArgument>>().To<EventDispatcher<PreItemUpgradeArgument>>().AsSingle();
+            Container.Bind<IEventDispatcher<PostItemUpgradeArguments>>().To<EventDispatcher<PostItemUpgradeArguments>>().AsSingle();
         }
         
         private void InstallBalancing()

@@ -122,7 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4708119738604b1983d3d089f423e4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Effectors.HasteEffectorPrototype
-  IsCritAvailable: 0
   TargetSelectorPrototypes: {fileID: 8393877913451232646}
   HasteDurationProvider: {fileID: 5037206705999118715}
 --- !u!114 &8393877913451232646
@@ -224,8 +223,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: 2e471e9d94fff784ab145e139d047b04, type: 3}
   DowngradedItem: {fileID: -8666746465287308309, guid: 45ac70850aaf7ad48b72308b134d2852, type: 3}
   ItemImage:
-    m_AssetGUID: 81ec366f5b66f3147bccbe7b54bc3df2
-    m_SubObjectName: Medium_item_placeholder_0
+    m_AssetGUID: b897257c5d6e6624ab567ae8aa0145bf
+    m_SubObjectName: rum_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

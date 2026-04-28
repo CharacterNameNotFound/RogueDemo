@@ -274,51 +274,6 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             return true;
         }
         
-        ///////
-        
-        /// <summary>
-        /// Moved item fully overlaps items in final position
-        /// </summary>
-        private void HandlePerfectSwap(
-            int originalLineIndex, 
-            int targetLineIndex, 
-            ItemLineComponent originalLine, 
-            ItemLineComponent targetLine, 
-            ItemContainerComponent item, 
-            ItemContainerComponent[] originalLineResult, 
-            ItemContainerComponent[] targetLineResult,
-            HashSet<ItemContainerComponent> itemsToMoveToOriginal)
-        {
-            for (int i = 0; i < originalLine.ItemContainerComponents.Length; i++)
-            {
-                originalLineResult[i] = originalLine.ItemContainerComponents[i];
-                targetLineResult[i] = targetLine.ItemContainerComponents[i];
-            }
-
-            foreach (ItemContainerComponent moveToOriginal in itemsToMoveToOriginal)
-            {
-                RemoveItem(targetLineResult, moveToOriginal, out _);
-            }
-            
-            foreach (ItemContainerComponent moveToOriginal in itemsToMoveToOriginal)
-            {
-                for (int i = 0; i < moveToOriginal.Size; i++)
-                {
-                    originalLineResult[originalLineIndex + i] = moveToOriginal;
-                }
-
-                originalLineIndex += moveToOriginal.Size;
-            }
-
-            for (int i = 0; i < item.Size; i++)
-            {
-                targetLineResult[targetLineIndex + i] = item;
-            }
-            
-        }
-        
-        ///////
-        
         
         public void Organize(Bounds itemLineBounds, ItemContainerComponent[] itemConfiguration)
         {
@@ -417,6 +372,48 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
 
 
         // iternal methods
+        
+        
+        /// <summary>
+        /// Moved item fully overlaps items in final position
+        /// </summary>
+        private void HandlePerfectSwap(
+            int originalLineIndex, 
+            int targetLineIndex, 
+            ItemLineComponent originalLine, 
+            ItemLineComponent targetLine, 
+            ItemContainerComponent item, 
+            ItemContainerComponent[] originalLineResult, 
+            ItemContainerComponent[] targetLineResult,
+            HashSet<ItemContainerComponent> itemsToMoveToOriginal)
+        {
+            for (int i = 0; i < originalLine.ItemContainerComponents.Length; i++)
+            {
+                originalLineResult[i] = originalLine.ItemContainerComponents[i];
+                targetLineResult[i] = targetLine.ItemContainerComponents[i];
+            }
+
+            foreach (ItemContainerComponent moveToOriginal in itemsToMoveToOriginal)
+            {
+                RemoveItem(targetLineResult, moveToOriginal, out _);
+            }
+            
+            foreach (ItemContainerComponent moveToOriginal in itemsToMoveToOriginal)
+            {
+                for (int i = 0; i < moveToOriginal.Size; i++)
+                {
+                    originalLineResult[originalLineIndex + i] = moveToOriginal;
+                }
+
+                originalLineIndex += moveToOriginal.Size;
+            }
+
+            for (int i = 0; i < item.Size; i++)
+            {
+                targetLineResult[targetLineIndex + i] = item;
+            }
+            
+        }
         
         private void ReorganizeInternal(Bounds itemLineViewBounds, ItemContainerComponent[] itemConfiguration)
         {

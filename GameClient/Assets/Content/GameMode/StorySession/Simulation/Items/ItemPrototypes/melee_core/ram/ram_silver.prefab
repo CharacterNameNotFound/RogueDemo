@@ -130,8 +130,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: 3d6fa32a8c1189446914491303d69542, type: 3}
   DowngradedItem: {fileID: -8666746465287308309, guid: a24a4c18bf3692b48bda0d7066a39fb6, type: 3}
   ItemImage:
-    m_AssetGUID: 4f76735b7aa272c4bb20635ddf20862c
-    m_SubObjectName: Large_item_placeholder_0
+    m_AssetGUID: 64a3d6f8df98de24aa2fa92d0a2e123a
+    m_SubObjectName: Ram_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

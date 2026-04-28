@@ -34,6 +34,11 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
         {
             return true;
         }
+        
+        public virtual bool CanSellItem(object itemContainer)
+        {
+            return true;
+        }
 
         public UniTask PreItemMove(CancellationToken cancellationToken)
         {

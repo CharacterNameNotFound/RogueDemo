@@ -1,3 +1,4 @@
+using System;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -12,12 +13,17 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board.Views
         [field: SerializeField] public SpriteRenderer FrameRenderer { get; private set; }
         [field: SerializeField] public SpriteRenderer ChargeProgressRenderer { get; private set; }
         [field: SerializeField] public SortingGroup SortingGroup { get; private set; }
+        [field: SerializeField] public Collider2D Collider2D { get; private set; }
+
 
         public Item StoredItem;
 
         public override void OnPooled()
         {
             gameObject.SetActive(false);
+            SortingGroup.sortingOrder = 0;
+            
+            StoredItem = null;
         }
 
         public override void Dispose()
@@ -37,11 +43,15 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board.Views
         public void RenderStarMovement()
         {
             SortingGroup.sortingOrder = 1;
+
+            Collider2D.enabled = false;
         }
         
         public void RenderEndMovement()
         {
             SortingGroup.sortingOrder = 0;
+            
+            Collider2D.enabled = true;
         }
         
     }

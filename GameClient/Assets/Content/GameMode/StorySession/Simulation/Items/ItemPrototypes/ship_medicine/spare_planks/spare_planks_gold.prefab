@@ -130,8 +130,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: 66a240a8cc45e124cb0f8d2931ff0b82, type: 3}
   DowngradedItem: {fileID: -8666746465287308309, guid: 819a67343bfcf3d41889b728315a887f, type: 3}
   ItemImage:
-    m_AssetGUID: 81ec366f5b66f3147bccbe7b54bc3df2
-    m_SubObjectName: Medium_item_placeholder_0
+    m_AssetGUID: 9f700b8c82a09c14bad5f498f63925b6
+    m_SubObjectName: spare_planks_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

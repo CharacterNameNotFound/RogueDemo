@@ -206,8 +206,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: 0}
   DowngradedItem: {fileID: -8666746465287308309, guid: e5c0c6f43eebd5843960999fbaf00c73, type: 3}
   ItemImage:
-    m_AssetGUID: 4f76735b7aa272c4bb20635ddf20862c
-    m_SubObjectName: Large_item_placeholder_0
+    m_AssetGUID: 12417fb16c72dfb46982623e343a6696
+    m_SubObjectName: sail_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

@@ -7,7 +7,7 @@
   "ItemSize": 2,
   "UpgradedItemId": "med_kit_diamond",
   "DowngradedItemId": "med_kit_silver",
-  "ItemSpriteRuntimeKey": "81ec366f5b66f3147bccbe7b54bc3df2[Medium_item_placeholder_0]",
+  "ItemSpriteRuntimeKey": "2462932a07ade614797c93ff12f39bbf[med_kit_0]",
   "Tags": {
     "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags.TagList, Game.GameMode.StorySession",
     "TagsList": {

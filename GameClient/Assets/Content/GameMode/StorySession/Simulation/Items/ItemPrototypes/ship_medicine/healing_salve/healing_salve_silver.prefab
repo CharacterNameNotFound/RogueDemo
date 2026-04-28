@@ -130,8 +130,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: 7a0719f702d1e4d4592877ea7648b022, type: 3}
   DowngradedItem: {fileID: -8666746465287308309, guid: 6da7a156e1241a44fae557af1c5a7cd0, type: 3}
   ItemImage:
-    m_AssetGUID: 919c02dabf1e5774d89a026758e44811
-    m_SubObjectName: Small_item_0
+    m_AssetGUID: dfe58500416a3dd4abdd5d1ec228e3b7
+    m_SubObjectName: healing_salve_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

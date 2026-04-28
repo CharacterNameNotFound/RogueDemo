@@ -2,6 +2,7 @@ using Game.GameMode.StorySession.GameBoard.Simulation.Items;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
 using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
+using UnityEngine;
 
 namespace Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStatSetToItemStatValueConverters
 {
@@ -19,7 +20,8 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStat
                 return 0;
             }
 
-            return CalculateGeneric(statEntry, baseCalculateDepth, multiplicationCalculateDepth);
+            float statValue = CalculateGeneric(statEntry, baseCalculateDepth, multiplicationCalculateDepth);
+            return Mathf.Max(0, statValue);
         }
 
         protected virtual float CalculateGeneric(

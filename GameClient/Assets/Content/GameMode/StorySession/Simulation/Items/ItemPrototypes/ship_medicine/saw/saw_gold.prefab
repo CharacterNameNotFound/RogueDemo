@@ -130,8 +130,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: e685a84feae1f44438eb5deab111206f, type: 3}
   DowngradedItem: {fileID: -8666746465287308309, guid: 66528b141687e8a42818a2693511bf33, type: 3}
   ItemImage:
-    m_AssetGUID: 919c02dabf1e5774d89a026758e44811
-    m_SubObjectName: Small_item_0
+    m_AssetGUID: fab9fa2cddd6d7041b41e306f6ad6e1d
+    m_SubObjectName: saw_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

@@ -86,7 +86,6 @@ GameObject:
   - component: {fileID: 7949106507283742266}
   - component: {fileID: -8666746465287308309}
   - component: {fileID: 4772569043822553358}
-  - component: {fileID: 8219299219744447910}
   - component: {fileID: 283141784943870736}
   - component: {fileID: 6788911415023291659}
   m_Layer: 0
@@ -131,8 +130,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: c01de89565595314ea9c0f5c48aaa7cc, type: 3}
   DowngradedItem: {fileID: -8666746465287308309, guid: e5967e846e8b041478ebea7c5c5ab495, type: 3}
   ItemImage:
-    m_AssetGUID: 81ec366f5b66f3147bccbe7b54bc3df2
-    m_SubObjectName: Medium_item_placeholder_0
+    m_AssetGUID: 2f1685768811bb24cb3ecd63d60cdd05
+    m_SubObjectName: king_mace_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 
@@ -150,21 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special.TagListPrototype
   ItemTags: 0100000003000000
---- !u!114 &8219299219744447910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3330554014568712252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b981dc7c063d45279212cb8def40620e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special.StatListPrototype
-  ItemStatSet:
-    IsCooldownItem: 1
-    CurrentCharge: 0
 --- !u!114 &283141784943870736
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -206,8 +206,8 @@ MonoBehaviour:
   UpgradedItem: {fileID: -8666746465287308309, guid: e47e1b4c6371128428e32ead7ea2311c, type: 3}
   DowngradedItem: {fileID: -8666746465287308309, guid: e28adb065dd54944eb3a8dcfa14ceaf0, type: 3}
   ItemImage:
-    m_AssetGUID: 919c02dabf1e5774d89a026758e44811
-    m_SubObjectName: Small_item_0
+    m_AssetGUID: 867c04b68aeaf034782eea7ad46867b5
+    m_SubObjectName: torch_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

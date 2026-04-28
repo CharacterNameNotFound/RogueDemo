@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using UnityEngine;
@@ -17,6 +16,8 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board
         public EncounterBoardView EncounterView;
         public BattleBoardView BattleView;
         public StashBoardView StashBoardView;
+
+        public SpriteRenderer SellFirmRenderer;
 
         private Dictionary<BoardType, GameObject> _views;
 
@@ -61,6 +62,11 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board
             _views[_currentBoard.Value].SetActive(false);
             _currentBoard = null;
 
+        }
+
+        public void ToggleSellFirm(bool isActive)
+        {
+            SellFirmRenderer.gameObject.SetActive(isActive);
         }
         
     }
