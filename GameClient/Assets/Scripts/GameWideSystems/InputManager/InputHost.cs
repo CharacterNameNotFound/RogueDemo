@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using GameWideSystems.InputManager.DefaultHandlingLayers;
 using Zenject;
 
 namespace GameWideSystems.InputManager
@@ -14,8 +12,6 @@ namespace GameWideSystems.InputManager
 
         public InputHost([Inject(Optional = true)] IInputHandlerLayer[] inputHandlers)
         {
-            inputLayers.Add(new UIInputPointerHandlingLayer());
-            
             if (inputHandlers is not null && inputHandlers.Length > 0)
             {
                 inputLayers.AddRange(inputHandlers);

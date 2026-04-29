@@ -7,6 +7,7 @@ using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresen
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.PlayerStashEncounter;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection;
+using Game.GameMode.StorySession.StoryLoop.Services.InputControl;
 using Game.GameMode.StorySession.StoryLoop.Services.StoryFinalization;
 using Game.GameMode.StorySession.StoryLoop.StoryRoutines;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services;
@@ -40,11 +41,9 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
         private IEncounterPlayer _encounterPlayer;
         private IItemContainersManager _containersManager;
         private IItemPresenter _itemPresenter;
-        private ItemManipulationInputLayer _itemManipulationInputLayer;
-        private IInputHost _inputHost;
-        private WorldInteractableInputLayer _worldInteractableInputLayer;
         private IPlayerStashController _playerStashController;
         private IStoryContextProvider _storyContextProvider;
+        private IInputLayerControlMediator _inputLayerControlMediator;
 
         private BaseStoryContext _baseStoryContext;
 
@@ -65,11 +64,9 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             IEncounterPlayer encounterPlayer,
             IItemContainersManager containersManager,
             IItemPresenter itemPresenter,
-            ItemManipulationInputLayer itemManipulationInputLayer,
-            IInputHost inputHost,
-            WorldInteractableInputLayer worldInteractableInputLayer,
             IPlayerStashController playerStashController,
-            IStoryContextProvider storyContextProvider
+            IStoryContextProvider storyContextProvider,
+            IInputLayerControlMediator inputLayerControlMediator
             )
         {
             _loadingScreenManager = loadingScreenManager;
@@ -86,11 +83,9 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             _encounterPlayer = encounterPlayer;
             _containersManager = containersManager;
             _itemPresenter = itemPresenter;
-            _itemManipulationInputLayer = itemManipulationInputLayer;
-            _inputHost = inputHost;
-            _worldInteractableInputLayer = worldInteractableInputLayer;
             _playerStashController = playerStashController;
             _storyContextProvider = storyContextProvider;
+            _inputLayerControlMediator = inputLayerControlMediator;
         }
 
         public async UniTask Initialize(StoryInitializationData storyInitializationData, CancellationToken cancellationToken)
@@ -126,7 +121,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             // save each cycle
             do
             {
-                _itemManipulationInputLayer.SetActive(true);
+                _inputLayerControlMediator.ToggleItemMovement(true);
                 int turn = _baseStoryContext.Cycle * _baseStoryConfigs.StoryDayLength + _baseStoryContext.Step;
                 int selectedEncounterIndex = await _encounterSelector.StartEncounterSelection(_baseStoryContext.StoryEncounters[turn], cancellationToken);
                 string encounterId = _baseStoryContext.StoryEncounters[turn][selectedEncounterIndex];
@@ -141,13 +136,13 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
                     _baseStoryContext.Step = 0;
                     _baseStoryContext.Cycle++;
                     
-                    _itemManipulationInputLayer.SetActive(false);
+                    _inputLayerControlMediator.ToggleItemMovement(false);
                     await _baseStorySaveManager.Save(_baseStoryContext, cancellationToken);
-                    _itemManipulationInputLayer.SetActive(true);
+                    _inputLayerControlMediator.ToggleItemMovement(true);
                 }
 
             } while (!_storyFinalizer.IsFinalizationRequested());
-            _itemManipulationInputLayer.SetActive(false);
+            _inputLayerControlMediator.ToggleItemMovement(false);
         }
 
         public UniTask Finish(CancellationToken cancellationToken)
@@ -228,10 +223,8 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             await _encounterSelector.Initialize(cancellationToken);
 
             // Input related
+            await _inputLayerControlMediator.Initialize(cancellationToken);
             await _playerStashController.Initialize(cancellationToken);
-
-            _inputHost.AddInputLayer(_itemManipulationInputLayer);
-            _worldInteractableInputLayer.SetActive(true);
             
             // resetting systems
             _encounterPlayer.Initialize();

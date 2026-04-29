@@ -15,6 +15,7 @@ using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.PlayerStashEncounter;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Merchant;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection;
+using Game.GameMode.StorySession.StoryLoop.Services.InputControl;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.StoryFinalization;
 using Game.GameMode.StorySession.StoryLoop.StoryRoutines;
@@ -104,7 +105,11 @@ namespace Structure
 
         private void InstallInputs()
         {
+            Container.Bind<IInputLayerControlMediator>().To<InputLayerControlMediator>().AsSingle();
+            
+            // Layers
             Container.Bind<ItemManipulationInputLayer>().To<ItemManipulationInputLayer>().AsSingle();
+            Container.Bind<ItemDetailsInputLayers>().To<ItemDetailsInputLayers>().AsSingle();
             
             Container.Bind<StorySessionEncounterSelectionInputLayer>()
                 .To<StorySessionEncounterSelectionInputLayer>()

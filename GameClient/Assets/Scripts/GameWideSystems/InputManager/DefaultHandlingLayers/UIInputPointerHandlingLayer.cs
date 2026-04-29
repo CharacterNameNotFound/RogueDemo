@@ -1,5 +1,4 @@
 ﻿using GameWideSystems.InputManager.GestureReaders.Pointer;
-using UnityEngine;
 using Utils.Pointers;
 
 namespace GameWideSystems.InputManager.DefaultHandlingLayers

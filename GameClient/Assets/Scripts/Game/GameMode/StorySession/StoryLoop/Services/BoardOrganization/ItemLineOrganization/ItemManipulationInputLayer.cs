@@ -2,7 +2,6 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
-using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using GameWideSystems.CameraManagement;
 using GameWideSystems.InputManager;
 using GameWideSystems.InputManager.GestureReaders.Pointer;
@@ -27,7 +26,6 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         private bool _isActive = false;
         
         private bool _isSwipeStarted;
-        private bool _isLongPressStarted;
         private bool _isSecondItemLineEngaged;
         
         private ItemContainerComponent _targetItem;
@@ -80,14 +78,6 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
 
             return gesture switch
             {
-                // show tooltip
-                Tap tap => TryHandleTap(tap),
-                
-                // Details view
-                LongPressStart longPressStart => TryHandleLongPressStart(longPressStart),
-                LongPressUpdate longPressUpdate => TryHandleLongPressUpdate(longPressUpdate),
-                LongPressEnd longPressEnd => TryHandleLongPressEnd(longPressEnd),
-                
                 // item movement
                 Swipe swipe => TryHandleSwipeStart(swipe),
                 SwipeUpdate swipeUpdate => TryHandleSwipeUpdate(swipeUpdate),
@@ -97,12 +87,6 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
 
         }
         
-        
-        // handling tooltip
-        private bool TryHandleTap(Tap tap)
-        {
-            return true;
-        }
         
         // item movement
         private bool TryHandleSwipeStart(Swipe swipe)
@@ -200,41 +184,6 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             return true;
         }
         
-
-        // detailed view
-        private bool TryHandleLongPressStart(LongPressStart longPressStart)
-        {
-            if (!TryGetTarget(longPressStart.SourcePosition, out _targetItem, out _originalItemLine))
-            {
-                return false;
-            }
-            
-            _isLongPressStarted = true;
-            return true;
-        }
-        
-        private bool TryHandleLongPressUpdate(LongPressUpdate longPressUpdate)
-        {
-            if (!_isLongPressStarted)
-            {
-                return false;
-            }
-            
-            return _isLongPressStarted;
-        }
-        
-        private bool TryHandleLongPressEnd(LongPressEnd longPressEnd)
-        {
-            if (!_isLongPressStarted)
-            {
-                return false;
-            }
-            
-            _targetItem = null;
-            
-            _isLongPressStarted = false;
-            return true;
-        }
 
         
         // methods

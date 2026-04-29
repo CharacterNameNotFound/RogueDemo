@@ -1,9 +1,11 @@
 ﻿using Game.GameMode.StorySession.Utilities.WorldInteractables;
+using Game.UI.Tooltips;
 using GameWideSystems.InputManager;
 using GameWideSystems.InputManager.DefaultHandlingLayers;
 using GameWideSystems.InputManager.ReadingCores;
 using GameWideSystems.InputManager.ReadingCores.Keyboard;
 using GameWideSystems.InputManager.ReadingCores.Pointer;
+using GameWideSystems.TooltipsManagement;
 using UnityEngine;
 using Zenject;
 
@@ -37,8 +39,12 @@ namespace Structure.GameInstalling
         private void InstallInputLayers()
         {
             Container.Bind<WorldInteractableInputLayer>().To<WorldInteractableInputLayer>().AsSingle();
+            Container.Bind<UIInputPointerHandlingLayer>().To<UIInputPointerHandlingLayer>().AsSingle();
+            Container.Bind<TooltipInputLayer>().To<TooltipInputLayer>().AsSingle();
             
             Container.Bind<IInputHandlerLayer>().To<WorldInteractableInputLayer>().FromResolve().AsCached();
+            Container.Bind<IInputHandlerLayer>().To<UIInputPointerHandlingLayer>().FromResolve().AsCached();
+            Container.Bind<IInputHandlerLayer>().To<TooltipInputLayer>().FromResolve().AsCached();
         }
         
     }

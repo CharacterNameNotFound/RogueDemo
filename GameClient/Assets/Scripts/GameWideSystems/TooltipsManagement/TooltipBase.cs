@@ -1,6 +1,8 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using GameWideSystems.TooltipsManagement;
+using UnityEngine;
+using UnityEngine.Rendering;
 using Utils.UtilityTypes.ObjectPooling;
 
 namespace Game.UI.Tooltips
@@ -16,7 +18,16 @@ namespace Game.UI.Tooltips
 
         public abstract override void Dispose();
 
-        public abstract UniTask Show(TooltipParams tooltipParams, CancellationToken cancellationToken);
+        public virtual UniTask Show(TooltipParams tooltipParams, CancellationToken cancellationToken)
+        {
+            float pivotX = tooltipParams.Pivot.x / Screen.width;
+            float pivotY = tooltipParams.Pivot.y / Screen.height;
+
+            GetComponent<RectTransform>().pivot = new Vector2(pivotX, pivotY);
+            transform.position = tooltipParams.Pivot;
+
+            return UniTask.CompletedTask;
+        }
 
         public abstract UniTask Hide(CancellationToken cancellationToken);
     }

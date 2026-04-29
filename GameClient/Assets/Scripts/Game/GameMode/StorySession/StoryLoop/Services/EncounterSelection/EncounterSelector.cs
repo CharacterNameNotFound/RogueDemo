@@ -7,6 +7,7 @@ using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
+using Game.GameMode.StorySession.StoryLoop.Services.InputControl;
 using GameWideSystems.InputManager;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -21,7 +22,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection
     {
         private readonly IEncounterSelectorConfigsProvider _encounterSelectorConfigs;
         private GameBoardHolder _gameBoardHolder;
-        private StorySessionEncounterSelectionInputLayer _inputLayer;
+        private IInputLayerControlMediator _inputLayerControlMediator;
         private IInputHost _inputHost;
         private IEncounterRegistry _encounterRegistry;
         private Logger _logger;
@@ -32,17 +33,17 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection
         public EncounterSelector(
             IEncounterSelectorConfigsProvider encounterSelectorConfigs, 
             GameBoardHolder gameBoardHolder, 
-            StorySessionEncounterSelectionInputLayer inputLayer, 
             IInputHost inputHost, 
             IEncounterRegistry encounterRegistry, 
-            Logger logger)
+            Logger logger, 
+            IInputLayerControlMediator inputLayerControlMediator)
         {
             _encounterSelectorConfigs = encounterSelectorConfigs;
             _gameBoardHolder = gameBoardHolder;
-            _inputLayer = inputLayer;
             _inputHost = inputHost;
             _encounterRegistry = encounterRegistry;
             _logger = logger;
+            _inputLayerControlMediator = inputLayerControlMediator;
         }
 
         public async UniTask Initialize(CancellationToken cancellationToken)
@@ -66,15 +67,13 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection
             {
                 item.gameObject.SetActive(false);
             }
-            
-            
-            _inputHost.AddInputLayer(_inputLayer);
-            _inputLayer.SetActive(false);
+
+            _inputLayerControlMediator.ToggleEncounter(false);
         }
 
         public async UniTask<int> StartEncounterSelection(List<string> encounterIds, CancellationToken cancellationToken)
         {
-            _inputLayer.SetActive(true);
+            _inputLayerControlMediator.ToggleEncounter(true);
 
             // making sure that there is no items with selected == true
             foreach (EncounterSelectorEntryComponent item in _views)
@@ -129,7 +128,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection
             // waiting for at least one to get selected
             await UniTask.WaitUntil(() => _views.Any(item => item.IsSelected), cancellationToken:cancellationToken);
 
-            _inputLayer.SetActive(false);
+            _inputLayerControlMediator.ToggleEncounter(false);
             
             if (cancellationToken.IsCancellationRequested)
             {
@@ -156,8 +155,6 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection
             }
 
             _views = null;
-            _inputHost.RemoveInputLayer(_inputLayer);
-            _inputLayer.SetActive(false);
         }
         
         
