@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
 using GameWideSystems.LocalizationWrapper;
 using UnityEngine;
 
@@ -5,6 +7,8 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
 {
     public class ItemDescriptionBuilderConfigs : ScriptableObject
     {
+        public List<ItemStatType> SkippedItemStats;
+        
         public LocalizedLineKey ItemRarityKey = new("item_rarity", TranslationCategory.ItemDescription);
         public LocalizedLineKey ItemStats = new("item_stats", TranslationCategory.ItemDescription);
         public LocalizedLineKey ItemEffectsKey = new("item_effects", TranslationCategory.ItemDescription);
@@ -19,6 +23,6 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
         public TranslationCategory ItemTagCategory = TranslationCategory.ItemDescription;
         public string ItemStatSuffix = "_stat";
         public string ItemTagSuffix = "_tag";
-
+        
     }
 }

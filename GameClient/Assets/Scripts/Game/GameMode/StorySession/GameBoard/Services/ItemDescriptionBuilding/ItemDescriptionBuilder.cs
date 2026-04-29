@@ -73,6 +73,11 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
             
             foreach (KeyValuePair<ItemStatType, ItemStatEntry> stat in item.ItemStats.Stats)
             {
+                if (_descriptionBuilderConfigs.SkippedItemStats.Contains(stat.Key))
+                {
+                    continue;
+                }
+                
                 _localizationManager.TryGetLocalized(
                     $"{stat.Key.ToString()}{_descriptionBuilderConfigs.ItemStatSuffix}", 
                     _descriptionBuilderConfigs.ItemTagCategory,

@@ -370,6 +370,7 @@ MonoBehaviour:
   Body: {fileID: 4970454042642076327}
   _header: {fileID: 792764974467583767}
   _body: {fileID: 5403788131114292662}
+  _layoutElement: {fileID: 873641104883811817}
 --- !u!114 &-2386475567008776260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,7 +426,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 450
+  m_PreferredWidth: 380
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
