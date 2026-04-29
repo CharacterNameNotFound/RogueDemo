@@ -27,7 +27,8 @@ namespace Structure.GameInstalling
 
             Container.Bind<MainInputs>().To<MainInputs>().FromNew().AsSingle().NonLazy();
             Container.Bind<IInputHost>().To<InputHost>().FromNew().AsSingle().NonLazy();
-            Container.Bind<IInputReadingCore>().To<PointerCore>().FromNew().AsCached().NonLazy();
+            Container.Bind<PointerCore>().To<PointerCore>().FromNew().AsSingle().NonLazy();
+            Container.Bind<IInputReadingCore>().To<PointerCore>().FromResolve().AsCached().NonLazy();
             Container.Bind<IInputReadingCore>().To<KeyboardReader>().FromNew().AsCached().NonLazy();
             Container.Bind<InputReader>().To<InputReader>().FromNew().AsSingle().NonLazy();
             

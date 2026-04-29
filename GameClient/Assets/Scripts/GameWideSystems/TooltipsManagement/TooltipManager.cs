@@ -52,6 +52,8 @@ namespace Game.UI.Tooltips
             PoolableGameObject poolableEntity = await pool.GetObject(cancellationToken);
             ITooltip tooltip = (ITooltip)poolableEntity;
 
+            _tooltipInputLayer.Register(tooltip);
+            
             tooltipParams.TooltipManager = this;
             
             var transform = _screenHostProvider.Tooltips;
@@ -63,6 +65,7 @@ namespace Game.UI.Tooltips
 
         public async UniTask HideTooltip<T>(T tooltip, CancellationToken cancellationToken) where T : TooltipBase
         {
+            _tooltipInputLayer.Unregister(tooltip);
             await tooltip.Hide(cancellationToken);
             _tooltipPools[tooltip.TooltipType].ReturnToPool(tooltip);
         }

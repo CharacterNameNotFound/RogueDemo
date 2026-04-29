@@ -59,7 +59,7 @@ namespace GameWideSystems.InputManager.ReadingCores.Pointer
             _pointerBuffer?.OnRelease(inputEvent);
         }
         
-        private void FinalizeGestureReading()
+        public void FinalizeGestureReading()
         {
             _pointerBuffer = null;
         }

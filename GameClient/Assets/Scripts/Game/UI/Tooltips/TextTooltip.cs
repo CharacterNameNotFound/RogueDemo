@@ -19,6 +19,12 @@ namespace Game.UI.Tooltips
         public override async UniTask Show(TooltipParams tooltipParams, CancellationToken cancellationToken)
         {
             await base.Show(tooltipParams, cancellationToken);
+
+            TextTooltipParams textTooltipParams = (TextTooltipParams) tooltipParams;
+
+            _header.text = textTooltipParams.Header;
+            _body.text = textTooltipParams.Body;
+            
             await GenericUIEntranceRoutines.ShowInstantly(gameObject, cancellationToken);
         }
 

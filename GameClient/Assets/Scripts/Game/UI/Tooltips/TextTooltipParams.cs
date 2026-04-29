@@ -5,11 +5,13 @@ namespace Game.UI.Tooltips
 {
     public class TextTooltipParams : TooltipParams
     {
-        public string Text;
+        public string Header;
+        public string Body;
 
-        public TextTooltipParams(string text, Vector2 position) : base(position)
+        public TextTooltipParams(string header, string body, Vector2 position) : base(position)
         {
-            Text = text;
+            Header = header;
+            Body = body;
         }
     }
 }

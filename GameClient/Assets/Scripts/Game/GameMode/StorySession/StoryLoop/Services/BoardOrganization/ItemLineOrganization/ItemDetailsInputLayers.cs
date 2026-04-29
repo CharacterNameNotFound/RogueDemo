@@ -1,8 +1,10 @@
-using System.Threading;
+using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.UI.Tooltips;
+using GameWideSystems.CameraManagement;
 using GameWideSystems.InputManager;
 using GameWideSystems.InputManager.GestureReaders.Pointer;
+using GameWideSystems.LocalizationWrapper;
 using GameWideSystems.TooltipsManagement;
 using UnityEngine;
 
@@ -14,6 +16,9 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         public InputType InputType => InputType.Pointer;
 
         private ITooltipManager _tooltipManager;
+        private InputControlFacade _inputControlFacade;
+        private ILocalizationManager _localizationManager;
+        private ICameraManager _cameraManager;
         
         private bool _isActive;
         
@@ -21,9 +26,16 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         private bool _isLongPressStarted;
 
 
-        public ItemDetailsInputLayers(ITooltipManager tooltipManager)
+        public ItemDetailsInputLayers(
+            ITooltipManager tooltipManager, 
+            InputControlFacade inputControlFacade, 
+            ILocalizationManager localizationManager, 
+            ICameraManager cameraManager)
         {
             _tooltipManager = tooltipManager;
+            _inputControlFacade = inputControlFacade;
+            _localizationManager = localizationManager;
+            _cameraManager = cameraManager;
         }
         
         public void SetActive(bool isActive)
@@ -55,17 +67,18 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         // handling tooltip
         private bool TryHandleTap(Tap tap)
         {
-            if (!TryGetTarget(tap.SourcePosition, out _targetItem))
+            Vector3 worldPoint = _cameraManager.MainCamera.ScreenToWorldPoint(tap.SourcePosition);
+            if (!TryGetTarget(worldPoint, out _targetItem))
             {
                 return false;
             }
             
-            // show tooltip
-            //_tooltipManager.ShowTooltip<TextTooltip>(TooltipType.GenericText, new TextTooltip(), new CancellationToken());
+            ShowTooltip(_targetItem, tap.SourcePosition).Forget();
+            
             
             return true;
         }
-        
+
         // detailed view
         private bool TryHandleLongPressStart(LongPressStart longPressStart)
         {
@@ -73,6 +86,10 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             {
                 return false;
             }
+            
+            //ToDo: detailed view
+            Debug.Log($"Detailed item view shown: {_targetItem.StoredItem.ItemId}");
+
             
             _isLongPressStarted = true;
             return true;
@@ -116,6 +133,17 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             return true;
         }
 
+        private async UniTask ShowTooltip(ItemContainerComponent targetItem, Vector2 tapSourcePosition)
+        {
+            // preventing spam of tooltips
+            _inputControlFacade.SetInputsAvailable(false);
+            
+            _localizationManager.TryGetLocalized(targetItem.StoredItem.ItemName, TranslationCategory.Items, out string itemName);
+            
+            await _tooltipManager.ShowTooltip<TextTooltip>(TooltipType.GenericText, new TextTooltipParams(itemName, string.Empty, tapSourcePosition), Application.exitCancellationToken);
+            
+            _inputControlFacade.SetInputsAvailable(true);
+        } 
         
     }
 }
