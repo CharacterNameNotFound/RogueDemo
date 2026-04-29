@@ -95,6 +95,10 @@ MonoBehaviour:
     m_Key: Regeneration_tag
     m_Metadata:
       m_Items: []
+  - m_Id: 21129538134282240
+    m_Key: Critical_tag
+    m_Metadata:
+      m_Items: []
   - m_Id: 21041635379056650
     m_Key: Value_stat
     m_Metadata:
@@ -157,6 +161,66 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 21041635379056665
     m_Key: Regeneration_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21074138227740672
+    m_Key: on_charge_trigger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21074138265489408
+    m_Key: deal_x_damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707890360320
+    m_Key: apply_x_fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707923914752
+    m_Key: apply_haste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707923914753
+    m_Key: apply_x_heal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707923914754
+    m_Key: apply_x_poison
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707923914755
+    m_Key: apply_x_regeneration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707923914756
+    m_Key: apply_x_shield
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707923914757
+    m_Key: apply_slow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707923914758
+    m_Key: target_self
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707923914759
+    m_Key: target_self_items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707923914760
+    m_Key: target_self_items_all
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707923914761
+    m_Key: target_opponent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707923914762
+    m_Key: target_opponent_items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707923914763
+    m_Key: target_opponent_items_all
     m_Metadata:
       m_Items: []
   m_Metadata:

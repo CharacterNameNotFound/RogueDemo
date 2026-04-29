@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: ff5779e81a883eb46a0a11b5f5d3d035, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 282318976177406045
   m_TableData:
   - m_Id: 21030809872044032
     m_Localized: Rarity
@@ -162,6 +163,95 @@ MonoBehaviour:
     m_Localized: Regeneration
     m_Metadata:
       m_Items: []
+  - m_Id: 21074138227740672
+    m_Localized: On charged
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21074138265489408
+    m_Localized: Deal {0} Damage
+    m_Metadata:
+      m_Items:
+      - rid: 282318976177406045
+  - m_Id: 21110707890360320
+    m_Localized: Apply {0} Burn
+    m_Metadata:
+      m_Items:
+      - rid: 282318976177406045
+  - m_Id: 21110707923914752
+    m_Localized: Apply {0:p:{} second|{} seconds} of Haste
+    m_Metadata:
+      m_Items:
+      - rid: 282318976177406045
+  - m_Id: 21110707923914753
+    m_Localized: Restore {0} Health
+    m_Metadata:
+      m_Items:
+      - rid: 282318976177406045
+  - m_Id: 21110707923914754
+    m_Localized: Apply {0} Poison
+    m_Metadata:
+      m_Items:
+      - rid: 282318976177406045
+  - m_Id: 21110707923914755
+    m_Localized: Apply {0} Regeneration
+    m_Metadata:
+      m_Items:
+      - rid: 282318976177406045
+  - m_Id: 21110707923914756
+    m_Localized: Apply {0} Shield
+    m_Metadata:
+      m_Items:
+      - rid: 282318976177406045
+  - m_Id: 21110707923914757
+    m_Localized: Apply {0:p:{} second|{} seconds} of Slow
+    m_Metadata:
+      m_Items:
+      - rid: 282318976177406045
+  - m_Id: 21110707923914758
+    m_Localized: to self
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707923914759
+    m_Localized: to {0:p:owned item|{} owned items}
+    m_Metadata:
+      m_Items:
+      - rid: 282318976177406045
+  - m_Id: 21110707923914760
+    m_Localized: to all owned items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707923914761
+    m_Localized: to opponent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21110707923914762
+    m_Localized: to {0:p:opponent item|{} opponent items}
+    m_Metadata:
+      m_Items:
+      - rid: 282318976177406045
+  - m_Id: 21110707923914763
+    m_Localized: to all opponents items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21129538134282240
+    m_Localized: Critical
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 282318976177406045
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 21074138265489408
+        - id: 21110707923914752
+        - id: 21110707890360320
+        - id: 21110707923914753
+        - id: 21110707923914754
+        - id: 21110707923914755
+        - id: 21110707923914756
+        - id: 21110707923914759
+        - id: 21110707923914762
+        - id: 21110707923914757

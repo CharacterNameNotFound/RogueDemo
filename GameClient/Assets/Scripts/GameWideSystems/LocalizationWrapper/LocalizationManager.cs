@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Tables;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -35,6 +35,12 @@ namespace GameWideSystems.LocalizationWrapper
             return line;
         }
 
+        public string GetLocalized(LocalizedLineKey key, params object[] replacements)
+        {
+            TryGetLocalized(key, out var line, replacements);
+            return line;
+        }
+
         public bool TryGetLocalized(LocalizedLineKey key, out string localizedLine)
         {
             return TryGetLocalized(key.Key, key.Category, out  localizedLine);
@@ -42,44 +48,44 @@ namespace GameWideSystems.LocalizationWrapper
         
         public bool TryGetLocalized(string key, TranslationCategory category, out string localizedLine)
         {
-            if (!GetTableEntry(key, category, out StringTableEntry enty))
+            if (!GetTableEntry(key, category, out StringTableEntry entry))
             {
                 localizedLine = key;
                 return false;
             }
 
-            localizedLine = enty.GetLocalizedString();
+            localizedLine = entry.GetLocalizedString();
             return true;
         }
         
-        public bool TryGetLocalized(LocalizedLineKey key, object replacements, out string localizedLine)
+        public bool TryGetLocalized(LocalizedLineKey key, out string localizedLine, params object[] replacements)
         {
-            return TryGetLocalized(key.Key, key.Category, replacements, out  localizedLine);
+            return TryGetLocalized(key.Key, key.Category, out  localizedLine, replacements);
         }
 
-        public bool TryGetLocalized(string key, TranslationCategory category, object replacements, out string localizedLine)
+        public bool TryGetLocalized(string key, TranslationCategory category, out string localizedLine, params object[] replacements)
         {
-            if (!GetTableEntry(key, category, out StringTableEntry enty))
+            if (!GetTableEntry(key, category, out StringTableEntry entry))
             {
                 localizedLine = key;
                 return false;
             }
 
-            localizedLine = enty.GetLocalizedString(replacements);
+            localizedLine = entry.GetLocalizedString(replacements);
             return true;
         }
 
-        private bool GetTableEntry(string key, TranslationCategory category, out StringTableEntry tableEnty)
+        private bool GetTableEntry(string key, TranslationCategory category, out StringTableEntry tableEntry)
         {
-            tableEnty = null;
+            tableEntry = null;
             if (!_localTables.TryGetValue(category.ToString(), out StringTable table))
             {
                 _logger.Log($"Table with name \"{category.ToString()}\" was not loaded");
                 return false;
             }
 
-            tableEnty = table.GetEntry(key);
-            if (tableEnty is null)
+            tableEntry = table.GetEntry(key);
+            if (tableEntry is null)
             {
                 _logger.Log($"Enty with name \"{key}\" was not present in \"{category.ToString()}\" table");
                 return false;

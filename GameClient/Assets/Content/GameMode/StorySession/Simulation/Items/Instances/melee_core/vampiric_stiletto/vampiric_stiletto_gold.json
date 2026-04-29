@@ -40,7 +40,7 @@
             {
               "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Effectors.HealEffector, Game.GameMode.StorySession",
               "TargetSelector": {
-                "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.TargetSelectors.EnemyTargetSelector, Game.GameMode.StorySession"
+                "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.TargetSelectors.OwnerTargetSelector, Game.GameMode.StorySession"
               },
               "HealStatProvider": {
                 "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatProviders.UniversalItemStatProvider, Game.GameMode.StorySession",

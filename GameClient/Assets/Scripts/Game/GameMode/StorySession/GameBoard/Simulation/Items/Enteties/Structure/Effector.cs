@@ -1,3 +1,8 @@
+using System.Text;
+using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Localization;
+using GameWideSystems.LocalizationWrapper;
+
 namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structure
 {
     public abstract class Effector
@@ -5,5 +10,11 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structu
         public bool IsCritAvailable;
 
         public abstract Effector GetCopy();
+        public abstract void AppendDescription(int depth,
+            Item item,
+            StringBuilder itemDescription,
+            IItemStatGetter itemStatGetter,
+            ILocalizationManager localizationManager,
+            ItemDescriptionLocalizationConfigs itemLocalizationConfigs);
     }
 }

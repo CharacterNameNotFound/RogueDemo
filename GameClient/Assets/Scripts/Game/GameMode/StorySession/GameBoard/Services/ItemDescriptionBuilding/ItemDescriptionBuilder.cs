@@ -6,9 +6,9 @@ using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Localization;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structure;
 using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
 using GameWideSystems.LocalizationWrapper;
-using Mono.CSharp;
 
 namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
 {
@@ -17,18 +17,18 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
         private ItemDescriptionBuilderConfigs _descriptionBuilderConfigs;
         private ItemDescriptionLocalizationConfigs _itemLocalizationConfigs;
         private ILocalizationManager _localizationManager;
-        private IItemStatGetter _iItemStatGetter;
+        private IItemStatGetter _itemStatGetter;
 
         public ItemDescriptionBuilder(
             ItemDescriptionBuilderConfigs descriptionBuilderConfigs, 
             ItemDescriptionLocalizationConfigs itemLocalizationConfigs, 
             ILocalizationManager localizationManager, 
-            IItemStatGetter iItemStatGetter)
+            IItemStatGetter itemStatGetter)
         {
             _descriptionBuilderConfigs = descriptionBuilderConfigs;
             _itemLocalizationConfigs = itemLocalizationConfigs;
             _localizationManager = localizationManager;
-            _iItemStatGetter = iItemStatGetter;
+            _itemStatGetter = itemStatGetter;
         }
 
         public string GetItemName(Item item)
@@ -37,6 +37,11 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
             return itemName;
         }
 
+        // ToDo: not sure about how battle execution will look, so this solution could be temporary
+        // It may make sense to pre build all localization lines on conversion, then to have stats provided as localization substitutes, but that requires prebuilding all languages...
+        // and denies ability to change how item works runtime
+        // It is possible to build system, that will be doubling all item components to build localization lines, but that certainly will add work down the line
+        // Current way certainly easies, and around fastest after pregenerating.
         public string GetItemDescription(Item item)
         {
             StringBuilder itemDescription = new StringBuilder();
@@ -47,16 +52,15 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
             itemDescription.AppendLine($"{temp}: {RarityToLine(item.ItemRarity)}");
             
             _localizationManager.TryGetLocalized(_descriptionBuilderConfigs.ItemStats, out temp);
-            itemDescription.AppendLine(temp);
+            itemDescription.AppendLine($"{temp}:");
             CollectStats(item, itemDescription);
             
             _localizationManager.TryGetLocalized(_descriptionBuilderConfigs.ItemEffectsKey, out temp);
-            itemDescription.AppendLine(temp);
-            
-            // Collect effects
+            itemDescription.AppendLine($"{temp}:");
+            CollectEffects(item, itemDescription);
             
             _localizationManager.TryGetLocalized(_descriptionBuilderConfigs.ItemTagsKey, out temp);
-            itemDescription.Append($"{temp}: ");
+            itemDescription.AppendLine($"{temp}:");
             AppendTags(item, itemDescription);
 
             
@@ -65,15 +69,16 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
 
         private void CollectStats(Item item, StringBuilder itemDescription)
         {
+            itemDescription.Append($"<margin-left={_itemLocalizationConfigs.MarginSize}>");
+            
             foreach (KeyValuePair<ItemStatType, ItemStatEntry> stat in item.ItemStats.Stats)
             {
-                itemDescription.Append('\t');
                 _localizationManager.TryGetLocalized(
                     $"{stat.Key.ToString()}{_descriptionBuilderConfigs.ItemStatSuffix}", 
                     _descriptionBuilderConfigs.ItemTagCategory,
                     out string line);
 
-                float statValue = _iItemStatGetter.GetStatValue(
+                float statValue = _itemStatGetter.GetStatValue(
                     item, 
                     stat.Key, 
                     StatSet.StatSetComponent.Special, 
@@ -82,10 +87,23 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
                 itemDescription.AppendLine($"{line}: {statValue}");
             }
             
+            itemDescription.Append($"</margin>");
+        }
+        
+        private void CollectEffects(Item item, StringBuilder itemDescription)
+        {
+            foreach (Trigger itemTrigger in item.Triggers)
+            {
+                itemTrigger.AppendDescription(1, item, itemDescription, _itemStatGetter, _localizationManager, _itemLocalizationConfigs);
+            }
+            
+            itemDescription.Append($"</margin>");
         }
 
         private void AppendTags(Item item, StringBuilder itemDescription)
         {
+            itemDescription.Append($"<margin-left={_itemLocalizationConfigs.MarginSize}>");
+
             foreach (ItemTag tag in item.Tags.TagsList)
             {
                 _localizationManager.TryGetLocalized(
@@ -93,10 +111,12 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
                     _descriptionBuilderConfigs.ItemTagCategory,
                     out string line);
 
-                itemDescription.Append($"{line},");
+                itemDescription.Append($" {line},");
             }
 
             itemDescription.Remove(itemDescription.Length - 1, 1);
+            itemDescription.Append($"</margin>");
+
         }
 
 

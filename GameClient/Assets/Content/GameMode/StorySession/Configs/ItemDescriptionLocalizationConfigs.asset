@@ -12,3 +12,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b217e4a6aeb492e83ad6724ebc68af6, type: 3}
   m_Name: ItemDescriptionLocalizationConfigs
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Localization.ItemDescriptionLocalizationConfigs
+  MarginSize: 4
+  OnChargeTrigger:
+    Key: on_charge_trigger
+    Category: 4
+  DealDamage:
+    Key: deal_x_damage
+    Category: 4
+  ApplyFire:
+    Key: apply_x_fire
+    Category: 4
+  ApplyHaste:
+    Key: apply_haste
+    Category: 4
+  ApplyHeal:
+    Key: apply_x_heal
+    Category: 4
+  ApplyPoison:
+    Key: apply_x_poison
+    Category: 4
+  ApplyRegeneration:
+    Key: apply_x_regeneration
+    Category: 4
+  ApplyShield:
+    Key: apply_x_shield
+    Category: 4
+  ApplySlow:
+    Key: apply_slow
+    Category: 4
+  TargetSelf:
+    Key: target_self
+    Category: 4
+  TargetSelfItems:
+    Key: target_self_items
+    Category: 4
+  TargetSelfItemsAll:
+    Key: target_self_items_all
+    Category: 4
+  TargetOpponent:
+    Key: target_opponent
+    Category: 4
+  TargetOpponentItems:
+    Key: target_opponent_items
+    Category: 4
+  TargetOpponentItemsAll:
+    Key: target_opponent_items_all
+    Category: 4

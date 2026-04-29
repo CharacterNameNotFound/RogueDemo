@@ -1,4 +1,7 @@
+using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Localization;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structure;
+using GameWideSystems.LocalizationWrapper;
 
 namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.TargetSelectors
 {
@@ -17,5 +20,14 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.TargetS
         {
             return new EnemyItemTargetSelector(TargetCount.GetCopy(), SelectNonCooldownItems);
         }
+
+        public override string GetDescription(Item item, IItemStatGetter statGetter,
+            ILocalizationManager localizationManager,
+            ItemDescriptionLocalizationConfigs itemLocalizationConfigs)
+        {
+            float count = TargetCount.GetValue(item, statGetter);
+            return localizationManager.GetLocalized(itemLocalizationConfigs.TargetOpponentItems, count);
+        }
+
     }
 }

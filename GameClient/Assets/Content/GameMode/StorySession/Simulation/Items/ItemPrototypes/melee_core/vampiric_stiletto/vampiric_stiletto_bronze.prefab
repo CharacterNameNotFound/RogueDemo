@@ -270,7 +270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4031708540235844045}
   - component: {fileID: 8418111915211888041}
-  - component: {fileID: 1745420707379735753}
+  - component: {fileID: 3993595805326236804}
   - component: {fileID: 6282007245945388969}
   m_Layer: 0
   m_Name: Heal
@@ -307,9 +307,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Effectors.HealEffectorPrototype
   IsCritAvailable: 1
-  TargetSelectorPrototypes: {fileID: 1745420707379735753}
+  TargetSelectorPrototypes: {fileID: 3993595805326236804}
   StatProviderPrototype: {fileID: 6282007245945388969}
---- !u!114 &1745420707379735753
+--- !u!114 &3993595805326236804
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,9 +318,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6404135497036818591}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bdabd786b274c588febbce03c8eeca4, type: 3}
+  m_Script: {fileID: 11500000, guid: 64c69f94bc1043e6a32fd8a287aa8c39, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.TargetSelectors.EnemyTargetSelectorPrototype
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.TargetSelectors.OwnerTargetSelectorPrototype
 --- !u!114 &6282007245945388969
 MonoBehaviour:
   m_ObjectHideFlags: 0

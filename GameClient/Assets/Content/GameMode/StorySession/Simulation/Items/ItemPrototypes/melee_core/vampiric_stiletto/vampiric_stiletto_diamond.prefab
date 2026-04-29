@@ -270,8 +270,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4372714706412346454}
   - component: {fileID: 8511644266107158900}
-  - component: {fileID: 4837904550606381968}
   - component: {fileID: 8776196047333487842}
+  - component: {fileID: 1527198989907870551}
   m_Layer: 0
   m_Name: Heal
   m_TagString: Untagged
@@ -307,20 +307,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Effectors.HealEffectorPrototype
   IsCritAvailable: 1
-  TargetSelectorPrototypes: {fileID: 4837904550606381968}
+  TargetSelectorPrototypes: {fileID: 1527198989907870551}
   StatProviderPrototype: {fileID: 8776196047333487842}
---- !u!114 &4837904550606381968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4511049601593594090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bdabd786b274c588febbce03c8eeca4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.TargetSelectors.EnemyTargetSelectorPrototype
 --- !u!114 &8776196047333487842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,3 +323,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.StatProviders.UniversalItemStatProviderPrototype
   ItemStatType: 1
   Multiplier: 1
+--- !u!114 &1527198989907870551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511049601593594090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c69f94bc1043e6a32fd8a287aa8c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.TargetSelectors.OwnerTargetSelectorPrototype

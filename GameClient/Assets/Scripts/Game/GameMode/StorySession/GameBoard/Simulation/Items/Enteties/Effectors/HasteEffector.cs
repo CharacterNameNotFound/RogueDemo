@@ -1,4 +1,8 @@
+using System.Text;
+using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Localization;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structure;
+using GameWideSystems.LocalizationWrapper;
 
 namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Effectors
 {
@@ -20,6 +24,20 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Effecto
         public override Effector GetCopy()
         {
             return new HasteEffector(TargetSelector.GetCopy(), HasteDurationProvider.GetCopy(), IsCritAvailable);
+        }
+
+        public override void AppendDescription(int depth, Item item, StringBuilder itemDescription,
+            IItemStatGetter itemStatGetter,
+            ILocalizationManager localizationManager,
+            ItemDescriptionLocalizationConfigs itemLocalizationConfigs)
+        {
+            float value = HasteDurationProvider.GetValue(item, itemStatGetter);
+
+            string line = localizationManager.GetLocalized(itemLocalizationConfigs.ApplyHaste, value);
+            string targetLine = TargetSelector.GetDescription(item, itemStatGetter, localizationManager, itemLocalizationConfigs);
+            
+            itemDescription.Append($"<margin-left={itemLocalizationConfigs.MarginSize * depth}>");
+            itemDescription.AppendLine($"{line} {targetLine}");
         }
     }
 }
