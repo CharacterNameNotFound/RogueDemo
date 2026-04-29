@@ -338,6 +338,8 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             int firstEmpty = Array.IndexOf(stashLine.ItemContainerComponents, null);
             _lineOrganizer.TryBuildItemConfiguration(stashLine, item, ref firstEmpty, secondWorkerItemLineBuffer.ItemBuffer);
             _lineOrganizer.Organize(stashLine, secondWorkerItemLineBuffer.ItemBuffer, true);
+
+            ReparentItemContainers(stashLine);
             
             await _itemTransactionEventPublisher.HandlePostItemMovement(item, cancellationToken);
             
