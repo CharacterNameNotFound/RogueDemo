@@ -17,7 +17,151 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: ff5779e81a883eb46a0a11b5f5d3d035, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 21030809872044032
+    m_Localized: Rarity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809922375680
+    m_Localized: Stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809930764288
+    m_Localized: Effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809930764289
+    m_Localized: Tags
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809930764290
+    m_Localized: Bronze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809930764291
+    m_Localized: Silver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809930764292
+    m_Localized: Gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809930764293
+    m_Localized: Diamond
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809930764294
+    m_Localized: Legendary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635374862336
+    m_Localized: Small
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056640
+    m_Localized: Medium
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056641
+    m_Localized: Large
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056642
+    m_Localized: Weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056643
+    m_Localized: Shield
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056644
+    m_Localized: Healing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056645
+    m_Localized: Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056646
+    m_Localized: Poison
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056647
+    m_Localized: Slow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056648
+    m_Localized: Haste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056649
+    m_Localized: Regeneration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056650
+    m_Localized: Value
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056651
+    m_Localized: Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056652
+    m_Localized: Shield
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056653
+    m_Localized: Heal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056654
+    m_Localized: Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056655
+    m_Localized: Poison
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056656
+    m_Localized: Critical Chance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056657
+    m_Localized: Critical Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056658
+    m_Localized: Usage Count
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056659
+    m_Localized: Max Charge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056660
+    m_Localized: Charge Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056661
+    m_Localized: Slow Target Count
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056662
+    m_Localized: Slow Duration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056663
+    m_Localized: Haste Target Count
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056664
+    m_Localized: Haste Duration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056665
+    m_Localized: Regeneration
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -14,7 +14,8 @@
       "$type": "System.Collections.Generic.List`1[[Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags.ItemTag, Game.GameMode.StorySession]], mscorlib",
       "$values": [
         1,
-        5
+        5,
+        11
       ]
     }
   },
@@ -66,11 +67,11 @@
           "Stats": {
             "$type": "System.Single[], mscorlib",
             "$values": [
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
             ]
           }
         }
@@ -95,11 +96,11 @@
           "Stats": {
             "$type": "System.Single[], mscorlib",
             "$values": [
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
             ]
           }
         }
@@ -124,11 +125,11 @@
           "Stats": {
             "$type": "System.Single[], mscorlib",
             "$values": [
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
             ]
           }
         }
@@ -153,11 +154,11 @@
           "Stats": {
             "$type": "System.Single[], mscorlib",
             "$values": [
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
             ]
           }
         }
@@ -182,11 +183,11 @@
           "Stats": {
             "$type": "System.Single[], mscorlib",
             "$values": [
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
             ]
           }
         }
@@ -211,11 +212,11 @@
           "Stats": {
             "$type": "System.Single[], mscorlib",
             "$values": [
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
             ]
           }
         }

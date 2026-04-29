@@ -13,5 +13,6 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special
         Slow,
         Haste,
         Regeneration,
+        Critical,
     }
 }

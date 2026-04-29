@@ -28,7 +28,13 @@ namespace GameWideSystems.LocalizationWrapper
             IList<StringTable> result = asyncOperationHandle.Result;
             _localTables = result.ToDictionary(table => table.TableCollectionName);
         }
-        
+
+        public string GetLocalized(LocalizedLineKey key)
+        {
+            TryGetLocalized(key, out var line);
+            return line;
+        }
+
         public bool TryGetLocalized(LocalizedLineKey key, out string localizedLine)
         {
             return TryGetLocalized(key.Key, key.Category, out  localizedLine);

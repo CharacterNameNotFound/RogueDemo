@@ -1,5 +1,6 @@
 using Game.GameMode.StorySession.GameBoard.Services.GameBoardManagement;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
+using Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStatSetToItemStatValueConverters;
 using Game.GameMode.StorySession.GameBoard.Simulation.Facades;
@@ -53,6 +54,7 @@ namespace Structure
             // views and model
             Container.Bind<GameBoardHolder>().To<GameBoardHolder>().AsSingle();
             Container.Bind<IStoryContextProvider>().To<StoryContextHolder>().AsSingle();
+            Container.Bind<IItemDescriptionBuilder>().To<ItemDescriptionBuilder>().AsSingle();
             
             // Items and deck
             Container.Bind<IItemRegistry>().To<ItemRegistry>().AsSingle();

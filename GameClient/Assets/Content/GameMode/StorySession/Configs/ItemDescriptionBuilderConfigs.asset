@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c807feaa5564cc9b667aca24a596ef8, type: 3}
+  m_Name: ItemDescriptionBuilderConfigs
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding.ItemDescriptionBuilderConfigs
+  ItemRarityKey:
+    Key: item_rarity
+    Category: 4
+  ItemStats:
+    Key: item_stats
+    Category: 4
+  ItemEffectsKey:
+    Key: item_effects
+    Category: 4
+  ItemTagsKey:
+    Key: item_tags
+    Category: 4
+  BronzeRarityKey:
+    Key: bronze_item_rarity
+    Category: 4
+  SilverRarityKey:
+    Key: silver_item_rarity
+    Category: 4
+  GoldRarityKey:
+    Key: gold_item_rarity
+    Category: 4
+  DiamondRarityKey:
+    Key: diamond_item_rarity
+    Category: 4
+  LegendaryRarityKey:
+    Key: legendary_item_rarity
+    Category: 4

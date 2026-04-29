@@ -20,6 +20,7 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties
         public List<Trigger> Triggers;
         public ItemStatSet ItemStats;
 
+        
         public Item()
         {
             Triggers = new();
@@ -56,6 +57,7 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties
 
             return item;
         }
+        
     }
     
 }

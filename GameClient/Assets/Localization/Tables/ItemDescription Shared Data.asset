@@ -14,7 +14,151 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
   m_TableCollectionName: ItemDescription
   m_TableCollectionNameGuidString: ff5779e81a883eb46a0a11b5f5d3d035
-  m_Entries: []
+  m_Entries:
+  - m_Id: 21030809872044032
+    m_Key: item_rarity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809922375680
+    m_Key: item_stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809930764288
+    m_Key: item_effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809930764289
+    m_Key: item_tags
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809930764290
+    m_Key: bronze_item_rarity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809930764291
+    m_Key: silver_item_rarity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809930764292
+    m_Key: gold_item_rarity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809930764293
+    m_Key: diamond_item_rarity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21030809930764294
+    m_Key: legendary_item_rarity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635374862336
+    m_Key: Small_tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056640
+    m_Key: Medium_tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056641
+    m_Key: Large_tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056642
+    m_Key: Weapon_tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056643
+    m_Key: Shield_tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056644
+    m_Key: Healing_tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056645
+    m_Key: Fire_tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056646
+    m_Key: Poison_tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056647
+    m_Key: Slow_tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056648
+    m_Key: Haste_tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056649
+    m_Key: Regeneration_tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056650
+    m_Key: Value_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056651
+    m_Key: Damage_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056652
+    m_Key: Shield_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056653
+    m_Key: Heal_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056654
+    m_Key: Fire_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056655
+    m_Key: Poison_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056656
+    m_Key: CriticalChance_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056657
+    m_Key: CriticalDamage_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056658
+    m_Key: UsageCount_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056659
+    m_Key: MaxCharge_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056660
+    m_Key: ChargeSpeed_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056661
+    m_Key: SlowTargetCount_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056662
+    m_Key: SlowDuration_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056663
+    m_Key: HasteTargetCount_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056664
+    m_Key: HasteDuration_stat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21041635379056665
+    m_Key: Regeneration_stat
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -4,7 +4,6 @@ using System.IO;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using SQLite;
-using UnityEngine;
 using Utils.UtilityTypes.Result;
 
 namespace Game.ManagementSystems.LookUpTableManagement

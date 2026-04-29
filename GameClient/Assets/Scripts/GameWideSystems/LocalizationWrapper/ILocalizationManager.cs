@@ -6,6 +6,7 @@ namespace GameWideSystems.LocalizationWrapper
     {
         public UniTask Initialize();
         
+        public string GetLocalized(LocalizedLineKey key);
         public bool TryGetLocalized(LocalizedLineKey key, out string localizedLine);
         public bool TryGetLocalized(string key, TranslationCategory category, out string localizedLine);
 

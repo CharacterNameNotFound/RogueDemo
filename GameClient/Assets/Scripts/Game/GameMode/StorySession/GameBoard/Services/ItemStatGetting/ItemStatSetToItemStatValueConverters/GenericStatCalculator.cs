@@ -1,4 +1,3 @@
-using Game.GameMode.StorySession.GameBoard.Simulation.Items;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
 using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
@@ -6,16 +5,16 @@ using UnityEngine;
 
 namespace Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStatSetToItemStatValueConverters
 {
-    public class GenericStatCalculator : IItemStatSetToItemStatValueCalculator
+    public class GenericStatCalculator
     {
-        public virtual ItemStatType ProcessedStat { get; }
         
         public float GetValue(
             Item item, 
+            ItemStatType statType,
             StatSet.StatSetComponent baseCalculateDepth, 
             StatSet.StatSetComponent multiplicationCalculateDepth)
         {
-            if (!item.ItemStats.Stats.TryGetValue(ProcessedStat, out ItemStatEntry statEntry))
+            if (!item.ItemStats.Stats.TryGetValue(statType, out ItemStatEntry statEntry))
             {
                 return 0;
             }
@@ -24,7 +23,7 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStat
             return Mathf.Max(0, statValue);
         }
 
-        protected virtual float CalculateGeneric(
+        private float CalculateGeneric(
             ItemStatEntry itemValues, 
             StatSet.StatSetComponent baseCalculateDepth, 
             StatSet.StatSetComponent multiplicationCalculateDepth)

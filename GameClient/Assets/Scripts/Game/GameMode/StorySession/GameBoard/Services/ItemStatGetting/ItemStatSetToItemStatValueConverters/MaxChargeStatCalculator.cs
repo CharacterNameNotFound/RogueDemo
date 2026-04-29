@@ -1,19 +1,48 @@
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
 using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
 using UnityEngine;
 
 namespace Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStatSetToItemStatValueConverters
 {
-    public class MaxChargeStatCalculator : GenericStatCalculator
+    public class MaxChargeStatCalculator : IItemStatSetToItemStatValueCalculator
     {
-        public override ItemStatType ProcessedStat => ItemStatType.MaxCharge;
-
-        protected override float CalculateGeneric(ItemStatEntry itemValues, StatSet.StatSetComponent baseCalculateDepth,
+        public ItemStatType ProcessedStat => ItemStatType.MaxCharge;
+        
+        public float GetValue(
+            Item item, 
+            StatSet.StatSetComponent baseCalculateDepth, 
             StatSet.StatSetComponent multiplicationCalculateDepth)
         {
-            float value =  base.CalculateGeneric(itemValues, baseCalculateDepth, multiplicationCalculateDepth);
+            if (!item.ItemStats.Stats.TryGetValue(ProcessedStat, out ItemStatEntry statEntry))
+            {
+                return 0;
+            }
 
-            return Mathf.Max(1, value);
+            float statValue = Calculate(statEntry, baseCalculateDepth, multiplicationCalculateDepth);
+            return Mathf.Max(0, statValue);
         }
+
+        private float Calculate(
+            ItemStatEntry itemValues, 
+            StatSet.StatSetComponent baseCalculateDepth, 
+            StatSet.StatSetComponent multiplicationCalculateDepth)
+        {
+            float value = 0;
+            float mult = 1;
+            
+            for (int i = 0; i <= (int) baseCalculateDepth; i++)
+            {
+                value += itemValues.ItemValues.Stats[i];
+            }
+
+            for (int i = 0; i <= (int) multiplicationCalculateDepth; i++)
+            {
+                mult *= itemValues.ItemPercentiles.Stats[i];
+            }
+            
+            return Mathf.Max(1, value * mult);
+        }
+        
     }
 }

@@ -58,6 +58,7 @@ namespace Structure.GameInstalling
             Container.Bind<IItemTagToTableEntryConverter>().To<SlowItemFromItemSets>().AsCached();
             Container.Bind<IItemTagToTableEntryConverter>().To<HasteItemFromItemSets>().AsCached();
             Container.Bind<IItemTagToTableEntryConverter>().To<RegenerationItemFromItemSets>().AsCached();
+            Container.Bind<IItemTagToTableEntryConverter>().To<CritItemFromItemSets>().AsCached();
         }
         
         

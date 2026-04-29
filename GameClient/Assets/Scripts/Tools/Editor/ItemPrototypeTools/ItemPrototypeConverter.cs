@@ -7,6 +7,7 @@ using Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.St
 using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Tools.Editor.ItemPrototypeTools
 {
@@ -96,6 +97,8 @@ namespace Tools.Editor.ItemPrototypeTools
             
             if (prefab.TryGetComponent(out UniversalStatRegisterer stats))
             {
+                UpdatePercentiles(stats);
+                
                 stats.AppendStats(item.ItemStats);
             }
             else
@@ -123,7 +126,21 @@ namespace Tools.Editor.ItemPrototypeTools
             
             
         }
-        
+
+        private void UpdatePercentiles(UniversalStatRegisterer stats)
+        {
+            foreach (UniversalStatRegisterer.UniversalStatRegistererEntry entry in stats.StatEntries)
+            {
+                float[] itemPercentilesStats = entry.ItemStatSet.ItemPercentiles.Stats;
+                for (int i = 0; i < itemPercentilesStats.Length; i++)
+                {
+                    if (itemPercentilesStats[i] == 0)
+                    {
+                        itemPercentilesStats[i] = 1;
+                    }
+                }
+            }
+        }
         
 
     }

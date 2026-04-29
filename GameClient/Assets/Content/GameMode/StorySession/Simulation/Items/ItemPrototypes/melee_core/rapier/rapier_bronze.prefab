@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d20b8561ce426c888af63e4768e07a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Special.TagListPrototype
-  ItemTags: 0100000003000000
+  ItemTags: 01000000030000000b000000
 --- !u!114 &283141784943870736
 MonoBehaviour:
   m_ObjectHideFlags: 0

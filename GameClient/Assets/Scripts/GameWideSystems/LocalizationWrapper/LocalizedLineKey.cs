@@ -7,5 +7,11 @@ namespace GameWideSystems.LocalizationWrapper
     {
         public string Key;
         public TranslationCategory Category;
+        
+        public LocalizedLineKey(string key, TranslationCategory category)
+        {
+            Key = key;
+            Category = category;
+        }
     }
 }

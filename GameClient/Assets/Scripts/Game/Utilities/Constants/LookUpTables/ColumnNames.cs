@@ -12,6 +12,8 @@ namespace Game.Utilities.Constants.LookUpTables
         public const string Fire = "fire";
         public const string Poison = "poison";
         public const string Regeneration = "regeneration";
+        public const string CritChance = "crit_chance";
+        public const string CritDamage = "crit_damage";
         
         
         // generic

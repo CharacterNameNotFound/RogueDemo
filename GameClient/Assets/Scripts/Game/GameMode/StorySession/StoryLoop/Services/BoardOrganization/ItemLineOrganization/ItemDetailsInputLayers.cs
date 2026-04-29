@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.UI.Tooltips;
 using GameWideSystems.CameraManagement;
@@ -17,7 +18,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
 
         private ITooltipManager _tooltipManager;
         private InputControlFacade _inputControlFacade;
-        private ILocalizationManager _localizationManager;
+        private IItemDescriptionBuilder _itemDescriptionBuilder;
         private ICameraManager _cameraManager;
         
         private bool _isActive;
@@ -29,13 +30,13 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         public ItemDetailsInputLayers(
             ITooltipManager tooltipManager, 
             InputControlFacade inputControlFacade, 
-            ILocalizationManager localizationManager, 
-            ICameraManager cameraManager)
+            ICameraManager cameraManager, 
+            IItemDescriptionBuilder itemDescriptionBuilder)
         {
             _tooltipManager = tooltipManager;
             _inputControlFacade = inputControlFacade;
-            _localizationManager = localizationManager;
             _cameraManager = cameraManager;
+            _itemDescriptionBuilder = itemDescriptionBuilder;
         }
         
         public void SetActive(bool isActive)
@@ -138,9 +139,10 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             // preventing spam of tooltips
             _inputControlFacade.SetInputsAvailable(false);
             
-            _localizationManager.TryGetLocalized(targetItem.StoredItem.ItemName, TranslationCategory.Items, out string itemName);
+            string itemName = _itemDescriptionBuilder.GetItemName(targetItem.StoredItem);
+            string itemDescription = _itemDescriptionBuilder.GetItemDescription(targetItem.StoredItem);
             
-            await _tooltipManager.ShowTooltip<TextTooltip>(TooltipType.GenericText, new TextTooltipParams(itemName, string.Empty, tapSourcePosition), Application.exitCancellationToken);
+            await _tooltipManager.ShowTooltip<TextTooltip>(TooltipType.GenericText, new TextTooltipParams(itemName, itemDescription, tapSourcePosition), Application.exitCancellationToken);
             
             _inputControlFacade.SetInputsAvailable(true);
         } 

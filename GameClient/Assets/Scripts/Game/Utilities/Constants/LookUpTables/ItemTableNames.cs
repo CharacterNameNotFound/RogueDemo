@@ -11,5 +11,6 @@ namespace Game.Utilities.Constants.LookUpTables
         public const string Slow = "SlowItemLookUp";
         public const string Haste = "HasteItemLookUp";
         public const string Regeneration = "RegenerationItemLookUp";
+        public const string Critical = "CriticalItemLookUp";
     }
 }
