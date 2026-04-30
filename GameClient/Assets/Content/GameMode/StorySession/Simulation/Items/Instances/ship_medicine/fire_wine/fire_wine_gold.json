@@ -35,6 +35,7 @@
               },
               "HealStatProvider": {
                 "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatProviders.UniversalItemStatProvider, Game.GameMode.StorySession",
+                "ItemStatType": 3,
                 "Multiplier": 1.0
               },
               "IsCritAvailable": true
@@ -47,6 +48,7 @@
               },
               "HasteDurationProvider": {
                 "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatProviders.UniversalItemStatProvider, Game.GameMode.StorySession",
+                "ItemStatType": 14,
                 "Multiplier": 1.0
               },
               "IsCritAvailable": false
@@ -58,6 +60,7 @@
               },
               "FireStatProvider": {
                 "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatProviders.UniversalItemStatProvider, Game.GameMode.StorySession",
+                "ItemStatType": 4,
                 "Multiplier": 1.0
               },
               "IsCritAvailable": true

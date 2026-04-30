@@ -35,6 +35,7 @@
               },
               "RegenerationStatProvider": {
                 "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatProviders.UniversalItemStatProvider, Game.GameMode.StorySession",
+                "ItemStatType": 15,
                 "Multiplier": 1.0
               },
               "IsCritAvailable": true
@@ -46,6 +47,7 @@
               },
               "PoisonStatProvider": {
                 "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatProviders.UniversalItemStatProvider, Game.GameMode.StorySession",
+                "ItemStatType": 5,
                 "Multiplier": 1.0
               },
               "IsCritAvailable": false
@@ -58,6 +60,7 @@
               },
               "SlowDurationProvider": {
                 "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatProviders.UniversalItemStatProvider, Game.GameMode.StorySession",
+                "ItemStatType": 12,
                 "Multiplier": 1.0
               },
               "IsCritAvailable": false

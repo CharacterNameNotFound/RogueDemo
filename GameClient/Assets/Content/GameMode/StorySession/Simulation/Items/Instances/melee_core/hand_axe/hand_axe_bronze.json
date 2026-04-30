@@ -34,6 +34,7 @@
               },
               "DamageStatProvider": {
                 "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatProviders.UniversalItemStatProvider, Game.GameMode.StorySession",
+                "ItemStatType": 1,
                 "Multiplier": 1.0
               },
               "IsCritAvailable": true
@@ -44,12 +45,14 @@
                 "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.TargetSelectors.EnemyItemTargetSelector, Game.GameMode.StorySession",
                 "TargetCount": {
                   "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatProviders.UniversalItemStatProvider, Game.GameMode.StorySession",
+                  "ItemStatType": 11,
                   "Multiplier": 1.0
                 },
                 "SelectNonCooldownItems": false
               },
               "SlowDurationProvider": {
                 "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatProviders.UniversalItemStatProvider, Game.GameMode.StorySession",
+                "ItemStatType": 12,
                 "Multiplier": 1.0
               },
               "IsCritAvailable": false

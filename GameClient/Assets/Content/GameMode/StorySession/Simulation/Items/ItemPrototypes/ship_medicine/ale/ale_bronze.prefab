@@ -411,8 +411,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1790268438173774286}
   - component: {fileID: 3295966448935652373}
-  - component: {fileID: 6907647784206399458}
   - component: {fileID: 271795242811119253}
+  - component: {fileID: 2426129894648457360}
   m_Layer: 0
   m_Name: Burn
   m_TagString: Untagged
@@ -448,20 +448,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Effectors.FireEffectorPrototype
   IsCritAvailable: 1
-  TargetSelectorPrototypes: {fileID: 6907647784206399458}
+  TargetSelectorPrototypes: {fileID: 2426129894648457360}
   StatProviderPrototype: {fileID: 271795242811119253}
---- !u!114 &6907647784206399458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3925419001558204948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bdabd786b274c588febbce03c8eeca4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.TargetSelectors.EnemyTargetSelectorPrototype
 --- !u!114 &271795242811119253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,3 +464,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.StatProviders.UniversalItemStatProviderPrototype
   ItemStatType: 4
   Multiplier: 1
+--- !u!114 &2426129894648457360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925419001558204948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c69f94bc1043e6a32fd8a287aa8c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.TargetSelectors.OwnerTargetSelectorPrototype

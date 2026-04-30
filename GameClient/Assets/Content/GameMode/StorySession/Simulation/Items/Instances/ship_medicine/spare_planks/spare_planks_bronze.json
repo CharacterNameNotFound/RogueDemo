@@ -33,6 +33,7 @@
               },
               "ShieldStatProvider": {
                 "$type": "Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.StatProviders.UniversalItemStatProvider, Game.GameMode.StorySession",
+                "ItemStatType": 2,
                 "Multiplier": 1.0
               },
               "IsCritAvailable": true
