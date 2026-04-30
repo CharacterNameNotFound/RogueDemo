@@ -15,7 +15,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         
         public UniTask<bool> TryCompleteItemTransition(Vector3 worldPosition,
             int targetItemOriginalIndex,
-            ItemLineComponent originalLine,
+            ItemLineComponent originalItemLine,
             ItemLineComponent targetLine,
             ItemLineBuffer targetLineBuffer,
             ItemContainerComponent item,

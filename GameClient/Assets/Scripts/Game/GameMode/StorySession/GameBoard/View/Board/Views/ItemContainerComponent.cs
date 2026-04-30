@@ -40,6 +40,13 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board.Views
             return new Vector3(pivotX, bounds.center.y, 0);
         }
         
+        public void RenderUpgradeMovement(int offset = 0)
+        {
+            SortingGroup.sortingOrder = 2 + offset;
+
+            Collider2D.enabled = false;
+        }
+        
         public void RenderStarMovement()
         {
             SortingGroup.sortingOrder = 1;
@@ -47,7 +54,7 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board.Views
             Collider2D.enabled = false;
         }
         
-        public void RenderEndMovement()
+        public void ResetRender()
         {
             SortingGroup.sortingOrder = 0;
             

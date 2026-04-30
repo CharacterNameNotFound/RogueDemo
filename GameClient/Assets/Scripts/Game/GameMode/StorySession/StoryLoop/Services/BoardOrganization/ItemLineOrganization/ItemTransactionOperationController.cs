@@ -31,6 +31,11 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
 
         public bool IsPurchaseAttempt(ItemContainerComponent item, ItemLineComponent originalItemLine)
         {
+            if (_encounterPlayer.CurrentEncounter is null)
+            {
+                return false;
+            }
+            
             if (_encounterPlayer.CurrentEncounter.EncounterType != EncounterType.Merchant)
             {
                 return false;
@@ -60,24 +65,33 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             return _encounterPlayer.CanSellItem(item);
         }
         
-        public bool CanUpgrade(ItemContainerComponent item, ItemLineComponent originalItemLine)
+        public bool CanUpgrade(
+            ItemContainerComponent item, 
+            ItemLineComponent originalItemLine, 
+            out ItemLineComponent upgradableLine, 
+            out ItemContainerComponent upgradableItem)
         {
             ItemLineComponent inventoryItemLine = _gameBoardHolder.GameBoardComponent.ItemLineViewController.InventoryItemLine;
             ItemLineComponent playerItemLine = _gameBoardHolder.GameBoardComponent.ItemLineViewController.PlayerItemLine;
 
+            upgradableLine = null;
+            upgradableItem = null;
+            
             if (originalItemLine == inventoryItemLine ||
                 originalItemLine == playerItemLine)
             {
                 return false;
             }
 
-            if (ContainsUpdatableItemInLine(playerItemLine, item))
+            if (ContainsUpdatableItemInLine(playerItemLine, item, out upgradableItem))
             {
+                upgradableLine = playerItemLine;
                 return true;
             }
             
-            if (ContainsUpdatableItemInLine(inventoryItemLine, item))
+            if (ContainsUpdatableItemInLine(inventoryItemLine, item, out upgradableItem))
             {
+                upgradableLine = inventoryItemLine;
                 return true;
             }
             
@@ -93,7 +107,10 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             return storyContext.GameBoardModel.PlayerStats.Coins >= price;
         }
 
-        private bool ContainsUpdatableItemInLine(ItemLineComponent itemLine, ItemContainerComponent item)
+        private bool ContainsUpdatableItemInLine(
+            ItemLineComponent itemLine, 
+            ItemContainerComponent item,
+            out ItemContainerComponent upgradableItem)
         {
             for (int i = 0; i < itemLine.ItemContainerComponents.Length; i++)
             {
@@ -105,10 +122,12 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
                 {
                     continue;
                 }
-                
+
+                upgradableItem = tempItem;
                 return true;
             }
 
+            upgradableItem = null;
             return false;
         }
     }

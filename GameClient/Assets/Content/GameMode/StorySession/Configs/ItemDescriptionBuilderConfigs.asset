@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c807feaa5564cc9b667aca24a596ef8, type: 3}
   m_Name: ItemDescriptionBuilderConfigs
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding.ItemDescriptionBuilderConfigs
+  SkippedItemStats: 000000000d0000000e0000000b0000000c000000
   ItemRarityKey:
     Key: item_rarity
     Category: 4
@@ -39,3 +40,6 @@ MonoBehaviour:
   LegendaryRarityKey:
     Key: legendary_item_rarity
     Category: 4
+  ItemTagCategory: 4
+  ItemStatSuffix: _stat
+  ItemTagSuffix: _tag

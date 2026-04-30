@@ -1,11 +1,13 @@
 using System;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
+using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using UnityEngine;
 
 
@@ -17,22 +19,24 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         private IItemLineOrganizer _lineOrganizer;
         private GameBoardHolder _gameBoardHolder;
         private IItemTransactionOperationController _itemTransactionOperationController;
-        private IItemContainersManager _containersManager;
         private IItemTransactionEventPublisher _itemTransactionEventPublisher;
-
+        private IItemUpgrader _itemUpgrader;
+        private IItemRemover _itemRemover;
 
         public ItemManipulator(
             IItemLineOrganizer lineOrganizer, 
             GameBoardHolder gameBoardHolder, 
             IItemTransactionOperationController itemTransactionOperationController, 
-            IItemContainersManager containersManager, 
-            IItemTransactionEventPublisher itemTransactionEventPublisher)
+            IItemTransactionEventPublisher itemTransactionEventPublisher, 
+            IItemUpgrader itemUpgrader, 
+            IItemRemover itemRemover)
         {
             _lineOrganizer = lineOrganizer;
             _gameBoardHolder = gameBoardHolder;
             _itemTransactionOperationController = itemTransactionOperationController;
-            _containersManager = containersManager;
             _itemTransactionEventPublisher = itemTransactionEventPublisher;
+            _itemUpgrader = itemUpgrader;
+            _itemRemover = itemRemover;
         }
         
 
@@ -55,7 +59,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         public async UniTask<bool> TryCompleteItemTransition(
             Vector3 worldPosition,
             int targetItemOriginalIndex,
-            ItemLineComponent originalLine,
+            ItemLineComponent originalItemLine,
             ItemLineComponent targetLine,
             ItemLineBuffer targetLineBuffer,
             ItemContainerComponent item,
@@ -63,14 +67,18 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             ItemLineBuffer secondWorkerItemLineBuffer,
             CancellationToken cancellationToken)
         {
-            bool isPurchaseRequired = _itemTransactionOperationController.IsPurchaseAttempt(item, originalLine);
+            bool isPurchaseRequired = _itemTransactionOperationController.IsPurchaseAttempt(item, originalItemLine);
 
-            if (isPurchaseRequired && !_itemTransactionOperationController.CanPurchase(item, originalLine))
+            if (isPurchaseRequired && !_itemTransactionOperationController.CanPurchase(item, originalItemLine))
             {
                 return false;
             }
             
-            bool isUpgradeAttempt = _itemTransactionOperationController.CanUpgrade(item, originalLine);
+            bool isUpgradeAttempt = _itemTransactionOperationController.CanUpgrade(
+                item, 
+                originalItemLine, 
+                out ItemLineComponent upgradableItemLine, 
+                out ItemContainerComponent upgradableItem);
 
             if (isUpgradeAttempt)
             {
@@ -78,17 +86,19 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
                     worldPosition,
                     isPurchaseRequired,
                     targetItemOriginalIndex, 
-                    originalLine, targetLine, 
+                    originalItemLine, targetLine, 
                     targetLineBuffer, 
                     item, 
                     workerItemLineBuffer, 
-                    secondWorkerItemLineBuffer, 
+                    secondWorkerItemLineBuffer,
+                    upgradableItemLine, 
+                    upgradableItem,
                     cancellationToken);
             }
             
             bool canUpdate = TryBuildItemConfiguration(
                 worldPosition, 
-                originalLine, 
+                originalItemLine, 
                 targetLine, 
                 targetLineBuffer, 
                 item, 
@@ -102,7 +112,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
                     worldPosition,
                     isPurchaseRequired,
                     targetItemOriginalIndex, 
-                    originalLine, 
+                    originalItemLine, 
                     targetLine, 
                     targetLineBuffer, 
                     item,
@@ -115,7 +125,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
                 worldPosition, 
                 isPurchaseRequired,
                 targetItemOriginalIndex, 
-                originalLine, 
+                originalItemLine, 
                 targetLine, 
                 targetLineBuffer, 
                 item, 
@@ -131,7 +141,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             ItemLineComponent original, 
             ItemLineComponent targetLine, 
             ItemLineBuffer targetLineBuffer, 
-            ItemContainerComponent item, 
+            ItemContainerComponent item,
             ItemLineBuffer workerItemLineBuffer)
         {
             
@@ -167,7 +177,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
 
             _lineOrganizer.RemoveItem(itemLine, item, out _);
             Item itemStoredItem = item.StoredItem;
-            _containersManager.Return(item);
+            _itemRemover.RemoveItem(item);
             
             await _itemTransactionEventPublisher.HandlePostItemSell(itemStoredItem, cancellationToken);
             
@@ -239,6 +249,8 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             ItemContainerComponent item,
             ItemLineBuffer workerItemLineBuffer,
             ItemLineBuffer secondWorkerItemLineBuffer,
+            ItemLineComponent upgradableItemLine, 
+            ItemContainerComponent upgradableItem,
             CancellationToken cancellationToken)
         {
             // will take payment
@@ -250,6 +262,8 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             await _itemTransactionEventPublisher.HandlePreItemUpgrade(item, cancellationToken);
 
             // ToDo: Play Upgrade Animation
+            await _itemUpgrader.PlayUpgrade(upgradableItem, item, upgradableItemLine, originalLine, cancellationToken);
+            
 
             await _itemTransactionEventPublisher.HandlePostItemUpgrade(item, cancellationToken);
             

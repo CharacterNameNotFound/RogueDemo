@@ -24,6 +24,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
         private IItemLineOrganizer _itemLineOrganizer;
         private GameBoardHolder _gameBoardHolder;
         private IItemRenderingFacade _itemRenderingFacade;
+        private IItemRemover _itemRemover;
 
         private Sprite[] _frameSprites;
         
@@ -33,7 +34,8 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             IItemPresenterConfigs itemPresenterConfigs, 
             IItemLineOrganizer itemLineOrganizer, 
             GameBoardHolder gameBoardHolder, 
-            IItemRenderingFacade itemRenderingFacade)
+            IItemRenderingFacade itemRenderingFacade, 
+            IItemRemover itemRemover)
         {
             _containersManager = containersManager;
             _itemRegistry = itemRegistry;
@@ -41,6 +43,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             _itemLineOrganizer = itemLineOrganizer;
             _gameBoardHolder = gameBoardHolder;
             _itemRenderingFacade = itemRenderingFacade;
+            _itemRemover = itemRemover;
         }
 
         public async UniTask Initialize(CancellationToken cancellationToken)
@@ -99,11 +102,21 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
 
         }
 
+        public void UpdateItemRarityFrame(ItemContainerComponent itemContainerComponent)
+        {
+            UpdateItemRarityFrame(itemContainerComponent, itemContainerComponent.StoredItem.ItemRarity);
+        }
+        
+        public void UpdateItemRarityFrame(ItemContainerComponent itemContainerComponent, ItemRarity rarity)
+        {
+            itemContainerComponent.FrameRenderer.sprite = _frameSprites[(int)rarity];
+        }
+
         public void RemoveItemsImmediate(IEnumerable<ItemContainerComponent> itemContainerComponents)
         {
             foreach (ItemContainerComponent container in itemContainerComponents)
             {
-                _containersManager.Return(container);
+                _itemRemover.RemoveItem(container);
             }
         }
 
@@ -121,8 +134,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
                 }
 
                 int step = itemContainerComponents[i].Size;
-                Addressables.Release(itemContainerComponents[i].ItemRenderer.sprite);
-                _containersManager.Return(itemContainerComponents[i]);
+                _itemRemover.RemoveItem(itemContainerComponents[i]);
                 
                 for (int j = 0; j < step; j++)
                 {

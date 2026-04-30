@@ -49,6 +49,8 @@ namespace Structure
             Container.Bind<IEncounterPlayer>().To<EncounterPlayer>().AsSingle();
             Container.Bind<IItemManipulator>().To<ItemManipulator>().AsSingle();
             Container.Bind<IItemPresenter>().To<ItemPresenter>().AsSingle();
+            Container.Bind<IItemUpgrader>().To<ItemUpgrader>().AsSingle();
+            Container.Bind<IItemRemover>().To<ItemRemover>().AsSingle();
             Container.Bind<IItemTransactionOperationController>().To<ItemTransactionOperationController>().AsSingle();
             
             // views and model

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b217e4a6aeb492e83ad6724ebc68af6, type: 3}
   m_Name: ItemDescriptionLocalizationConfigs
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Localization.ItemDescriptionLocalizationConfigs
-  MarginSize: 4
+  MarginSize: 20
   OnChargeTrigger:
     Key: on_charge_trigger
     Category: 4

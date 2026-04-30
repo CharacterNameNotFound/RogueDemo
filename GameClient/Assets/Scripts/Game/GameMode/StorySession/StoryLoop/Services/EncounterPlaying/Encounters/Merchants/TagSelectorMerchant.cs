@@ -102,7 +102,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
             }
             
             
-            throw new InvalidOperationException("Failed to draw an item within a sanity limit");
+            throw new InvalidOperationException("Failed to draw an item within a sanity limit, additional content implementation require /upgrade for algorithm incoming");
         }
         
 

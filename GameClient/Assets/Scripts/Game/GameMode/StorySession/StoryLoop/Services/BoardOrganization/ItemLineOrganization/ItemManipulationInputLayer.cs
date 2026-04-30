@@ -154,7 +154,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             }
 
             // no need to change line if there is container with upgradable item
-            if (_itemTransactionOperationController.CanUpgrade(_targetItem, _targetItemLine))
+            if (_itemTransactionOperationController.CanUpgrade(_targetItem, _originalItemLine, out _, out _))
             {
                 return true;
             }
@@ -259,7 +259,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
                     _itemLineOrganizer.Organize(_targetItemLine, _targetItemLineBuffer.ItemBuffer, true);
                 }
                 
-                _targetItem.RenderEndMovement();
+                _targetItem.ResetRender();
                 
                 _targetItemLine = null;
                 _isSecondItemLineEngaged = false;
@@ -281,7 +281,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
 
             if (!isSold)
             {
-                _targetItem.RenderEndMovement();
+                _targetItem.ResetRender();
             }
             
             _targetItem = null;
