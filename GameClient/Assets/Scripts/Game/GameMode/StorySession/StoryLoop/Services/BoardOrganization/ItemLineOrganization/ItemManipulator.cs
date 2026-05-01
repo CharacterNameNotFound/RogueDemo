@@ -56,7 +56,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         }
 
 
-        public async UniTask<bool> TryCompleteItemTransition(
+        public async UniTask<bool> TryCompleteItemTransitionBetweenLines(
             Vector3 worldPosition,
             int targetItemOriginalIndex,
             ItemLineComponent originalItemLine,
@@ -83,14 +83,9 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             if (isUpgradeAttempt)
             {
                 return await TryUpgrade(
-                    worldPosition,
                     isPurchaseRequired,
-                    targetItemOriginalIndex, 
-                    originalItemLine, targetLine, 
-                    targetLineBuffer, 
+                    originalItemLine, 
                     item, 
-                    workerItemLineBuffer, 
-                    secondWorkerItemLineBuffer,
                     upgradableItemLine, 
                     upgradableItem,
                     cancellationToken);
@@ -109,14 +104,9 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             if (!canUpdate)
             {
                 return await TryStash(
-                    worldPosition,
                     isPurchaseRequired,
-                    targetItemOriginalIndex, 
                     originalItemLine, 
-                    targetLine, 
-                    targetLineBuffer, 
                     item,
-                    workerItemLineBuffer, 
                     secondWorkerItemLineBuffer, 
                     cancellationToken);
             }
@@ -184,6 +174,44 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             return true;
         }
 
+        public UniTask<bool> TryCompleteItemTransitionToStash(
+            ItemLineComponent originalItemLine, 
+            ItemContainerComponent targetItem,
+            ItemLineBuffer workerItemLineBuffer,
+            CancellationToken cancellationToken)
+        {
+            bool isPurchaseRequired = _itemTransactionOperationController.IsPurchaseAttempt(targetItem, originalItemLine);
+
+            if (isPurchaseRequired && !_itemTransactionOperationController.CanPurchase(targetItem, originalItemLine))
+            {
+                return UniTask.FromResult(false);
+            }
+            
+            bool isUpgradeAttempt = _itemTransactionOperationController.CanUpgrade(
+                targetItem, 
+                originalItemLine, 
+                out ItemLineComponent upgradableItemLine, 
+                out ItemContainerComponent upgradableItem);
+
+            if (isUpgradeAttempt)
+            {
+                return  TryUpgrade(
+                    isPurchaseRequired,
+                    originalItemLine, 
+                    targetItem, 
+                    upgradableItemLine, 
+                    upgradableItem,
+                    cancellationToken);
+            }
+            
+            return TryStash(
+                isPurchaseRequired,
+                originalItemLine, 
+                targetItem,
+                workerItemLineBuffer, 
+                cancellationToken);
+        }
+
         /// <summary>
         /// If second worker is null, no attempt on swap will be done
         /// </summary>
@@ -240,15 +268,10 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         }
         
         
-        private async UniTask<bool> TryUpgrade(Vector3 worldPosition,
+        private async UniTask<bool> TryUpgrade(
             bool isPurchaseRequired,
-            int targetItemOriginalIndex,
             ItemLineComponent originalLine,
-            ItemLineComponent targetLine,
-            ItemLineBuffer targetLineBuffer,
             ItemContainerComponent item,
-            ItemLineBuffer workerItemLineBuffer,
-            ItemLineBuffer secondWorkerItemLineBuffer,
             ItemLineComponent upgradableItemLine, 
             ItemContainerComponent upgradableItem,
             CancellationToken cancellationToken)
@@ -315,14 +338,10 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             return true;
         }
 
-        private async UniTask<bool> TryStash(Vector3 worldPosition,
+        private async UniTask<bool> TryStash(
             bool isPurchaseRequired,
-            int targetItemOriginalIndex,
             ItemLineComponent originalLine,
-            ItemLineComponent targetLine,
-            ItemLineBuffer targetLineBuffer,
             ItemContainerComponent item,
-            ItemLineBuffer workerItemLineBuffer,
             ItemLineBuffer secondWorkerItemLineBuffer,
             CancellationToken cancellationToken)
         {

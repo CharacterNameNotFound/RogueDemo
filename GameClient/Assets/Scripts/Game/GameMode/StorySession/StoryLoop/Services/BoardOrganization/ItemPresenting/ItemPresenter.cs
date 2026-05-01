@@ -57,7 +57,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             _frameSprites[4] = await _itemPresenterConfigs.LegendaryFrame.Load<Sprite>(cancellationToken);
         }
         
-        public async UniTask ShowItems(IEnumerable<string> itemIds, CancellationToken cancellationToken)
+        public async UniTask ShowItems(ItemLineComponent itemLine, IEnumerable<string> itemIds, CancellationToken cancellationToken)
         {
             List<ItemContainerComponent> itemContainers = new List<ItemContainerComponent>();
             
@@ -89,7 +89,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             foreach (ItemContainerComponent itemContainer in itemContainers)
             {
                 itemContainer.gameObject.SetActive(true);
-                itemContainer.transform.SetParent(_gameBoardHolder.GameBoardComponent.ItemLineViewController.EncounterItemLine.transform);
+                itemContainer.transform.SetParent(itemLine.transform);
                 
                 for (int j = 0; j < itemContainer.Size; j++)
                 {
@@ -98,7 +98,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
                 }
             }
 
-            _itemLineOrganizer.Organize(_gameBoardHolder.GameBoardComponent.ItemLineViewController.EncounterItemLine, itemLineConfiguration, true);
+            _itemLineOrganizer.Organize(itemLine, itemLineConfiguration, true);
 
         }
 

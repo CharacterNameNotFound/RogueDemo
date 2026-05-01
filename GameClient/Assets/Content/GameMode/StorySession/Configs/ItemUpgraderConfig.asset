@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174ec327481f419d90c2dc0d4da61098, type: 3}
   m_Name: ItemUpgraderConfig
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting.ItemUpgraderConfig
-  <UpgradedItemPosition>k__BackingField: {x: -12, y: 32, z: 0}
-  <TargetItemPosition>k__BackingField: {x: 12, y: 32, z: 0}
+  <UpgradedItemPosition>k__BackingField: {x: -14, y: 32, z: 0}
+  <TargetItemPosition>k__BackingField: {x: 14, y: 32, z: 0}
   <PreUpgradeMovementRotation>k__BackingField: {x: 0, y: 360, z: 0}
   <IncreasedItemSize>k__BackingField: 1.5
   <PreUpgradeMovementTime>k__BackingField: 1

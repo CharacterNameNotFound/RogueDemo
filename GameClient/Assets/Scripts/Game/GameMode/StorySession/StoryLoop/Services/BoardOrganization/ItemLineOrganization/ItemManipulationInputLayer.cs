@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.View;
@@ -242,7 +243,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             
             if (_isSecondItemLineEngaged)
             {
-                bool isTransactionSuccess = await _itemManipulator.TryCompleteItemTransition(
+                bool isTransactionSuccess = await _itemManipulator.TryCompleteItemTransitionBetweenLines(
                     itemPivot,
                     _targetItemOriginalIndex,
                     _originalItemLine, 
@@ -274,6 +275,26 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
                 return;
             }
 
+            if (IsInventoryButtonHovered(mouseWorldPoint))
+            {
+                bool isTransactionSuccess = await _itemManipulator.TryCompleteItemTransitionToStash(_originalItemLine, _targetItem, _itemLineWorkBuffer, cancellationToken);
+                
+                if (!isTransactionSuccess)
+                {
+                    _itemLineOrganizer.Organize(_originalItemLine, _originalItemLineStateBuffer.ItemBuffer, true);
+                }
+                
+                _originalItemLineStateBuffer.ClearBuffer();
+                _itemLineWorkBuffer.ClearBuffer();
+                
+                _targetItem.ResetRender();
+                _targetItem = null;
+            
+                _inputControlFacade.SetInputsAvailable(true);
+                
+                return;
+            }
+
             bool isSold = await _itemManipulator.TrySellItem(mouseWorldPoint, _originalItemLineStateBuffer.ItemBuffer, _originalItemLine, _targetItem, cancellationToken);
 
             _itemLineOrganizer.Organize(_originalItemLine, _originalItemLineStateBuffer.ItemBuffer, true);
@@ -287,6 +308,18 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             _targetItem = null;
             
             _inputControlFacade.SetInputsAvailable(true);
+        }
+
+        private bool IsInventoryButtonHovered(Vector3 mouseWorldPoint)
+        {
+            Collider2D overlapPoint = Physics2D.OverlapPoint(mouseWorldPoint);
+
+            if (overlapPoint is null)
+            {
+                return false;
+            }
+            
+            return overlapPoint.gameObject == _gameBoardHolder.GameBoardComponent.GameBoardInteractables.InventoryButton.gameObject;
         }
         
     }

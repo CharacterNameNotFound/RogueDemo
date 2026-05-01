@@ -100,9 +100,16 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
                 
                 _itemDeckOrganizer.Return(rarity, itemId);
             }
+
             
+            if (rarity is ItemRarity.Legendary or ItemRarity.Diamond)
+            {
+                throw new InvalidOperationException("Failed to draw an item within a sanity limit and all possible upgrades");
+            }
+
+            int rarityInt = (int)rarity + 1;
             
-            throw new InvalidOperationException("Failed to draw an item within a sanity limit, additional content implementation require /upgrade for algorithm incoming");
+            return DrawOneByRarity((ItemRarity) rarityInt, drawnList, excludedItems);
         }
         
 

@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board;
+using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts;
@@ -34,8 +35,8 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Merchan
 
         public async UniTask ShowWares(IEnumerable<string> items, IStoryContext storyContext, CancellationToken cancellationToken)
         {
-            await _itemPresenter.ShowItems(items, cancellationToken);
-            
+            ItemLineComponent encounterItemLine = _gameBoardHolder.GameBoardComponent.ItemLineViewController.EncounterItemLine;
+            await _itemPresenter.ShowItems(encounterItemLine, items, cancellationToken);
         }
 
         public UniTask HideAll(CancellationToken cancellationToken)

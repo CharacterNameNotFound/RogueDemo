@@ -73,14 +73,14 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             targetItem.transform.localScale = Vector3.one;
             _itemRemover.RemoveItem(targetItem);
 
-            await upgradableItem.transform.DORotate(new Vector3(0, 180, 0), _itemUpgraderConfig.HalfRotationTime, RotateMode.LocalAxisAdd).Play().WithCancellation(cancellationToken);
+            await upgradableItem.transform.DORotate(new Vector3(0, 270, 0), _itemUpgraderConfig.PreUpgradeRotationTime, RotateMode.LocalAxisAdd).Play().WithCancellation(cancellationToken);
             
             // upgrading an item
             RequestResult<Item> upgradedItem = await upgradedItemLoading;
             upgradableItem.StoredItem = upgradedItem.GetValue();
             _itemPresenter.UpdateItemRarityFrame(upgradableItem);
             
-            await upgradableItem.transform.DORotate(new Vector3(0, 180, 0), _itemUpgraderConfig.HalfRotationTime, RotateMode.LocalAxisAdd).Play().WithCancellation(cancellationToken);
+            await upgradableItem.transform.DORotate(new Vector3(0, 90, 0), _itemUpgraderConfig.PostUpgradeRotationTime, RotateMode.LocalAxisAdd).Play().WithCancellation(cancellationToken);
             
             await GetToOriginalPositionSequence(upgradableItem.transform, startPosition).Play().WithCancellation(cancellationToken);
             
