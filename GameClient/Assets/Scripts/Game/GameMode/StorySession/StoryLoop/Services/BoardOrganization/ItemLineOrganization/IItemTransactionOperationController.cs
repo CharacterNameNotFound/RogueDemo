@@ -1,3 +1,5 @@
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 
@@ -16,6 +18,8 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             out ItemContainerComponent upgradableItem);
         
         public bool CanPurchase(ItemContainerComponent item, ItemLineComponent originalItemLine);
-        
+
+        public UniTask SellItem(ItemContainerComponent item, ItemContainerComponent[] itemLineComponent, CancellationToken cancellationToken);
+
     }
 }

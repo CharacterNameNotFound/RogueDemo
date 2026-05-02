@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using GameWideSystems.LocalizationWrapper;
@@ -43,6 +44,11 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
         public UniTask PreItemMove(CancellationToken cancellationToken)
         {
             return UniTask.CompletedTask;
+        }
+
+        public virtual bool CanPurchase(Item item)
+        {
+            return false;
         }
     }
 }

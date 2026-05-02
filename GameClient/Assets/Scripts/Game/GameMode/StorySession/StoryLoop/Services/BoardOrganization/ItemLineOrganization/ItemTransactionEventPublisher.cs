@@ -68,7 +68,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
 
         public UniTask HandlePreItemPurchase(ItemContainerComponent item, CancellationToken cancellationToken)
         {
-            return _preItemPurchase.Invoke(new PreItemPurchaseArguments(), cancellationToken);
+            return _preItemPurchase.Invoke(new PreItemPurchaseArguments(item), cancellationToken);
         }
 
         public UniTask HandlePostItemPurchase(ItemContainerComponent item, CancellationToken cancellationToken)

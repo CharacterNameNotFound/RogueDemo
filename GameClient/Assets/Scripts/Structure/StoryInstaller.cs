@@ -3,6 +3,8 @@ using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStatSetToItemStatValueConverters;
+using Game.GameMode.StorySession.GameBoard.Services.PlayerStatusUpdating;
+using Game.GameMode.StorySession.GameBoard.Services.TextsDrawing;
 using Game.GameMode.StorySession.GameBoard.Simulation.Facades;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.Services.SaveManagement;
@@ -57,6 +59,8 @@ namespace Structure
             Container.Bind<GameBoardHolder>().To<GameBoardHolder>().AsSingle();
             Container.Bind<IStoryContextProvider>().To<StoryContextHolder>().AsSingle();
             Container.Bind<IItemDescriptionBuilder>().To<ItemDescriptionBuilder>().AsSingle();
+            Container.Bind<ISessionStatusDrawer>().To<SessionStatusDrawer>().AsSingle();
+            Container.Bind<IPlayerStatusUpdater>().To<PlayerStatusUpdater>().AsSingle();
             
             // Items and deck
             Container.Bind<IItemRegistry>().To<ItemRegistry>().AsSingle();

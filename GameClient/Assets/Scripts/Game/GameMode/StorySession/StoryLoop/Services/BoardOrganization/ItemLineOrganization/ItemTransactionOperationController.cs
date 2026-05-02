@@ -1,12 +1,15 @@
-using System.Linq;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
+using Game.GameMode.StorySession.GameBoard.Services.PlayerStatusUpdating;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
 using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
+using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
-using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization
 {
@@ -14,19 +17,30 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
     {
         private GameBoardHolder _gameBoardHolder;
         private IEncounterPlayer _encounterPlayer;
-        private IStoryContextProvider _storyContextProvider;
+        private IItemTransactionEventPublisher _transactionEventPublisher;
+        private IItemLineOrganizer _itemLineOrganizer;
+        private IItemRemover _itemRemover;
         private IItemStatGetter _itemStatGetter;
+        private IPlayerStatusUpdater _statusUpdater;
+
+
 
         public ItemTransactionOperationController(
             IEncounterPlayer encounterPlayer, 
             GameBoardHolder gameBoardHolder, 
-            IStoryContextProvider storyContextProvider, 
-            IItemStatGetter itemStatGetter)
+            IItemTransactionEventPublisher transactionEventPublisher, 
+            IItemLineOrganizer itemLineOrganizer, 
+            IItemRemover itemRemover, 
+            IItemStatGetter itemStatGetter, 
+            IPlayerStatusUpdater statusUpdater)
         {
             _encounterPlayer = encounterPlayer;
             _gameBoardHolder = gameBoardHolder;
-            _storyContextProvider = storyContextProvider;
+            _transactionEventPublisher = transactionEventPublisher;
+            _itemLineOrganizer = itemLineOrganizer;
+            _itemRemover = itemRemover;
             _itemStatGetter = itemStatGetter;
+            _statusUpdater = statusUpdater;
         }
 
         public bool IsPurchaseAttempt(ItemContainerComponent item, ItemLineComponent originalItemLine)
@@ -100,11 +114,27 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
 
         public bool CanPurchase(ItemContainerComponent item, ItemLineComponent originalItemLine)
         {
-            IStoryContext storyContext = _storyContextProvider.StoryContext;
+            if (_encounterPlayer.CurrentEncounter is null)
+            {
+                return false;
+            }
+            
+            return _encounterPlayer.CurrentEncounter.CanPurchase(item.StoredItem);
+        }
 
-            float price = _itemStatGetter.GetStatValue(item.StoredItem, ItemStatType.Value, StatSet.StatSetComponent.BaseValue, StatSet.StatSetComponent.None);
+        public async UniTask SellItem(ItemContainerComponent item, ItemContainerComponent[] itemLineComponent, CancellationToken cancellationToken)
+        {
+            await _transactionEventPublisher.HandlePreItemSell(item, cancellationToken);
+            
+            float statValue = _itemStatGetter.GetStatValue(item.StoredItem, ItemStatType.Value, StatSet.StatSetComponent.Special, StatSet.StatSetComponent.Special);
+            _statusUpdater.UpdateCoins(statValue);
+            
+            _itemLineOrganizer.RemoveItem(itemLineComponent, item, out _);
+            Item itemStoredItem = item.StoredItem;
+            _itemRemover.RemoveItem(item);
 
-            return storyContext.GameBoardModel.PlayerStats.Coins >= price;
+
+            await _transactionEventPublisher.HandlePostItemSell(itemStoredItem, cancellationToken);
         }
 
         private bool ContainsUpdatableItemInLine(

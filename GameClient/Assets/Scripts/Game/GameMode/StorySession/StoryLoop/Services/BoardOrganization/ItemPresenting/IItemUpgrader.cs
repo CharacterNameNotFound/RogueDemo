@@ -1,5 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting
@@ -10,7 +11,9 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             ItemContainerComponent upgradableItem, 
             ItemContainerComponent targetItem,
             ItemLineComponent upgradableItemLine,
-            ItemLineComponent originalItemLine, 
             CancellationToken cancellationToken);
+        
+        public void UpdateStats(Item newItem, Item oldItem);
+        
     }
 }

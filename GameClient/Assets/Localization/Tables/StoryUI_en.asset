@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: c27e194b188aa4b4ab9c3890abfdec55, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 2957930401199030361
   m_TableData:
   - m_Id: 60224321032192
     m_Localized: Story selection screen
@@ -34,6 +35,31 @@ MonoBehaviour:
     m_Localized: Hide
     m_Metadata:
       m_Items: []
+  - m_Id: 40100965155803136
+    m_Localized: Stash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40100965197746176
+    m_Localized: Next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40176363256352768
+    m_Localized: 'Coins: {0},<br>Exp: {1}/{2}'
+    m_Metadata:
+      m_Items:
+      - rid: 2957930401199030361
+  - m_Id: 40176363260547072
+    m_Localized: 'Cycle: {0}<br>{1}/{2}'
+    m_Metadata:
+      m_Items:
+      - rid: 2957930401199030361
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2957930401199030361
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 40176363256352768
+        - id: 40176363260547072

@@ -18,5 +18,6 @@ MonoBehaviour:
   <IncreasedItemSize>k__BackingField: 1.5
   <PreUpgradeMovementTime>k__BackingField: 1
   <ItemClashTime>k__BackingField: 0.35
-  <HalfRotationTime>k__BackingField: 0.35
+  <PreUpgradeRotationTime>k__BackingField: 0.75
+  <PostUpgradeRotationTime>k__BackingField: 0.25
   <ItemReturnTime>k__BackingField: 0.5

@@ -180,7 +180,7 @@ MonoBehaviour:
     ItemStatSet:
       ItemValues:
         Stats:
-        - 3
+        - 4
         - 0
         - 0
         - 0

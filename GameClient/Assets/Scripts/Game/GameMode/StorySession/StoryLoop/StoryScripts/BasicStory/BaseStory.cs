@@ -2,6 +2,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.Data.Character;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
+using Game.GameMode.StorySession.GameBoard.Services.TextsDrawing;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
@@ -44,6 +45,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
         private IPlayerStashController _playerStashController;
         private IStoryContextProvider _storyContextProvider;
         private IInputLayerControlMediator _inputLayerControlMediator;
+        private ISessionStatusDrawer _sessionStatusDrawer;
 
         private BaseStoryContext _baseStoryContext;
 
@@ -66,7 +68,8 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             IItemPresenter itemPresenter,
             IPlayerStashController playerStashController,
             IStoryContextProvider storyContextProvider,
-            IInputLayerControlMediator inputLayerControlMediator
+            IInputLayerControlMediator inputLayerControlMediator,
+            ISessionStatusDrawer sessionStatusDrawer
             )
         {
             _loadingScreenManager = loadingScreenManager;
@@ -86,6 +89,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             _playerStashController = playerStashController;
             _storyContextProvider = storyContextProvider;
             _inputLayerControlMediator = inputLayerControlMediator;
+            _sessionStatusDrawer = sessionStatusDrawer;
         }
 
         public async UniTask Initialize(StoryInitializationData storyInitializationData, CancellationToken cancellationToken)
@@ -119,8 +123,11 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
         public async UniTask Loop(CancellationToken cancellationToken)
         {
             // save each cycle
+            _sessionStatusDrawer.RedrawPlayerStats(_baseStoryContext.GameBoardModel);
+            
             do
             {
+                _sessionStatusDrawer.RedrawStoryProgression(_baseStoryContext.GameBoardModel);
                 _inputLayerControlMediator.ToggleItemMovement(true);
                 int turn = _baseStoryContext.Cycle * _baseStoryConfigs.StoryDayLength + _baseStoryContext.Step;
                 int selectedEncounterIndex = await _encounterSelector.StartEncounterSelection(_baseStoryContext.StoryEncounters[turn], cancellationToken);
@@ -228,6 +235,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             
             // resetting systems
             _encounterPlayer.Initialize();
+            _sessionStatusDrawer.Initialize(_baseStoryConfigs.StoryDayLength);
         }
         
         

@@ -1,10 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
+using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
 using Game.GameMode.StorySession.GameBoard.Simulation.Facades;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
@@ -25,6 +30,8 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
         private GameBoardHolder _gameBoardHolder;
         private IItemRenderingFacade _itemRenderingFacade;
         private IItemRemover _itemRemover;
+        private IItemStatGetter _itemStatGetter;
+
 
         private Sprite[] _frameSprites;
         
@@ -35,7 +42,8 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             IItemLineOrganizer itemLineOrganizer, 
             GameBoardHolder gameBoardHolder, 
             IItemRenderingFacade itemRenderingFacade, 
-            IItemRemover itemRemover)
+            IItemRemover itemRemover, 
+            IItemStatGetter itemStatGetter)
         {
             _containersManager = containersManager;
             _itemRegistry = itemRegistry;
@@ -44,6 +52,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             _gameBoardHolder = gameBoardHolder;
             _itemRenderingFacade = itemRenderingFacade;
             _itemRemover = itemRemover;
+            _itemStatGetter = itemStatGetter;
         }
 
         public async UniTask Initialize(CancellationToken cancellationToken)
@@ -78,6 +87,13 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
                 itemContainers.Add(itemContainer);
                 itemContainer.StoredItem = item;
 
+                float value = _itemStatGetter.GetStatValue(item, 
+                    ItemStatType.Value, 
+                    StatSet.StatSetComponent.Special,
+                    StatSet.StatSetComponent.Special);
+
+                itemContainer.SetPriceTag(value);
+
                 itemContainer.FrameRenderer.sprite = _frameSprites[(int)item.ItemRarity];
                 itemContainer.ItemRenderer.sprite = await item.ItemSpriteRuntimeKey.Load<Sprite>(cancellationToken);
                 
@@ -85,7 +101,9 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             }
 
             ItemContainerComponent[] itemLineConfiguration = new ItemContainerComponent[12];
-            int i = 0;
+            int filledCells = itemContainers.Sum(x => x.Size);
+            int i = (itemLine.ItemCapacity - filledCells) / 2;
+            
             foreach (ItemContainerComponent itemContainer in itemContainers)
             {
                 itemContainer.gameObject.SetActive(true);

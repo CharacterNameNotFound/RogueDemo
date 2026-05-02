@@ -1,9 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
@@ -163,13 +161,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
                 return false;
             }
 
-            await _itemTransactionEventPublisher.HandlePreItemSell(item, cancellationToken);
-
-            _lineOrganizer.RemoveItem(itemLine, item, out _);
-            Item itemStoredItem = item.StoredItem;
-            _itemRemover.RemoveItem(item);
-            
-            await _itemTransactionEventPublisher.HandlePostItemSell(itemStoredItem, cancellationToken);
+            await _itemTransactionOperationController.SellItem(item, itemLine, cancellationToken);
             
             return true;
         }
@@ -284,9 +276,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
 
             await _itemTransactionEventPublisher.HandlePreItemUpgrade(item, cancellationToken);
 
-            // ToDo: Play Upgrade Animation
-            await _itemUpgrader.PlayUpgrade(upgradableItem, item, upgradableItemLine, originalLine, cancellationToken);
-            
+            await _itemUpgrader.PlayUpgrade(upgradableItem, item, upgradableItemLine, cancellationToken);
 
             await _itemTransactionEventPublisher.HandlePostItemUpgrade(item, cancellationToken);
             

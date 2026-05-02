@@ -1,5 +1,6 @@
 using System;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Utils.UtilityTypes.ObjectPooling;
@@ -14,6 +15,7 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board.Views
         [field: SerializeField] public SpriteRenderer ChargeProgressRenderer { get; private set; }
         [field: SerializeField] public SortingGroup SortingGroup { get; private set; }
         [field: SerializeField] public Collider2D Collider2D { get; private set; }
+        [field: SerializeField] public TMP_Text PriceTag { get; private set; }
 
 
         public Item StoredItem;
@@ -21,7 +23,8 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board.Views
         public override void OnPooled()
         {
             gameObject.SetActive(false);
-            SortingGroup.sortingOrder = 0;
+            
+            UpdateInternal(0, true, true);
             
             StoredItem = null;
         }
@@ -39,26 +42,39 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board.Views
 
             return new Vector3(pivotX, bounds.center.y, 0);
         }
+
+        public void SetPriceTag(float value)
+        {
+            SetPriceTag(Mathf.CeilToInt(value));
+        }
+        
+        public void SetPriceTag(int value)
+        {
+            PriceTag.text = value.ToString();
+        }
         
         public void RenderUpgradeMovement(int offset = 0)
         {
-            SortingGroup.sortingOrder = 2 + offset;
-
-            Collider2D.enabled = false;
+            UpdateInternal(2 + offset, false, false);
         }
         
         public void RenderStarMovement()
         {
-            SortingGroup.sortingOrder = 1;
-
-            Collider2D.enabled = false;
+            UpdateInternal(1, false, false);
         }
         
         public void ResetRender()
         {
-            SortingGroup.sortingOrder = 0;
+            UpdateInternal(0, true, true);
+        }
+
+        private void UpdateInternal(int layer, bool showTag, bool enableCollider)
+        {
+            SortingGroup.sortingOrder = layer;
             
-            Collider2D.enabled = true;
+            PriceTag.gameObject.SetActive(showTag);
+            
+            Collider2D.enabled = enableCollider;
         }
         
     }

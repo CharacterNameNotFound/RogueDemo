@@ -10,7 +10,7 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Utilities
         {
             None = -1,
             BaseValue, // base value original to object
-            ConsumableBonus, // permanent bonuses
+            PersistantBonus, // permanent bonuses
             AuraBonus, // semi-permanent bonuses
             CombatBonus, // combat only bonus
             Special, // just in case buffer
@@ -60,5 +60,12 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Utilities
         {
             return new StatSet(this);
         }
+
+        public void CopyUpgradeConsistentStats(StatSet originalItem)
+        {
+            Stats[(int)StatSetComponent.PersistantBonus] = originalItem.Stats[(int)StatSetComponent.PersistantBonus];
+            Stats[(int)StatSetComponent.AuraBonus] = originalItem.Stats[(int)StatSetComponent.AuraBonus];
+        }
+        
     }
 }

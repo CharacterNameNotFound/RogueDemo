@@ -10,5 +10,7 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation
 
         public PlayerStats PlayerStats = new();
         
+        public int Cycle = 0;
+        public int Step = 0;
     }
 }

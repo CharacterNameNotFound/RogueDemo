@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Game.GameMode.StorySession.GameBoard.View.Board
 {

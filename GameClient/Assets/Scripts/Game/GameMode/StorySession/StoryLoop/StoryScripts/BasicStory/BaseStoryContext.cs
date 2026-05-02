@@ -13,10 +13,21 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
         public BattleEncounter[] Bosses;
         
         public List<List<string>> StoryEncounters { get; set; }
-        public int Cycle { get; set; } = 0;
-        public int Step { get; set; } = 0;
+        
         public GameBoardModel GameBoardModel { get; set; } = new GameBoardModel();
 
+        
+        public int Cycle
+        {
+            get => GameBoardModel.Cycle; 
+            set => GameBoardModel.Cycle = value; 
+        }
+
+        public int Step
+        {
+            get => GameBoardModel.Step;
+            set => GameBoardModel.Step = value;
+        }
 
     }
 }

@@ -31,6 +31,22 @@ MonoBehaviour:
     m_Key: hide_bosses_button_text
     m_Metadata:
       m_Items: []
+  - m_Id: 40100965155803136
+    m_Key: inventory_button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40100965197746176
+    m_Key: next_button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40176363256352768
+    m_Key: player_stats_panel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40176363260547072
+    m_Key: story_progress_panel
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
