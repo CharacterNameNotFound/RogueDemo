@@ -45,3 +45,4 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  <StartingHp>k__BackingField: 1000

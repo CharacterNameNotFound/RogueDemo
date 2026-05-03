@@ -6,6 +6,7 @@ using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
+using Game.GameMode.StorySession.Utilities.EventArguments;
 using UnityEngine;
 
 
@@ -97,12 +98,14 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
                 item, 
                 workerItemLineBuffer, 
                 secondWorkerItemLineBuffer, 
-                targetItemOriginalIndex);
+                targetItemOriginalIndex,
+                out int newIndex);
 
             if (!canUpdate)
             {
                 return await TryStash(
                     isPurchaseRequired,
+                    targetItemOriginalIndex, 
                     originalItemLine, 
                     item,
                     secondWorkerItemLineBuffer, 
@@ -113,6 +116,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
                 worldPosition, 
                 isPurchaseRequired,
                 targetItemOriginalIndex, 
+                newIndex,
                 originalItemLine, 
                 targetLine, 
                 targetLineBuffer, 
@@ -133,7 +137,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             ItemLineBuffer workerItemLineBuffer)
         {
             
-            if (!TryBuildItemConfiguration(worldPosition, original, targetLine, targetLineBuffer, item, workerItemLineBuffer, null, -1))
+            if (!TryBuildItemConfiguration(worldPosition, original, targetLine, targetLineBuffer, item, workerItemLineBuffer, null, -1, out _))
             {
                 return false;
             }
@@ -167,6 +171,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         }
 
         public UniTask<bool> TryCompleteItemTransitionToStash(
+            int originalIndex,
             ItemLineComponent originalItemLine, 
             ItemContainerComponent targetItem,
             ItemLineBuffer workerItemLineBuffer,
@@ -198,6 +203,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             
             return TryStash(
                 isPurchaseRequired,
+                originalIndex, 
                 originalItemLine, 
                 targetItem,
                 workerItemLineBuffer, 
@@ -216,15 +222,16 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             ItemContainerComponent item,
             ItemLineBuffer workerItemLineBuffer,
             ItemLineBuffer secondWorkerItemLineBuffer, 
-            int targetItemOriginalIndex)
+            int targetItemOriginalIndex,
+            out int newIndex)
         {
-            if (!_lineOrganizer.TryGetLineIndexForPosition(targetLine, worldPosition, out int index))
+            if (!_lineOrganizer.TryGetLineIndexForPosition(targetLine, worldPosition, out newIndex))
             {
                 return false;
             }
             
             workerItemLineBuffer.ClearBuffer();
-            bool isItemConfigurationBuilt = _lineOrganizer.TryBuildItemConfiguration(targetLineBuffer.ItemBuffer, item, ref index, workerItemLineBuffer.ItemBuffer);
+            bool isItemConfigurationBuilt = _lineOrganizer.TryBuildItemConfiguration(targetLineBuffer.ItemBuffer, item, ref newIndex, workerItemLineBuffer.ItemBuffer);
 
             if (isItemConfigurationBuilt)
             {
@@ -291,6 +298,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         private async UniTask<bool> TryMove(Vector3 worldPosition,
             bool isPurchaseRequired,
             int targetItemOriginalIndex,
+            int newIndex,
             ItemLineComponent originalLine,
             ItemLineComponent targetLine,
             ItemLineBuffer targetLineBuffer,
@@ -303,8 +311,13 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             {
                 await _itemTransactionEventPublisher.HandlePreItemPurchase(item, cancellationToken);
             }
+
+            PreItemMovementArguments preItemMovementArguments = new PreItemMovementArguments(
+                item, 
+                originalLine, 
+                targetItemOriginalIndex);
             
-            await _itemTransactionEventPublisher.HandlePreItemMovement(item, cancellationToken);
+            await _itemTransactionEventPublisher.HandlePreItemMovement(preItemMovementArguments, cancellationToken);
             
             
             if (secondWorkerItemLineBuffer.HasValue())
@@ -330,6 +343,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
 
         private async UniTask<bool> TryStash(
             bool isPurchaseRequired,
+            int originalIndex,
             ItemLineComponent originalLine,
             ItemContainerComponent item,
             ItemLineBuffer secondWorkerItemLineBuffer,
@@ -356,7 +370,9 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
                 await _itemTransactionEventPublisher.HandlePreItemPurchase(item, cancellationToken);
             }
 
-            await _itemTransactionEventPublisher.HandlePreItemMovement(item, cancellationToken);
+            PreItemMovementArguments arguments = new PreItemMovementArguments(item, originalLine, originalIndex);
+            
+            await _itemTransactionEventPublisher.HandlePreItemMovement(arguments, cancellationToken);
             
             int firstEmpty = Array.IndexOf(stashLine.ItemContainerComponents, null);
             _lineOrganizer.TryBuildItemConfiguration(stashLine, item, ref firstEmpty, secondWorkerItemLineBuffer.ItemBuffer);

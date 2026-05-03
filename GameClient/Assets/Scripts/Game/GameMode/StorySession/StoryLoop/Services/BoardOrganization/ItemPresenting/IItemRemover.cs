@@ -4,6 +4,6 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
 {
     public interface IItemRemover
     {
-        public void RemoveItem(ItemContainerComponent item);
+        public void RemoveItem(ItemContainerComponent item, bool isForceDoNotReturnItem = false);
     }
 }

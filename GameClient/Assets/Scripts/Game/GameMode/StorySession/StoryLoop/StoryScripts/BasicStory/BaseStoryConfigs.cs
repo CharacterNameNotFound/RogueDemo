@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Game.GameMode.StorySession.GameBoard.Simulation;
 using Game.GameMode.StorySession.StoryLoop.StoryRoutines.DataProviders;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs;
 using UnityEngine;
@@ -27,5 +28,6 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
         [field: Header("Generic story configs")]
         [field: SerializeField] public int StoryDayLength { get; private set; }
         [field: SerializeField] public int StoryDayCount { get; private set; }
+        [field: SerializeField] public GameBoardModelCreationConfigs GameBoardModelCreationConfigs { get; private set; }
     }
 }

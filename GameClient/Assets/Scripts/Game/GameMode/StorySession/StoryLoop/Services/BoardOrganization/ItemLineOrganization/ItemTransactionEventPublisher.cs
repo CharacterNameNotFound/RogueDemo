@@ -42,10 +42,9 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         }
         
         
-        public UniTask HandlePreItemMovement(ItemContainerComponent item, CancellationToken cancellationToken)
+        public UniTask HandlePreItemMovement(PreItemMovementArguments arguments, CancellationToken cancellationToken)
         {
-            PreItemMovementArguments arg = new PreItemMovementArguments(item);
-            return _preItemMovement.Invoke(arg, cancellationToken);
+            return _preItemMovement.Invoke(arguments, cancellationToken);
         }
 
         public UniTask HandlePostItemMovement(ItemContainerComponent item, CancellationToken cancellationToken)

@@ -37,4 +37,5 @@ MonoBehaviour:
   <CoinReward>k__BackingField: 15
   <ExperienceReward>k__BackingField: 5
   <Health>k__BackingField: 3000
-  <Items>k__BackingField: []
+  <Items>k__BackingField:
+  - torch_gold

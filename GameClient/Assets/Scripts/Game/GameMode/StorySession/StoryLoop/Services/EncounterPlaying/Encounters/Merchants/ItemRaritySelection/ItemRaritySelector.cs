@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Game.GameMode.StorySession.GameBoard.Simulation;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using GameWideSystems.RNGManagement;
@@ -14,7 +15,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
             _rngManager = rngManager;
         }
 
-        public List<ItemRarity> GetRarities(int count, IStoryContext storyContext)
+        public List<ItemRarity> GetRarities(int count, GameBoardModel gameBoardModel)
         {
             List<ItemRarity> rarities = new(count);
 
@@ -22,7 +23,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
 
             for (int i = 0; i < count; i++)
             {
-                int index = randomProvider.RangeSafe(0, storyContext.GameBoardModel.PlayerStats.Karma);
+                int index = randomProvider.RangeSafe(0, gameBoardModel.PlayerStats.Karma);
                 
                 rarities.Add((ItemRarity) index);
             }

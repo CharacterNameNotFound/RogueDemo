@@ -78,13 +78,17 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             // playing clash + roll animation
             await GetItemClashSequence(upgradableItem.transform, targetItem.transform).Play();
             targetItem.transform.localScale = Vector3.one;
-            _itemRemover.RemoveItem(targetItem);
+            _itemRemover.RemoveItem(targetItem, true);
 
             await upgradableItem.transform.DORotate(new Vector3(0, 270, 0), _itemUpgraderConfig.PreUpgradeRotationTime, RotateMode.LocalAxisAdd).Play().WithCancellation(cancellationToken);
             
             // upgrading an item
             RequestResult<Item> upgradedItem = await upgradedItemLoading;
-            upgradableItem.StoredItem = upgradedItem.GetValue();
+            bool isNonDeckItem = upgradableItem.StoredItem.IsNonDeck && preservedItem.IsNonDeck;
+            
+            upgradableItem.StoredItem = upgradedItem.GetValue().GetCopy();
+            upgradableItem.StoredItem.IsNonDeck = isNonDeckItem;
+            
             _itemPresenter.UpdateItemRarityFrame(upgradableItem);
             
             // upgrading item stats

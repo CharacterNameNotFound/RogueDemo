@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.GameMode.StorySession.GameBoard.Simulation;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.ItemRaritySelection;
@@ -41,22 +42,22 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
             _merchantItemExclusionListBuilder = merchantItemExclusionListBuilder;
         }
 
-        public override async UniTask<IEnumerable<string>> GetItemList(IStoryContext storyContext, CancellationToken cancellationToken)
+        public override async UniTask<IEnumerable<string>> GetItemList(GameBoardModel gameBoardModel, CancellationToken cancellationToken)
         {
-            HashSet<string> excludedItems = await _merchantItemExclusionListBuilder.BuildIgnoredListIds(storyContext, cancellationToken);
+            HashSet<string> excludedItems = await _merchantItemExclusionListBuilder.BuildIgnoredListIds(gameBoardModel, cancellationToken);
             
             if (IncludedGroups == ItemSelectionGroup.Deck)
             {
-                return GenerateByDeck(storyContext, excludedItems, cancellationToken);
+                return GenerateByDeck(gameBoardModel, excludedItems, cancellationToken);
             }
             
             
             throw new NotImplementedException();
         }
 
-        private HashSet<string> GenerateByDeck(IStoryContext storyContext, HashSet<string> excludedItems, CancellationToken cancellationToken)
+        private HashSet<string> GenerateByDeck(GameBoardModel gameBoardModel, HashSet<string> excludedItems, CancellationToken cancellationToken)
         {
-            List<ItemRarity> itemRarities = _itemRaritySelector.GetRarities(ItemCount, storyContext);
+            List<ItemRarity> itemRarities = _itemRaritySelector.GetRarities(ItemCount, gameBoardModel);
 
             return PullFromCardsDeck(itemRarities, excludedItems);
         }

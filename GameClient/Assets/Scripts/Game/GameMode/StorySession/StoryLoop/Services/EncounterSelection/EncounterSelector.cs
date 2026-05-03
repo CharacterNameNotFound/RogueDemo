@@ -85,14 +85,12 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection
             
             float holderSizeX = encounterItemLine.SpriteRenderer.bounds.size.x - _encounterSelectorConfigs.SideFreeSpace;
             float itemSizeX = _views[0].SpriteRenderer.size.x;
-            float spawnSpaceX = holderSizeX - itemSizeX; // horizontal length that could be used as X coordinate for object
+            float spawnSpaceX = holderSizeX;
 
             // extend to first/last possible X coordinate for spawn
             float startExtendX = encounterItemLine.transform.position.x - spawnSpaceX / 2;
-            
-            float stepX = encounterIds.Count > 0 ? 
-                spawnSpaceX / (encounterIds.Count - 1) : 
-                0;
+
+            float stepX = spawnSpaceX / (encounterIds.Count + 1);
 
             List<UniTask<Sprite>> spriteTasks = new List<UniTask<Sprite>>();
             
@@ -110,7 +108,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection
 
                 // setting object position
                 _views[i].transform.SetParent(encounterItemLine.transform);
-                _views[i].transform.localPosition = new Vector3(startExtendX + stepX * i, 0, 0);
+                _views[i].transform.localPosition = new Vector3(startExtendX + stepX * (i + 1), 0, 0);
                 _views[i].Encounter = encounter;
                 _views[i].ItemId = i;
 

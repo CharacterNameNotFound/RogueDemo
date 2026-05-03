@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Battles;
 using GameWideSystems.UIManagement;
 using GameWideSystems.UIManagement.Screen;
 using UnityEngine;

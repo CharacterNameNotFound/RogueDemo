@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -31,8 +32,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
         private IItemRenderingFacade _itemRenderingFacade;
         private IItemRemover _itemRemover;
         private IItemStatGetter _itemStatGetter;
-
-
+        
         private Sprite[] _frameSprites;
         
         public ItemPresenter(
@@ -69,21 +69,14 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
         public async UniTask ShowItems(ItemLineComponent itemLine, IEnumerable<string> itemIds, CancellationToken cancellationToken)
         {
             List<ItemContainerComponent> itemContainers = new List<ItemContainerComponent>();
+
+            List<Item> items = await LoadItems(itemIds, cancellationToken);
+
             
-            foreach (string itemId in itemIds)
+            foreach (Item item in items)
             {
-                UniTask<RequestResult<Item>> loadItem = _itemRegistry.GetOrLoadById(itemId, cancellationToken);
-
-                RequestResult<Item> requestResult = await loadItem;
-
-                if (requestResult.IsFailure())
-                {
-                    throw requestResult.Exception;
-                }
-
-                Item item = requestResult.GetValue();
-                
                 ItemContainerComponent itemContainer = await _containersManager.GetBySize(item.ItemSize, cancellationToken);
+
                 itemContainers.Add(itemContainer);
                 itemContainer.StoredItem = item;
 
@@ -99,6 +92,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
                 
                 _itemRenderingFacade.UpdateCharge(itemContainer, 1);
             }
+
 
             ItemContainerComponent[] itemLineConfiguration = new ItemContainerComponent[12];
             int filledCells = itemContainers.Sum(x => x.Size);
@@ -117,7 +111,6 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             }
 
             _itemLineOrganizer.Organize(itemLine, itemLineConfiguration, true);
-
         }
 
         public void UpdateItemRarityFrame(ItemContainerComponent itemContainerComponent)
@@ -138,10 +131,9 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             }
         }
 
-        public void RemoveEncounterItemsImmediate()
+        public void RemoveEncounterItemsImmediate(bool isForceDoNotReturnItem = false)
         {
             ItemContainerComponent[] itemContainerComponents = _gameBoardHolder.GameBoardComponent.ItemLineViewController.EncounterItemLine.ItemContainerComponents;
-
             
             for (int i = 0; i < itemContainerComponents.Length;)
             {
@@ -152,7 +144,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
                 }
 
                 int step = itemContainerComponents[i].Size;
-                _itemRemover.RemoveItem(itemContainerComponents[i]);
+                _itemRemover.RemoveItem(itemContainerComponents[i], isForceDoNotReturnItem);
                 
                 for (int j = 0; j < step; j++)
                 {
@@ -173,5 +165,36 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
 
             _frameSprites = null;
         }
+
+        private async UniTask<List<Item>> LoadItems(IEnumerable<string> itemIds, CancellationToken cancellationToken)
+        {
+            List<Item> result = new List<Item>(12);
+            List<UniTask<RequestResult<Item>>> tasks = new List<UniTask<RequestResult<Item>>>(12);
+            
+
+            foreach (string itemId in itemIds)
+            {
+                UniTask<RequestResult<Item>> loadItem = _itemRegistry.GetOrLoadById(itemId, cancellationToken);
+                
+                tasks.Add(loadItem);
+                
+            }
+
+            RequestResult<Item>[] requests = await tasks;
+
+            foreach (RequestResult<Item> request in requests)
+            {
+                if (request.IsFailure())
+                {
+                    throw request.Exception;
+                }
+                
+                result.Add(request.GetValue().GetCopy());
+            }
+
+            return result;
+        }
+        
+        
     }
 }

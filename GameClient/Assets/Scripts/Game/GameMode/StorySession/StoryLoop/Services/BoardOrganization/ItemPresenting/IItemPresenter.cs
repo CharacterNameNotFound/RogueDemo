@@ -13,7 +13,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
         public void UpdateItemRarityFrame(ItemContainerComponent itemContainerComponent);
         public void UpdateItemRarityFrame(ItemContainerComponent itemContainerComponent, ItemRarity rarity);
         public void RemoveItemsImmediate(IEnumerable<ItemContainerComponent> itemContainerComponents);
-        public void RemoveEncounterItemsImmediate();
+        public void RemoveEncounterItemsImmediate(bool isForceDoNotReturnItem = false);
         public void CleanUp();
     }
 }

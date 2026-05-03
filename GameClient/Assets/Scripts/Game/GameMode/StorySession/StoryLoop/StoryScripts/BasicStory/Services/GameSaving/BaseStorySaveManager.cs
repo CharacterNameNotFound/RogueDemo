@@ -3,8 +3,10 @@ using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.Data.Character;
+using Game.GameMode.StorySession.GameBoard.Simulation;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Battles;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
 using Game.Session;
 using GameWideSystems.RNGManagement;
@@ -27,7 +29,10 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
         private IEncounterLoader _encounterLoader;
         private IEncounterRegistry _encounterRegistry;
         private IItemRegistry _itemRegistry;
-
+        private IGameBoardModelHolder _gameBoardModelHolder;
+        private IGameBoardModelCreator _gameBoardModelCreator;
+        
+        
         
         public BaseStorySaveManager(
             JsonSerializerSettings jsonSerializerSettings, 
@@ -38,7 +43,9 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
             IRNGManager rngManager, 
             IEncounterLoader encounterLoader, 
             IEncounterRegistry encounterRegistry, 
-            IItemRegistry itemRegistry)
+            IItemRegistry itemRegistry, 
+            IGameBoardModelHolder gameBoardModelHolder, 
+            IGameBoardModelCreator gameBoardModelCreator)
         {
             _jsonSerializerSettings = jsonSerializerSettings;
             _genericPathProvider = genericPathProvider;
@@ -49,6 +56,8 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
             _encounterLoader = encounterLoader;
             _encounterRegistry = encounterRegistry;
             _itemRegistry = itemRegistry;
+            _gameBoardModelHolder = gameBoardModelHolder;
+            _gameBoardModelCreator = gameBoardModelCreator;
         }
         
 
@@ -60,8 +69,8 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
             saveFile.StoryEncounters = baseStoryContext.StoryEncounters;
             saveFile.Bosses = baseStoryContext.Bosses.Select(item => item.EncounterId).ToArray();
             saveFile.CharacterId = baseStoryContext.CharacterData.CharacterId;
-            saveFile.Cycle = baseStoryContext.Cycle;
-            saveFile.Step = baseStoryContext.Step;
+            saveFile.Cycle = _gameBoardModelHolder.GameBoardModel.StoryStats.Cycle;
+            saveFile.Step = _gameBoardModelHolder.GameBoardModel.StoryStats.Step;
             
             
             // encounters
@@ -82,7 +91,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
             }
         }
 
-        public async UniTask Load(BaseStoryContext baseStoryContext, CancellationToken cancellationToken)
+        public async UniTask Load(BaseStoryContext baseStoryContext, BaseStoryConfigs baseStoryConfigs, CancellationToken cancellationToken)
         {
             string path = _genericPathProvider.InProfileSavesPath(_sessionHolder.Session.InternalId);
             path = Path.Combine(path, nameof(BaseStorySaveFile));
@@ -98,14 +107,19 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
             // base story context
             baseStoryContext.CharacterData = await saveFile.CharacterId.Load<CharacterData>(cancellationToken);
             
+            //////////
+            GameBoardModel gameBoardModel = _gameBoardModelCreator.CrateNew(baseStoryConfigs.GameBoardModelCreationConfigs, baseStoryContext.CharacterData);
+            _gameBoardModelHolder.Set(gameBoardModel);
+            //////////
+            
             baseStoryContext.Bosses = (await saveFile.Bosses.Select(item => _encounterLoader.LoadById(item, cancellationToken)))
                 .Select(item => item.GetValue())
                 .Cast<BattleEncounter>()
                 .ToArray();
             
             baseStoryContext.StoryEncounters = saveFile.StoryEncounters;
-            baseStoryContext.Cycle = saveFile.Cycle;
-            baseStoryContext.Step = saveFile.Step;
+            _gameBoardModelHolder.GameBoardModel.StoryStats.Cycle = saveFile.Cycle;
+            _gameBoardModelHolder.GameBoardModel.StoryStats.Step = saveFile.Step;
             
 
             // encounters

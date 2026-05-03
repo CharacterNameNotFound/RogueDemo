@@ -1,10 +1,13 @@
-using Game.GameMode.StorySession.GameBoard.Services.GameBoardManagement;
+using Game.GameMode.StorySession.GameBoard.Services.BoardModelManipulation;
+using Game.GameMode.StorySession.GameBoard.Services.EventHandling;
+using Game.GameMode.StorySession.GameBoard.Services.HeroStatsDrawing;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStatSetToItemStatValueConverters;
 using Game.GameMode.StorySession.GameBoard.Services.PlayerStatusUpdating;
 using Game.GameMode.StorySession.GameBoard.Services.TextsDrawing;
+using Game.GameMode.StorySession.GameBoard.Simulation;
 using Game.GameMode.StorySession.GameBoard.Simulation.Facades;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.Services.SaveManagement;
@@ -12,11 +15,11 @@ using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOr
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
-using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Battle;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Battles.Routines;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.ItemRaritySelection;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Utilities;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.PlayerStashEncounter;
-using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Merchant;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Routines.Merchant;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection;
 using Game.GameMode.StorySession.StoryLoop.Services.InputControl;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
@@ -41,6 +44,7 @@ namespace Structure
             InstallEvents();
             InstallBalancing();
             InstallSimulation();
+            InstallSimulationEventHandling();
         }
 
         private void InstallServices()
@@ -58,9 +62,13 @@ namespace Structure
             // views and model
             Container.Bind<GameBoardHolder>().To<GameBoardHolder>().AsSingle();
             Container.Bind<IStoryContextProvider>().To<StoryContextHolder>().AsSingle();
+            Container.Bind<IGameBoardModelHolder>().To<GameBoardModelHolder>().AsSingle();
             Container.Bind<IItemDescriptionBuilder>().To<ItemDescriptionBuilder>().AsSingle();
             Container.Bind<ISessionStatusDrawer>().To<SessionStatusDrawer>().AsSingle();
             Container.Bind<IPlayerStatusUpdater>().To<PlayerStatusUpdater>().AsSingle();
+            Container.Bind<IBoardModelManipulator>().To<BoardModelManipulator>().AsSingle();
+            Container.Bind<IGameBoardModelCreator>().To<GameBoardModelCreator>().AsSingle();
+            Container.Bind<IHeroesHpDrawer>().To<HeroesHpDrawer>().AsSingle();
             
             // Items and deck
             Container.Bind<IItemRegistry>().To<ItemRegistry>().AsSingle();
@@ -68,7 +76,6 @@ namespace Structure
             Container.Bind<IItemLineOrganizer>().To<ItemLineOrganizer>().AsSingle();
             Container.Bind<IItemContainersManager>().To<ItemContainersManager>().AsSingle();
             Container.Bind<IItemLoader>().To<ItemLoader>().AsSingle();
-            Container.Bind<IItemBoardModelUpdater>().To<ItemBoardModelUpdater>().AsSingle();
             Container.Bind<IItemIdCollector>().To<ItemIdCollector>().AsSingle();
             
             Container.Bind<IItemStatGetter>().To<ItemStatGetter>().AsSingle();
@@ -81,7 +88,7 @@ namespace Structure
             Container.Bind<EncounterDeckOrganizer>().To<EncounterDeckOrganizer>().AsSingle();
             Container.Bind<IEncounterLoader>().To<EncounterLoader>().AsSingle();
             Container.Bind<IMerchantEncounterRoutines>().To<MerchantEncounterRoutines>().AsSingle();
-            Container.Bind<IBattleEncounterPlayer>().To<BattleEncounterPlayer>().AsSingle();
+            Container.Bind<IBattleEncounterRoutines>().To<BattleEncounterRoutines>().AsSingle();
             Container.Bind<IMerchantItemExclusionListBuilder>().To<MerchantItemExclusionListBuilder>().AsSingle();
             
 
@@ -107,7 +114,7 @@ namespace Structure
         {
             Container.Bind<BaseStoryBossSelector>().To<BaseStoryBossSelector>().AsSingle();
             Container.Bind<BaseStorySaveManager>().To<BaseStorySaveManager>().AsSingle();
-            Container.Bind<BaseStoryDayGenerator>().To<BaseStoryDayGenerator>().AsSingle();
+            Container.Bind<BaseStoryCycleGenerator>().To<BaseStoryCycleGenerator>().AsSingle();
             
         }
 
@@ -139,6 +146,9 @@ namespace Structure
             
             Container.Bind<IEventDispatcher<PreItemUpgradeArgument>>().To<EventDispatcher<PreItemUpgradeArgument>>().AsSingle();
             Container.Bind<IEventDispatcher<PostItemUpgradeArguments>>().To<EventDispatcher<PostItemUpgradeArguments>>().AsSingle();
+            
+            Container.Bind<IEventDispatcher<PreFightArguments>>().To<EventDispatcher<PreFightArguments>>().AsSingle();
+            Container.Bind<IEventDispatcher<PostFightArguments>>().To<EventDispatcher<PostFightArguments>>().AsSingle();
         }
         
         private void InstallBalancing()
@@ -149,6 +159,14 @@ namespace Structure
         private void InstallSimulation()
         {
             Container.Bind<IItemRenderingFacade>().To<ItemRenderingFacade>().AsSingle();
+        }
+        
+        private void InstallSimulationEventHandling()
+        {
+            Container.Bind<IMoveEventHandler>().To<MoveEventHandler>().AsSingle().NonLazy();
+            Container.Bind<IPurchaseEventHandler>().To<PurchaseEventHandler>().AsSingle().NonLazy();
+            Container.Bind<ISellEventHandler>().To<SellEventHandler>().AsSingle().NonLazy();
+            Container.Bind<IUpgradeEventHandler>().To<UpgradeEventHandler>().AsSingle().NonLazy();
         }
         
         

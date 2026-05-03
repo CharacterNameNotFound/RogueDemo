@@ -1,8 +1,11 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.Data.Character;
+using Game.GameMode.StorySession.GameBoard.Services.HeroStatsDrawing;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.Services.TextsDrawing;
+using Game.GameMode.StorySession.GameBoard.Simulation;
+using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
@@ -36,7 +39,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
         private GameBoardInitializationRoutine _boardInitializationRoutine;
         private BaseStoryBossSelector _baseStoryBossSelector;
         private BaseStorySaveManager _baseStorySaveManager;
-        private BaseStoryDayGenerator _baseStoryDayGenerator;
+        private BaseStoryCycleGenerator _baseStoryCycleGenerator;
         private IStoryFinalizer _storyFinalizer;
         private IEncounterSelector _encounterSelector;
         private IEncounterPlayer _encounterPlayer;
@@ -46,7 +49,10 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
         private IStoryContextProvider _storyContextProvider;
         private IInputLayerControlMediator _inputLayerControlMediator;
         private ISessionStatusDrawer _sessionStatusDrawer;
-
+        private IGameBoardModelCreator _boardModelCreator;
+        private IGameBoardModelHolder _gameBoardModelHolder;
+        private IHeroesHpDrawer _heroHpDrawer;
+        
         private BaseStoryContext _baseStoryContext;
 
         // ToDo: initialization will need to sliced somewhat
@@ -60,7 +66,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             GameBoardInitializationRoutine boardInitializationRoutine,
             BaseStoryBossSelector baseStoryBossSelector,
             BaseStorySaveManager baseStorySaveManager,
-            BaseStoryDayGenerator baseStoryDayGenerator,
+            BaseStoryCycleGenerator baseStoryCycleGenerator,
             IStoryFinalizer storyFinalizer,
             IEncounterSelector encounterSelector,
             IEncounterPlayer encounterPlayer,
@@ -69,7 +75,10 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             IPlayerStashController playerStashController,
             IStoryContextProvider storyContextProvider,
             IInputLayerControlMediator inputLayerControlMediator,
-            ISessionStatusDrawer sessionStatusDrawer
+            ISessionStatusDrawer sessionStatusDrawer,
+            IGameBoardModelCreator boardModelCreator,
+            IGameBoardModelHolder gameBoardModelHolder,
+            IHeroesHpDrawer heroHpDrawer
             )
         {
             _loadingScreenManager = loadingScreenManager;
@@ -80,7 +89,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             _boardInitializationRoutine = boardInitializationRoutine;
             _baseStoryBossSelector = baseStoryBossSelector;
             _baseStorySaveManager = baseStorySaveManager;
-            _baseStoryDayGenerator = baseStoryDayGenerator;
+            _baseStoryCycleGenerator = baseStoryCycleGenerator;
             _storyFinalizer = storyFinalizer;
             _encounterSelector = encounterSelector;
             _encounterPlayer = encounterPlayer;
@@ -90,11 +99,15 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             _storyContextProvider = storyContextProvider;
             _inputLayerControlMediator = inputLayerControlMediator;
             _sessionStatusDrawer = sessionStatusDrawer;
+            _boardModelCreator = boardModelCreator;
+            _gameBoardModelHolder = gameBoardModelHolder;
+            _heroHpDrawer = heroHpDrawer;
         }
 
         public async UniTask Initialize(StoryInitializationData storyInitializationData, CancellationToken cancellationToken)
         {
             _baseStoryContext = new BaseStoryContext();
+            
             _storyContextProvider.Set(_baseStoryContext);
 
             await (storyInitializationData.TryReadSaveFile ? ReadSaveFile(cancellationToken) : GenerateSessionData(storyInitializationData, cancellationToken));
@@ -123,32 +136,39 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
         public async UniTask Loop(CancellationToken cancellationToken)
         {
             // save each cycle
-            _sessionStatusDrawer.RedrawPlayerStats(_baseStoryContext.GameBoardModel);
+            _sessionStatusDrawer.RedrawPlayerStats(_gameBoardModelHolder.GameBoardModel);
             
             do
             {
-                _sessionStatusDrawer.RedrawStoryProgression(_baseStoryContext.GameBoardModel);
+                GameBoardModel gameBoardModel = _gameBoardModelHolder.GameBoardModel;
+
+                _sessionStatusDrawer.RedrawStoryProgression(gameBoardModel);
                 _inputLayerControlMediator.ToggleItemMovement(true);
-                int turn = _baseStoryContext.Cycle * _baseStoryConfigs.StoryDayLength + _baseStoryContext.Step;
+                int turn = gameBoardModel.StoryStats.Cycle * _baseStoryConfigs.StoryDayLength + gameBoardModel.StoryStats.Step;
                 int selectedEncounterIndex = await _encounterSelector.StartEncounterSelection(_baseStoryContext.StoryEncounters[turn], cancellationToken);
                 string encounterId = _baseStoryContext.StoryEncounters[turn][selectedEncounterIndex];
 
-                await _encounterPlayer.PlayEncounter(encounterId, _baseStoryContext, cancellationToken);
+                await _encounterPlayer.PlayEncounter(encounterId, gameBoardModel, cancellationToken);
 
                 // updating turn counters
-                _baseStoryContext.Step++;
+                gameBoardModel.StoryStats.Step++;
 
-                if (_baseStoryContext.Step == _baseStoryConfigs.StoryDayLength)
+                if (gameBoardModel.StoryStats.Step == _baseStoryConfigs.StoryDayLength)
                 {
-                    _baseStoryContext.Step = 0;
-                    _baseStoryContext.Cycle++;
+                    gameBoardModel.StoryStats.Step = 0;
+                    gameBoardModel.StoryStats.Cycle++;
                     
                     _inputLayerControlMediator.ToggleItemMovement(false);
                     await _baseStorySaveManager.Save(_baseStoryContext, cancellationToken);
                     _inputLayerControlMediator.ToggleItemMovement(true);
+                    
+                    _baseStoryCycleGenerator.AppendDay(_baseStoryContext, _baseStoryConfigs, _gameBoardModelHolder.GameBoardModel);
                 }
+                
 
             } while (!_storyFinalizer.IsFinalizationRequested());
+            
+            // remove 6 last steps from history
             _inputLayerControlMediator.ToggleItemMovement(false);
         }
 
@@ -170,6 +190,9 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             CancellationToken cancellationToken)
         {
             _baseStoryContext.CharacterData = await storyInitializationData.CharacterId.Load<CharacterData>(cancellationToken);
+            
+            GameBoardModel gameBoardModel = _boardModelCreator.CrateNew(_baseStoryConfigs.GameBoardModelCreationConfigs, _baseStoryContext.CharacterData);
+            _gameBoardModelHolder.Set(gameBoardModel);
             
             // generate and save curses
             // Empty for now
@@ -196,7 +219,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             await _baseStoryBossSelector.SelectBosses(_baseStoryConfigs, _baseStoryContext, cancellationToken);
 
             // build first cycle
-            _baseStoryDayGenerator.GenerateFirstDayEntry(_baseStoryContext, _baseStoryConfigs);
+            _baseStoryCycleGenerator.GenerateFirstDayEntry(_baseStoryContext, _baseStoryConfigs);
             
             
             
@@ -210,7 +233,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
 
         private async UniTask ReadSaveFile(CancellationToken cancellationToken)
         {
-            await _baseStorySaveManager.Load(_baseStoryContext, cancellationToken);
+            await _baseStorySaveManager.Load(_baseStoryContext, _baseStoryConfigs, cancellationToken);
             
             // Unity managed systems
             await InitializeUnityManagedSystems(cancellationToken);
@@ -236,6 +259,10 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             // resetting systems
             _encounterPlayer.Initialize();
             _sessionStatusDrawer.Initialize(_baseStoryConfigs.StoryDayLength);
+            
+            // view
+            
+            _heroHpDrawer.UpdateHeroHpBar(HeroGroup.Player);
         }
         
         

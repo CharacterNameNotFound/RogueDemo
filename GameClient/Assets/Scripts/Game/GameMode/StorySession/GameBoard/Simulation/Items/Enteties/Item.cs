@@ -20,6 +20,7 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties
         public List<Trigger> Triggers;
         public ItemStatSet ItemStats;
 
+        public bool IsNonDeck;
         
         public Item()
         {
@@ -54,6 +55,8 @@ namespace Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties
             
             item.Tags = Tags.GetCopy();
             item.ItemStats = ItemStats.GetCopy();
+
+            item.IsNonDeck = IsNonDeck;
 
             return item;
         }

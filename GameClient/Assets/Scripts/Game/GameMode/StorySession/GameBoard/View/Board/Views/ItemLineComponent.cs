@@ -1,7 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Configurations;
-using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
+using Game.GameMode.StorySession.GameBoard.Services.BoardModelManipulation;
 using UnityEngine;
 using Utils.UtilityTypes.LifeCycle;
 
@@ -11,6 +11,8 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board.Views
     {
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
         [field: SerializeField] public bool IsPlayerModifyAvailable { get; private set; }
+        [field: SerializeField] public ItemBoardGroup RepresentedModelGroup { get; private set; }
+
         public int ItemCapacity => ItemConfigurations.ItemCapacity;
         
 

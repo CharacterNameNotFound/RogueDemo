@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Configurations;
+using Game.GameMode.StorySession.GameBoard.Simulation;
 using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts;
@@ -17,12 +18,12 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
             _itemIdCollector = itemIdCollector;
         }
 
-        public async UniTask<HashSet<string>> BuildIgnoredListIds(IStoryContext storyContext, CancellationToken cancellationToken)
+        public async UniTask<HashSet<string>> BuildIgnoredListIds(GameBoardModel gameBoardModel, CancellationToken cancellationToken)
         {
             HashSet<string> result = new HashSet<string>(ItemConfigurations.ItemCapacity * ItemConfigurations.ItemCommonRarities * 2);
 
-            Item[] playerBoardItems = storyContext.GameBoardModel.PlayerBoard.Items;
-            Item[] stashBoardItems = storyContext.GameBoardModel.PlayerStashBoard.Items;
+            Item[] playerBoardItems = gameBoardModel.PlayerBoard.Items;
+            Item[] stashBoardItems = gameBoardModel.PlayerStashBoard.Items;
             
             await CollectForBoard(playerBoardItems, result, cancellationToken);
             await CollectForBoard(stashBoardItems, result, cancellationToken);

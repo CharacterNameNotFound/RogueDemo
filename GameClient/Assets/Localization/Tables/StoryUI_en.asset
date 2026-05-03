@@ -44,7 +44,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 40176363256352768
-    m_Localized: 'Coins: {0},<br>Exp: {1}/{2}'
+    m_Localized: 'Coins: {0}<br>Exp: {1}/{2}'
     m_Metadata:
       m_Items:
       - rid: 2957930401199030361

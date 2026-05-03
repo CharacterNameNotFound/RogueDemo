@@ -37,6 +37,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             CancellationToken cancellationToken);
 
         public UniTask<bool> TryCompleteItemTransitionToStash(
+            int originalIndex,
             ItemLineComponent originalItemLine, 
             ItemContainerComponent targetItem, 
             ItemLineBuffer workerItemLineBuffer,

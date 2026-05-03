@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb25ecb8bd1f4505b9b594e3778add29, type: 3}
+  m_Name: GameBoardModelCreationConfigs
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Simulation.GameBoardModelCreationConfigs
+  <PlayerStats>k__BackingField:
+    Karma: 0
+    Coins: 40
+    Experience: 0
+    ExperienceRequired: 10

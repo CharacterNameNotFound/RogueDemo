@@ -9,7 +9,12 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization
     public class ItemIdCollector : IItemIdCollector
     {
         private IItemRegistry _itemRegistry;
-        
+
+        public ItemIdCollector(IItemRegistry itemRegistry)
+        {
+            _itemRegistry = itemRegistry;
+        }
+
         /// <summary>
         /// Must not be executed concurrently with other operation over HashSet as it getting changed 
         /// </summary>

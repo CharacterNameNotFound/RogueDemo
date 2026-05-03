@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.View;
@@ -277,7 +276,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
 
             if (IsInventoryButtonHovered(mouseWorldPoint))
             {
-                bool isTransactionSuccess = await _itemManipulator.TryCompleteItemTransitionToStash(_originalItemLine, _targetItem, _itemLineWorkBuffer, cancellationToken);
+                bool isTransactionSuccess = await _itemManipulator.TryCompleteItemTransitionToStash(_targetItemOriginalIndex, _originalItemLine, _targetItem, _itemLineWorkBuffer, cancellationToken);
                 
                 if (!isTransactionSuccess)
                 {

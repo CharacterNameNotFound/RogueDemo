@@ -62,6 +62,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
-  <CardCopiesCount>k__BackingField: 2
+  <CardCopiesCount>k__BackingField: 3
   <StoryDayLength>k__BackingField: 6
   <StoryDayCount>k__BackingField: 10
+  <GameBoardModelCreationConfigs>k__BackingField: {fileID: 11400000, guid: 7ade712d7700f0048bba0d040d40e577, type: 2}

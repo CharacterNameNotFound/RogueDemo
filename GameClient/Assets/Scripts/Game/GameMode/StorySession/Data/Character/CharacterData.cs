@@ -13,7 +13,9 @@ namespace Game.GameMode.StorySession.Data.Character
         [field: SerializeField] public AssetReferenceSprite CharacterStorySessionPortrait { get; private set; }
         [field: SerializeField] public List<AssetReference> ItemSets { get; private set; }
         [field: SerializeField] public List<AssetReference> EncounterSets { get; private set; }
-        
+
+
+        [field: SerializeField] public int StartingHp { get; private set; }
 
     }
 }

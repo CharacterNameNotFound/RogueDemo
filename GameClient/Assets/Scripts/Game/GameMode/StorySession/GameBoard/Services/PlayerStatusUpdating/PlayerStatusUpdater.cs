@@ -1,5 +1,5 @@
 using Game.GameMode.StorySession.GameBoard.Services.TextsDrawing;
-using Game.GameMode.StorySession.StoryLoop.StoryScripts;
+using Game.GameMode.StorySession.GameBoard.Simulation;
 using UnityEngine;
 
 namespace Game.GameMode.StorySession.GameBoard.Services.PlayerStatusUpdating
@@ -7,12 +7,12 @@ namespace Game.GameMode.StorySession.GameBoard.Services.PlayerStatusUpdating
     public class PlayerStatusUpdater : IPlayerStatusUpdater
     {
         private ISessionStatusDrawer _sessionStatusDrawer;
-        private IStoryContextProvider _storyContextProvider;
+        private IGameBoardModelHolder _gameBoardModelHolder;        
 
-        public PlayerStatusUpdater(ISessionStatusDrawer sessionStatusDrawer, IStoryContextProvider storyContextProvider)
+        public PlayerStatusUpdater(ISessionStatusDrawer sessionStatusDrawer, IGameBoardModelHolder gameBoardModelHolder)
         {
             _sessionStatusDrawer = sessionStatusDrawer;
-            _storyContextProvider = storyContextProvider;
+            _gameBoardModelHolder = gameBoardModelHolder;
         }
 
         public void UpdateCoins(float value)
@@ -22,8 +22,8 @@ namespace Game.GameMode.StorySession.GameBoard.Services.PlayerStatusUpdating
 
         public void UpdateCoins(int value)
         {
-            _storyContextProvider.StoryContext.GameBoardModel.PlayerStats.Coins += Mathf.CeilToInt(value);
-            _sessionStatusDrawer.RedrawPlayerStats(_storyContextProvider.StoryContext.GameBoardModel);
+            _gameBoardModelHolder.GameBoardModel.PlayerStats.Coins += Mathf.CeilToInt(value);
+            _sessionStatusDrawer.RedrawPlayerStats(_gameBoardModelHolder.GameBoardModel);
         }
         
     }

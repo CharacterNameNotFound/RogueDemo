@@ -42,8 +42,8 @@ namespace Game.GameMode.StorySession.GameBoard.Services.TextsDrawing
         {
             string line = _localizationManager.GetLocalized(
                 _sessionStatusDrawingConfigs.CyclesText, 
-                gameBoardModel.Cycle + 1, 
-                gameBoardModel.Step + 1,
+                gameBoardModel.StoryStats.Cycle + 1, 
+                gameBoardModel.StoryStats.Step + 1,
                 _stepsInCycle);
             
             _gameBoardHolder.GameBoardComponent.GameBoardInteractables.GameCyclesTextView.SetText(line);

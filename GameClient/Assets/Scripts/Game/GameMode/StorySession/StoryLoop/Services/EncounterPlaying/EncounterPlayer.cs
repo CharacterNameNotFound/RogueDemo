@@ -1,10 +1,9 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.GameMode.StorySession.GameBoard.Simulation;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
-using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Battle;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
-using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using Utils.UtilityTypes.Result;
 using Zenject;
 
@@ -13,16 +12,14 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying
     public class EncounterPlayer : IEncounterPlayer
     {
         private IEncounterRegistry _encounterRegistry;
-        private IBattleEncounterPlayer _battleEncounterPlayer;
 
 
         public Encounter CurrentEncounter { get; private set; }
 
 
-        public EncounterPlayer(IEncounterRegistry encounterRegistry, IBattleEncounterPlayer battleEncounterPlayer)
+        public EncounterPlayer(IEncounterRegistry encounterRegistry)
         {
             _encounterRegistry = encounterRegistry;
-            _battleEncounterPlayer = battleEncounterPlayer;
         }
 
         // for now just in case resetting state
@@ -61,7 +58,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying
             return CurrentEncounter.PreItemMove(cancellationToken);
         }
 
-        public async UniTask PlayEncounter(string encounterId, IStoryContext storyContext, CancellationToken cancellationToken)
+        public async UniTask PlayEncounter(string encounterId, GameBoardModel gameBoardModel, CancellationToken cancellationToken)
         {
             RequestResult<Encounter> requestResult = await _encounterRegistry.GetOrLoadById(encounterId, cancellationToken);
 
@@ -75,7 +72,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying
             CurrentEncounter = encounter;
             ProjectContext.Instance.Container.Inject(CurrentEncounter);
 
-            await CurrentEncounter.Play(storyContext, cancellationToken);
+            await CurrentEncounter.Play(gameBoardModel, cancellationToken);
 
             CurrentEncounter = null;
         }
