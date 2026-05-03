@@ -350,6 +350,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6bca09e6d1fb1a4db7b31327dc678ec
+    m_Address: Assets/Plugins/TextMesh Pro/Assets/Fonts
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - tmp_fonts
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fab9fa2cddd6d7041b41e306f6ad6e1d
     m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/saw.png
     m_ReadOnly: 0
@@ -359,6 +365,12 @@ MonoBehaviour:
     m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/twin_blades.png
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd43f9ca08ee6f04ba9854fb350dbb87
+    m_Address: Assets/Plugins/TextMesh Pro/Assets/Sprites
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - tmp_sprites
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a4c062d370950784897b17f1e135e0df, type: 2}
