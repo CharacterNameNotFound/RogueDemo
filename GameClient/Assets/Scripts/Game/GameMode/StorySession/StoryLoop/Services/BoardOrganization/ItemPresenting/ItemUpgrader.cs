@@ -3,9 +3,9 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
-using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
@@ -93,11 +93,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             
             // upgrading item stats
             UpdateStats(upgradableItem.StoredItem, preservedItem);
-            float value = _statGetter.GetStatValue(
-                upgradableItem.StoredItem, 
-                ItemStatType.Value, 
-                StatSet.StatSetComponent.Special,
-                StatSet.StatSetComponent.Special);
+            float value = _statGetter.GetStatValue(upgradableItem.StoredItem, ItemStatType.Value);
             upgradableItem.SetPriceTag(value);
             
             

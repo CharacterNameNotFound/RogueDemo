@@ -1,4 +1,4 @@
-using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 
 namespace Game.GameMode.StorySession.GameBoard.Services.HeroStatsDrawing
 {

@@ -1,8 +1,8 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.GameBoard.Simulation;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using GameWideSystems.LocalizationWrapper;

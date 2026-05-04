@@ -7,8 +7,9 @@ using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStatSetToItemStatValueConverters;
 using Game.GameMode.StorySession.GameBoard.Services.PlayerStatusUpdating;
 using Game.GameMode.StorySession.GameBoard.Services.TextsDrawing;
-using Game.GameMode.StorySession.GameBoard.Simulation;
-using Game.GameMode.StorySession.GameBoard.Simulation.Facades;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Facades;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.Services.SaveManagement;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
@@ -159,6 +160,11 @@ namespace Structure
         private void InstallSimulation()
         {
             Container.Bind<IItemRenderingFacade>().To<ItemRenderingFacade>().AsSingle();
+            Container.Bind<ISimulationPlayer>().To<SimulationPlayer>().AsSingle();
+            Container.Bind<ISimulationLoop>().To<SimulationLoop>().AsSingle();
+            Container.Bind<ISimulationViewUpdater>().To<SimulationViewUpdater>().AsSingle();
+            Container.Bind<ISimulationModelUpdater>().To<SimulationModelUpdater>().AsSingle();
+            Container.Bind<IWinDecisionMaker>().To<WinDecisionMaker>().AsSingle();
         }
         
         private void InstallSimulationEventHandling()

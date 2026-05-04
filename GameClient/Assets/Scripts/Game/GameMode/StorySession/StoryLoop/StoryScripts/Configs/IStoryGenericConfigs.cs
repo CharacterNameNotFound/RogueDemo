@@ -1,4 +1,4 @@
-using Game.GameMode.StorySession.GameBoard.Simulation;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 
 namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs
 {

@@ -1,7 +1,6 @@
-using Game.GameMode.StorySession.GameBoard.Simulation.Items;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
-using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 
 namespace Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting
 {
@@ -10,7 +9,7 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting
         public float GetStatValue(
             Item item, 
             ItemStatType itemStat, 
-            StatSet.StatSetComponent baseCalculateDepth, 
-            StatSet.StatSetComponent multiplicationCalculateDepth);
+            StatSet.StatSetComponent baseCalculateDepth = StatSet.StatSetComponent.Special, 
+            StatSet.StatSetComponent multiplicationCalculateDepth = StatSet.StatSetComponent.Special);
     }
 }

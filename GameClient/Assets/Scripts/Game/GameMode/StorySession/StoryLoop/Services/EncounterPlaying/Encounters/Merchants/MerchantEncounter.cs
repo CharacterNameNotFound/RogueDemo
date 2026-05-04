@@ -4,10 +4,10 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
 using Game.GameMode.StorySession.GameBoard.Services.PlayerStatusUpdating;
-using Game.GameMode.StorySession.GameBoard.Simulation;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
-using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Routines.Merchant;
@@ -123,11 +123,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
 
         private UniTask OnPrePurchase(PreItemPurchaseArguments preItemPurchaseArguments, CancellationToken cancellationToken)
         {
-            float value = _itemStatGetter.GetStatValue(
-                preItemPurchaseArguments.ItemContainerComponent.StoredItem, 
-                ItemStatType.Value,
-                StatSet.StatSetComponent.Special, 
-                StatSet.StatSetComponent.Special);
+            float value = _itemStatGetter.GetStatValue(preItemPurchaseArguments.ItemContainerComponent.StoredItem, ItemStatType.Value);
             
             _statusUpdater.UpdateCoins(-ValueToPrice(value));
 

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Game.GameMode.StorySession.GameBoard.Simulation;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.StoryLoop.StoryRoutines.DataProviders;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.Configs;
 using UnityEngine;

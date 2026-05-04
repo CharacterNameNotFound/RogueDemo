@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Localization;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.Tags;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Structure;
-using Game.GameMode.StorySession.GameBoard.Simulation.Utilities;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Localization;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.Tags;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 using GameWideSystems.LocalizationWrapper;
 
 namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
@@ -83,11 +83,7 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
                     _descriptionBuilderConfigs.ItemTagCategory,
                     out string line);
 
-                float statValue = _itemStatGetter.GetStatValue(
-                    item, 
-                    stat.Key, 
-                    StatSet.StatSetComponent.Special, 
-                    StatSet.StatSetComponent.Special);
+                float statValue = _itemStatGetter.GetStatValue(item, stat.Key);
                 
                 itemDescription.AppendLine($"{line}: {statValue}");
             }

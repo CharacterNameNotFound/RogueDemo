@@ -2,6 +2,7 @@ using GameWideSystems.CameraManagement;
 using GameWideSystems.InputManager;
 using GameWideSystems.InputManager.GestureReaders.Pointer;
 using UnityEngine;
+using Utils.UtilityTypes.Counters;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection
 {
@@ -10,7 +11,8 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection
         public int Index => 1000;
         public InputType InputType => InputType.Pointer;
 
-        private bool _isActive = false;
+        private CounterLock _inputLock = new(false);
+        
         private ICameraManager _cameraManager;
 
         public StorySessionEncounterSelectionInputLayer(ICameraManager cameraManager)
@@ -20,7 +22,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection
         
         public bool TryHandle(IGesture gesture)
         {
-            if (!_isActive)
+            if (_inputLock.IsLocked())
             {
                 return false;
             }
@@ -45,7 +47,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection
 
         public void SetActive(bool state)
         {
-            _isActive = state;
+            _inputLock.Toggle(state);
         }
         
     }

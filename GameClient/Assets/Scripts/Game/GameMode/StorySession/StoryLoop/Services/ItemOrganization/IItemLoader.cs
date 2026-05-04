@@ -1,6 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
 using Utils.UtilityTypes.Result;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization

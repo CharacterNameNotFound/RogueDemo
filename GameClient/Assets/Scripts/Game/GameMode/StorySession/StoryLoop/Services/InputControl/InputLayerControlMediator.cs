@@ -51,6 +51,13 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.InputControl
             return UniTask.CompletedTask;
         }
 
+        public void ToggleBattle(bool isBattleStart)
+        {
+            _encounterLayer.SetActive(!isBattleStart);
+            _worldInteractableInputLayer.SetActive(!isBattleStart);
+            _itemManipulationInputLayer.SetActive(!isBattleStart);
+        }
+
         public void ToggleItemMovement(bool isActive)
         {
             _itemManipulationInputLayer.SetActive(isActive);

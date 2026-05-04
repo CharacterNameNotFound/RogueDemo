@@ -1,9 +1,8 @@
-using System;
-using System.Text;
 using GameWideSystems.CameraManagement;
 using GameWideSystems.InputManager;
 using GameWideSystems.InputManager.GestureReaders.Pointer;
 using UnityEngine;
+using Utils.UtilityTypes.Counters;
 
 namespace Game.GameMode.StorySession.Utilities.WorldInteractables
 {
@@ -13,9 +12,9 @@ namespace Game.GameMode.StorySession.Utilities.WorldInteractables
         public InputType InputType => InputType.Pointer;
 
         private ICameraManager _cameraManager;
-
-
-        private bool _isActive;
+        
+        private CounterLock _inputLock = new(true);
+        
         
         public WorldInteractableInputLayer(ICameraManager cameraManager)
         {
@@ -24,13 +23,13 @@ namespace Game.GameMode.StorySession.Utilities.WorldInteractables
 
         public void SetActive(bool isActive)
         {
-            _isActive = isActive;
+            _inputLock.Toggle(isActive);
         } 
         
 
         public bool TryHandle(IGesture gesture)
         {
-            if (!_isActive)
+            if (_inputLock.IsLocked())
             {
                 return false;
             }

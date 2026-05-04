@@ -67,8 +67,6 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection
             {
                 item.gameObject.SetActive(false);
             }
-
-            _inputLayerControlMediator.ToggleEncounter(false);
         }
 
         public async UniTask<int> StartEncounterSelection(List<string> encounterIds, CancellationToken cancellationToken)

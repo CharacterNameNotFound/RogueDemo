@@ -6,6 +6,7 @@ using GameWideSystems.CameraManagement;
 using GameWideSystems.InputManager;
 using GameWideSystems.InputManager.GestureReaders.Pointer;
 using UnityEngine;
+using Utils.UtilityTypes.Counters;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization
 {
@@ -23,7 +24,8 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         private IItemTransactionOperationController _itemTransactionOperationController;
         
         
-        private bool _isActive = false;
+        private CounterLock _inputLock = new(true);
+        
         
         private bool _isSwipeStarted;
         private bool _isSecondItemLineEngaged;
@@ -66,12 +68,12 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
 
         public void SetActive(bool isActive)
         {
-            _isActive = isActive;
+            _inputLock.Toggle(isActive);
         }
 
         public bool TryHandle(IGesture gesture)
         {
-            if (!_isActive)
+            if (_inputLock.IsLocked())
             {
                 return false;
             }

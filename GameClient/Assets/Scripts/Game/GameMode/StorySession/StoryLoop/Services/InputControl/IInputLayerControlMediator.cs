@@ -6,6 +6,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.InputControl
     public interface IInputLayerControlMediator
     {
         public UniTask Initialize(CancellationToken cancellationToken);
+        public void ToggleBattle(bool isBattleStart);
         public void ToggleItemMovement(bool isActive);
         public void ToggleDetails(bool isActive);
         public void ToggleEncounter(bool isActive);

@@ -1,5 +1,5 @@
 using System;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;

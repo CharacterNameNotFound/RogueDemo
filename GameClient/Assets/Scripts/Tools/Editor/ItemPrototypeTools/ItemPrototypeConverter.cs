@@ -1,13 +1,11 @@
 using System.IO;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.Special;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.StatRegisterers;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Prototyping.Items.Structure;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototyping.Items.Special;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototyping.Items.StatRegisterers;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototyping.Items.Structure;
 using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Tools.Editor.ItemPrototypeTools
 {

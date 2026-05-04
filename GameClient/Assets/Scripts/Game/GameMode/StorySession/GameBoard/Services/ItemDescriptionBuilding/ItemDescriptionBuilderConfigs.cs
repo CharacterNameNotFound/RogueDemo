@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Game.GameMode.StorySession.GameBoard.Simulation.Items.Enteties.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets;
 using GameWideSystems.LocalizationWrapper;
 using UnityEngine;
 

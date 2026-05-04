@@ -1,4 +1,4 @@
-using Game.GameMode.StorySession.GameBoard.Simulation;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.GameBoard.View;
 using GameWideSystems.LocalizationWrapper;
 

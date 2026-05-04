@@ -5,9 +5,9 @@ using Game.UI.Tooltips;
 using GameWideSystems.CameraManagement;
 using GameWideSystems.InputManager;
 using GameWideSystems.InputManager.GestureReaders.Pointer;
-using GameWideSystems.LocalizationWrapper;
 using GameWideSystems.TooltipsManagement;
 using UnityEngine;
+using Utils.UtilityTypes.Counters;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization
 {
@@ -21,7 +21,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         private IItemDescriptionBuilder _itemDescriptionBuilder;
         private ICameraManager _cameraManager;
         
-        private bool _isActive;
+        private CounterLock _counterLock = new(true);
         
         private ItemContainerComponent _targetItem;
         private bool _isLongPressStarted;
@@ -41,12 +41,12 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
         
         public void SetActive(bool isActive)
         {
-            _isActive = isActive;
+            _counterLock.Toggle(isActive);
         }
         
         public bool TryHandle(IGesture gesture)
         {
-            if (!_isActive)
+            if (_counterLock.IsLocked())
             {
                 return false;
             }

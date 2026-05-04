@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
-using Game.GameMode.StorySession.GameBoard.Services.PlayerStatusUpdating;
-using Game.GameMode.StorySession.GameBoard.Simulation;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying;
 using Game.GameMode.StorySession.GameBoard.View;
-using Game.GameMode.StorySession.StoryLoop.StoryScripts;
+using Game.GameMode.StorySession.StoryLoop.Services.InputControl;
 using Game.GameMode.StorySession.Utilities.WorldInteractables.Awaiters;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -30,38 +29,36 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
         
         private GameBoardHolder _gameBoardHolder;
         private IBattleEncounterRoutines _battleEncounterRoutines;
-        private IStoryContextProvider _storyContextProvider;
-        private IItemStatGetter _itemStatGetter;
-        private IPlayerStatusUpdater _statusUpdater;
-        private IGameBoardModelHolder _gameBoardModelHolder;
+        private IInputLayerControlMediator _inputLayerControlMediator;
+        private ISimulationPlayer _simulationPlayer;
         
         
         [Inject]
         private void Construct(
             GameBoardHolder gameBoardHolder, 
-            IBattleEncounterRoutines battleEncounterRoutines, 
-            IStoryContextProvider storyContextProvider,
-            IItemStatGetter itemStatGetter,
-            IPlayerStatusUpdater statusUpdater,
-            IGameBoardModelHolder gameBoardModelHolder)
+            IBattleEncounterRoutines battleEncounterRoutines,
+            IInputLayerControlMediator inputLayerControlMediator,
+            ISimulationPlayer simulationPlayer)
         {
             _gameBoardHolder = gameBoardHolder;
             _battleEncounterRoutines = battleEncounterRoutines;
-            _storyContextProvider = storyContextProvider;
-            _itemStatGetter = itemStatGetter;
-            _statusUpdater = statusUpdater;
-            _gameBoardModelHolder = gameBoardModelHolder;
+            _inputLayerControlMediator = inputLayerControlMediator;
+            _simulationPlayer = simulationPlayer;
         }
         
         public override async UniTask Play(GameBoardModel gameBoardModel, CancellationToken cancellationToken)
         {
+            _inputLayerControlMediator.ToggleBattle(true);
             await _battleEncounterRoutines.ShowElements(this, cancellationToken);
             await _battleEncounterRoutines.LoadItemsUpdateViews(Items, cancellationToken);
+
+            await _simulationPlayer.PlaySimulation(cancellationToken);
             
             await InteractablePressWaiter.WaitForPress(
                 _gameBoardHolder.GameBoardComponent.GameBoardInteractables.BattleScreenButton, 
                 cancellationToken);
             
+            _inputLayerControlMediator.ToggleBattle(false);
 
             await _battleEncounterRoutines.HideAll(cancellationToken);
         }

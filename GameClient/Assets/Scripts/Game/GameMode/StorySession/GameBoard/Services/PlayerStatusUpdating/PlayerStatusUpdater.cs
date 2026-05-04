@@ -1,5 +1,5 @@
 using Game.GameMode.StorySession.GameBoard.Services.TextsDrawing;
-using Game.GameMode.StorySession.GameBoard.Simulation;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using UnityEngine;
 
 namespace Game.GameMode.StorySession.GameBoard.Services.PlayerStatusUpdating
