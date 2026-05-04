@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.GameMode.StorySession.GameBoard.Services.BoardModelManipulation;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
@@ -14,13 +15,16 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
     {
         private IItemPresenter _itemPresenter;
         private GameBoardHolder _gameBoardHolder;
+        private IBoardModelManipulator _boardModelManipulator;
 
         public BattleEncounterRoutines(
             IItemPresenter itemPresenter, 
-            GameBoardHolder gameBoardHolder)
+            GameBoardHolder gameBoardHolder, 
+            IBoardModelManipulator boardModelManipulator)
         {
             _itemPresenter = itemPresenter;
             _gameBoardHolder = gameBoardHolder;
+            _boardModelManipulator = boardModelManipulator;
         }
 
         public async UniTask ShowElements(BattleEncounter encounter, CancellationToken cancellationToken)
@@ -36,16 +40,17 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
             ItemLineComponent encounterItemLine = _gameBoardHolder.GameBoardComponent.ItemLineViewController.EncounterItemLine;
             await _itemPresenter.ShowItems(encounterItemLine, items, cancellationToken);
 
-            
-            
-            
+            _boardModelManipulator.UpdateLine(ItemBoardGroup.Encounter);
             
         }
 
         public UniTask HideAll(CancellationToken cancellationToken)
         {
+            _boardModelManipulator.Clear(ItemBoardGroup.Encounter);
+            
             // opponent items are "ephemeral"
             _itemPresenter.RemoveEncounterItemsImmediate(true);
+
             
             _gameBoardHolder.GameBoardComponent.EncounterBoard.HideCurrentView();
             _gameBoardHolder.GameBoardComponent.EncounterBoard.BattleView.Release();

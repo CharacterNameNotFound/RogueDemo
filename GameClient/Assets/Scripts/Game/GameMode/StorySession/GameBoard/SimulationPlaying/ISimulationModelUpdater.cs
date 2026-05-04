@@ -7,6 +7,6 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
     public interface ISimulationModelUpdater
     {
         public void ResetChargeValues(List<ItemCache> items);
-        public void ProgressCharge(List<ItemCache> items, TriggerBuffer triggerBuffer);
+        public void ProgressCharge(List<ItemCache> items, TriggerBuffer triggerBuffer, float deltaTime);
     }
 }

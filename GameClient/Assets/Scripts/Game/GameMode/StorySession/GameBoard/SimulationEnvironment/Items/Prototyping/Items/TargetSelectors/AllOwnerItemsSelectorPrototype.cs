@@ -10,7 +10,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Proto
         
         public override TargetSelector GetTargetSelector()
         {
-            return new AllOwnerItemsSelector(SelectNonCooldownItems);
+            return new AllOwnerItemsTargetSelector(SelectNonCooldownItems);
         }
     }
 }

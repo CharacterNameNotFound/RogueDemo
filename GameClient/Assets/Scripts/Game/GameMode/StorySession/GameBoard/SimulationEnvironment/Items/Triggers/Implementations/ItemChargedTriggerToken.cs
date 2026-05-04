@@ -1,13 +1,11 @@
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
-
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Triggers.Implementations
 {
-    public class ItemCooldownTrigger : Trigger
+    public class ItemChargedTrigger : TriggerToken
     {
         public int Index;
         public int Owner;
 
-        public ItemCooldownTrigger(int index, int owner)
+        public ItemChargedTrigger(int index, int owner)
         {
             Index = index;
             Owner = owner;

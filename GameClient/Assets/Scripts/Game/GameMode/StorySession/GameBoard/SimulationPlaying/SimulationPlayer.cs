@@ -18,9 +18,8 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
             await _simulationLoop.PrepareSimulationEnvironment(cancellationToken);
 
             await _simulationLoop.Loop(cancellationToken);
-            
-            
-            
+
+            await _simulationLoop.PostSimulationCleanUp(cancellationToken);
             
             
             return true;

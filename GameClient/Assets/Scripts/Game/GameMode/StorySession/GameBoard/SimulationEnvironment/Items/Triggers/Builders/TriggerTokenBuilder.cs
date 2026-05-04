@@ -3,11 +3,11 @@ using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Triggers.
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Triggers.Builders
 {
     // ToDo: implement pooling
-    public static class TriggerBuilder
+    public static class TriggerTokenBuilder
     {
-        public static ItemCooldownTrigger ItemCooldownTrigger(int index, int owner)
+        public static ItemChargedTrigger ItemCooldownTrigger(int index, int owner)
         {
-            return new ItemCooldownTrigger(index, owner);
+            return new ItemChargedTrigger(index, owner);
         }
     }
 }

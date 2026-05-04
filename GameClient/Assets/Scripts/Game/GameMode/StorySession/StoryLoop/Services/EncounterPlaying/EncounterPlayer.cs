@@ -4,6 +4,7 @@ using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
+using UnityEngine;
 using Utils.UtilityTypes.Result;
 using Zenject;
 

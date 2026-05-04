@@ -8,5 +8,6 @@ namespace Game.GameMode.StorySession.GameBoard.Services.BoardModelManipulation
         public void UpdateLine(ItemBoardGroup group);
         public void AddItem(Item item, int index, ItemBoardGroup group);
         public void Remove(Item item, int index, ItemBoardGroup group);
+        public void Clear(ItemBoardGroup group);
     }
 }

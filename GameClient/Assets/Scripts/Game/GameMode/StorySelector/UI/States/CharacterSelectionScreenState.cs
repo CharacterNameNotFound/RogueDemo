@@ -75,7 +75,8 @@ namespace Game.GameMode.StorySelector.UI.States
             
             Dependencies.GameStateManager.SwapTopState(
                 Dependencies.SessionGameModeFactory.Create(),
-                initializationParameters: gmParams)
+                initializationParameters: gmParams,
+                cancellationToken: Application.exitCancellationToken)
                 .Forget();
         }
 

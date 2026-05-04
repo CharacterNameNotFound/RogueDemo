@@ -223,8 +223,10 @@
         }
       }
     },
+    "IsPassiveItem": false,
     "IsCooldownItem": true,
-    "CurrentCharge": 0.0
+    "CurrentCharge": 0.0,
+    "IsCharged": false
   },
   "IsNonDeck": false
 }

@@ -42,7 +42,7 @@
             {
               "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.HasteEffector, Game.GameMode.StorySession",
               "TargetSelector": {
-                "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.TargetSelectors.AllOwnerItemsSelector, Game.GameMode.StorySession",
+                "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.TargetSelectors.AllOwnerItemsTargetSelector, Game.GameMode.StorySession",
                 "SelectNonCooldownItems": false
               },
               "HasteDurationProvider": {
@@ -236,8 +236,10 @@
         }
       }
     },
+    "IsPassiveItem": false,
     "IsCooldownItem": true,
-    "CurrentCharge": 0.0
+    "CurrentCharge": 0.0,
+    "IsCharged": false
   },
   "IsNonDeck": false
 }

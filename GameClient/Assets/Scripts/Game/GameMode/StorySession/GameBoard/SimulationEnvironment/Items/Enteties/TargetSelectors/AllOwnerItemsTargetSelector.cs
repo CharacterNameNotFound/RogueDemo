@@ -5,18 +5,18 @@ using GameWideSystems.LocalizationWrapper;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.TargetSelectors
 {
-    public class AllOwnerItemsSelector : TargetSelector
+    public class AllOwnerItemsTargetSelector : TargetSelector
     {
         public bool SelectNonCooldownItems;
 
-        public AllOwnerItemsSelector(bool selectNonCooldownItems)
+        public AllOwnerItemsTargetSelector(bool selectNonCooldownItems)
         {
             SelectNonCooldownItems = selectNonCooldownItems;
         }
 
         public override TargetSelector GetCopy()
         {
-            return new AllOwnerItemsSelector(SelectNonCooldownItems);
+            return new AllOwnerItemsTargetSelector(SelectNonCooldownItems);
         }
 
         public override string GetDescription(Item item,
@@ -24,7 +24,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
             ILocalizationManager localizationManager,
             ItemDescriptionLocalizationConfigs itemLocalizationConfigs)
         {
-            return localizationManager.GetLocalized(itemLocalizationConfigs.TargetOpponentItemsAll);
+            return localizationManager.GetLocalized(itemLocalizationConfigs.TargetSelfItemsAll);
         }
 
     }

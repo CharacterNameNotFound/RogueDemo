@@ -12,7 +12,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
         Fire,
         Poison,
         CriticalChance,
-        CriticalDamage,
+        CriticalPower,
         UsageCount,
         MaxCharge,
         ChargeSpeed,

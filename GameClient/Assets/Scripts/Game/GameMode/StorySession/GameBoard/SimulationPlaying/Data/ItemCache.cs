@@ -23,9 +23,9 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.Data
             OwnerIndex = ownerIndex;
         }
 
-        public ItemCooldownTrigger ToItemCooldownTrigger()
+        public ItemChargedTrigger ToItemCooldownTrigger()
         {
-            return TriggerBuilder.ItemCooldownTrigger(Index, OwnerIndex);
+            return TriggerTokenBuilder.ItemCooldownTrigger(Index, OwnerIndex);
         }
     }
 }

@@ -21,7 +21,8 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
             return new EnemyItemTargetSelector(TargetCount.GetCopy(), SelectNonCooldownItems);
         }
 
-        public override string GetDescription(Item item, IItemStatGetter statGetter,
+        public override string GetDescription(Item item, 
+            IItemStatGetter statGetter,
             ILocalizationManager localizationManager,
             ItemDescriptionLocalizationConfigs itemLocalizationConfigs)
         {

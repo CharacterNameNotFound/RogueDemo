@@ -33,21 +33,19 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
             }
         }
 
-        public void ProgressCharge(List<ItemCache> items, TriggerBuffer triggerBuffer)
+        public void ProgressCharge(List<ItemCache> items, TriggerBuffer triggerBuffer, float deltaTime)
         {
             foreach (ItemCache entry in items)
             {
-                if (!entry.Item.ItemStats.IsPassiveItem || entry.Item.ItemStats.IsCharged)
+                if (entry.Item.ItemStats.IsPassiveItem || entry.Item.ItemStats.IsCharged)
                 {
-                    entry.Item.ItemStats.CurrentCharge = 0;
-                    
                     continue;
                 }
 
                 float chargeSpeed = _itemStatGetter.GetStatValue(entry.Item, ItemStatType.ChargeSpeed);
                 float maxCharge = _itemStatGetter.GetStatValue(entry.Item, ItemStatType.MaxCharge);
 
-                entry.Item.ItemStats.CurrentCharge += chargeSpeed;
+                entry.Item.ItemStats.CurrentCharge += chargeSpeed * deltaTime;
 
                 if (entry.Item.ItemStats.CurrentCharge >= maxCharge)
                 {

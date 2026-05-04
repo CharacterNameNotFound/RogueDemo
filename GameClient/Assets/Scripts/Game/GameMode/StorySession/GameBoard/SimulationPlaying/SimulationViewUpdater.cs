@@ -41,7 +41,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
         {
             foreach (ItemCache item in items)
             {
-                if (!item.Item.ItemStats.IsPassiveItem)
+                if (item.Item.ItemStats.IsPassiveItem)
                 {
                     continue;
                 }
@@ -53,7 +53,6 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
                 float charge = itemContainer.StoredItem.ItemStats.CurrentCharge;
 
                 _itemRenderingFacade.UpdateCharge(itemContainer, charge / maxCharge);
-                
             }
             
         }

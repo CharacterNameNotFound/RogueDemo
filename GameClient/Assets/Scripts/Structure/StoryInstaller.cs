@@ -1,15 +1,28 @@
+using System;
 using Game.GameMode.StorySession.GameBoard.Services.BoardModelManipulation;
 using Game.GameMode.StorySession.GameBoard.Services.EventHandling;
+using Game.GameMode.StorySession.GameBoard.Services.HeroModification;
 using Game.GameMode.StorySession.GameBoard.Services.HeroStatsDrawing;
 using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStatSetToItemStatValueConverters;
+using Game.GameMode.StorySession.GameBoard.Services.ItemStatModification;
 using Game.GameMode.StorySession.GameBoard.Services.PlayerStatusUpdating;
 using Game.GameMode.StorySession.GameBoard.Services.TextsDrawing;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Facades;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Builders;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandling;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandling.Handlers;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.StatProviding;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.StatProviding.Handlers;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.TargetSelection;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.TargetSelection.Handlers;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.TriggerHandling;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.TriggerHandling.Handlers;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.Services.SaveManagement;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
@@ -30,6 +43,7 @@ using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.GameSaving;
 using Game.GameMode.StorySession.Utilities.EventArguments;
+using Utils.UtilityTypes.AutoDictionaries;
 using Utils.UtilityTypes.EventProcessing;
 using Zenject;
 
@@ -70,6 +84,10 @@ namespace Structure
             Container.Bind<IBoardModelManipulator>().To<BoardModelManipulator>().AsSingle();
             Container.Bind<IGameBoardModelCreator>().To<GameBoardModelCreator>().AsSingle();
             Container.Bind<IHeroesHpDrawer>().To<HeroesHpDrawer>().AsSingle();
+            Container.Bind<IHeroStatModificator>().To<HeroStatModificator>().AsSingle();
+            Container.Bind<IItemStatGetter>().To<ItemStatGetter>().AsSingle();
+            Container.Bind<IItemStatModificator>().To<ItemStatModificator>().AsSingle();
+            
             
             // Items and deck
             Container.Bind<IItemRegistry>().To<ItemRegistry>().AsSingle();
@@ -79,7 +97,6 @@ namespace Structure
             Container.Bind<IItemLoader>().To<ItemLoader>().AsSingle();
             Container.Bind<IItemIdCollector>().To<ItemIdCollector>().AsSingle();
             
-            Container.Bind<IItemStatGetter>().To<ItemStatGetter>().AsSingle();
             
             Container.Bind<IPlayerStashController>().To<PlayerStashController>().AsSingle();
             
@@ -165,6 +182,46 @@ namespace Structure
             Container.Bind<ISimulationViewUpdater>().To<SimulationViewUpdater>().AsSingle();
             Container.Bind<ISimulationModelUpdater>().To<SimulationModelUpdater>().AsSingle();
             Container.Bind<IWinDecisionMaker>().To<WinDecisionMaker>().AsSingle();
+            Container.Bind<IBattleCacheBuilder>().To<BattleCacheBuilder>().AsSingle();
+
+            InstallTriggerHandlers();
+            InstallEffectorHandlers();
+            InstallStatProviding();
+            InstallTargetSelector();
+        }
+        
+
+        private void InstallTriggerHandlers()
+        {
+            Container.Bind<ITriggerProcessor>().To<TriggerProcessor>().AsSingle();
+            
+            Container.Bind<ITriggerHandler>().To<ItemChargedTriggerHandler>().AsCached();
+        }
+        
+        private void InstallEffectorHandlers()
+        {
+            Container.Bind<IEffectorHandlersRegistry>().To<EffectorHandlersRegistry>().AsSingle();
+            
+            Container.Bind<IEffectorHandler>().To<DealDamageEffectorHandler>().AsCached();
+        }
+
+        private void InstallStatProviding()
+        {
+            Container.Bind<IStatProviderHandlersRegistry>().To<StatProviderHandlersRegistry>().AsSingle();
+            
+            Container.Bind<IStatProvidingHandler>().To<UniversalItemStatProviderHandler>().AsCached();
+        }
+
+        private void InstallTargetSelector()
+        {
+            Container.Bind<ITargetSelectionHandlersRegistry>().To<TargetSelectionHandlersRegistry>().AsSingle();
+            
+            Container.Bind<ITargetSelectionHandler>().To<EnemyTargetSelectorHandler>().AsCached();
+            Container.Bind<ITargetSelectionHandler>().To<AllEnemyItemsTargetSelectorHandler>().AsCached();
+            Container.Bind<ITargetSelectionHandler>().To<EnemyItemTargetSelectorHandler>().AsCached();
+            Container.Bind<ITargetSelectionHandler>().To<AllOwnerItemsTargetSelectorHandler>().AsCached();
+            Container.Bind<ITargetSelectionHandler>().To<OwnerItemTargetSelectorHandler>().AsCached();
+            Container.Bind<ITargetSelectionHandler>().To<OwnerTargetSelectorHandler>().AsCached();
         }
         
         private void InstallSimulationEventHandling()

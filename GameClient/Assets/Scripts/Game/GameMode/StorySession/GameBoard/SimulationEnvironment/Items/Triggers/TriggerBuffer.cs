@@ -7,8 +7,8 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Trigg
     {
         private const int TriggerListSize = 20;
         
-        public List<Trigger> NewTriggers;
-        public List<Trigger> LastFrameTriggers;
+        public List<TriggerToken> NewTriggers;
+        public List<TriggerToken> LastFrameTriggers;
 
         public TriggerBuffer()
         {
@@ -16,9 +16,9 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Trigg
             LastFrameTriggers = new (TriggerListSize);
         }
 
-        public void AddTrigger(Trigger trigger)
+        public void AddTrigger(TriggerToken triggerToken)
         {
-            NewTriggers.Add(trigger);
+            NewTriggers.Add(triggerToken);
         }
         
         /// <summary>

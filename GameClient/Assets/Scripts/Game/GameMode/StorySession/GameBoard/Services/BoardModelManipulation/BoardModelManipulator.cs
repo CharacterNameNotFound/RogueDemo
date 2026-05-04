@@ -58,6 +58,18 @@ namespace Game.GameMode.StorySession.GameBoard.Services.BoardModelManipulation
             UpdateBoard(item, null, index, itemBoardModel);
         }
 
+        public void Clear(ItemBoardGroup group)
+        {
+            ItemBoardModel itemBoardModel = GetModelByGroup(group);
+
+            for (int i = 0; i < itemBoardModel.Items.Length; i++)
+            {
+                itemBoardModel.Items[i] = null;
+            }
+            
+        }
+        
+
 
         private void UpdateBoard(Item item, Item newValue, int index, ItemBoardModel itemBoardModel)
         {

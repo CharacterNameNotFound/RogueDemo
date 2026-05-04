@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.GameMode.StorySession.GameBoard.Services.HeroStatsDrawing;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying;
 using Game.GameMode.StorySession.GameBoard.View;
@@ -28,27 +29,36 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
         
         
         private GameBoardHolder _gameBoardHolder;
+        private IGameBoardModelHolder _gameBoardModelHolder;
         private IBattleEncounterRoutines _battleEncounterRoutines;
         private IInputLayerControlMediator _inputLayerControlMediator;
         private ISimulationPlayer _simulationPlayer;
+        private IHeroesHpDrawer _heroesHpDrawer;
         
         
         [Inject]
         private void Construct(
-            GameBoardHolder gameBoardHolder, 
+            GameBoardHolder gameBoardHolder,
+            IGameBoardModelHolder gameBoardModelHolder,
             IBattleEncounterRoutines battleEncounterRoutines,
             IInputLayerControlMediator inputLayerControlMediator,
-            ISimulationPlayer simulationPlayer)
+            ISimulationPlayer simulationPlayer,
+            IHeroesHpDrawer heroesHpDrawer)
         {
             _gameBoardHolder = gameBoardHolder;
+            _gameBoardModelHolder = gameBoardModelHolder;
             _battleEncounterRoutines = battleEncounterRoutines;
             _inputLayerControlMediator = inputLayerControlMediator;
             _simulationPlayer = simulationPlayer;
+            _heroesHpDrawer = heroesHpDrawer;
         }
         
         public override async UniTask Play(GameBoardModel gameBoardModel, CancellationToken cancellationToken)
         {
             _inputLayerControlMediator.ToggleBattle(true);
+
+            SetHp();
+            
             await _battleEncounterRoutines.ShowElements(this, cancellationToken);
             await _battleEncounterRoutines.LoadItemsUpdateViews(Items, cancellationToken);
 
@@ -61,6 +71,14 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
             _inputLayerControlMediator.ToggleBattle(false);
 
             await _battleEncounterRoutines.HideAll(cancellationToken);
+        }
+
+        private void SetHp()
+        {
+            _gameBoardModelHolder.GameBoardModel.EncounterHeroStats.MaxHp = Health;
+            _gameBoardModelHolder.GameBoardModel.EncounterHeroStats.Hp = Health;
+            
+            _heroesHpDrawer.UpdateHeroesHpBars();
         }
         
     }

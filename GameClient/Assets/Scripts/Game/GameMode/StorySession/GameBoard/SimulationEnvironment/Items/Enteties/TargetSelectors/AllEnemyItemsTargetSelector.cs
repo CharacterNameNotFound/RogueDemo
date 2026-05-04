@@ -23,7 +23,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
             ILocalizationManager localizationManager,
             ItemDescriptionLocalizationConfigs itemLocalizationConfigs)
         {
-            return localizationManager.GetLocalized(itemLocalizationConfigs.TargetSelfItemsAll);
+            return localizationManager.GetLocalized(itemLocalizationConfigs.TargetOpponentItemsAll);
         }
         
     }
