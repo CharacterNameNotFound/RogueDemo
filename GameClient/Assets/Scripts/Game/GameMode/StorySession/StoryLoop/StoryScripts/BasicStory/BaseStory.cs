@@ -138,12 +138,13 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             // save each cycle
             _sessionStatusDrawer.RedrawPlayerStats(_gameBoardModelHolder.GameBoardModel);
             
+            _inputLayerControlMediator.ToggleItemMovement(true);
+            
             do
             {
                 GameBoardModel gameBoardModel = _gameBoardModelHolder.GameBoardModel;
 
                 _sessionStatusDrawer.RedrawStoryProgression(gameBoardModel);
-                _inputLayerControlMediator.ToggleItemMovement(true);
                 int turn = gameBoardModel.StoryStats.Cycle * _baseStoryConfigs.StoryDayLength + gameBoardModel.StoryStats.Step;
                 int selectedEncounterIndex = await _encounterSelector.StartEncounterSelection(_baseStoryContext.StoryEncounters[turn], cancellationToken);
                 string encounterId = _baseStoryContext.StoryEncounters[turn][selectedEncounterIndex];
