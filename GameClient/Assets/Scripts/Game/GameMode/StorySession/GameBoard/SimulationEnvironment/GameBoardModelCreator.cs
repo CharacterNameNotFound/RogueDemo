@@ -15,8 +15,8 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment
 
             StoryStats storyStats = new StoryStats(0, 0);
 
-            HeroStats playerHeroStats = new HeroStats(characterData.StartingHp, characterData.StartingHp);
-            HeroStats encounterHeroStats = new HeroStats(1, 1);
+            HeroStats playerHeroStats = new HeroStats(characterData.StartingHp, characterData.StartingHp, 0);
+            HeroStats encounterHeroStats = new HeroStats(1, 1, 0);
 
             return new GameBoardModel(playerBoard, playerStashBoard, encounterBoard, playerStats, storyStats, playerHeroStats, encounterHeroStats);
         }

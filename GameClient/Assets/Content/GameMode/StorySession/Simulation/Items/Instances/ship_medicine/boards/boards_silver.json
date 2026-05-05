@@ -27,7 +27,7 @@
           "$type": "System.Collections.Generic.List`1[[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure.Effector, Game.GameMode.StorySession]], mscorlib",
           "$values": [
             {
-              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.ShieldEffector, Game.GameMode.StorySession",
+              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.ApplyShieldEffector, Game.GameMode.StorySession",
               "TargetSelector": {
                 "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.TargetSelectors.OwnerTargetSelector, Game.GameMode.StorySession"
               },

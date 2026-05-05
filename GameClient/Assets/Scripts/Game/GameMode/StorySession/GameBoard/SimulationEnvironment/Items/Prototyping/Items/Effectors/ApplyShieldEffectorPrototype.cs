@@ -4,7 +4,7 @@ using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototypi
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototyping.Items.Effectors
 {
-    public class ShieldEffectorPrototype : EffectorPrototype
+    public class ApplyShieldEffectorPrototype : EffectorPrototype
     {
         public bool IsCritAvailable = true;
         
@@ -13,7 +13,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Proto
         
         public override Effector GetEffector()
         {
-            return new ShieldEffector(TargetSelectorPrototypes.GetTargetSelector(), StatProviderPrototype.GetStatProvider(), IsCritAvailable);
+            return new ApplyShieldEffector(TargetSelectorPrototypes.GetTargetSelector(), StatProviderPrototype.GetStatProvider(), IsCritAvailable);
         }
         
     }

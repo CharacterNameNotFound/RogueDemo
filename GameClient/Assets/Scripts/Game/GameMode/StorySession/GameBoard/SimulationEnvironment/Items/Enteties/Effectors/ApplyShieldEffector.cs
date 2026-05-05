@@ -6,12 +6,12 @@ using GameWideSystems.LocalizationWrapper;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors
 {
-    public class ShieldEffector : Effector
+    public class ApplyShieldEffector : Effector
     {
         public TargetSelector TargetSelector;
         public StatProvider ShieldStatProvider;
 
-        public ShieldEffector(TargetSelector targetSelector, StatProvider shieldStatProvider, bool isCritAvailable)
+        public ApplyShieldEffector(TargetSelector targetSelector, StatProvider shieldStatProvider, bool isCritAvailable)
         {
             TargetSelector = targetSelector;
             ShieldStatProvider = shieldStatProvider;
@@ -20,7 +20,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
 
         public override Effector GetCopy()
         {
-            return new ShieldEffector(TargetSelector.GetCopy(), ShieldStatProvider.GetCopy(), IsCritAvailable);
+            return new ApplyShieldEffector(TargetSelector.GetCopy(), ShieldStatProvider.GetCopy(), IsCritAvailable);
         }
 
         public override void AppendDescription(int depth, Item item, StringBuilder itemDescription,

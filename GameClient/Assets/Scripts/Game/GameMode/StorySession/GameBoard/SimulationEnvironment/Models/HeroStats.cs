@@ -4,11 +4,13 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Models
     {
         public float MaxHp;
         public float Hp;
+        public float Shield;
 
-        public HeroStats(float maxHp, float hp)
+        public HeroStats(float maxHp, float hp, float shield)
         {
             MaxHp = maxHp;
             Hp = hp;
+            Shield = shield;
         }
         
         

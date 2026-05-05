@@ -32,18 +32,17 @@ namespace Game.GameMode.StorySession.GameBoard.Services.HeroStatsDrawing
                 HeroGroup.Encounter => _gameBoardHolder.GameBoardComponent.EncounterBoard.BattleView.HpBar,
                 _ => throw new ArgumentOutOfRangeException(nameof(hero), hero, null)
             };
-            HeroStats heroStats = hero switch {
-                HeroGroup.Player => _gameBoardModelHolder.GameBoardModel.PlayerHeroStats,
-                HeroGroup.Encounter => _gameBoardModelHolder.GameBoardModel.EncounterHeroStats,
-                _ => throw new ArgumentOutOfRangeException(nameof(hero), hero, null)
-            };
+            
+            HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(hero, _gameBoardModelHolder.GameBoardModel);
+            
+            
             
             UpdateHpBar(boardHpBar, heroStats);
         }
 
         private void UpdateHpBar(HpBarComponent boardHpBar, HeroStats heroStats)
         {
-            boardHpBar.UpdateHpBar(heroStats.Hp, heroStats.MaxHp);
+            boardHpBar.UpdateHpBar(heroStats.Hp, heroStats.MaxHp, heroStats.Shield);
         }
         
     }

@@ -211,6 +211,7 @@ namespace Structure
             Container.Bind<IEffectorHandler>().To<ApplyHasteEffectorHandler>().AsCached();
             Container.Bind<IEffectorHandler>().To<ApplySlowEffectorHandler>().AsCached();
             Container.Bind<IEffectorHandler>().To<ApplyHealingEffectorHandler>().AsCached();
+            Container.Bind<IEffectorHandler>().To<ApplyShieldEffectorHandler>().AsCached();
         }
 
         private void InstallStatProviding()

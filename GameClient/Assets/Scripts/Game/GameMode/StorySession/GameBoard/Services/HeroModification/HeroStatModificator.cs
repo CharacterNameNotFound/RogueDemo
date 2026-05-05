@@ -18,9 +18,28 @@ namespace Game.GameMode.StorySession.GameBoard.Services.HeroModification
             _gameBoardModelHolder = gameBoardModelHolder;
         }
 
+        public void AddShield(float value, HeroGroup heroGroup)
+        {
+            HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
+
+            heroStats.Shield += value;
+            
+            _heroesHpDrawer.UpdateHeroHpBar(heroGroup);
+        }
+
         public void DealDamage(float value, HeroGroup heroGroup)
         {
             HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
+
+            float damage = Mathf.Min(value, heroStats.Shield);
+            value -= damage;
+            heroStats.Shield -= damage;
+
+            if (value == 0)
+            {
+                _heroesHpDrawer.UpdateHeroHpBar(heroGroup);
+                return;
+            }
             
             UpdateHpInternal(-value, heroStats, heroGroup);
         }

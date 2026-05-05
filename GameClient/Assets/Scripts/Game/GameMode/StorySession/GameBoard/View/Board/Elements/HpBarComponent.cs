@@ -10,14 +10,17 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board.Elements
         [SerializeField] private SpriteRenderer _hpBar;
         [SerializeField] private TMP_Text _hpText;
 
-        public void UpdateHpBar(float hp, float maxHp)
+        public void UpdateHpBar(float hp, float maxHp, float shield)
         {
             _hpBar.material.SetFloat(HpPropertyId, hp / maxHp);
 
             int intHp = Mathf.CeilToInt(hp);
             int intMaxHp = Mathf.CeilToInt(maxHp);
+
+            _hpText.text = shield > 0 ? $"{intHp}/{intMaxHp} + {shield}" : $"{intHp}/{intMaxHp}";
             
-            _hpText.text = $"{intHp}/{intMaxHp}";
+            
+            
         }
         
         
