@@ -39,7 +39,7 @@
               "IsCritAvailable": true
             },
             {
-              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.HealEffector, Game.GameMode.StorySession",
+              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.ApplyHealEffector, Game.GameMode.StorySession",
               "TargetSelector": {
                 "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.TargetSelectors.OwnerTargetSelector, Game.GameMode.StorySession"
               },

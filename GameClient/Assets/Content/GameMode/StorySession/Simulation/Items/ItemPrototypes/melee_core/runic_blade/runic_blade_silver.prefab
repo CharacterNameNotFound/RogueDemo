@@ -290,6 +290,7 @@ MonoBehaviour:
         - 0
         - 0
         - 0
+  IsPassiveItem: 0
   IsCooldownItem: 1
   CurrentCharge: 0
 --- !u!1 &7363357340556271163
@@ -302,9 +303,9 @@ GameObject:
   m_Component:
   - component: {fileID: 398351491360287433}
   - component: {fileID: 6130401026348347610}
-  - component: {fileID: 8157201951968305081}
   - component: {fileID: 4661730985210181819}
   - component: {fileID: 223309303727903021}
+  - component: {fileID: 2529193256735103446}
   m_Layer: 0
   m_Name: Haste
   m_TagString: Untagged
@@ -339,22 +340,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4708119738604b1983d3d089f423e4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.Effectors.HasteEffectorPrototype
-  TargetSelectorPrototypes: {fileID: 8157201951968305081}
+  TargetSelectorPrototypes: {fileID: 2529193256735103446}
   HasteDurationProvider: {fileID: 223309303727903021}
---- !u!114 &8157201951968305081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7363357340556271163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b84d1351893c4ba1bb9126b20c94be65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.TargetSelectors.EnemyItemTargetSelectorPrototype
-  TargetCount: {fileID: 4661730985210181819}
-  SelectNonCooldownItems: 0
 --- !u!114 &4661730985210181819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,3 +370,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Prototyping.Items.StatProviders.UniversalItemStatProviderPrototype
   ItemStatType: 14
   Multiplier: 1
+--- !u!114 &2529193256735103446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7363357340556271163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de59f5981c544c8b0aff65372557b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototyping.Items.TargetSelectors.AllOwnerItemsSelectorPrototype
+  SelectNonCooldownItems: 0

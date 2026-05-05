@@ -18,20 +18,34 @@ namespace Game.GameMode.StorySession.GameBoard.Services.HeroModification
             _gameBoardModelHolder = gameBoardModelHolder;
         }
 
+        public void DealDamage(float value, HeroGroup heroGroup)
+        {
+            HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
+            
+            UpdateHpInternal(-value, heroStats, heroGroup);
+        }
+
+        public void Heal(float value, HeroGroup heroGroup)
+        {
+            HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
+            
+            UpdateHpInternal(value, heroStats, heroGroup);
+        }
+
         public void UpdateHp(float value, HeroGroup heroGroup)
         {
-            HeroStats heroStats = heroGroup switch {
-                HeroGroup.Player => _gameBoardModelHolder.GameBoardModel.PlayerHeroStats,
-                HeroGroup.Encounter => _gameBoardModelHolder.GameBoardModel.EncounterHeroStats,
-                _ => throw new ArgumentOutOfRangeException(nameof(heroGroup), heroGroup, null)
-            };
+            HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
 
+            UpdateHpInternal(value, heroStats, heroGroup);
+        }
+
+        private void UpdateHpInternal(float value, HeroStats heroStats, HeroGroup heroGroup)
+        {
             heroStats.Hp += value;
             heroStats.Hp = Mathf.Min(heroStats.MaxHp, heroStats.Hp);
             
             _heroesHpDrawer.UpdateHeroHpBar(heroGroup);
         }
-        
         
     }
 }

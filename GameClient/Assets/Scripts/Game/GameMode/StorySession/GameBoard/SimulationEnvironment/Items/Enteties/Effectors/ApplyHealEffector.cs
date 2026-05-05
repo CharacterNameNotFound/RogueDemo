@@ -6,12 +6,12 @@ using GameWideSystems.LocalizationWrapper;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors
 {
-    public class HealEffector : Effector
+    public class ApplyHealEffector : Effector
     {
         public TargetSelector TargetSelector;
         public StatProvider HealStatProvider;
 
-        public HealEffector(TargetSelector targetSelector, StatProvider healStatProvider, bool isCritAvailable)
+        public ApplyHealEffector(TargetSelector targetSelector, StatProvider healStatProvider, bool isCritAvailable)
         {
             TargetSelector = targetSelector;
             HealStatProvider = healStatProvider;
@@ -20,7 +20,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
 
         public override Effector GetCopy()
         {
-            return new HealEffector(TargetSelector.GetCopy(), HealStatProvider.GetCopy(), IsCritAvailable);
+            return new ApplyHealEffector(TargetSelector.GetCopy(), HealStatProvider.GetCopy(), IsCritAvailable);
         }
 
         public override void AppendDescription(int depth, Item item, StringBuilder itemDescription,
