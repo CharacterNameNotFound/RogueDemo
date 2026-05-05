@@ -80,7 +80,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 21041635379056645
-    m_Localized: Fire
+    m_Localized: Burn
     m_Metadata:
       m_Items: []
   - m_Id: 21041635379056646
@@ -116,7 +116,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 21041635379056654
-    m_Localized: Fire
+    m_Localized: Burn
     m_Metadata:
       m_Items: []
   - m_Id: 21041635379056655
@@ -239,12 +239,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23067771894173696
-    m_Localized: Hasted ({duration} sec)
+    m_Localized: Hasted ({0} sec)
     m_Metadata:
       m_Items:
       - rid: 282318976177406045
   - m_Id: 23067771931922432
-    m_Localized: Slow ({duration} sec)
+    m_Localized: Slow ({0} sec)
     m_Metadata:
       m_Items:
       - rid: 282318976177406045

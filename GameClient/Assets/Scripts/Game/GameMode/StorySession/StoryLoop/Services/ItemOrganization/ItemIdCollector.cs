@@ -15,6 +15,18 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization
             _itemRegistry = itemRegistry;
         }
 
+        public async UniTask AppendItemHierarchy(string itemId, HashSet<string> itemIds, CancellationToken cancellationToken)
+        {
+            RequestResult<Item> itemRequest = await _itemRegistry.GetOrLoadById(itemId, cancellationToken);
+            
+            if (itemRequest.IsFailure())
+            {
+                throw itemRequest.Exception;
+            }
+            
+            await AppendItemHierarchy(itemRequest.GetValue(), itemIds, cancellationToken);
+        }
+
         /// <summary>
         /// Must not be executed concurrently with other operation over HashSet as it getting changed 
         /// </summary>

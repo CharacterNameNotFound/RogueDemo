@@ -18,7 +18,7 @@ namespace Game.Routines.ItemLoadingOperations.ItemTagToTableEntryConverters
         
         public bool TryGetInsertObject(Item item, out object insert)
         {
-            if (!item.Tags.TagsList.Contains(ItemTag.Fire))
+            if (!item.Tags.TagsList.Contains(ItemTag.Burn))
             {
                 insert = null;
                 return false;
@@ -26,7 +26,7 @@ namespace Game.Routines.ItemLoadingOperations.ItemTagToTableEntryConverters
             
             float fireValue = _itemStatGetter.GetStatValue(
                 item, 
-                ItemStatType.Fire, 
+                ItemStatType.Burn, 
                 StatSet.StatSetComponent.BaseValue,
                 StatSet.StatSetComponent.None);
 

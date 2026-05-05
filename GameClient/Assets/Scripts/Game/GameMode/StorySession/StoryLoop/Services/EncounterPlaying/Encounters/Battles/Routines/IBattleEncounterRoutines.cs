@@ -8,7 +8,10 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
     {
         public UniTask ShowElements(BattleEncounter encounter, CancellationToken cancellationToken);
 
+        public UniTask PreBattleReset(float opponentHealth, CancellationToken cancellationToken);
         public UniTask LoadItemsUpdateViews(IEnumerable<string> items, CancellationToken cancellationToken);
         public UniTask HideAll(CancellationToken cancellationToken);
+        public UniTask PostBattleReset(CancellationToken cancellationToken);
+        public UniTask PresentLoot(List<string> items, CancellationToken cancellationToken);
     }
 }

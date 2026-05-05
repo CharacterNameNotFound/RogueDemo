@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Heroes.StatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Models;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment
@@ -10,6 +13,9 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment
 
         public HeroStats PlayerHeroStats;
         public HeroStats EncounterHeroStats;
+        
+        public Dictionary<Type, IHeroStatusEffect> PlayerHeroStatusEffect;
+        public Dictionary<Type, IHeroStatusEffect> EncounterHeroStatusEffect;
 
         public PlayerStats PlayerStats;
 
@@ -21,6 +27,8 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment
             ItemBoardModel encounterBoard, 
             PlayerStats playerStats, 
             StoryStats storyStats, 
+            Dictionary<Type, IHeroStatusEffect> playerHeroStatusEffect,
+            Dictionary<Type, IHeroStatusEffect> encounterHeroStatusEffect,
             HeroStats playerHeroStats, 
             HeroStats encounterHeroStats)
         {
@@ -29,6 +37,8 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment
             EncounterBoard = encounterBoard;
             PlayerStats = playerStats;
             StoryStats = storyStats;
+            PlayerHeroStatusEffect = playerHeroStatusEffect;
+            EncounterHeroStatusEffect = encounterHeroStatusEffect;
             PlayerHeroStats = playerHeroStats;
             EncounterHeroStats = encounterHeroStats;
         }

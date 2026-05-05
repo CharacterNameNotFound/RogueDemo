@@ -3,19 +3,19 @@ using SQLite;
 
 namespace Game.GameMode.StorySession.Data.LookUpEntries.Items
 {
-    [Table(ItemTableNames.Fire)]
+    [Table(ItemTableNames.Burn)]
     public class FireItemLookUpEntry
     {
         [PrimaryKey][Column(ColumnNames.Id)] 
         public string ItemId { get; set; }
         
-        [Column(ColumnNames.Fire)]
-        public float Fire { get; set; }
+        [Column(ColumnNames.Burn)]
+        public float Burn { get; set; }
 
-        public FireItemLookUpEntry(string itemId, float fire)
+        public FireItemLookUpEntry(string itemId, float burn)
         {
             ItemId = itemId;
-            Fire = fire;
+            Burn = burn;
         }
         
     }

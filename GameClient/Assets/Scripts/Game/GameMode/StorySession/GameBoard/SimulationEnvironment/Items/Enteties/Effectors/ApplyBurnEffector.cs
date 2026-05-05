@@ -2,25 +2,28 @@ using System.Text;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Localization;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 using GameWideSystems.LocalizationWrapper;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors
 {
-    public class RegenerationEffector : Effector
+    public class ApplyBurnEffector : Effector
     {
         public TargetSelector TargetSelector;
-        public StatProvider RegenerationStatProvider;
+        public StatProvider FireStatProvider;
+        public StatSet.StatSetComponent ApplicationType;
 
-        public RegenerationEffector(TargetSelector targetSelector, StatProvider regenerationStatProvider, bool isCritAvailable)
+        public ApplyBurnEffector(TargetSelector targetSelector, StatProvider fireStatProvider, bool isCritAvailable, StatSet.StatSetComponent applicationType)
         {
             TargetSelector = targetSelector;
-            RegenerationStatProvider = regenerationStatProvider;
+            FireStatProvider = fireStatProvider;
+            ApplicationType = applicationType;
             IsCritAvailable = isCritAvailable;
         }
 
         public override Effector GetCopy()
         {
-            return new RegenerationEffector(TargetSelector.GetCopy(), RegenerationStatProvider.GetCopy(), IsCritAvailable);
+            return new ApplyBurnEffector(TargetSelector.GetCopy(), FireStatProvider.GetCopy(), IsCritAvailable, ApplicationType);
         }
 
         public override void AppendDescription(int depth, Item item, StringBuilder itemDescription,
@@ -28,9 +31,9 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
             ILocalizationManager localizationManager,
             ItemDescriptionLocalizationConfigs itemLocalizationConfigs)
         {
-            float value = RegenerationStatProvider.GetValue(item, itemStatGetter);
+            float value = FireStatProvider.GetValue(item, itemStatGetter);
 
-            string line = localizationManager.GetLocalized(itemLocalizationConfigs.ApplyRegeneration, value);
+            string line = localizationManager.GetLocalized(itemLocalizationConfigs.ApplyBurn, value);
             string targetLine = TargetSelector.GetDescription(item, itemStatGetter, localizationManager, itemLocalizationConfigs);
             
             itemDescription.Append($"<margin-left={itemLocalizationConfigs.MarginSize * depth}>");

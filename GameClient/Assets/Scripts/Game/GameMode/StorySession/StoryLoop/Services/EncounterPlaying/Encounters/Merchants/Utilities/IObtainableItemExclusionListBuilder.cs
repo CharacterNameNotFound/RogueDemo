@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
-using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Utilities
 {
-    public interface IMerchantItemExclusionListBuilder
+    public interface IObtainableItemExclusionListBuilder
     {
         public UniTask<HashSet<string>> BuildIgnoredListIds(GameBoardModel gameBoardModel, CancellationToken cancellationToken);
+        public UniTask AppendItemExclusion(string item, HashSet<string> result, CancellationToken cancellationToken);
     }
 }

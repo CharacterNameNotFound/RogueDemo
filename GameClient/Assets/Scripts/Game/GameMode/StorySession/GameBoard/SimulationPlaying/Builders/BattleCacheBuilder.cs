@@ -16,8 +16,17 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.Builders
             List<ItemCache> playerItems = ReadItemsIntoCache(playerBoard.Items, (int) OwnerIndex.Player);
             List<ItemCache> encounterItems = ReadItemsIntoCache(encounterBoard.Items, (int) OwnerIndex.Encounter);
 
-            BattleSideCache playerSide = new BattleSideCache(playerItems, gameBoardModelHolder.GameBoardModel.PlayerHeroStats, gameBoardModelHolder.GameBoardModel.PlayerBoard);
-            BattleSideCache encounterSide = new BattleSideCache(encounterItems, gameBoardModelHolder.GameBoardModel.EncounterHeroStats, gameBoardModelHolder.GameBoardModel.EncounterBoard);
+            BattleSideCache playerSide = new BattleSideCache(
+                playerItems, 
+                gameBoardModelHolder.GameBoardModel.PlayerHeroStats, 
+                gameBoardModelHolder.GameBoardModel.PlayerBoard,
+                gameBoardModelHolder.GameBoardModel.PlayerHeroStatusEffect);
+            
+            BattleSideCache encounterSide = new BattleSideCache(
+                encounterItems, 
+                gameBoardModelHolder.GameBoardModel.EncounterHeroStats, 
+                gameBoardModelHolder.GameBoardModel.EncounterBoard,
+                gameBoardModelHolder.GameBoardModel.EncounterHeroStatusEffect);
 
             return new BattleCache(playerSide, encounterSide);
         }

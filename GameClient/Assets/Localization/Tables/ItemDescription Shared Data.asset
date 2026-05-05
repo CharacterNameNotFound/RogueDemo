@@ -76,7 +76,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 21041635379056645
-    m_Key: Fire_tag
+    m_Key: Burn_tag
     m_Metadata:
       m_Items: []
   - m_Id: 21041635379056646
@@ -116,7 +116,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 21041635379056654
-    m_Key: Fire_stat
+    m_Key: Burn_stat
     m_Metadata:
       m_Items: []
   - m_Id: 21041635379056655
@@ -172,7 +172,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 21110707890360320
-    m_Key: apply_x_fire
+    m_Key: apply_x_burn
     m_Metadata:
       m_Items: []
   - m_Id: 21110707923914752

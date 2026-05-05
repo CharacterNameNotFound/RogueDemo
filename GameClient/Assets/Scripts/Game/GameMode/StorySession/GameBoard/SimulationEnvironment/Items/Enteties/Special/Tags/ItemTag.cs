@@ -8,7 +8,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
         Weapon,
         Shield,
         Healing,
-        Fire,
+        Burn,
         Poison,
         Slow,
         Haste,

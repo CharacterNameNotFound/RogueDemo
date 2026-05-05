@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.StatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototyping.Items.Special;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototyping.Items.StatRegisterers;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototyping.Items.Structure;
@@ -87,6 +90,8 @@ namespace Tools.Editor.ItemPrototypeTools
                 item.DowngradedItemId = itemCore.DowngradedItem?.ItemId;
                 item.ItemSpriteRuntimeKey = itemCore.ItemImage.RuntimeKey;
                 item.ItemSize = itemCore.ItemSize;
+
+                item.StatusEffects = new Dictionary<Type, IItemStatusEffect>();
             }
             else
             {

@@ -27,7 +27,7 @@
           "$type": "System.Collections.Generic.List`1[[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure.Effector, Game.GameMode.StorySession]], mscorlib",
           "$values": [
             {
-              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.RegenerationEffector, Game.GameMode.StorySession",
+              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.ApplyRegenerationEffector, Game.GameMode.StorySession",
               "TargetSelector": {
                 "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.TargetSelectors.OwnerTargetSelector, Game.GameMode.StorySession"
               },
@@ -36,6 +36,7 @@
                 "ItemStatType": 15,
                 "Multiplier": 1.0
               },
+              "ApplicationType": 3,
               "IsCritAvailable": true
             }
           ]

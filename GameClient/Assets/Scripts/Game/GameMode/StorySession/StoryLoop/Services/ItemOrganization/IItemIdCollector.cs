@@ -7,6 +7,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization
 {
     public interface IItemIdCollector
     {
+        public UniTask AppendItemHierarchy(string itemId, HashSet<string> itemIds, CancellationToken cancellationToken);
         public UniTask AppendItemHierarchy(Item item, HashSet<string> itemIds, CancellationToken cancellationToken);
 
     }

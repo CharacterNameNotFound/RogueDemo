@@ -27,24 +27,24 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
         private ItemDeckOrganizer _itemDeckOrganizer;
         private IItemRaritySelector _itemRaritySelector;
         private IItemRegistry _itemRegistry;
-        private IMerchantItemExclusionListBuilder _merchantItemExclusionListBuilder;
+        private IObtainableItemExclusionListBuilder _obtainableItemExclusionListBuilder;
         
         [Inject]
         private void InjectDependencies(
             ItemDeckOrganizer itemDeckOrganizer,
             IItemRaritySelector itemRaritySelector,
             IItemRegistry itemRegistry,
-            IMerchantItemExclusionListBuilder merchantItemExclusionListBuilder)
+            IObtainableItemExclusionListBuilder obtainableItemExclusionListBuilder)
         {
             _itemDeckOrganizer = itemDeckOrganizer;
             _itemRaritySelector = itemRaritySelector;
             _itemRegistry = itemRegistry;
-            _merchantItemExclusionListBuilder = merchantItemExclusionListBuilder;
+            _obtainableItemExclusionListBuilder = obtainableItemExclusionListBuilder;
         }
 
         public override async UniTask<IEnumerable<string>> GetItemList(GameBoardModel gameBoardModel, CancellationToken cancellationToken)
         {
-            HashSet<string> excludedItems = await _merchantItemExclusionListBuilder.BuildIgnoredListIds(gameBoardModel, cancellationToken);
+            HashSet<string> excludedItems = await _obtainableItemExclusionListBuilder.BuildIgnoredListIds(gameBoardModel, cancellationToken);
             
             if (IncludedGroups == ItemSelectionGroup.Deck)
             {

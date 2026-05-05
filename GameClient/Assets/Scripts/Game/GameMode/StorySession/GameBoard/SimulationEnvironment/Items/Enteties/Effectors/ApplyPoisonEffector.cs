@@ -2,25 +2,28 @@ using System.Text;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Localization;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 using GameWideSystems.LocalizationWrapper;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors
 {
-    public class PoisonEffector : Effector
+    public class ApplyPoisonEffector : Effector
     {
         public TargetSelector TargetSelector;
         public StatProvider PoisonStatProvider;
+        public StatSet.StatSetComponent ApplicationType;
 
-        public PoisonEffector(TargetSelector targetSelector, StatProvider poisonStatProvider, bool isCritAvailable)
+        public ApplyPoisonEffector(TargetSelector targetSelector, StatProvider poisonStatProvider, bool isCritAvailable, StatSet.StatSetComponent applicationType)
         {
             TargetSelector = targetSelector;
             PoisonStatProvider = poisonStatProvider;
+            ApplicationType = applicationType;
             IsCritAvailable = isCritAvailable;
         }
 
         public override Effector GetCopy()
         {
-            return new PoisonEffector(TargetSelector.GetCopy(), PoisonStatProvider.GetCopy(), IsCritAvailable);
+            return new ApplyPoisonEffector(TargetSelector.GetCopy(), PoisonStatProvider.GetCopy(), IsCritAvailable, ApplicationType);
         }
 
         public override void AppendDescription(int depth, Item item, StringBuilder itemDescription,

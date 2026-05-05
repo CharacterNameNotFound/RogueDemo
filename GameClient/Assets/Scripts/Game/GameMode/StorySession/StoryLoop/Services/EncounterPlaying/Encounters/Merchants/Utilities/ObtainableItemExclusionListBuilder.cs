@@ -5,15 +5,14 @@ using Game.GameMode.StorySession.GameBoard.Configurations;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
-using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 
 namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Utilities
 {
-    public class MerchantItemExclusionListBuilder : IMerchantItemExclusionListBuilder
+    public class ObtainableItemExclusionListBuilder : IObtainableItemExclusionListBuilder
     {
         private IItemIdCollector _itemIdCollector;
 
-        public MerchantItemExclusionListBuilder(IItemIdCollector itemIdCollector)
+        public ObtainableItemExclusionListBuilder(IItemIdCollector itemIdCollector)
         {
             _itemIdCollector = itemIdCollector;
         }
@@ -32,6 +31,11 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
             ClearUsedItemsIds(stashBoardItems, result);
 
             return result;
+        }
+
+        public UniTask AppendItemExclusion(string item, HashSet<string> result, CancellationToken cancellationToken)
+        {
+            return _itemIdCollector.AppendItemHierarchy(item, result, cancellationToken);
         }
 
         private async UniTask CollectForBoard(Item[] boardItems, HashSet<string> result, CancellationToken cancellationToken)

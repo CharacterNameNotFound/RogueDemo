@@ -1,5 +1,6 @@
 using GameWideSystems.LocalizationWrapper;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Localization
 {
@@ -13,7 +14,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
         
         // effectors
         public LocalizedLineKey DealDamage = new("deal_x_damage", TranslationCategory.ItemDescription);
-        public LocalizedLineKey ApplyFire = new("apply_x_fire", TranslationCategory.ItemDescription);
+        public LocalizedLineKey ApplyBurn = new("apply_x_burn", TranslationCategory.ItemDescription);
         public LocalizedLineKey ApplyHaste = new("apply_haste", TranslationCategory.ItemDescription);
         public LocalizedLineKey ApplyHeal = new("apply_x_heal", TranslationCategory.ItemDescription);
         public LocalizedLineKey ApplyPoison = new("apply_x_poison", TranslationCategory.ItemDescription);

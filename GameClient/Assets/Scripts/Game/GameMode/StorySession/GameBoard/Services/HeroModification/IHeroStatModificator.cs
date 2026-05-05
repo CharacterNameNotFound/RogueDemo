@@ -8,5 +8,6 @@ namespace Game.GameMode.StorySession.GameBoard.Services.HeroModification
         public void DealDamage(float value, HeroGroup heroGroup);
         public void Heal(float value, HeroGroup heroGroup);
         public void UpdateHp(float value, HeroGroup heroGroup);
+        public void PostBattleReset();
     }
 }

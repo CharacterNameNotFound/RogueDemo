@@ -40,7 +40,7 @@
               "IsCritAvailable": true
             },
             {
-              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.PoisonEffector, Game.GameMode.StorySession",
+              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.ApplyPoisonEffector, Game.GameMode.StorySession",
               "TargetSelector": {
                 "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.TargetSelectors.EnemyTargetSelector, Game.GameMode.StorySession"
               },
@@ -49,6 +49,7 @@
                 "ItemStatType": 5,
                 "Multiplier": 1.0
               },
+              "ApplicationType": 3,
               "IsCritAvailable": true
             }
           ]

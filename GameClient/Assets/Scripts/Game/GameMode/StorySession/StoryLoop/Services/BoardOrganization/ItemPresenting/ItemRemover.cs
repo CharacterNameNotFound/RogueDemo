@@ -9,7 +9,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
     {
         private IItemContainersManager _containersManager;
         private ItemDeckOrganizer _deckOrganizer;
-
+        
         public ItemRemover(IItemContainersManager containersManager, ItemDeckOrganizer deckOrganizer)
         {
             _containersManager = containersManager;

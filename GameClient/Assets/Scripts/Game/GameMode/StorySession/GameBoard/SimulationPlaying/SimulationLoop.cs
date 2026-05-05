@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.GameMode.StorySession.GameBoard.Services.HeroModification;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.StatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Triggers;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Builders;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Data;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.TriggerHandling;
 using UnityEngine;
@@ -26,8 +28,9 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
         private IWinDecisionMaker _winDecisionMaker;
         private ITriggerProcessor _triggerProcessor;
         private IBattleCacheBuilder _battleCacheBuilder;
-        private IItemStatusEffectManager _statusEffectManager;
-
+        private IItemStatusEffectManager _itemStatusEffectManager;
+        private IHeroStatusEffectManager _heroStatusEffectManager; 
+        
 
         // index is index of first item entry in array (both view and model)
         private BattleCache _battleCache;
@@ -41,7 +44,8 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
             IWinDecisionMaker winDecisionMaker, 
             ITriggerProcessor triggerProcessor, 
             IBattleCacheBuilder battleCacheBuilder, 
-            IItemStatusEffectManager statusEffectManager)
+            IItemStatusEffectManager itemStatusEffectManager, 
+            IHeroStatusEffectManager heroStatusEffectManager)
         {
             _gameBoardModelHolder = gameBoardModelHolder;
             _simulationModelUpdater = simulationModelUpdater;
@@ -49,7 +53,8 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
             _winDecisionMaker = winDecisionMaker;
             _triggerProcessor = triggerProcessor;
             _battleCacheBuilder = battleCacheBuilder;
-            _statusEffectManager = statusEffectManager;
+            _itemStatusEffectManager = itemStatusEffectManager;
+            _heroStatusEffectManager = heroStatusEffectManager;
         }
 
 
@@ -87,10 +92,11 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
 
         public async UniTask PostSimulationCleanUp(CancellationToken cancellationToken)
         {
+            await _heroStatusEffectManager.PostBattleReset(_battleCache, cancellationToken);
+            await _itemStatusEffectManager.PostBattleReset(_battleCache, cancellationToken);
+            
             _battleCache = null;
             _triggerProcessor.SetCache(null);
-            // reset temporary stats
-            
         }
 
 
@@ -115,8 +121,11 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
                     
                 _simulationViewUpdater.RenderChargeValues(playerItemCache, encounterItemCache);
                 
-                _statusEffectManager.Update(playerItemCache, Time.deltaTime);
-                _statusEffectManager.Update(encounterItemCache, Time.deltaTime);
+                _itemStatusEffectManager.Update(playerItemCache, Time.deltaTime);
+                _itemStatusEffectManager.Update(encounterItemCache, Time.deltaTime);
+
+                _heroStatusEffectManager.Update(_battleCache.GetPlayer(), (int) OwnerIndex.Player, Time.deltaTime);
+                _heroStatusEffectManager.Update(_battleCache.GetEncounter(), (int) OwnerIndex.Encounter, Time.deltaTime);
                 
                 _triggerProcessor.Process(triggerBuffer, cancellationToken);
 

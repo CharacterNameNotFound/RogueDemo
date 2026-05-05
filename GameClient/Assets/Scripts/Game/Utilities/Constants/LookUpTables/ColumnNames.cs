@@ -9,7 +9,7 @@ namespace Game.Utilities.Constants.LookUpTables
         public const string Damage = "damage";
         public const string Shield = "shield";
         public const string Healing = "healing";
-        public const string Fire = "fire";
+        public const string Burn = "burn";
         public const string Poison = "poison";
         public const string Regeneration = "regeneration";
         public const string CritChance = "crit_chance";

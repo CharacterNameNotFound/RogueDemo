@@ -17,6 +17,8 @@ using Game.GameMode.StorySession.GameBoard.SimulationPlaying;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Builders;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandling;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandling.Handlers;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffects;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffects.StatusEffectHandlers;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffects.StatusEffectAppliers;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.StatProviding;
@@ -110,7 +112,7 @@ namespace Structure
             Container.Bind<IEncounterLoader>().To<EncounterLoader>().AsSingle();
             Container.Bind<IMerchantEncounterRoutines>().To<MerchantEncounterRoutines>().AsSingle();
             Container.Bind<IBattleEncounterRoutines>().To<BattleEncounterRoutines>().AsSingle();
-            Container.Bind<IMerchantItemExclusionListBuilder>().To<MerchantItemExclusionListBuilder>().AsSingle();
+            Container.Bind<IObtainableItemExclusionListBuilder>().To<ObtainableItemExclusionListBuilder>().AsSingle();
             
 
             InstallStatCalculators();
@@ -193,6 +195,7 @@ namespace Structure
             InstallStatProviding();
             InstallTargetSelector();
             InstallItemStatusEffects();
+            InstallHeroStatusEffects();
         }
 
 
@@ -212,6 +215,9 @@ namespace Structure
             Container.Bind<IEffectorHandler>().To<ApplySlowEffectorHandler>().AsCached();
             Container.Bind<IEffectorHandler>().To<ApplyHealingEffectorHandler>().AsCached();
             Container.Bind<IEffectorHandler>().To<ApplyShieldEffectorHandler>().AsCached();
+            Container.Bind<IEffectorHandler>().To<ApplyBurnEffectorHandler>().AsCached();
+            Container.Bind<IEffectorHandler>().To<ApplyPoisonEffectorHandler>().AsCached();
+            Container.Bind<IEffectorHandler>().To<ApplyRegenerationEffectorHandler>().AsCached();
         }
 
         private void InstallStatProviding()
@@ -240,6 +246,18 @@ namespace Structure
             Container.Bind<ITargetSelectionHandler>().To<AllOwnerItemsTargetSelectorHandler>().AsCached();
             Container.Bind<ITargetSelectionHandler>().To<OwnerItemTargetSelectorHandler>().AsCached();
             Container.Bind<ITargetSelectionHandler>().To<OwnerTargetSelectorHandler>().AsCached();
+        }
+
+        private void InstallHeroStatusEffects()
+        {
+            Container.Bind<IHeroStatusEffectManager>().To<HeroStatusEffectManager>().AsSingle();
+            
+            Container.Bind<IHeroStatusEffectHandlerRegistry>().To<HeroStatusEffectHandlerRegistry>().AsSingle();
+            
+            Container.Bind<IHeroStatusEffectHandler>().To<BurnHeroStatusEffectHandler>().AsSingle();
+            Container.Bind<IHeroStatusEffectHandler>().To<PoisonHeroStatusEffectHandler>().AsSingle();
+            Container.Bind<IHeroStatusEffectHandler>().To<RegenerationHeroStatusEffectHandler>().AsSingle();
+            
         }
         
         private void InstallSimulationEventHandling()

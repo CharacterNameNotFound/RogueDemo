@@ -9,7 +9,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
         Damage,
         Shield,
         Heal,
-        Fire,
+        Burn,
         Poison,
         CriticalChance,
         CriticalPower,

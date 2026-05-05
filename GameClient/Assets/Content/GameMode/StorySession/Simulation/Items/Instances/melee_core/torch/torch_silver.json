@@ -40,7 +40,7 @@
               "IsCritAvailable": true
             },
             {
-              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.FireEffector, Game.GameMode.StorySession",
+              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.ApplyBurnEffector, Game.GameMode.StorySession",
               "TargetSelector": {
                 "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.TargetSelectors.EnemyTargetSelector, Game.GameMode.StorySession"
               },
@@ -49,6 +49,7 @@
                 "ItemStatType": 4,
                 "Multiplier": 1.0
               },
+              "ApplicationType": 3,
               "IsCritAvailable": true
             }
           ]
@@ -118,7 +119,7 @@
           }
         }
       },
-      "Fire": {
+      "Burn": {
         "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
         "ItemValues": {
           "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities.StatSet, Game.GameMode.StorySession",

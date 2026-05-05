@@ -21,6 +21,8 @@ namespace Game.GameMode.StorySession.GameBoard.Services.HeroModification
         public void AddShield(float value, HeroGroup heroGroup)
         {
             HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
+            
+            value = Mathf.RoundToInt(value);
 
             heroStats.Shield += value;
             
@@ -31,6 +33,8 @@ namespace Game.GameMode.StorySession.GameBoard.Services.HeroModification
         {
             HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
 
+            value = Mathf.RoundToInt(value);
+            
             float damage = Mathf.Min(value, heroStats.Shield);
             value -= damage;
             heroStats.Shield -= damage;
@@ -46,6 +50,8 @@ namespace Game.GameMode.StorySession.GameBoard.Services.HeroModification
 
         public void Heal(float value, HeroGroup heroGroup)
         {
+            value = Mathf.RoundToInt(value);
+            
             HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
             
             UpdateHpInternal(value, heroStats, heroGroup);
@@ -53,13 +59,27 @@ namespace Game.GameMode.StorySession.GameBoard.Services.HeroModification
 
         public void UpdateHp(float value, HeroGroup heroGroup)
         {
+            value = Mathf.RoundToInt(value);
+            
             HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
 
             UpdateHpInternal(value, heroStats, heroGroup);
         }
 
+        public void PostBattleReset()
+        {
+            HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(HeroGroup.Player, _gameBoardModelHolder.GameBoardModel);
+
+            heroStats.Shield = 0;
+            heroStats.Hp = heroStats.MaxHp;
+            
+            _heroesHpDrawer.UpdateHeroHpBar(HeroGroup.Player);
+        }
+
         private void UpdateHpInternal(float value, HeroStats heroStats, HeroGroup heroGroup)
         {
+            value = Mathf.RoundToInt(value);
+
             heroStats.Hp += value;
             heroStats.Hp = Mathf.Min(heroStats.MaxHp, heroStats.Hp);
             
