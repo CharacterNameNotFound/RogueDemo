@@ -13,6 +13,7 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
         public LocalizedLineKey ItemStats = new("item_stats", TranslationCategory.ItemDescription);
         public LocalizedLineKey ItemEffectsKey = new("item_effects", TranslationCategory.ItemDescription);
         public LocalizedLineKey ItemTagsKey = new("item_tags", TranslationCategory.ItemDescription);
+        public LocalizedLineKey ItemStatusEffectsKey = new("item_status_effects", TranslationCategory.ItemDescription);
 
         public LocalizedLineKey BronzeRarityKey = new("bronze_item_rarity", TranslationCategory.ItemDescription);
         public LocalizedLineKey SilverRarityKey = new("silver_item_rarity", TranslationCategory.ItemDescription);

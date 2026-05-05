@@ -13,7 +13,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.TargetSelection
 {
     public class OwnerItemTargetSelectorHandler : ITargetSelectionHandler
     {
-        public Type AutoDictionaryKey => typeof(ITargetSelectionHandler);
+        public Type AutoDictionaryKey => typeof(OwnerItemTargetSelector);
         
         private IRNGManager _rngManager;
         private IStatProviderHandlersRegistry _statProviderHandlersRegistry;
@@ -25,9 +25,9 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.TargetSelection
         }
 
         // ToDo: optimize...
-        public int[] GetTargetIndex(TargetSelector targetSelector, int index, int owner, BattleCache battleCache)
+        public (int[] itemIds, int targetHero) GetTargetIndex(TargetSelector targetSelector, int index, int owner, BattleCache battleCache)
         { 
-            EnemyItemTargetSelector selector = (EnemyItemTargetSelector) targetSelector;
+            OwnerItemTargetSelector selector = (OwnerItemTargetSelector) targetSelector;
             
             List<int> availableTargets = battleCache.Get(owner).ItemCache
                 .Where(item => !item.Item.ItemStats.IsPassiveItem || selector.SelectNonCooldownItems)
@@ -44,7 +44,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.TargetSelection
 
             count = Math.Min(count, availableTargets.Count);
 
-            return availableTargets.Take(count).ToArray();
+            return (availableTargets.Take(count).ToArray(), owner);
         }
         
     }

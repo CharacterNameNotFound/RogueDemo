@@ -1,8 +1,10 @@
 using System;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.StatProviders;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Data;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Utils;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.StatProviding.Handlers
 {
@@ -21,8 +23,9 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.StatProviding.H
         {
             UniversalItemStatProvider universalItemStatProvider = (UniversalItemStatProvider) statProvider;
 
-            float value = _itemStatGetter.GetStatValue(battleCache.Get(owner).Model.Items[index],
-                universalItemStatProvider.ItemStatType) * universalItemStatProvider.Multiplier;
+            Item item = CacheShortcuts.GetItem(index, owner, battleCache);
+            
+            float value = _itemStatGetter.GetStatValue(item, universalItemStatProvider.ItemStatType) * universalItemStatProvider.Multiplier;
             
             return value;
         }

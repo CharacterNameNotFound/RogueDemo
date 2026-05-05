@@ -198,5 +198,8 @@
     "CurrentCharge": 0.0,
     "IsCharged": false
   },
-  "IsNonDeck": false
+  "IsNonDeck": false,
+  "StatusEffects": {
+    "$type": "System.Collections.Generic.Dictionary`2[[System.Type, mscorlib],[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.StatusEffects.IItemStatusEffect, Game.GameMode.StorySession]], mscorlib"
+  }
 }

@@ -2,13 +2,17 @@ using System;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Triggers;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Triggers;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Triggers.Implementations;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Data;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandling;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Utils;
+using UnityEngine;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.TriggerHandling.Handlers
 {
@@ -18,11 +22,13 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.TriggerHandling
 
 
         private IEffectorHandlersRegistry _effectorHandlersRegistry;
+        private IItemStatGetter _itemStatGetter;
         
 
-        public ItemChargedTriggerHandler(IEffectorHandlersRegistry effectorHandlersRegistry)
+        public ItemChargedTriggerHandler(IEffectorHandlersRegistry effectorHandlersRegistry, IItemStatGetter itemStatGetter)
         {
             _effectorHandlersRegistry = effectorHandlersRegistry;
+            _itemStatGetter = itemStatGetter;
         }
 
 
@@ -30,21 +36,30 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.TriggerHandling
         {
             ItemChargedTrigger itemChargedTrigger = (ItemChargedTrigger)triggerToken;
 
-            Item item = battleCache.Get(itemChargedTrigger.Owner).Model.Items[itemChargedTrigger.Index];
+            Item item = CacheShortcuts.GetItem(itemChargedTrigger.Index, itemChargedTrigger.Owner, battleCache);
 
             OnChargedTrigger trigger = (OnChargedTrigger) item.Triggers.First(x => x is OnChargedTrigger);
 
-            foreach (Effector effector in trigger.Effectors)
+            float useCount = _itemStatGetter.GetStatValue(item, ItemStatType.UsageCount);
+
+            useCount = Mathf.CeilToInt(useCount);
+
+            for (int i = 0; i < useCount; i++)
             {
-                if (!_effectorHandlersRegistry.Get(effector.GetType(), out IEffectorHandler handler))
+                foreach (Effector effector in trigger.Effectors)
                 {
-                    continue;
+                    if (!_effectorHandlersRegistry.Get(effector.GetType(), out IEffectorHandler handler))
+                    {
+                        continue;
+                    }
+                    handler.Handle(effector, itemChargedTrigger.Index, itemChargedTrigger.Owner, battleCache, cancellationToken).Forget();
+                
                 }
                 
-                handler.Handle(effector, itemChargedTrigger.Index, itemChargedTrigger.Owner, battleCache, cancellationToken).Forget();
+                // ToDo: implement Animation (async hero for this reason), for now using dummy delay
+                await UniTask.WaitForSeconds(0.25f, cancellationToken: cancellationToken);
             }
             
-            // ToDo: implement Animation (async hero for this reason)
             
             item.ItemStats.IsCharged = false;
             item.ItemStats.CurrentCharge = 0;

@@ -7,6 +7,6 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.TargetSelection
 {
     public interface ITargetSelectionHandler : IAutoDictionaryEntry<Type>
     {
-        public int[] GetTargetIndex(TargetSelector targetSelector, int index, int owner, BattleCache battleCache);
+        public (int[] itemIds, int targetHero) GetTargetIndex(TargetSelector targetSelector, int index, int owner, BattleCache battleCache);
     }
 }

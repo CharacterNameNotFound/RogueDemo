@@ -6,24 +6,21 @@ using GameWideSystems.LocalizationWrapper;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors
 {
-    public class HasteEffector : Effector
+    public class ApplySlowEffector : Effector
     {
         public TargetSelector TargetSelector;
-        public StatProvider HasteDurationProvider;
-
-        public HasteEffector(
-            TargetSelector targetSelector, 
-            StatProvider hasteDurationProvider, 
-            bool isCritAvailable)
+        public StatProvider SlowDurationProvider;
+        
+        public ApplySlowEffector(TargetSelector targetSelector, StatProvider slowDurationProvider, bool isCritAvailable)
         {
             TargetSelector = targetSelector;
-            HasteDurationProvider = hasteDurationProvider;
+            SlowDurationProvider = slowDurationProvider;
             IsCritAvailable = isCritAvailable;
         }
-
+        
         public override Effector GetCopy()
         {
-            return new HasteEffector(TargetSelector.GetCopy(), HasteDurationProvider.GetCopy(), IsCritAvailable);
+            return new ApplySlowEffector(TargetSelector.GetCopy(), SlowDurationProvider.GetCopy(), IsCritAvailable);
         }
 
         public override void AppendDescription(int depth, Item item, StringBuilder itemDescription,
@@ -31,9 +28,9 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
             ILocalizationManager localizationManager,
             ItemDescriptionLocalizationConfigs itemLocalizationConfigs)
         {
-            float value = HasteDurationProvider.GetValue(item, itemStatGetter);
+            float value = SlowDurationProvider.GetValue(item, itemStatGetter);
 
-            string line = localizationManager.GetLocalized(itemLocalizationConfigs.ApplyHaste, value);
+            string line = localizationManager.GetLocalized(itemLocalizationConfigs.ApplySlow, value);
             string targetLine = TargetSelector.GetDescription(item, itemStatGetter, localizationManager, itemLocalizationConfigs);
             
             itemDescription.Append($"<margin-left={itemLocalizationConfigs.MarginSize * depth}>");

@@ -11,15 +11,16 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.TargetSelection
     {
         public Type AutoDictionaryKey => typeof(AllEnemyItemsTargetSelector);
         
-        public int[] GetTargetIndex(TargetSelector targetSelector, int index, int owner, BattleCache battleCache)
+        public (int[] itemIds, int targetHero) GetTargetIndex(TargetSelector targetSelector, int index, int owner, BattleCache battleCache)
         {
             int targetId = TargetCalculator.GetTargetId(owner, 1);
 
             AllEnemyItemsTargetSelector selector = (AllEnemyItemsTargetSelector)targetSelector;
 
-            return battleCache.Get(targetId).ItemCache
+            return (battleCache.Get(targetId).ItemCache
                 .Where(item => !item.Item.ItemStats.IsPassiveItem || selector.SelectNonCooldownItems)
-                .Select(item => item.Index).ToArray();
+                .Select(item => item.Index).ToArray(), 
+                targetId);
         }
         
     }

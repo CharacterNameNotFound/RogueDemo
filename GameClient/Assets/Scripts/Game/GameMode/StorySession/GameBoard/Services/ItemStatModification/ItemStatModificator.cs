@@ -33,13 +33,16 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemStatModification
             item.ItemStats.Stats[itemStat].ItemValues.Stats[(int)targetComponent] += value;
         }
 
+        /// <summary>
+        /// Despite being called Add, operation is multiplication, so you need to pass 0.5 to clear 2
+        /// </summary>
         public void AddStatPercentilesValue(
             float value,
             Item item, 
             ItemStatType itemStat,
             StatSet.StatSetComponent targetComponent = StatSet.StatSetComponent.PersistantBonus)
         {
-            item.ItemStats.Stats[itemStat].ItemPercentiles.Stats[(int)targetComponent] += value;
+            item.ItemStats.Stats[itemStat].ItemPercentiles.Stats[(int)targetComponent] *= value;
         }
     }
 }

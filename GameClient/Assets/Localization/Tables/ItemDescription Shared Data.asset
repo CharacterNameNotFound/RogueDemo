@@ -223,6 +223,18 @@ MonoBehaviour:
     m_Key: target_opponent_items_all
     m_Metadata:
       m_Items: []
+  - m_Id: 23067771894173696
+    m_Key: haste_item_status_effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23067771931922432
+    m_Key: slow_item_status_effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23077467392774144
+    m_Key: item_status_effects
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

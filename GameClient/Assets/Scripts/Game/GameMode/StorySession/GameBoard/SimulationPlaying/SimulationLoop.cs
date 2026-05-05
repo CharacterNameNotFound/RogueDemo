@@ -2,9 +2,11 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.StatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Triggers;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Builders;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Data;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.TriggerHandling;
 using UnityEngine;
 
@@ -24,6 +26,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
         private IWinDecisionMaker _winDecisionMaker;
         private ITriggerProcessor _triggerProcessor;
         private IBattleCacheBuilder _battleCacheBuilder;
+        private IItemStatusEffectManager _statusEffectManager;
 
 
         // index is index of first item entry in array (both view and model)
@@ -37,7 +40,8 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
             ISimulationViewUpdater simulationViewUpdater, 
             IWinDecisionMaker winDecisionMaker, 
             ITriggerProcessor triggerProcessor, 
-            IBattleCacheBuilder battleCacheBuilder)
+            IBattleCacheBuilder battleCacheBuilder, 
+            IItemStatusEffectManager statusEffectManager)
         {
             _gameBoardModelHolder = gameBoardModelHolder;
             _simulationModelUpdater = simulationModelUpdater;
@@ -45,6 +49,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
             _winDecisionMaker = winDecisionMaker;
             _triggerProcessor = triggerProcessor;
             _battleCacheBuilder = battleCacheBuilder;
+            _statusEffectManager = statusEffectManager;
         }
 
 
@@ -84,6 +89,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
         {
             _battleCache = null;
             _triggerProcessor.SetCache(null);
+            // reset temporary stats
             
         }
 
@@ -108,6 +114,9 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
                 _simulationModelUpdater.ProgressCharge(encounterItemCache, triggerBuffer, Time.deltaTime);
                     
                 _simulationViewUpdater.RenderChargeValues(playerItemCache, encounterItemCache);
+                
+                _statusEffectManager.Update(playerItemCache, Time.deltaTime);
+                _statusEffectManager.Update(encounterItemCache, Time.deltaTime);
                 
                 _triggerProcessor.Process(triggerBuffer, cancellationToken);
 

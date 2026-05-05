@@ -4,6 +4,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandlin
 {
     public interface IEffectorHandlersRegistry
     {
+        /// <param name="key"> Effector type </param>
         public bool Get(Type key, out IEffectorHandler result);
     }
 }

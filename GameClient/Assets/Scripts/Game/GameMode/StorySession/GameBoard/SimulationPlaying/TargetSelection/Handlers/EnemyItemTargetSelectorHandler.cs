@@ -26,7 +26,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.TargetSelection
         }
 
         // ToDo: optimize...
-        public int[] GetTargetIndex(TargetSelector targetSelector, int index, int owner, BattleCache battleCache)
+        public (int[] itemIds, int targetHero) GetTargetIndex(TargetSelector targetSelector, int index, int owner, BattleCache battleCache)
         {
             int targetId = TargetCalculator.GetTargetId(owner, 1);
 
@@ -47,7 +47,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.TargetSelection
 
             count = Math.Min(count, availableTargets.Count);
 
-            return availableTargets.Take(count).ToArray();
+            return (availableTargets.Take(count).ToArray(), targetId);
         }
     }
 }

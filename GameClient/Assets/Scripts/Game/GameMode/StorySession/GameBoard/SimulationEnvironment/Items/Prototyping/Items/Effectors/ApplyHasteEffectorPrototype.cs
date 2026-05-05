@@ -4,14 +4,14 @@ using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototypi
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototyping.Items.Effectors
 {
-    public class HasteEffectorPrototype : EffectorPrototype
+    public class ApplyHasteEffectorPrototype : EffectorPrototype
     {
         public TargetSelectorPrototype TargetSelectorPrototypes;
         public StatProviderPrototype HasteDurationProvider;
         
         public override Effector GetEffector()
         {
-            return new HasteEffector(TargetSelectorPrototypes.GetTargetSelector(), HasteDurationProvider.GetStatProvider(), false); 
+            return new ApplyHasteEffector(TargetSelectorPrototypes.GetTargetSelector(), HasteDurationProvider.GetStatProvider(), false); 
         }
     }
 }

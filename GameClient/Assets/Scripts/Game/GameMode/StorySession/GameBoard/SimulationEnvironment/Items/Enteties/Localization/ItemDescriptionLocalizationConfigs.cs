@@ -30,6 +30,11 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
         public LocalizedLineKey TargetOpponentItems = new("target_opponent_items", TranslationCategory.ItemDescription);
         public LocalizedLineKey TargetOpponentItemsAll = new("target_opponent_items_all", TranslationCategory.ItemDescription);
         
+        // status effects
+        public LocalizedLineKey HasteItemStatusEffect = new("haste_item_status_effect", TranslationCategory.ItemDescription);
+        public LocalizedLineKey SlowItemStatusEffect = new("slow_item_status_effect", TranslationCategory.ItemDescription);
+        
+        
         
     }
 }

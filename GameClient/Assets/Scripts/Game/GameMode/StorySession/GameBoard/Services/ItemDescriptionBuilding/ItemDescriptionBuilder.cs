@@ -6,6 +6,7 @@ using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Localization;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.Tags;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.StatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 using GameWideSystems.LocalizationWrapper;
@@ -63,6 +64,7 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
             itemDescription.AppendLine($"{temp}:");
             AppendTags(item, itemDescription);
 
+            AppendStatusEffects(item, itemDescription);
             
             return itemDescription.ToString();
         }
@@ -116,6 +118,32 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
             }
 
             itemDescription.Remove(itemDescription.Length - 1, 1);
+            itemDescription.Append($"</margin>");
+
+        }
+
+        private void AppendStatusEffects(Item item, StringBuilder itemDescription)
+        {
+            if (item.StatusEffects.Count == 0)
+            {
+                return;
+            }
+
+            itemDescription.AppendLine();
+            itemDescription.AppendLine(_localizationManager.GetLocalized(_descriptionBuilderConfigs.ItemStatusEffectsKey));
+            
+            itemDescription.Append($"<margin-left={_itemLocalizationConfigs.MarginSize}>");
+
+            foreach (IItemStatusEffect statusEffect in item.StatusEffects.Values)
+            {
+                statusEffect.AppendDescription(
+                    1, 
+                    item, 
+                    itemDescription, 
+                    _localizationManager,
+                    _itemLocalizationConfigs);
+            }
+            
             itemDescription.Append($"</margin>");
 
         }

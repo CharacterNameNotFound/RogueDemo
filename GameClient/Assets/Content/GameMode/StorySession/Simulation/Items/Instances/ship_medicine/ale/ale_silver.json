@@ -41,7 +41,7 @@
               "IsCritAvailable": true
             },
             {
-              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.HasteEffector, Game.GameMode.StorySession",
+              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.ApplyHasteEffector, Game.GameMode.StorySession",
               "TargetSelector": {
                 "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.TargetSelectors.OwnerItemTargetSelector, Game.GameMode.StorySession",
                 "TargetCount": {
@@ -317,5 +317,8 @@
     "CurrentCharge": 0.0,
     "IsCharged": false
   },
-  "IsNonDeck": false
+  "IsNonDeck": false,
+  "StatusEffects": {
+    "$type": "System.Collections.Generic.Dictionary`2[[System.Type, mscorlib],[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.StatusEffects.IItemStatusEffect, Game.GameMode.StorySession]], mscorlib"
+  }
 }

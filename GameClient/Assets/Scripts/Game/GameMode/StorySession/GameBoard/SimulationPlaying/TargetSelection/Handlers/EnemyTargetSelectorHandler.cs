@@ -10,11 +10,9 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.TargetSelection
     {
         public Type AutoDictionaryKey => typeof(EnemyTargetSelector);
         
-        public int[] GetTargetIndex(TargetSelector targetSelector, int index, int owner, BattleCache battleCache)
+        public (int[] itemIds, int targetHero) GetTargetIndex(TargetSelector targetSelector, int index, int owner, BattleCache battleCache)
         {
-            int targetIndex = TargetCalculator.GetTargetId(owner, 1);
-            
-            return new []{targetIndex};
+            return (Array.Empty<int>(), TargetCalculator.GetTargetId(owner, 1));
         }
         
     }

@@ -4,14 +4,14 @@ using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototypi
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototyping.Items.Effectors
 {
-    public class SlowEffectorPrototype : EffectorPrototype
+    public class ApplySlowEffectorPrototype : EffectorPrototype
     {
         public TargetSelectorPrototype TargetSelectorPrototypes;
         public StatProviderPrototype SlowDurationProvider;
         
         public override Effector GetEffector()
         {
-            return new SlowEffector(TargetSelectorPrototypes.GetTargetSelector(), SlowDurationProvider.GetStatProvider(), false); 
+            return new ApplySlowEffector(TargetSelectorPrototypes.GetTargetSelector(), SlowDurationProvider.GetStatProvider(), false); 
         }
     }
 }

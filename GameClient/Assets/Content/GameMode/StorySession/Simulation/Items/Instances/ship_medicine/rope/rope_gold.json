@@ -27,7 +27,7 @@
           "$type": "System.Collections.Generic.List`1[[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure.Effector, Game.GameMode.StorySession]], mscorlib",
           "$values": [
             {
-              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.SlowEffector, Game.GameMode.StorySession",
+              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.ApplySlowEffector, Game.GameMode.StorySession",
               "TargetSelector": {
                 "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.TargetSelectors.EnemyItemTargetSelector, Game.GameMode.StorySession",
                 "TargetCount": {
@@ -233,5 +233,8 @@
     "CurrentCharge": 0.0,
     "IsCharged": false
   },
-  "IsNonDeck": false
+  "IsNonDeck": false,
+  "StatusEffects": {
+    "$type": "System.Collections.Generic.Dictionary`2[[System.Type, mscorlib],[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.StatusEffects.IItemStatusEffect, Game.GameMode.StorySession]], mscorlib"
+  }
 }

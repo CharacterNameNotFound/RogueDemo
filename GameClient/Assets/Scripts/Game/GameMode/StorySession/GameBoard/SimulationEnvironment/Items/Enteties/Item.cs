@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.Tags;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.StatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties
@@ -20,12 +23,18 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
         public List<Trigger> Triggers;
         public ItemStatSet ItemStats;
 
+        // used for scripting
         public bool IsNonDeck;
+        
+        //this is overkill, but let it be
+        public Dictionary<Type, IItemStatusEffect> StatusEffects;
+        
         
         public Item()
         {
             Triggers = new();
             ItemStats = new();
+            StatusEffects = new();
         }
         
         private Item(List<Trigger> triggers)
@@ -35,14 +44,8 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
 
         public Item GetCopy()
         {
-            List<Trigger> triggers = new();
-
-            foreach (Trigger trigger in Triggers)
-            {
-                triggers.Add(trigger.GetCopy());
-            }
-            
-            Item item = new Item(triggers);
+            // ToDo: clean-up
+            Item item = new Item(Triggers.Select(x => x.GetCopy()).ToList());
 
             item.ItemId = ItemId;
             item.ItemSetId = ItemSetId;
@@ -57,6 +60,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
             item.ItemStats = ItemStats.GetCopy();
 
             item.IsNonDeck = IsNonDeck;
+            item.StatusEffects = StatusEffects.Values.Select(x => x.GetCopy()).ToDictionary(x=> x.GetType());
 
             return item;
         }

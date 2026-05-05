@@ -17,12 +17,15 @@ using Game.GameMode.StorySession.GameBoard.SimulationPlaying;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Builders;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandling;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandling.Handlers;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffects;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffects.StatusEffectAppliers;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.StatProviding;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.StatProviding.Handlers;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.TargetSelection;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.TargetSelection.Handlers;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.TriggerHandling;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.TriggerHandling.Handlers;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Utils.Crit;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.Services.SaveManagement;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
@@ -183,13 +186,15 @@ namespace Structure
             Container.Bind<ISimulationModelUpdater>().To<SimulationModelUpdater>().AsSingle();
             Container.Bind<IWinDecisionMaker>().To<WinDecisionMaker>().AsSingle();
             Container.Bind<IBattleCacheBuilder>().To<BattleCacheBuilder>().AsSingle();
+            Container.Bind<ICriticalApplier>().To<CriticalApplier>().AsSingle();
 
             InstallTriggerHandlers();
             InstallEffectorHandlers();
             InstallStatProviding();
             InstallTargetSelector();
+            InstallItemStatusEffects();
         }
-        
+
 
         private void InstallTriggerHandlers()
         {
@@ -203,6 +208,8 @@ namespace Structure
             Container.Bind<IEffectorHandlersRegistry>().To<EffectorHandlersRegistry>().AsSingle();
             
             Container.Bind<IEffectorHandler>().To<DealDamageEffectorHandler>().AsCached();
+            Container.Bind<IEffectorHandler>().To<ApplyHasteEffectorHandler>().AsCached();
+            Container.Bind<IEffectorHandler>().To<ApplySlowEffectorHandler>().AsCached();
         }
 
         private void InstallStatProviding()
@@ -210,6 +217,15 @@ namespace Structure
             Container.Bind<IStatProviderHandlersRegistry>().To<StatProviderHandlersRegistry>().AsSingle();
             
             Container.Bind<IStatProvidingHandler>().To<UniversalItemStatProviderHandler>().AsCached();
+        }
+        
+        private void InstallItemStatusEffects()
+        {
+            Container.Bind<IItemStatusEffectManager>().To<ItemStatusEffectManager>().AsSingle();
+            Container.Bind<IItemStatusEffectApplierRegistry>().To<ItemStatusEffectApplierRegistry>().AsSingle();
+            
+            Container.Bind<IItemStatusEffectApplier>().To<HasteItemStatusEffectApplier>().AsSingle();
+            Container.Bind<IItemStatusEffectApplier>().To<SlowItemStatusEffectApplier>().AsSingle();
         }
 
         private void InstallTargetSelector()

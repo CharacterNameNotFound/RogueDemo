@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a1ccc63f5f44739cb07110b75c8b13, type: 3}
   m_Name: ItemContainerPoolConfigs
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Services.ItemContainers.ItemConfigurationConfig
-  <SmallItemsCount>k__BackingField: 36
-  <MediumItemsCount>k__BackingField: 18
-  <LargeItemsCount>k__BackingField: 12
+  <SmallItemsCount>k__BackingField: 72
+  <MediumItemsCount>k__BackingField: 36
+  <LargeItemsCount>k__BackingField: 24
   <SmallItemContainerRef>k__BackingField:
     m_AssetGUID: c0809f33dc228d743bd46fdbcf6e4596
     m_SubObjectName: 

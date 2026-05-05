@@ -219,7 +219,8 @@ MonoBehaviour:
   - m_Id: 21110707923914760
     m_Localized: to all owned items
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 282318976177406045
   - m_Id: 21110707923914761
     m_Localized: to opponent
     m_Metadata:
@@ -235,6 +236,20 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 21129538134282240
     m_Localized: Critical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23067771894173696
+    m_Localized: Hasted ({duration} sec)
+    m_Metadata:
+      m_Items:
+      - rid: 282318976177406045
+  - m_Id: 23067771931922432
+    m_Localized: Slow ({duration} sec)
+    m_Metadata:
+      m_Items:
+      - rid: 282318976177406045
+  - m_Id: 23077467392774144
+    m_Localized: 'Status effects:'
     m_Metadata:
       m_Items: []
   references:
@@ -255,3 +270,6 @@ MonoBehaviour:
         - id: 21110707923914759
         - id: 21110707923914762
         - id: 21110707923914757
+        - id: 21110707923914760
+        - id: 23067771894173696
+        - id: 23067771931922432
