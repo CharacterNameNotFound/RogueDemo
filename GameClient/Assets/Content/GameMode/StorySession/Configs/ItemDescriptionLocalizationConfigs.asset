@@ -19,8 +19,8 @@ MonoBehaviour:
   DealDamage:
     Key: deal_x_damage
     Category: 4
-  ApplyFire:
-    Key: apply_x_fire
+  ApplyBurn:
+    Key: apply_x_burn
     Category: 4
   ApplyHaste:
     Key: apply_haste
@@ -57,4 +57,10 @@ MonoBehaviour:
     Category: 4
   TargetOpponentItemsAll:
     Key: target_opponent_items_all
+    Category: 4
+  HasteItemStatusEffect:
+    Key: haste_item_status_effect
+    Category: 4
+  SlowItemStatusEffect:
+    Key: slow_item_status_effect
     Category: 4

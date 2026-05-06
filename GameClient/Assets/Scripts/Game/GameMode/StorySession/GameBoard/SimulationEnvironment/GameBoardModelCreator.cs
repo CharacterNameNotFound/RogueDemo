@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Game.GameMode.StorySession.Data.Character;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Heroes;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Heroes.StatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Models;
 

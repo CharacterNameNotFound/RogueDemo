@@ -10,7 +10,7 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board
         {
             Encounter,
             Battle,
-            Stash
+            Stash,
         }
         
         public EncounterBoardView EncounterView;

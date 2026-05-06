@@ -1,6 +1,7 @@
 using System;
 using Game.GameMode.StorySession.GameBoard.Services.HeroStatsDrawing;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Heroes;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Models;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 using UnityEngine;

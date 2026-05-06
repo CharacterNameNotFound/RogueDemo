@@ -1,5 +1,6 @@
 using System;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Heroes;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Models;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 using Game.GameMode.StorySession.GameBoard.View;

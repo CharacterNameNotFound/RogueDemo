@@ -159,11 +159,12 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
                     gameBoardModel.StoryStats.Step = 0;
                     gameBoardModel.StoryStats.Cycle++;
                     
+                    _baseStoryCycleGenerator.AppendDay(_baseStoryContext, _baseStoryConfigs, _gameBoardModelHolder.GameBoardModel);
+                    
                     _inputLayerControlMediator.ToggleItemMovement(false);
                     await _baseStorySaveManager.Save(_baseStoryContext, cancellationToken);
                     _inputLayerControlMediator.ToggleItemMovement(true);
                     
-                    _baseStoryCycleGenerator.AppendDay(_baseStoryContext, _baseStoryConfigs, _gameBoardModelHolder.GameBoardModel);
                 }
                 
 
@@ -222,27 +223,8 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             // build first cycle
             _baseStoryCycleGenerator.GenerateFirstDayEntry(_baseStoryContext, _baseStoryConfigs);
             
-            
-            
             // Unity managed systems
-            await InitializeUnityManagedSystems(cancellationToken);
             
-            
-            // save decks, events, bosses
-            await _baseStorySaveManager.Save(_baseStoryContext, cancellationToken);
-        }
-
-        private async UniTask ReadSaveFile(CancellationToken cancellationToken)
-        {
-            await _baseStorySaveManager.Load(_baseStoryContext, _baseStoryConfigs, cancellationToken);
-            
-            // Unity managed systems
-            await InitializeUnityManagedSystems(cancellationToken);
-            
-        }
-
-        private async UniTask InitializeUnityManagedSystems(CancellationToken cancellationToken)
-        {
             // Loading game board
             await _boardInitializationRoutine.Initialize(_baseStoryContext.CharacterData, cancellationToken);
             
@@ -262,9 +244,17 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             _sessionStatusDrawer.Initialize(_baseStoryConfigs.StoryDayLength);
             
             // view
-            
             _heroHpDrawer.UpdateHeroHpBar(HeroGroup.Player);
+            
+            // save decks, events, bosses
+            await _baseStorySaveManager.Save(_baseStoryContext, cancellationToken);
         }
+
+        private async UniTask ReadSaveFile(CancellationToken cancellationToken)
+        {
+            await _baseStorySaveManager.Load(_baseStoryContext, _baseStoryConfigs, cancellationToken);
+        }
+        
         
         
     }

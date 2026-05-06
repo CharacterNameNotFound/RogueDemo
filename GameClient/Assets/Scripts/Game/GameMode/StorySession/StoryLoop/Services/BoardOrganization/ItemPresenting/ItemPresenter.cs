@@ -61,7 +61,51 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
             _frameSprites[3] = await _itemPresenterConfigs.DiamondFrame.Load<Sprite>(cancellationToken);
             _frameSprites[4] = await _itemPresenterConfigs.LegendaryFrame.Load<Sprite>(cancellationToken);
         }
-        
+
+        public async UniTask ShowItems(ItemLineComponent itemLine, List<(int itemIndex, string itemId)> itemIds, CancellationToken cancellationToken)
+        {
+            List<ItemContainerComponent> itemContainers = new List<ItemContainerComponent>();
+
+            List<Item> items = await LoadItems(itemIds.Select(x => x.itemId), cancellationToken);
+
+            
+            foreach (Item item in items)
+            {
+                ItemContainerComponent itemContainer = await _containersManager.GetBySize(item.ItemSize, cancellationToken);
+
+                itemContainers.Add(itemContainer);
+                itemContainer.StoredItem = item;
+
+                float value = _itemStatGetter.GetStatValue(item, ItemStatType.Value);
+
+                itemContainer.SetPriceTag(value);
+
+                itemContainer.FrameRenderer.sprite = _frameSprites[(int)item.ItemRarity];
+                itemContainer.ItemRenderer.sprite = await item.ItemSpriteRuntimeKey.Load<Sprite>(cancellationToken);
+                
+                _itemRenderingFacade.UpdateCharge(itemContainer, 1);
+            }
+            
+            
+            ItemContainerComponent[] itemLineConfiguration = new ItemContainerComponent[12];
+
+            for (int i = 0; i < itemIds.Count; i++)
+            {
+                int index = itemIds[i].itemIndex;
+                
+                itemContainers[i].StoredItem = items[i];
+                itemContainers[i].transform.SetParent(itemLine.transform);
+                itemContainers[i].gameObject.SetActive(true);
+                
+                for (int j = 0; j < itemContainers[i].Size; j++)
+                {
+                    itemLineConfiguration[index + j] = itemContainers[i];
+                }
+            }
+
+            _itemLineOrganizer.Organize(itemLine, itemLineConfiguration, true);
+        }
+
         public async UniTask ShowItems(ItemLineComponent itemLine, IEnumerable<string> itemIds, CancellationToken cancellationToken)
         {
             List<ItemContainerComponent> itemContainers = new List<ItemContainerComponent>();

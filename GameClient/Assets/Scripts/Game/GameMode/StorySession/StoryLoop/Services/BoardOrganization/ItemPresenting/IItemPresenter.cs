@@ -9,6 +9,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPr
     public interface IItemPresenter
     {
         public UniTask Initialize(CancellationToken cancellationToken);
+        public UniTask ShowItems(ItemLineComponent itemLine, List<(int itemIndex, string itemId)> itemIds, CancellationToken cancellationToken);
         public UniTask ShowItems(ItemLineComponent itemLine, IEnumerable<string> itemIds, CancellationToken cancellationToken);
         public void UpdateItemRarityFrame(ItemContainerComponent itemContainerComponent);
         public void UpdateItemRarityFrame(ItemContainerComponent itemContainerComponent, ItemRarity rarity);

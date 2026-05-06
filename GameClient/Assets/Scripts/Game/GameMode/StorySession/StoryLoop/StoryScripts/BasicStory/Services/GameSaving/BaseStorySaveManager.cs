@@ -3,11 +3,21 @@ using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.Data.Character;
+using Game.GameMode.StorySession.GameBoard.Services.HeroStatsDrawing;
+using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
+using Game.GameMode.StorySession.GameBoard.Services.TextsDrawing;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
+using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
-using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Battles;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.PlayerStashEncounter;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection;
+using Game.GameMode.StorySession.StoryLoop.Services.InputControl;
+using Game.GameMode.StorySession.StoryLoop.Services.ItemLineSaveLoad;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
+using Game.GameMode.StorySession.StoryLoop.StoryRoutines;
 using Game.Session;
 using GameWideSystems.RNGManagement;
 using GameWideSystems.SessionManagement.Sessions;
@@ -31,7 +41,18 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
         private IItemRegistry _itemRegistry;
         private IGameBoardModelHolder _gameBoardModelHolder;
         private IGameBoardModelCreator _gameBoardModelCreator;
-        
+        private IItemLineLoader _itemLineLoader;
+        private IItemLineSaver _itemLineSaver;
+        private GameBoardInitializationRoutine _boardInitializationRoutine;
+        private IItemContainersManager _containersManager;
+        private IItemPresenter _itemPresenter;
+        private IEncounterSelector _encounterSelector;
+        private IInputLayerControlMediator _inputLayerControlMediator;
+        private IPlayerStashController _playerStashController;
+        private IEncounterPlayer _encounterPlayer;
+        private ISessionStatusDrawer _sessionStatusDrawer;
+        private IHeroesHpDrawer _heroHpDrawer;
+
         
         
         public BaseStorySaveManager(
@@ -45,7 +66,18 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
             IEncounterRegistry encounterRegistry, 
             IItemRegistry itemRegistry, 
             IGameBoardModelHolder gameBoardModelHolder, 
-            IGameBoardModelCreator gameBoardModelCreator)
+            IGameBoardModelCreator gameBoardModelCreator, 
+            IItemLineLoader itemLineLoader, 
+            IItemLineSaver itemLineSaver, 
+            GameBoardInitializationRoutine boardInitializationRoutine, 
+            IItemContainersManager containersManager, 
+            IItemPresenter itemPresenter, 
+            IEncounterSelector encounterSelector, 
+            IInputLayerControlMediator inputLayerControlMediator, 
+            ISessionStatusDrawer sessionStatusDrawer, 
+            IEncounterPlayer encounterPlayer, 
+            IPlayerStashController playerStashController, 
+            IHeroesHpDrawer heroHpDrawer)
         {
             _jsonSerializerSettings = jsonSerializerSettings;
             _genericPathProvider = genericPathProvider;
@@ -58,6 +90,17 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
             _itemRegistry = itemRegistry;
             _gameBoardModelHolder = gameBoardModelHolder;
             _gameBoardModelCreator = gameBoardModelCreator;
+            _itemLineLoader = itemLineLoader;
+            _itemLineSaver = itemLineSaver;
+            _boardInitializationRoutine = boardInitializationRoutine;
+            _containersManager = containersManager;
+            _itemPresenter = itemPresenter;
+            _encounterSelector = encounterSelector;
+            _inputLayerControlMediator = inputLayerControlMediator;
+            _sessionStatusDrawer = sessionStatusDrawer;
+            _encounterPlayer = encounterPlayer;
+            _playerStashController = playerStashController;
+            _heroHpDrawer = heroHpDrawer;
         }
         
 
@@ -69,8 +112,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
             saveFile.StoryEncounters = baseStoryContext.StoryEncounters;
             saveFile.Bosses = baseStoryContext.Bosses.Select(item => item.EncounterId).ToArray();
             saveFile.CharacterId = baseStoryContext.CharacterData.CharacterId;
-            saveFile.Cycle = _gameBoardModelHolder.GameBoardModel.StoryStats.Cycle;
-            saveFile.Step = _gameBoardModelHolder.GameBoardModel.StoryStats.Step;
+            saveFile.StoryStats = _gameBoardModelHolder.GameBoardModel.StoryStats;
             
             
             // encounters
@@ -80,6 +122,14 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
             // items
             saveFile.ItemDeckOrganizerState = _itemDeckOrganizer.GetState(_jsonSerializerSettings);
             saveFile.ItemRegistryIds = _itemRegistry.GetAllRegisteredIds();
+            
+            
+            // Player
+            ItemLineSaveData itemLineSaveData = _itemLineSaver.GetSaveData();
+            saveFile.PlayerItemsData = itemLineSaveData;
+            saveFile.StoryStats = _gameBoardModelHolder.GameBoardModel.StoryStats;
+            saveFile.PlayerHeroStats = _gameBoardModelHolder.GameBoardModel.PlayerHeroStats;
+            saveFile.PlayerStats = _gameBoardModelHolder.GameBoardModel.PlayerStats;
             
 
             string path = _genericPathProvider.InProfileSavesPath(_sessionHolder.Session.InternalId);
@@ -107,10 +157,11 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
             // base story context
             baseStoryContext.CharacterData = await saveFile.CharacterId.Load<CharacterData>(cancellationToken);
             
-            //////////
+            // Loading game board
+            await _boardInitializationRoutine.Initialize(baseStoryContext.CharacterData, cancellationToken);
+            
             GameBoardModel gameBoardModel = _gameBoardModelCreator.CrateNew(baseStoryConfigs.GameBoardModelCreationConfigs, baseStoryContext.CharacterData);
             _gameBoardModelHolder.Set(gameBoardModel);
-            //////////
             
             baseStoryContext.Bosses = (await saveFile.Bosses.Select(item => _encounterLoader.LoadById(item, cancellationToken)))
                 .Select(item => item.GetValue())
@@ -118,8 +169,9 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
                 .ToArray();
             
             baseStoryContext.StoryEncounters = saveFile.StoryEncounters;
-            _gameBoardModelHolder.GameBoardModel.StoryStats.Cycle = saveFile.Cycle;
-            _gameBoardModelHolder.GameBoardModel.StoryStats.Step = saveFile.Step;
+            gameBoardModel.StoryStats = saveFile.StoryStats;
+            gameBoardModel.PlayerHeroStats = saveFile.PlayerHeroStats;
+            gameBoardModel.PlayerStats = saveFile.PlayerStats;
             
 
             // encounters
@@ -129,6 +181,34 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
             // items
             _itemDeckOrganizer.RestoreState(saveFile.ItemDeckOrganizerState, _jsonSerializerSettings, _rngManager.GetRandomProvider(RNGGroup.CardShuffler));
             await _itemRegistry.InitializeWithIds(saveFile.ItemRegistryIds, cancellationToken);
+            
+            
+            // generate object pools
+            await _containersManager.Initialize(cancellationToken);
+            await _itemPresenter.Initialize(cancellationToken);
+            
+            // generating encounter selection related
+            await _encounterSelector.Initialize(cancellationToken);
+
+            
+            // player
+            await _itemLineLoader.Load(saveFile.PlayerItemsData, cancellationToken);
+            
+            
+            
+            // Input related
+            await _inputLayerControlMediator.Initialize(cancellationToken);
+            await _playerStashController.Initialize(cancellationToken);
+            
+            // resetting systems
+            _encounterPlayer.Initialize();
+            _sessionStatusDrawer.Initialize(baseStoryConfigs.StoryDayLength);
+            
+            // view
+            _heroHpDrawer.UpdateHeroHpBar(HeroGroup.Player);
+            
+            
+            
         }
         
     }

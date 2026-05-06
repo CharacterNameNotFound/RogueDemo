@@ -52,7 +52,7 @@ namespace Game.GameMode.StorySession.Controller
             catch (Exception e)
             {
                 _logger.Error("Failed to load game");
-                _logger.Error(e.StackTrace);
+                _logger.Error($"{e.Message}\n{e.StackTrace}");
                 await _loadingScreenManager.Show(Application.exitCancellationToken);
                 await _uiManager.CloseAllRequest().Play(Application.exitCancellationToken);
                 _gameStateManager.CloseCurrentGameState(true, cancellationToken: Application.exitCancellationToken).Forget();

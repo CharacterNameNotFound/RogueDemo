@@ -10,6 +10,11 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Models
         public int Experience;
         public int ExperienceRequired;
 
+        public PlayerStats()
+        {
+            
+        }
+        
         public PlayerStats(int karma, int coins, int experience, int experienceRequired)
         {
             Karma = karma;

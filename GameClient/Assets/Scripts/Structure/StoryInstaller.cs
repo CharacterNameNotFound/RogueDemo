@@ -1,4 +1,3 @@
-using System;
 using Game.GameMode.StorySession.GameBoard.Services.BoardModelManipulation;
 using Game.GameMode.StorySession.GameBoard.Services.EventHandling;
 using Game.GameMode.StorySession.GameBoard.Services.HeroModification;
@@ -12,7 +11,6 @@ using Game.GameMode.StorySession.GameBoard.Services.PlayerStatusUpdating;
 using Game.GameMode.StorySession.GameBoard.Services.TextsDrawing;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Facades;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Builders;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandling;
@@ -41,6 +39,7 @@ using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Routines.Merchant;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection;
 using Game.GameMode.StorySession.StoryLoop.Services.InputControl;
+using Game.GameMode.StorySession.StoryLoop.Services.ItemLineSaveLoad;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.StoryFinalization;
 using Game.GameMode.StorySession.StoryLoop.StoryRoutines;
@@ -48,7 +47,6 @@ using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.GameSaving;
 using Game.GameMode.StorySession.Utilities.EventArguments;
-using Utils.UtilityTypes.AutoDictionaries;
 using Utils.UtilityTypes.EventProcessing;
 using Zenject;
 
@@ -78,6 +76,8 @@ namespace Structure
             Container.Bind<IItemUpgrader>().To<ItemUpgrader>().AsSingle();
             Container.Bind<IItemRemover>().To<ItemRemover>().AsSingle();
             Container.Bind<IItemTransactionOperationController>().To<ItemTransactionOperationController>().AsSingle();
+            Container.Bind<IItemLineSaver>().To<ItemLineSaver>().AsSingle();
+            Container.Bind<IItemLineLoader>().To<ItemLineLoader>().AsSingle();
             
             // views and model
             Container.Bind<GameBoardHolder>().To<GameBoardHolder>().AsSingle();
