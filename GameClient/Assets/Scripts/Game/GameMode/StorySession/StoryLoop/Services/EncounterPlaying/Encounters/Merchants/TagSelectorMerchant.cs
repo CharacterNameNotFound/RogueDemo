@@ -9,7 +9,6 @@ using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.ItemRaritySelection;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Utilities;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
-using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using UnityEngine;
 using Zenject;
 
@@ -48,28 +47,30 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
             
             if (IncludedGroups == ItemSelectionGroup.Deck)
             {
-                return GenerateByDeck(gameBoardModel, excludedItems, cancellationToken);
+                return await GenerateByDeck(gameBoardModel, excludedItems, cancellationToken);
             }
             
             
             throw new NotImplementedException();
         }
 
-        private HashSet<string> GenerateByDeck(GameBoardModel gameBoardModel, HashSet<string> excludedItems, CancellationToken cancellationToken)
+        private UniTask<HashSet<string>> GenerateByDeck(GameBoardModel gameBoardModel, HashSet<string> excludedItems, CancellationToken cancellationToken)
         {
             List<ItemRarity> itemRarities = _itemRaritySelector.GetRarities(ItemCount, gameBoardModel);
 
-            return PullFromCardsDeck(itemRarities, excludedItems);
+            return PullFromCardsDeck(itemRarities, excludedItems, cancellationToken);
         }
 
-        private HashSet<string> PullFromCardsDeck(List<ItemRarity> itemRarities, HashSet<string> excludedItems)
+        private async UniTask<HashSet<string>> PullFromCardsDeck(List<ItemRarity> itemRarities, HashSet<string> excludedItems, CancellationToken cancellationToken)
         {
             HashSet<string> result = new();
             
             foreach (ItemRarity rarity in itemRarities)
             {
                 // ToDo: Implement owned filter
-                string itemId = DrawOneByRarity(rarity, result, excludedItems);
+                string itemId = DrawOneByRarity(rarity, excludedItems);
+                
+                await _obtainableItemExclusionListBuilder.AppendItemExclusion(itemId, excludedItems, cancellationToken);
                 
                 result.Add(itemId);
             }
@@ -77,7 +78,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
             return result;
         }
 
-        private string DrawOneByRarity(ItemRarity rarity, HashSet<string> drawnList, HashSet<string> excludedItems)
+        private string DrawOneByRarity(ItemRarity rarity, HashSet<string> excludedItems)
         {
             int sanity = 10000;
             
@@ -85,7 +86,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
             {
                 _itemDeckOrganizer.Draw(rarity, false, out string itemId);
 
-                if (drawnList.Contains(itemId) || excludedItems.Contains(itemId))
+                if (excludedItems.Contains(itemId))
                 {
                     _itemDeckOrganizer.Return(rarity, itemId);
                     continue;
@@ -110,7 +111,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
 
             int rarityInt = (int)rarity + 1;
             
-            return DrawOneByRarity((ItemRarity) rarityInt, drawnList, excludedItems);
+            return DrawOneByRarity((ItemRarity) rarityInt, excludedItems);
         }
         
 

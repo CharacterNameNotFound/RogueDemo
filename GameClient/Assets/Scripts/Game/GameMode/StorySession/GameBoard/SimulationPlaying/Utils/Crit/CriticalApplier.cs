@@ -20,7 +20,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.Utils.Crit
             _configsProvider = configsProvider;
         }
 
-        public float TryApply(float value, int index, int owner, BattleCache battleCache)
+        public float TryApply(float value, int index, int owner, BattleCache battleCache, out bool isCrit)
         {
             Item item = CacheShortcuts.GetItem(index, owner, battleCache);
 
@@ -30,6 +30,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.Utils.Crit
 
             if (critChance == 0)
             {
+                isCrit = false;
                 return value;
             }
             
@@ -39,6 +40,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.Utils.Crit
             
             if (roll > critChance)
             {
+                isCrit = false;
                 return value;
             }
 
@@ -47,6 +49,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.Utils.Crit
 
             float mult = _configsProvider.BasicCripMultiplier + additionalMult / 100f;
 
+            isCrit = true;
             return value * mult;
         }
         

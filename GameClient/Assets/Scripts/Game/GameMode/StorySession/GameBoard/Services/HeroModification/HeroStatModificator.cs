@@ -21,7 +21,7 @@ namespace Game.GameMode.StorySession.GameBoard.Services.HeroModification
 
         public void AddShield(float value, HeroGroup heroGroup)
         {
-            HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
+            HeroStats heroStats = GameBoardModelShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
             
             value = Mathf.RoundToInt(value);
 
@@ -32,7 +32,7 @@ namespace Game.GameMode.StorySession.GameBoard.Services.HeroModification
 
         public void DealDamage(float value, HeroGroup heroGroup)
         {
-            HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
+            HeroStats heroStats = GameBoardModelShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
 
             value = Mathf.RoundToInt(value);
             
@@ -53,7 +53,7 @@ namespace Game.GameMode.StorySession.GameBoard.Services.HeroModification
         {
             value = Mathf.RoundToInt(value);
             
-            HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
+            HeroStats heroStats = GameBoardModelShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
             
             UpdateHpInternal(value, heroStats, heroGroup);
         }
@@ -62,14 +62,14 @@ namespace Game.GameMode.StorySession.GameBoard.Services.HeroModification
         {
             value = Mathf.RoundToInt(value);
             
-            HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
+            HeroStats heroStats = GameBoardModelShortcuts.HeroGroupToHeroStats(heroGroup, _gameBoardModelHolder.GameBoardModel);
 
             UpdateHpInternal(value, heroStats, heroGroup);
         }
 
         public void PostBattleReset()
         {
-            HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(HeroGroup.Player, _gameBoardModelHolder.GameBoardModel);
+            HeroStats heroStats = GameBoardModelShortcuts.HeroGroupToHeroStats(HeroGroup.Player, _gameBoardModelHolder.GameBoardModel);
 
             heroStats.Shield = 0;
             heroStats.Hp = heroStats.MaxHp;

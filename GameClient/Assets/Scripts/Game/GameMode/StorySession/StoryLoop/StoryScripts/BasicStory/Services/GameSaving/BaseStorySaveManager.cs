@@ -8,6 +8,7 @@ using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.Services.TextsDrawing;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
+using Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
@@ -52,6 +53,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
         private IEncounterPlayer _encounterPlayer;
         private ISessionStatusDrawer _sessionStatusDrawer;
         private IHeroesHpDrawer _heroHpDrawer;
+        private IStoryVisualEffectManager _storyVisualEffectManager;
 
         
         
@@ -77,7 +79,8 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
             ISessionStatusDrawer sessionStatusDrawer, 
             IEncounterPlayer encounterPlayer, 
             IPlayerStashController playerStashController, 
-            IHeroesHpDrawer heroHpDrawer)
+            IHeroesHpDrawer heroHpDrawer, 
+            IStoryVisualEffectManager storyVisualEffectManager)
         {
             _jsonSerializerSettings = jsonSerializerSettings;
             _genericPathProvider = genericPathProvider;
@@ -101,6 +104,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
             _encounterPlayer = encounterPlayer;
             _playerStashController = playerStashController;
             _heroHpDrawer = heroHpDrawer;
+            _storyVisualEffectManager = storyVisualEffectManager;
         }
         
 
@@ -207,8 +211,9 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.
             // view
             _heroHpDrawer.UpdateHeroHpBar(HeroGroup.Player);
             
-            
-            
+            // vfx
+            await _storyVisualEffectManager.Initialize(cancellationToken);
+
         }
         
     }

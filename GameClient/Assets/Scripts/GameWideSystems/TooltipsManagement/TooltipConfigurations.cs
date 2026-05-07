@@ -1,3 +1,4 @@
+using GameWideSystems.TooltipsManagement;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Utils.UtilityTypes.AssetReferencing;

@@ -1,7 +1,6 @@
 using UnityEngine.AddressableAssets;
-using Utils.UtilityTypes.AssetReferencing;
 
-namespace Game.UI.Tooltips
+namespace GameWideSystems.TooltipsManagement
 {
     public interface ITooltipConfigurationProvider
     {

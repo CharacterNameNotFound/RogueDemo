@@ -1,0 +1,20 @@
+using System;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
+using Game.GameMode.StorySession.GameBoard.View.Board;
+using Game.GameMode.StorySession.GameBoard.View.Board.Views;
+
+namespace Game.GameMode.StorySession.GameBoard.View.Utils
+{
+    public static class GameBoardComponentShortcuts
+    {
+        public static ItemLineComponent HeroGroupToItemLineComponent(HeroGroup heroGroup, GameBoardComponent gameBoard)
+        {
+            return heroGroup switch
+            {
+                HeroGroup.Player => gameBoard.ItemLineViewController.PlayerItemLine,
+                HeroGroup.Encounter => gameBoard.ItemLineViewController.EncounterItemLine,
+                _ => throw new ArgumentOutOfRangeException(nameof(heroGroup), heroGroup, null)
+            };
+        }
+    }
+}

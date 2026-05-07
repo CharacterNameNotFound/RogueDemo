@@ -10,6 +10,9 @@ using Game.GameMode.StorySession.GameBoard.SimulationPlaying.StatProviding;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.TargetSelection;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Utils;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Utils.Crit;
+using Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects;
+using Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.Utils;
+using GameWideSystems.LocalizationWrapper;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandling.Handlers
 {
@@ -21,17 +24,26 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandlin
         private IStatProviderHandlersRegistry _statProviderHandlersRegistry;
         private ITargetSelectionHandlersRegistry _targetSelectionHandlersRegistry;
         private ICriticalApplier _criticalApplier;
+        private EffectorFlyingTextConfigs _effectorFlyingTextConfigs;
+        private ILocalizationManager _localizationManager;
+        private IPlayFlyingTextShortcuts _flyingTextShortcuts;
 
         public DealDamageEffectorHandler(
             IHeroStatModificator heroStatModificator, 
             IStatProviderHandlersRegistry statProviderHandlersRegistry, 
             ITargetSelectionHandlersRegistry targetSelectionHandlersRegistry, 
-            ICriticalApplier criticalApplier)
+            ICriticalApplier criticalApplier, 
+            EffectorFlyingTextConfigs effectorFlyingTextConfigs, 
+            ILocalizationManager localizationManager, 
+            IPlayFlyingTextShortcuts flyingTextShortcuts)
         {
             _heroStatModificator = heroStatModificator;
             _statProviderHandlersRegistry = statProviderHandlersRegistry;
             _targetSelectionHandlersRegistry = targetSelectionHandlersRegistry;
             _criticalApplier = criticalApplier;
+            _effectorFlyingTextConfigs = effectorFlyingTextConfigs;
+            _localizationManager = localizationManager;
+            _flyingTextShortcuts = flyingTextShortcuts;
         }
         
         public UniTask Handle(Effector effector, int index, int owner, BattleCache battleCache, CancellationToken cancellationToken)
@@ -48,12 +60,20 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandlin
             (int[] targetIndex, int targetHero) = handler.GetTargetIndex(dealDamageEffector.TargetSelector, index, owner, battleCache);
             
             
-            value = _criticalApplier.TryApply(value, index, owner, battleCache);
-            
+            value = _criticalApplier.TryApply(value, index, owner, battleCache, out bool isCrit);
 
             HeroGroup indexToHeroGroup = TargetCalculator.IndexToHeroGroup(targetHero);
             _heroStatModificator.DealDamage(value, indexToHeroGroup);
-            
+
+            string text = _localizationManager.GetLocalized(_effectorFlyingTextConfigs.DealDamage, value);
+
+            _flyingTextShortcuts.PlayFlyingTextAtItemPosition(
+                index,
+                owner,
+                _effectorFlyingTextConfigs.FlightTrajectory,
+                text,
+                isCrit,
+                cancellationToken).Forget();
             
             return UniTask.CompletedTask;
         }

@@ -9,5 +9,6 @@
         ItemDescription,
         Merchants,
         BattleEncounters,
+        Battle
     }
 }

@@ -6,6 +6,7 @@ using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.Services.TextsDrawing;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
+using Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
@@ -52,6 +53,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
         private IGameBoardModelCreator _boardModelCreator;
         private IGameBoardModelHolder _gameBoardModelHolder;
         private IHeroesHpDrawer _heroHpDrawer;
+        private IStoryVisualEffectManager _storyVisualEffectManager;
         
         private BaseStoryContext _baseStoryContext;
 
@@ -78,7 +80,8 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             ISessionStatusDrawer sessionStatusDrawer,
             IGameBoardModelCreator boardModelCreator,
             IGameBoardModelHolder gameBoardModelHolder,
-            IHeroesHpDrawer heroHpDrawer
+            IHeroesHpDrawer heroHpDrawer,
+            IStoryVisualEffectManager storyVisualEffectManager
             )
         {
             _loadingScreenManager = loadingScreenManager;
@@ -102,6 +105,7 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             _boardModelCreator = boardModelCreator;
             _gameBoardModelHolder = gameBoardModelHolder;
             _heroHpDrawer = heroHpDrawer;
+            _storyVisualEffectManager = storyVisualEffectManager;
         }
 
         public async UniTask Initialize(StoryInitializationData storyInitializationData, CancellationToken cancellationToken)
@@ -245,6 +249,10 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             
             // view
             _heroHpDrawer.UpdateHeroHpBar(HeroGroup.Player);
+            
+            //vfx
+            await _storyVisualEffectManager.Initialize(cancellationToken);
+            
             
             // save decks, events, bosses
             await _baseStorySaveManager.Save(_baseStoryContext, cancellationToken);

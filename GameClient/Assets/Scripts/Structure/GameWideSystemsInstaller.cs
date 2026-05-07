@@ -6,6 +6,8 @@ using GameWideSystems.GameSceneManager.LoadingScreen;
 using GameWideSystems.GameStateManagement;
 using GameWideSystems.LocalizationWrapper;
 using GameWideSystems.RNGManagement;
+using GameWideSystems.ScriptedVisualEffectManagement;
+using GameWideSystems.ScriptedVisualEffectManagement.FlyingTextScriptedVisualEffects;
 using GameWideSystems.SessionManagement.Sessions;
 using GameWideSystems.UIManagement;
 using UnityEngine;
@@ -35,7 +37,9 @@ namespace Structure.GameInstalling
             InstallGenericHosts();
             InstallCameraManager();
             InstallRandom();
+            InstallScriptedVisualEffects();
         }
+
 
         private void InstallGenericHosts()
         {
@@ -89,6 +93,12 @@ namespace Structure.GameInstalling
         private void InstallRandom()
         {
             Container.Bind<IRNGManager>().To<RNGManager>().AsSingle();
+        }
+        
+        private void InstallScriptedVisualEffects()
+        {
+            Container.Bind<IScriptedVisualEffectManager>().To<ScriptedVisualEffectManager>().AsSingle();
+            Container.Bind<FlyingTextScriptedVisualEffectRegisterer>().To<FlyingTextScriptedVisualEffectRegisterer>().AsSingle();
         }
         
     }

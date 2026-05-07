@@ -27,6 +27,8 @@ using Game.GameMode.StorySession.GameBoard.SimulationPlaying.TriggerHandling;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.TriggerHandling.Handlers;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Utils.Crit;
 using Game.GameMode.StorySession.GameBoard.View;
+using Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects;
+using Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.Utils;
 using Game.GameMode.StorySession.Services.SaveManagement;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
@@ -92,6 +94,8 @@ namespace Structure
             Container.Bind<IHeroStatModificator>().To<HeroStatModificator>().AsSingle();
             Container.Bind<IItemStatGetter>().To<ItemStatGetter>().AsSingle();
             Container.Bind<IItemStatModificator>().To<ItemStatModificator>().AsSingle();
+            Container.Bind<IStoryVisualEffectManager>().To<StoryVisualEffectManager>().AsSingle();
+            Container.Bind<IPlayFlyingTextShortcuts>().To<PlayFlyingTextShortcuts>().AsSingle();
             
             
             // Items and deck

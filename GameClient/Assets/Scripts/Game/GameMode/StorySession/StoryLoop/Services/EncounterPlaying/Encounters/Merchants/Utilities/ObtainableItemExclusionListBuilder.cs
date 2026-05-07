@@ -33,9 +33,9 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
             return result;
         }
 
-        public UniTask AppendItemExclusion(string item, HashSet<string> result, CancellationToken cancellationToken)
+        public UniTask AppendItemExclusion(string item, HashSet<string> container, CancellationToken cancellationToken)
         {
-            return _itemIdCollector.AppendItemHierarchy(item, result, cancellationToken);
+            return _itemIdCollector.AppendItemHierarchy(item, container, cancellationToken);
         }
 
         private async UniTask CollectForBoard(Item[] boardItems, HashSet<string> result, CancellationToken cancellationToken)

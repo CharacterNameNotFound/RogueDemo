@@ -8,6 +8,6 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
     public interface IObtainableItemExclusionListBuilder
     {
         public UniTask<HashSet<string>> BuildIgnoredListIds(GameBoardModel gameBoardModel, CancellationToken cancellationToken);
-        public UniTask AppendItemExclusion(string item, HashSet<string> result, CancellationToken cancellationToken);
+        public UniTask AppendItemExclusion(string item, HashSet<string> container, CancellationToken cancellationToken);
     }
 }

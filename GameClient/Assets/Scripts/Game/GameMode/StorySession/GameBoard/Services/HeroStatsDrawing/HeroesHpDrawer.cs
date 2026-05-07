@@ -34,7 +34,7 @@ namespace Game.GameMode.StorySession.GameBoard.Services.HeroStatsDrawing
                 _ => throw new ArgumentOutOfRangeException(nameof(hero), hero, null)
             };
             
-            HeroStats heroStats = GameBoardShortcuts.HeroGroupToHeroStats(hero, _gameBoardModelHolder.GameBoardModel);
+            HeroStats heroStats = GameBoardModelShortcuts.HeroGroupToHeroStats(hero, _gameBoardModelHolder.GameBoardModel);
             
             
             

@@ -4,6 +4,6 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.Utils.Crit
 {
     public interface ICriticalApplier
     {
-        public float TryApply(float value, int index, int owner, BattleCache battleCache);
+        public float TryApply(float value, int index, int owner, BattleCache battleCache, out bool isCrit);
     }
 }
