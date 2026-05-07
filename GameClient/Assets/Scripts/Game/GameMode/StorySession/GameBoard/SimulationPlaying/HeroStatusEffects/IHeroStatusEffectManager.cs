@@ -6,7 +6,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffec
 {
     public interface IHeroStatusEffectManager
     {
-        public void Update(BattleSideCache battleSideCache, int owner, float deltaTime);
+        public void Update(BattleSideCache battleSideCache, int owner, float deltaTime, CancellationToken cancellationToken);
         public UniTask PostBattleReset(BattleCache battleCache, CancellationToken cancellationToken);
     }
 }

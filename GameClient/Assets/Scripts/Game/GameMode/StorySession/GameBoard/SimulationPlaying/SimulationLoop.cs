@@ -95,6 +95,8 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
             await _heroStatusEffectManager.PostBattleReset(_battleCache, cancellationToken);
             await _itemStatusEffectManager.PostBattleReset(_battleCache, cancellationToken);
             
+            ClearItemsTempStats();
+            
             _battleCache = null;
             _triggerProcessor.SetCache(null);
         }
@@ -124,15 +126,26 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
                 _itemStatusEffectManager.Update(playerItemCache, Time.deltaTime);
                 _itemStatusEffectManager.Update(encounterItemCache, Time.deltaTime);
 
-                _heroStatusEffectManager.Update(_battleCache.GetPlayer(), (int) OwnerIndex.Player, Time.deltaTime);
-                _heroStatusEffectManager.Update(_battleCache.GetEncounter(), (int) OwnerIndex.Encounter, Time.deltaTime);
+                // ToDo: Swap Application.exitCancellationToken to game mode cancellation
+                _heroStatusEffectManager.Update(_battleCache.GetPlayer(), (int) OwnerIndex.Player, Time.deltaTime, Application.exitCancellationToken);
+                _heroStatusEffectManager.Update(_battleCache.GetEncounter(), (int) OwnerIndex.Encounter, Time.deltaTime, Application.exitCancellationToken);
                 
                 _triggerProcessor.Process(triggerBuffer, cancellationToken);
 
             } while (!_winDecisionMaker.IsWinConditionReached());
         }
-        
-        
+
+        private void ClearItemsTempStats()
+        {
+            foreach (BattleSideCache battleSideCache in _battleCache.BattleSideCache)
+            {
+                foreach (ItemCache itemCache in battleSideCache.ItemCache)
+                {
+                    itemCache.Item.ItemStats.ClearPostBattle();
+                    
+                }
+            }
+        }
         
         
     }

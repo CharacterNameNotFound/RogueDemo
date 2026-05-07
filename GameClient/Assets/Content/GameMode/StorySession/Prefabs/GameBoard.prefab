@@ -363,6 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.View.Board.PlayerHalfBoard
   Portrait: {fileID: 2772365377614683909}
   HpBar: {fileID: 2565018932522742745}
+  HeroStatusEffectDisplay: {fileID: 2882025239818079969}
 --- !u!1 &974628114436277542
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6266536919578413104}
   - component: {fileID: 5652250125529223959}
+  - component: {fileID: 8333530606324447057}
   m_Layer: 0
   m_Name: StatusBar
   m_TagString: Untagged
@@ -455,6 +457,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &8333530606324447057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974628114436277542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7201cd1fe944e7a10c241cd9c77d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.View.Board.Views.StatusEffectDisplay
+  DisplayRenderer: {fileID: 5652250125529223959}
+  StatusEffectIcons: []
 --- !u!1 &1286278557607170987
 GameObject:
   m_ObjectHideFlags: 0
@@ -3099,6 +3115,7 @@ MonoBehaviour:
   Host: {fileID: 8900815288507410611}
   Portrait: {fileID: 606643802444562887}
   HpBar: {fileID: 849005703650462491}
+  HeroStatusEffectDisplay: {fileID: 8333530606324447057}
 --- !u!1 &7719025179154393507
 GameObject:
   m_ObjectHideFlags: 0
@@ -3220,6 +3237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 592837943040028738}
   - component: {fileID: 4204218291171461472}
+  - component: {fileID: 2882025239818079969}
   m_Layer: 0
   m_Name: StatusBar
   m_TagString: Untagged
@@ -3302,6 +3320,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &2882025239818079969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7868203311415071829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7201cd1fe944e7a10c241cd9c77d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.View.Board.Views.StatusEffectDisplay
+  DisplayRenderer: {fileID: 4204218291171461472}
+  StatusEffectIcons: []
 --- !u!1 &7993376262814495907
 GameObject:
   m_ObjectHideFlags: 0

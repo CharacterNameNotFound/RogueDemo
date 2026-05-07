@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.GameMode.StorySession.GameBoard.Services.PlayerStatusUpdating;
+using Game.GameMode.StorySession.GameBoard.Services.TextsDrawing;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying;
 using Game.GameMode.StorySession.GameBoard.View;
@@ -31,6 +33,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
         private IBattleEncounterRoutines _battleEncounterRoutines;
         private IInputLayerControlMediator _inputLayerControlMediator;
         private ISimulationPlayer _simulationPlayer;
+        private IPlayerStatusUpdater _playerStatusUpdater;
         
         
         [Inject]
@@ -38,12 +41,14 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
             GameBoardHolder gameBoardHolder,
             IBattleEncounterRoutines battleEncounterRoutines,
             IInputLayerControlMediator inputLayerControlMediator,
-            ISimulationPlayer simulationPlayer)
+            ISimulationPlayer simulationPlayer,
+            IPlayerStatusUpdater playerStatusUpdater)
         {
             _gameBoardHolder = gameBoardHolder;
             _battleEncounterRoutines = battleEncounterRoutines;
             _inputLayerControlMediator = inputLayerControlMediator;
             _simulationPlayer = simulationPlayer;
+            _playerStatusUpdater = playerStatusUpdater;
         }
         
         public override async UniTask Play(GameBoardModel gameBoardModel, CancellationToken cancellationToken)
@@ -71,7 +76,9 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
             await _battleEncounterRoutines.PostBattleReset(cancellationToken);
             
             _inputLayerControlMediator.ToggleBattle(false);
-
+            
+            _playerStatusUpdater.UpdateCoins(CoinReward);
+            
             await _battleEncounterRoutines.PresentLoot(Items, cancellationToken);
             
             await InteractablePressWaiter.WaitForPress(

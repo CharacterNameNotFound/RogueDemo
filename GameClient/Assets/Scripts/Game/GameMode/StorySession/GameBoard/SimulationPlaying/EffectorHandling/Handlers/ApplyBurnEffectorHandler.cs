@@ -59,7 +59,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandlin
             
             _effectHandlerRegistry.Get(typeof(BurnHeroStatusEffect), out IHeroStatusEffectHandler result);
             
-            result.Apply(targetHero, value, applyBurn.ApplicationType, battleCache);
+            result.Apply(targetHero, value, applyBurn.ApplicationType, battleCache, cancellationToken).Forget();
             
             string text = _localizationManager.GetLocalized(_effectorFlyingTextConfigs.ApplyBurn, value);
 

@@ -6,8 +6,10 @@ using Game.GameMode.StorySession.GameBoard.Services.ItemContainers;
 using Game.GameMode.StorySession.GameBoard.Services.TextsDrawing;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffects.StatusEffectDisplaying;
+using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects;
-using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
+using Game.GameMode.StorySession.GameBoard.View.Utils;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.PlayerStashEncounter;
@@ -18,9 +20,7 @@ using Game.GameMode.StorySession.StoryLoop.StoryRoutines;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services;
 using Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services.GameSaving;
 using Game.GameMode.StorySession.UI;
-using Game.GameMode.StorySession.Utilities.WorldInteractables;
 using GameWideSystems.GameSceneManagement;
-using GameWideSystems.InputManager;
 using GameWideSystems.UIManagement;
 using GameWideSystems.UIManagement.UIManagerRequests;
 using UnityEngine;
@@ -54,6 +54,8 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
         private IGameBoardModelHolder _gameBoardModelHolder;
         private IHeroesHpDrawer _heroHpDrawer;
         private IStoryVisualEffectManager _storyVisualEffectManager;
+        private IHeroStatusDisplayManager _heroStatusDisplayManager;
+        private GameBoardHolder _gameBoardHolder;
         
         private BaseStoryContext _baseStoryContext;
 
@@ -81,7 +83,9 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             IGameBoardModelCreator boardModelCreator,
             IGameBoardModelHolder gameBoardModelHolder,
             IHeroesHpDrawer heroHpDrawer,
-            IStoryVisualEffectManager storyVisualEffectManager
+            IStoryVisualEffectManager storyVisualEffectManager,
+            IHeroStatusDisplayManager heroStatusDisplayManager,
+            GameBoardHolder gameBoardHolder
             )
         {
             _loadingScreenManager = loadingScreenManager;
@@ -106,6 +110,8 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             _gameBoardModelHolder = gameBoardModelHolder;
             _heroHpDrawer = heroHpDrawer;
             _storyVisualEffectManager = storyVisualEffectManager;
+            _heroStatusDisplayManager = heroStatusDisplayManager;
+            _gameBoardHolder = gameBoardHolder;
         }
 
         public async UniTask Initialize(StoryInitializationData storyInitializationData, CancellationToken cancellationToken)
@@ -246,6 +252,12 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory
             // resetting systems
             _encounterPlayer.Initialize();
             _sessionStatusDrawer.Initialize(_baseStoryConfigs.StoryDayLength);
+            
+            await _heroStatusDisplayManager.Initialize(
+                GameBoardComponentShortcuts.HeroGroupToHeroStatusDisplay(HeroGroup.Player, _gameBoardHolder.GameBoardComponent), 
+                GameBoardComponentShortcuts.HeroGroupToHeroStatusDisplay(HeroGroup.Encounter, _gameBoardHolder.GameBoardComponent),  
+                cancellationToken);
+            
             
             // view
             _heroHpDrawer.UpdateHeroHpBar(HeroGroup.Player);

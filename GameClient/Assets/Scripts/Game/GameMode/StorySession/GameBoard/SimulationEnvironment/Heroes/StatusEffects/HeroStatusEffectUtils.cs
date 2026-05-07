@@ -1,3 +1,4 @@
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 using ModestTree;
 
@@ -14,11 +15,12 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Heroes.Stat
             return statSet.Stats[BaseIndex] > 0 || statSet.Stats[PersistantIndex] > 0;
         }
 
-        public static void ClearUnpreservable(StatSet statSet)
+        public static void ClearUnpreservable(ItemStatEntry statSet)
         {
-            for (int i = PersistantIndex + 1;  i < statSet.Stats.Length;  i++)
+            for (int i = PersistantIndex + 1;  i < statSet.ItemValues.Stats.Length;  i++)
             {
-                statSet.Stats[i] = 0;
+                statSet.ItemValues.Stats[i] = 0;
+                statSet.ItemPercentiles.Stats[i] = 0;
             }
             
             return;
@@ -38,17 +40,6 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Heroes.Stat
 
             return true;
         }
-
-        public static float GetIntensity(StatSet statSet)
-        {
-            float result = 0;
-
-            for (int i = 0; i < statSet.Stats.Length; i++)
-            {
-                result += statSet.Stats[i];
-            }
-
-            return result;
-        }
+        
     }
 }

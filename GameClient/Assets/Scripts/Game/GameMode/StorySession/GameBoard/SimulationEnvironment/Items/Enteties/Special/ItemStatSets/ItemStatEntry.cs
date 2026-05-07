@@ -3,6 +3,7 @@ using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets
 {
+    // ToDo rename?
     [Serializable]
     public class ItemStatEntry
     {

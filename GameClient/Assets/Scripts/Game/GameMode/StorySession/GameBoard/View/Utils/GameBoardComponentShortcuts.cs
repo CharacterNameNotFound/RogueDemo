@@ -16,5 +16,16 @@ namespace Game.GameMode.StorySession.GameBoard.View.Utils
                 _ => throw new ArgumentOutOfRangeException(nameof(heroGroup), heroGroup, null)
             };
         }
+        
+        public static HeroStatusEffectDisplay HeroGroupToHeroStatusDisplay(HeroGroup heroGroup, GameBoardComponent gameBoard)
+        {
+            return heroGroup switch
+            {
+                HeroGroup.Player => gameBoard.PlayerBoard.HeroStatusEffectDisplay,
+                HeroGroup.Encounter => gameBoard.EncounterBoard.BattleView.HeroStatusEffectDisplay,
+                _ => throw new ArgumentOutOfRangeException(nameof(heroGroup), heroGroup, null)
+            };
+        }
+        
     }
 }

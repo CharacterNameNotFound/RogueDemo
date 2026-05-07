@@ -11,5 +11,12 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting
             ItemStatType itemStat, 
             StatSet.StatSetComponent baseCalculateDepth = StatSet.StatSetComponent.Special, 
             StatSet.StatSetComponent multiplicationCalculateDepth = StatSet.StatSetComponent.Special);
+
+        public float GetStatValue(
+            ItemStatEntry statSet,
+            ItemStatType itemStat,
+            StatSet.StatSetComponent baseCalculateDepth = StatSet.StatSetComponent.Special,
+            StatSet.StatSetComponent multiplicationCalculateDepth = StatSet.StatSetComponent.Special);
+
     }
 }

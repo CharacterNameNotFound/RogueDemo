@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd81bfc9eb774ee8a8a69789149c1cd4, type: 3}
+  m_Name: HeroStatusEffectDisplayingConfigs
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffects.StatusEffectDisplaying.StatusEffectDisplayingConfigs
+  <PreSpawnedCount>k__BackingField: 40
+  <StatusEffectIcon>k__BackingField:
+    m_AssetGUID: 04b4b6434bad82345bd358cd7a68e8db
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  <RegenerationIcon>k__BackingField:
+    m_AssetGUID: c40defa30f21d1449bad5eaff7a352b4
+    m_SubObjectName: regeneration_buff_0
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1
+  <BurnIcon>k__BackingField:
+    m_AssetGUID: 627d426784f4ddc418803420993e41ae
+    m_SubObjectName: burn_debuff_0
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1
+  <PoisonIcon>k__BackingField:
+    m_AssetGUID: 8b8fa37a92b13134984d5eb724fca1b7
+    m_SubObjectName: poison_debuff_0
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1

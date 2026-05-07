@@ -35,5 +35,20 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting
             return _genericStatCalculator.GetValue(item, itemStat, baseCalculateDepth, multiplicationCalculateDepth);
 
         }
+
+        public float GetStatValue(
+            ItemStatEntry statSet, 
+            ItemStatType itemStat,
+            StatSet.StatSetComponent baseCalculateDepth = StatSet.StatSetComponent.Special,
+            StatSet.StatSetComponent multiplicationCalculateDepth = StatSet.StatSetComponent.Special)
+        {
+            if (_statCalculators.TryGetValue(itemStat, out IItemStatSetToItemStatValueCalculator statGetter))
+            {
+                statGetter.GetValue(statSet, baseCalculateDepth, multiplicationCalculateDepth);
+            }
+
+            return _genericStatCalculator.GetValue(statSet, baseCalculateDepth, multiplicationCalculateDepth);
+        }
+        
     }
 }

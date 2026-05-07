@@ -1,4 +1,6 @@
 using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Heroes.StatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Data;
@@ -8,10 +10,10 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffec
 {
     public interface IHeroStatusEffectHandler : IAutoDictionaryEntry<Type>
     {
-        public void Update(IHeroStatusEffect statusEffect, BattleSideCache battleSideCache, int owner, float deltaTime);
-        public void Apply(int target, float intensity, StatSet.StatSetComponent holderType, BattleCache battleCache);
-        public void PostBattlePlayerReset(IHeroStatusEffect item, BattleSideCache playerSide);
-        public void PostBattleEncounterReset(IHeroStatusEffect item, BattleSideCache encounterSide);
+        public UniTask Update(IHeroStatusEffect statusEffect, BattleSideCache battleSideCache, int owner, float deltaTime, CancellationToken cancellationToken);
+        public UniTask Apply(int target, float intensity, StatSet.StatSetComponent holderType, BattleCache battleCache, CancellationToken cancellationToken);
+        public UniTask PostBattlePlayerReset(IHeroStatusEffect item, BattleSideCache playerSide, CancellationToken cancellationToken);
+        public UniTask PostBattleEncounterReset(IHeroStatusEffect item, BattleSideCache encounterSide, CancellationToken cancellationToken);
         
     }
 }

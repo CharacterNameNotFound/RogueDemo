@@ -16,6 +16,7 @@ using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Builders;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandling;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandling.Handlers;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffects;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffects.StatusEffectDisplaying;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffects.StatusEffectHandlers;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffects.StatusEffectAppliers;
@@ -96,6 +97,7 @@ namespace Structure
             Container.Bind<IItemStatModificator>().To<ItemStatModificator>().AsSingle();
             Container.Bind<IStoryVisualEffectManager>().To<StoryVisualEffectManager>().AsSingle();
             Container.Bind<IPlayFlyingTextShortcuts>().To<PlayFlyingTextShortcuts>().AsSingle();
+            Container.Bind<IHeroStatusDisplayManager>().To<HeroStatusDisplayManager>().AsSingle();
             
             
             // Items and deck

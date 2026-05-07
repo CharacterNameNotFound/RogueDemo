@@ -9,6 +9,8 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board.Views
         public Transform Host;
         public SpriteRenderer Portrait;
         public HpBarComponent HpBar;
+        public HeroStatusEffectDisplay HeroStatusEffectDisplay;
+
 
         public void Render(Sprite portrait)
         {

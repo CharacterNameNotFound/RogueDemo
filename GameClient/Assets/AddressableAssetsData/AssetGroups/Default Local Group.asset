@@ -25,6 +25,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 04b4b6434bad82345bd358cd7a68e8db
+    m_Address: Assets/Content/GameMode/StorySession/Prefabs/StatusEffectIcon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 06e720a8d437c4344add10f2ce7323a0
     m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/boards.png
     m_ReadOnly: 0
@@ -150,6 +155,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 627d426784f4ddc418803420993e41ae
+    m_Address: Assets/Sprites/Story/Gameboard/StatusEffects/burn_debuff.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 64a3d6f8df98de24aa2fa92d0a2e123a
     m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/ram.png
     m_ReadOnly: 0
@@ -197,6 +207,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 867c04b68aeaf034782eea7ad46867b5
     m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/torch.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b8fa37a92b13134984d5eb724fca1b7
+    m_Address: Assets/Sprites/Story/Gameboard/StatusEffects/poison_debuff.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -277,6 +292,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c18e91a431c5bca438f4457e4c925343
     m_Address: encounter/burn_boss_circle_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c40defa30f21d1449bad5eaff7a352b4
+    m_Address: Assets/Sprites/Story/Gameboard/StatusEffects/regeneration_buff.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

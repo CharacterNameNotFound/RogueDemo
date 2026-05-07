@@ -22,6 +22,15 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStat
             float statValue = Calculate(statEntry, baseCalculateDepth, multiplicationCalculateDepth);
             return Mathf.Max(0, statValue);
         }
+        
+        public float GetValue(
+            ItemStatEntry statEntry, 
+            StatSet.StatSetComponent baseCalculateDepth, 
+            StatSet.StatSetComponent multiplicationCalculateDepth)
+        {
+            float statValue = Calculate(statEntry, baseCalculateDepth, multiplicationCalculateDepth);
+            return Mathf.Max(0, statValue);
+        }
 
         private float Calculate(
             ItemStatEntry itemValues, 

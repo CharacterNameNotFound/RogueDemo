@@ -59,7 +59,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandlin
             
             _effectHandlerRegistry.Get(typeof(RegenerationHeroStatusEffect), out IHeroStatusEffectHandler result);
             
-            result.Apply(targetHero, value, applyRegeneration.ApplicationType, battleCache);
+            result.Apply(targetHero, value, applyRegeneration.ApplicationType, battleCache, cancellationToken).Forget();
             
             string text = _localizationManager.GetLocalized(_effectorFlyingTextConfigs.ApplyRegeneration, value);
 

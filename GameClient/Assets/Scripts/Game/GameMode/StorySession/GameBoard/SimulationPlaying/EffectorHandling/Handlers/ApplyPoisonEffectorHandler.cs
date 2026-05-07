@@ -59,7 +59,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandlin
             
             _effectHandlerRegistry.Get(typeof(PoisonHeroStatusEffect), out IHeroStatusEffectHandler result);
             
-            result.Apply(targetHero, value, applyPoison.ApplicationType, battleCache);
+            result.Apply(targetHero, value, applyPoison.ApplicationType, battleCache, cancellationToken).Forget();
             
             string text = _localizationManager.GetLocalized(_effectorFlyingTextConfigs.ApplyPoison, value);
 

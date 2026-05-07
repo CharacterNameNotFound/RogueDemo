@@ -8,5 +8,11 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting.ItemStat
     {
         public ItemStatType ProcessedStat { get; }
         public float GetValue(Item item, StatSet.StatSetComponent baseCalculateDepth, StatSet.StatSetComponent multiplicationCalculateDepth);
+
+        public float GetValue(
+            ItemStatEntry statEntry, 
+            StatSet.StatSetComponent baseCalculateDepth,
+            StatSet.StatSetComponent multiplicationCalculateDepth);
+        
     }
 }

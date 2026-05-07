@@ -15,16 +15,16 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffec
             _handlerRegistry = handlerRegistry;
         }
 
-        public void Update(BattleSideCache battleSideCache, int owner, float deltaTime)
+        public void Update(BattleSideCache battleSideCache, int owner, float deltaTime, CancellationToken cancellationToken)
         {
             // ToDo optimize
             foreach (IHeroStatusEffect item in battleSideCache.HeroStatusEffects.Values.ToArray())
             {
-                UpdatedStatus(item, battleSideCache, owner, deltaTime);
+                UpdatedStatus(item, battleSideCache, owner, deltaTime, cancellationToken);
             }
         }
 
-        public UniTask PostBattleReset(BattleCache battleCache, CancellationToken cancellationToken)
+        public async UniTask PostBattleReset(BattleCache battleCache, CancellationToken cancellationToken)
         {
             
             BattleSideCache playerSide = battleCache.GetPlayer();
@@ -35,7 +35,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffec
             {
                 _handlerRegistry.Get(item.GetType(), out IHeroStatusEffectHandler statusHandler);
 
-                statusHandler.PostBattlePlayerReset(item, playerSide);
+                await statusHandler.PostBattlePlayerReset(item, playerSide, cancellationToken);
             }
             
             BattleSideCache encounterSide = battleCache.GetEncounter();
@@ -45,21 +45,22 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffec
             {
                 _handlerRegistry.Get(item.GetType(), out IHeroStatusEffectHandler statusHandler);
 
-                statusHandler.PostBattlePlayerReset(item, encounterSide);
+                await statusHandler.PostBattleEncounterReset(item, encounterSide, cancellationToken);
             }
 
-            return UniTask.CompletedTask;
+            return;
         }
 
         private void UpdatedStatus(
             IHeroStatusEffect statusEffect, 
             BattleSideCache battleSideCache, 
             int owner,
-            float deltaTime)
+            float deltaTime,
+            CancellationToken cancellationToken)
         {
             _handlerRegistry.Get(statusEffect.GetType(), out IHeroStatusEffectHandler statusHandler);
 
-            statusHandler.Update(statusEffect, battleSideCache, owner, deltaTime);
+            statusHandler.Update(statusEffect, battleSideCache, owner, deltaTime, cancellationToken);
         }
     }
 }

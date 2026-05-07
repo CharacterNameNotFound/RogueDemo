@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 using UnityEngine;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets
@@ -32,6 +33,16 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entet
             }
 
             return itemStatSet;
+        }
+
+        public void ClearPostBattle()
+        {
+            CurrentCharge = 1;
+            foreach (ItemStatEntry item in Stats.Values)
+            {
+                item.ItemValues.Stats[(int)StatSet.StatSetComponent.CombatBonus] = 0;
+                item.ItemPercentiles.Stats[(int)StatSet.StatSetComponent.CombatBonus] = 1;
+            }
         }
     }
 }
