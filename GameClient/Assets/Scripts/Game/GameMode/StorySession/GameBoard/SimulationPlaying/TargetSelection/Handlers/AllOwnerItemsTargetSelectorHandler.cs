@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.TargetSelectors;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Structure;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.TargetSelectors;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Data;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.TargetSelection.Handlers

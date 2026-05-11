@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.StatusEffects;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.StatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototyping.Items.Special;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototyping.Items.StatRegisterers;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototyping.Items.Structure;

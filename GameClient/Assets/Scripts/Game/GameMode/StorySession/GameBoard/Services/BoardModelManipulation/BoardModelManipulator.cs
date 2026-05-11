@@ -1,6 +1,6 @@
 using System;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Models;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;

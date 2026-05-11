@@ -5,7 +5,7 @@ using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Services.HeroModification;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Heroes.StatusEffects;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Data;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffects.StatusEffectDisplaying;

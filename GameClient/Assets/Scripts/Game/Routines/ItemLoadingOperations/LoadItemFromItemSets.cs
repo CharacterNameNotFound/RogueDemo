@@ -5,7 +5,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.Data.Items;
 using Game.GameMode.StorySession.Data.LookUpEntries.Items;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
 using Game.ManagementSystems.LookUpTableManagement;
 using Game.Routines.ItemLoadingOperations.ItemTagToTableEntryConverters;
 using Game.Utilities.Constants;

@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Localization;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.Tags;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.StatusEffects;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Localization;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.Tags;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.StatusEffects;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Structure;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 using GameWideSystems.LocalizationWrapper;
 

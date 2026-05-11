@@ -1,5 +1,5 @@
 using System.Linq;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
 using Unity.Plastic.Newtonsoft.Json;
 using UnityEditor;
 using UnityEditor.AddressableAssets;

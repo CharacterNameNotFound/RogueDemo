@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Triggers;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Data;
 

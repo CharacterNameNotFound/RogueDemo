@@ -1,6 +1,6 @@
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Data;
 using GameWideSystems.RNGManagement;

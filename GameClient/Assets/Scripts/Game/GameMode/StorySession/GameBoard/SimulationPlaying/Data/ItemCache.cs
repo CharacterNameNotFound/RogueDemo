@@ -1,4 +1,4 @@
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Triggers.Builders;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Triggers.Implementations;
 

@@ -1,5 +1,5 @@
 using System;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Structure;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Data;
 using Utils.UtilityTypes.AutoDictionaries;
 

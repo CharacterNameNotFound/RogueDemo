@@ -1,8 +1,8 @@
 using Game.GameMode.StorySession.Data.LookUpEntries.Items;
 using Game.GameMode.StorySession.GameBoard.Services.ItemStatGetting;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.Tags;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.Tags;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 
 namespace Game.Routines.ItemLoadingOperations.ItemTagToTableEntryConverters

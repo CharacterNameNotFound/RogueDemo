@@ -1,10 +1,10 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.StatusEffects;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Effectors;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.StatusEffects;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Structure;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Data;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.StatProviding;

@@ -1,5 +1,5 @@
 {
-  "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Item, Game.GameMode.StorySession",
+  "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Item, Game.GameMode.StorySession",
   "ItemId": "knife_bronze",
   "ItemSetId": "melee_core",
   "ItemName": "knife",
@@ -9,9 +9,9 @@
   "DowngradedItemId": null,
   "ItemSpriteRuntimeKey": "db5b5b832307bee4dabbfdae265c7ded[knife_0]",
   "Tags": {
-    "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.Tags.TagList, Game.GameMode.StorySession",
+    "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.Tags.TagList, Game.GameMode.StorySession",
     "TagsList": {
-      "$type": "System.Collections.Generic.List`1[[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.Tags.ItemTag, Game.GameMode.StorySession]], mscorlib",
+      "$type": "System.Collections.Generic.List`1[[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.Tags.ItemTag, Game.GameMode.StorySession]], mscorlib",
       "$values": [
         0,
         3
@@ -19,20 +19,20 @@
     }
   },
   "Triggers": {
-    "$type": "System.Collections.Generic.List`1[[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure.Trigger, Game.GameMode.StorySession]], mscorlib",
+    "$type": "System.Collections.Generic.List`1[[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Structure.Trigger, Game.GameMode.StorySession]], mscorlib",
     "$values": [
       {
-        "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Triggers.OnChargedTrigger, Game.GameMode.StorySession",
+        "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Triggers.OnChargedTrigger, Game.GameMode.StorySession",
         "Effectors": {
-          "$type": "System.Collections.Generic.List`1[[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure.Effector, Game.GameMode.StorySession]], mscorlib",
+          "$type": "System.Collections.Generic.List`1[[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Structure.Effector, Game.GameMode.StorySession]], mscorlib",
           "$values": [
             {
-              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors.DealDamageEffector, Game.GameMode.StorySession",
+              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Effectors.DealDamageEffector, Game.GameMode.StorySession",
               "TargetSelector": {
-                "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.TargetSelectors.EnemyTargetSelector, Game.GameMode.StorySession"
+                "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.TargetSelectors.EnemyTargetSelector, Game.GameMode.StorySession"
               },
               "DamageStatProvider": {
-                "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.StatProviders.UniversalItemStatProvider, Game.GameMode.StorySession",
+                "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.StatProviders.UniversalItemStatProvider, Game.GameMode.StorySession",
                 "ItemStatType": 1,
                 "Multiplier": 1.0
               },
@@ -44,11 +44,11 @@
     ]
   },
   "ItemStats": {
-    "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets.ItemStatSet, Game.GameMode.StorySession",
+    "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets.ItemStatSet, Game.GameMode.StorySession",
     "Stats": {
-      "$type": "System.Collections.Generic.Dictionary`2[[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets.ItemStatType, Game.GameMode.StorySession],[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession]], mscorlib",
+      "$type": "System.Collections.Generic.Dictionary`2[[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets.ItemStatType, Game.GameMode.StorySession],[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession]], mscorlib",
       "Value": {
-        "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
+        "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
         "ItemValues": {
           "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities.StatSet, Game.GameMode.StorySession",
           "Stats": {
@@ -77,7 +77,7 @@
         }
       },
       "Damage": {
-        "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
+        "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
         "ItemValues": {
           "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities.StatSet, Game.GameMode.StorySession",
           "Stats": {
@@ -106,7 +106,7 @@
         }
       },
       "MaxCharge": {
-        "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
+        "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
         "ItemValues": {
           "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities.StatSet, Game.GameMode.StorySession",
           "Stats": {
@@ -135,7 +135,7 @@
         }
       },
       "ChargeSpeed": {
-        "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
+        "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
         "ItemValues": {
           "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities.StatSet, Game.GameMode.StorySession",
           "Stats": {
@@ -164,7 +164,7 @@
         }
       },
       "UsageCount": {
-        "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
+        "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
         "ItemValues": {
           "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities.StatSet, Game.GameMode.StorySession",
           "Stats": {
@@ -200,6 +200,6 @@
   },
   "IsNonDeck": false,
   "StatusEffects": {
-    "$type": "System.Collections.Generic.Dictionary`2[[System.Type, mscorlib],[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.StatusEffects.IItemStatusEffect, Game.GameMode.StorySession]], mscorlib"
+    "$type": "System.Collections.Generic.Dictionary`2[[System.Type, mscorlib],[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.StatusEffects.IItemStatusEffect, Game.GameMode.StorySession]], mscorlib"
   }
 }

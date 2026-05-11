@@ -1,5 +1,5 @@
 using System;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
 using Utils.UtilityTypes.AutoDictionaries;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffects

@@ -1,5 +1,5 @@
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Effectors;
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Structure;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Effectors;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Structure;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Prototyping.Items.Structure;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 

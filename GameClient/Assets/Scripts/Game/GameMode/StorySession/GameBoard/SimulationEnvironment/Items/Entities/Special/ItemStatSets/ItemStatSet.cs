@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
+using UnityEngine;
+
+namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets
+{
+    [Serializable]
+    public class ItemStatSet
+    {
+        public Dictionary<ItemStatType, ItemStatEntry> Stats = new();
+        
+        // accessed through code only
+        [HideInInspector] public bool IsPassiveItem;
+        [HideInInspector] public bool IsCooldownItem;
+        [HideInInspector] public float CurrentCharge;
+        
+        
+        // flag to avoid gaining charge
+        [HideInInspector] public bool IsCharged;
+
+        public ItemStatSet GetCopy()
+        {
+            ItemStatSet itemStatSet = new ItemStatSet();
+
+            itemStatSet.IsCooldownItem = IsCooldownItem;
+            itemStatSet.CurrentCharge = CurrentCharge;
+            
+            itemStatSet.Stats = new Dictionary<ItemStatType, ItemStatEntry>();
+            foreach (KeyValuePair<ItemStatType, ItemStatEntry> item in Stats)
+            {
+                itemStatSet.Stats.Add(item.Key, item.Value.GetCopy());
+            }
+
+            return itemStatSet;
+        }
+
+        public void ClearPostBattle()
+        {
+            CurrentCharge = 1;
+            foreach (ItemStatEntry item in Stats.Values)
+            {
+                item.ItemValues.Stats[(int)StatSet.StatSetComponent.CombatBonus] = 0;
+                item.ItemPercentiles.Stats[(int)StatSet.StatSetComponent.CombatBonus] = 1;
+            }
+        }
+    }
+}

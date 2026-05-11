@@ -1,4 +1,4 @@
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Heroes.StatusEffects
 {

@@ -1,4 +1,4 @@
-using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Enteties;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
