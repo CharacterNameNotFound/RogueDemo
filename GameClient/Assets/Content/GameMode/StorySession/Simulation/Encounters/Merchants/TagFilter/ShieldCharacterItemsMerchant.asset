@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d225ee1bc3740c9b5d1a1ee9bab9e71, type: 3}
   m_Name: ShieldCharacterItemsMerchant
   m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.Simulation.Encounters.Merchants.TagSelectorMerchant
-  <EncounterId>k__BackingField: shield_character_items
+  <EncounterId>k__BackingField: shield_character_items_merchant
   <Name>k__BackingField:
-    Key: shield_character_items
+    Key: shield_character_items_merchant
     Category: 5
   <Description>k__BackingField:
-    Key: shield_character_items_description
+    Key: shield_character_items_merchant_description
     Category: 5
   <Portrait>k__BackingField:
     m_AssetGUID: 7caed23dcc6417048b680424251d0fb6
@@ -28,8 +28,8 @@ MonoBehaviour:
     m_EditorAssetChanged: 1
   <IsRepeatable>k__BackingField: 1
   <MerchantPortrait>k__BackingField:
-    m_AssetGUID: ed593b67345e94e43a35abf9df0d52e4
-    m_SubObjectName: Event_1_portrait_0
+    m_AssetGUID: 4b10629231dda9240be6a09351229651
+    m_SubObjectName: ShieldItemMerchant_0
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 
@@ -37,6 +37,7 @@ MonoBehaviour:
   <CountSelector>k__BackingField: 0
   <ItemCount>k__BackingField: 3
   <BoardSlotCount>k__BackingField: 0
+  <PriceMultiplier>k__BackingField: 2
   <OnlyExactTagSequence>k__BackingField: 0
   <IncludedGroups>k__BackingField: 1
   <FilterTags>k__BackingField: 04000000

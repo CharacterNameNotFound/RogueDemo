@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants;
 
-namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Routines.Merchant
+namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Routines
 {
     public interface IMerchantEncounterRoutines
     {

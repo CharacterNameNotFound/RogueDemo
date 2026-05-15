@@ -10,65 +10,65 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: Merchants Shared Data
+  m_Name: MerchantEncounters Shared Data
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
-  m_TableCollectionName: Merchants
+  m_TableCollectionName: MerchantEncounters
   m_TableCollectionNameGuidString: 0b827b2fbad980347ae22b1e7229a8f1
   m_Entries:
-  - m_Id: 3932994867200
-    m_Key: small_character_items
+  - m_Id: 13512445935161344
+    m_Key: small_character_items_merchant
     m_Metadata:
       m_Items: []
-  - m_Id: 3933041004544
-    m_Key: small_character_items_description
+  - m_Id: 13512445981298688
+    m_Key: small_character_items_merchant_description
     m_Metadata:
       m_Items: []
-  - m_Id: 3933045198848
-    m_Key: medium_character_items
+  - m_Id: 13512445981298689
+    m_Key: medium_character_items_merchant
     m_Metadata:
       m_Items: []
-  - m_Id: 3933045198849
-    m_Key: medium_character_items_description
+  - m_Id: 13512445981298690
+    m_Key: medium_character_items_merchant_description
     m_Metadata:
       m_Items: []
-  - m_Id: 3933049393152
-    m_Key: large_character_items
+  - m_Id: 13512445981298691
+    m_Key: large_character_items_merchant
     m_Metadata:
       m_Items: []
-  - m_Id: 3933049393153
-    m_Key: large_character_items_description
+  - m_Id: 13512445981298692
+    m_Key: large_character_items_merchant_description
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705631723520
-    m_Key: weapon_character_items
+  - m_Id: 13512445981298693
+    m_Key: weapon_character_items_merchant
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705661083648
-    m_Key: weapon_character_items_description
+  - m_Id: 13512445981298694
+    m_Key: weapon_character_items_merchant_description
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705661083649
-    m_Key: shield_character_items
+  - m_Id: 13512445981298695
+    m_Key: shield_character_items_merchant
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705661083650
-    m_Key: shield_character_items_description
+  - m_Id: 13512445981298696
+    m_Key: shield_character_items_merchant_description
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705661083651
-    m_Key: healing_character_items
+  - m_Id: 13512445981298697
+    m_Key: healing_character_items_merchant
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705661083652
-    m_Key: healing_character_items_description
+  - m_Id: 13512445981298698
+    m_Key: healing_character_items_merchant_description
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705661083653
-    m_Key: fire_character_items
+  - m_Id: 13512445981298699
+    m_Key: fire_character_items_merchant
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705661083654
-    m_Key: fire_character_items_description
+  - m_Id: 13512445981298700
+    m_Key: fire_character_items_merchant_description
     m_Metadata:
       m_Items: []
   m_Metadata:

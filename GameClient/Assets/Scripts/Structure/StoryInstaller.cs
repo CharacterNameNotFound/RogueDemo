@@ -39,10 +39,11 @@ using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresen
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Battles.Routines;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Gifts.Routines;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.ItemRaritySelection;
-using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Utilities;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Routines;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.PlayerStashEncounter;
-using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Routines.Merchant;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Utilities;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterSelection;
 using Game.GameMode.StorySession.StoryLoop.Services.InputControl;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemLineSaveLoad;
@@ -122,6 +123,7 @@ namespace Structure
             Container.Bind<IMerchantEncounterRoutines>().To<MerchantEncounterRoutines>().AsSingle();
             Container.Bind<IBattleEncounterRoutines>().To<BattleEncounterRoutines>().AsSingle();
             Container.Bind<IObtainableItemExclusionListBuilder>().To<ObtainableItemExclusionListBuilder>().AsSingle();
+            Container.Bind<IGiftEncounterRoutines>().To<GiftEncounterRoutines>().AsSingle();
             
 
             InstallStatCalculators();

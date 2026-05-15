@@ -10,6 +10,7 @@ namespace Game.GameMode.StorySession.Utilities.Decks
         public void CleanUp();
         public bool Draw(TKey deckKey, bool isReturnedImmediate, out TDeckContent result);
         public void Return(TKey deckKey, TDeckContent item);
+        public void ShuffleInAllOne(TKey deckKey);
         public void ShuffleInAllAll();
         public void ShuffleAll();
         public DeckOrganizerState GetState(JsonSerializerSettings settings);

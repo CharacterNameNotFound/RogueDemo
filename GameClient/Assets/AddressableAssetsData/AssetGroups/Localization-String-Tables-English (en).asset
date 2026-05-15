@@ -40,13 +40,19 @@ MonoBehaviour:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 62edc9cc9f79ef544b78c621ccce3cf8
-    m_Address: Merchants_en
+    m_Address: MerchantEncounters_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 807ef8ac9f2513944889e00983b8b4b0
     m_Address: ErrorMessages_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 875418f9569a68542b50e7d8341afce4
+    m_Address: GiftEncounters_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

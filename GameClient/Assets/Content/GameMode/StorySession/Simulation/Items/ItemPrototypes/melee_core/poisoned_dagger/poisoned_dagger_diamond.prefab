@@ -124,6 +124,7 @@ MonoBehaviour:
   IsCritAvailable: 1
   TargetSelectorPrototypes: {fileID: 2909013218264541520}
   StatProviderPrototype: {fileID: 7207224350608427151}
+  ApplicationType: 3
 --- !u!114 &2909013218264541520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,7 +274,7 @@ MonoBehaviour:
     ItemStatSet:
       ItemValues:
         Stats:
-        - 20
+        - 40
         - 0
         - 0
         - 0
@@ -349,5 +350,6 @@ MonoBehaviour:
         - 0
         - 0
         - 0
+  IsPassiveItem: 0
   IsCooldownItem: 1
   CurrentCharge: 0

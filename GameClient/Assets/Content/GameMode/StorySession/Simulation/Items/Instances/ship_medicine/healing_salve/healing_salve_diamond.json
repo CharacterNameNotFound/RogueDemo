@@ -84,7 +84,7 @@
           "Stats": {
             "$type": "System.Single[], mscorlib",
             "$values": [
-              8.0,
+              9.0,
               0.0,
               0.0,
               0.0,

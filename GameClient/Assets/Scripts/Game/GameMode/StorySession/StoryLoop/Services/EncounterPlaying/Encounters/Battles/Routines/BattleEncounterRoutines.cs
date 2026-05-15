@@ -11,7 +11,7 @@ using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
-using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Utilities;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Utilities;
 using Game.Utilities.Shuffling;
 using GameWideSystems.RNGManagement;
 using UnityEngine;

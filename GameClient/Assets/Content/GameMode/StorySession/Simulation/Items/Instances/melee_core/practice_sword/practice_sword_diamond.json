@@ -83,7 +83,7 @@
           "Stats": {
             "$type": "System.Single[], mscorlib",
             "$values": [
-              8.0,
+              25.0,
               0.0,
               0.0,
               0.0,
@@ -171,6 +171,35 @@
             "$type": "System.Single[], mscorlib",
             "$values": [
               1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "ItemPercentiles": {
+          "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities.StatSet, Game.GameMode.StorySession",
+          "Stats": {
+            "$type": "System.Single[], mscorlib",
+            "$values": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          }
+        }
+      },
+      "CriticalChance": {
+        "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets.ItemStatEntry, Game.GameMode.StorySession",
+        "ItemValues": {
+          "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities.StatSet, Game.GameMode.StorySession",
+          "Stats": {
+            "$type": "System.Single[], mscorlib",
+            "$values": [
+              5.0,
               0.0,
               0.0,
               0.0,

@@ -4,7 +4,6 @@ using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
-using Game.GameMode.StorySession.StoryLoop.StoryScripts;
 using GameWideSystems.LocalizationWrapper;
 using UnityEngine;
 using UnityEngine.AddressableAssets;

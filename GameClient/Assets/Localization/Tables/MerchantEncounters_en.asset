@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: Merchants_en
+  m_Name: MerchantEncounters_en
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
   m_LocaleId:
     m_Code: en
@@ -18,59 +18,59 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 3932994867200
+  - m_Id: 13512445935161344
     m_Localized: Small Character Items
     m_Metadata:
       m_Items: []
-  - m_Id: 3933041004544
+  - m_Id: 13512445981298688
     m_Localized: Small items from current character
     m_Metadata:
       m_Items: []
-  - m_Id: 3933045198848
+  - m_Id: 13512445981298689
     m_Localized: Medium Character Items
     m_Metadata:
       m_Items: []
-  - m_Id: 3933045198849
+  - m_Id: 13512445981298690
     m_Localized: Medium items from current character
     m_Metadata:
       m_Items: []
-  - m_Id: 3933049393152
+  - m_Id: 13512445981298691
     m_Localized: Large Character Items
     m_Metadata:
       m_Items: []
-  - m_Id: 3933049393153
+  - m_Id: 13512445981298692
     m_Localized: Large items from current character
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705631723520
+  - m_Id: 13512445981298693
     m_Localized: Weapon Character Items
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705661083648
+  - m_Id: 13512445981298694
     m_Localized: Weapon items from current character
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705661083649
+  - m_Id: 13512445981298695
     m_Localized: Shield Character Items
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705661083650
+  - m_Id: 13512445981298696
     m_Localized: Shield items from current character
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705661083651
+  - m_Id: 13512445981298697
     m_Localized: Healing Character Items
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705661083652
+  - m_Id: 13512445981298698
     m_Localized: Healing items from current character
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705661083653
+  - m_Id: 13512445981298699
     m_Localized: Fire Character Items
     m_Metadata:
       m_Items: []
-  - m_Id: 1831705661083654
+  - m_Id: 13512445981298700
     m_Localized: Fire items from current character
     m_Metadata:
       m_Items: []

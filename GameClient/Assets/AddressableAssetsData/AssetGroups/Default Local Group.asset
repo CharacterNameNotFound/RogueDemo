@@ -40,6 +40,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c0f1ea09ec02424c959c0d9c9edf153
+    m_Address: Assets/Sprites/Story/Encounter/Merchants/Portrait/WeaponItemMerchant.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0fd7d647057e693479af95da0a7a37d0
     m_Address: Assets/Sprites/Story/Encounter/Bosses/burn_boss_1_vertical_portrait.png
     m_ReadOnly: 0
@@ -52,6 +57,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 12417fb16c72dfb46982623e343a6696
     m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/sail.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 183faf77bda192c4ca0fef55fe49e75b
+    m_Address: encounter/one_healing_item_gift
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -85,6 +95,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2074012789ced38458eb5b73f950f2a6
+    m_Address: encounter/one_fire_item_gift
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 24306bba513c99e489afeec0c3fda081
     m_Address: Assets/GameConfigurations/Structure/Prefabs
     m_ReadOnly: 0
@@ -95,8 +110,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26ce57b63c72efb4e9e0a692e75a7fd7
+    m_Address: Assets/Sprites/Story/Encounter/Gift/Selector/LargeItemGift.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 270953e055a8c5e4c93e829958324532
     m_Address: encounter/healing_boss_circle_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2832e4e2527f83146803bc010463454c
+    m_Address: Assets/Sprites/Story/Encounter/Gift/Selector/WeaponItemGift.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -105,8 +130,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2d1259ba5e3e95f4aa12ccccaadecfc8
+    m_Address: encounter/one_weapon_item_gift
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2f1685768811bb24cb3ecd63d60cdd05
     m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/king_mace.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2f8d51b26cafc82438b62514f1e2c8e9
+    m_Address: Assets/Sprites/Story/Encounter/Gift/Selector/MediumItemGift.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -120,6 +155,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 374bac669156b6e43b7024ca8787a6ee
+    m_Address: Assets/Sprites/Story/Encounter/Gift/Portrait/ShieldItemGift.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3f5b5dff67a942289a9defa416b206f3
     m_Address: TMP Settings
     m_ReadOnly: 0
@@ -127,6 +167,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 413cb7d62c206dc4a9cf0792e7b700d1
     m_Address: Assets/GameConfigurations/Structure/Prefabs/AudioSorce.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42ba9b8cc2f07a04fbab4adfb3dc98a0
+    m_Address: Assets/Sprites/Story/Encounter/Merchants/Portrait/FireItemMerchant.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -145,8 +190,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b10629231dda9240be6a09351229651
+    m_Address: Assets/Sprites/Story/Encounter/Merchants/Portrait/ShieldItemMerchant.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4b556da4ca1e2644085ec38fba8b777e
     m_Address: encounter/healing_boss_circle_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ccb7cfc90717994690887266ae86b85
+    m_Address: Assets/Sprites/Story/Encounter/Gift/Portrait/SmallItemGift.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4daed302533286c40953e57378d85117
+    m_Address: Assets/Sprites/Story/Encounter/Gift/Portrait/WeaponItemGift.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -155,8 +215,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 593354f8ab26d2f4ca1e15cc284fad63
+    m_Address: Assets/Sprites/Story/Encounter/Gift/Selector/FireItemGift.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5dcbef28f4762064d92babb786c56520
     m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/vampiric_stiletto.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60de53cbbe0dfe54296cc004249daaa7
+    m_Address: Assets/Sprites/Story/Encounter/Merchants/Portrait/SmallItemMerchant.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -180,6 +250,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76f9201de43059445bb0ea6f78206979
+    m_Address: encounter_sets/gift_encounter_set
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7caed23dcc6417048b680424251d0fb6
     m_Address: Assets/Sprites/Story/Encounter/Merchants/ShieldMerchant.png
     m_ReadOnly: 0
@@ -187,6 +262,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7dca6c5c26e118d49923b3a47627d5f9
     m_Address: Assets/Content/GameMode/StorySession/VFX/FlyingParticle.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f45f1784ff17ea4fa65c63f98e5c4ad
+    m_Address: Assets/Sprites/Story/Encounter/Gift/Portrait/HealingItemGift.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -212,6 +292,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 845b864e81f6232409a41320b65670f3
     m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/bandage.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84ba22470317b5c448acc4a9b8697f9b
+    m_Address: Assets/Sprites/Story/Encounter/Gift/Selector/HealingItemGift.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -285,8 +370,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: adbbbf0d1d6bd86479676439db09c079
+    m_Address: encounter/one_large_item_gift
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b055f520df8a64a47b6cb7919d9d2e1a
+    m_Address: encounter/one_shield_item_gift
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b1e42d07423dfec4496d837b97b22561
     m_Address: encounter/burn_boss_circle_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b424dd16be33990418258935deb0f951
+    m_Address: Assets/Sprites/Story/Encounter/Gift/Portrait/MediumItemGift.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -300,6 +400,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba24e5658ca2e4b4fb890c535740a92a
+    m_Address: Assets/Sprites/Story/Encounter/Merchants/Portrait/LargeItemMerchant.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c0fb677758ae70b4ca4688eaa2f9d2b3
     m_Address: Assets/Content/GameMode/StorySession/UI/StorySessionScreen.prefab
     m_ReadOnly: 0
@@ -307,6 +412,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c18e91a431c5bca438f4457e4c925343
     m_Address: encounter/burn_boss_circle_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c1d08702e42e4584f830bf9689ef8e1e
+    m_Address: Assets/Sprites/Story/Encounter/Gift/Selector/SmallItemGift.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -330,8 +440,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cb7e045df75cd834b80b58048a68d8d5
+    m_Address: Assets/Sprites/Story/Encounter/Gift/Portrait/FireItemGift.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cc4f3a059ba8b304cbb259c1eb3ae0e8
     m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/bottled_squid.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd60fda4daf22f746bb32dfdf4e60cda
+    m_Address: Assets/Sprites/Story/Encounter/Merchants/Portrait/MediumItemMerchant.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -345,8 +465,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d6c2498be83e011449376b3a6e302e63
+    m_Address: Assets/Sprites/Story/Encounter/Merchants/Portrait/HealingItemMerchant.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d7ffb21fd83491043889a895f2d0f532
+    m_Address: Assets/Sprites/Story/Encounter/Gift/Selector/ShieldItemGift.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d9175ecc52adace458364fe40d051227
+    m_Address: encounter/one_medium_item_gift
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: db5b5b832307bee4dabbfdae265c7ded
     m_Address: Assets/Sprites/Story/Items/ItemArt/melee_core/knife.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dbfa6c8fee3398b418603feb4a6e0cc0
+    m_Address: encounter/one_small_item_gift
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -357,6 +497,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dfe58500416a3dd4abdd5d1ec228e3b7
     m_Address: Assets/Sprites/Story/Items/ItemArt/ship_medicine/healing_salve.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e14b6fe920810174081a373c0bc01fea
+    m_Address: Assets/Sprites/Story/Encounter/Gift/Portrait/LargeItemGift.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

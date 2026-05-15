@@ -49,6 +49,7 @@ MonoBehaviour:
   IsCritAvailable: 1
   TargetSelectorPrototypes: {fileID: 4677795034586327997}
   StatProviderPrototype: {fileID: 2015861515483137255}
+  ApplicationType: 3
 --- !u!114 &2015861515483137255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +276,7 @@ MonoBehaviour:
     ItemStatSet:
       ItemValues:
         Stats:
-        - 40
+        - 25
         - 0
         - 0
         - 0
@@ -291,7 +292,7 @@ MonoBehaviour:
     ItemStatSet:
       ItemValues:
         Stats:
-        - 40
+        - 25
         - 0
         - 0
         - 0
@@ -367,6 +368,7 @@ MonoBehaviour:
         - 0
         - 0
         - 0
+  IsPassiveItem: 0
   IsCooldownItem: 1
   CurrentCharge: 0
 --- !u!1 &3925419001558204948
@@ -418,6 +420,7 @@ MonoBehaviour:
   IsCritAvailable: 0
   TargetSelectorPrototypes: {fileID: 6907647784206399458}
   StatProviderPrototype: {fileID: 271795242811119253}
+  ApplicationType: 3
 --- !u!114 &6907647784206399458
 MonoBehaviour:
   m_ObjectHideFlags: 0

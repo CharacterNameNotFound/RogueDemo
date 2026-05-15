@@ -196,7 +196,7 @@ MonoBehaviour:
     ItemStatSet:
       ItemValues:
         Stats:
-        - 2
+        - 10
         - 0
         - 0
         - 0
@@ -256,5 +256,22 @@ MonoBehaviour:
         - 0
         - 0
         - 0
+  - ItemStatType: 6
+    ItemStatSet:
+      ItemValues:
+        Stats:
+        - 5
+        - 0
+        - 0
+        - 0
+        - 0
+      ItemPercentiles:
+        Stats:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+  IsPassiveItem: 0
   IsCooldownItem: 1
   CurrentCharge: 0

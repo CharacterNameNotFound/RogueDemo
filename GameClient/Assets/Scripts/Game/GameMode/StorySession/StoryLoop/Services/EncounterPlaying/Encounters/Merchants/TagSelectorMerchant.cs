@@ -7,7 +7,7 @@ using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.Tags;
 using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.ItemRaritySelection;
-using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Utilities;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Utilities;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
 using UnityEngine;
 using Zenject;

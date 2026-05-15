@@ -7,8 +7,9 @@
         StoryUI,
         Items,
         ItemDescription,
-        Merchants,
+        MerchantEncounters,
         BattleEncounters,
-        Battle
+        Battle,
+        GiftEncounters,
     }
 }

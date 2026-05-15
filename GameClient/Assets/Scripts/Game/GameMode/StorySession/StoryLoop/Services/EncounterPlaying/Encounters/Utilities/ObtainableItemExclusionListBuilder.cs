@@ -6,7 +6,7 @@ using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
 using Game.GameMode.StorySession.StoryLoop.Services.ItemOrganization;
 
-namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Utilities
+namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Utilities
 {
     public class ObtainableItemExclusionListBuilder : IObtainableItemExclusionListBuilder
     {

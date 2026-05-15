@@ -28,19 +28,20 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services
         {
             baseStoryContext.StoryEncounters = new List<List<string>>();
 
-            List<EncounterType> eligibleEncounterTypes = new List<EncounterType>() { EncounterType.Merchant };
+            List<EncounterType> eligibleEncounterTypes = new List<EncounterType>() { EncounterType.Merchant, EncounterType.Gift};
             
             for (int i = 0; i < configs.StoryDayLength; i++)
             {
                 baseStoryContext.StoryEncounters.Add(GetEncounterSet(eligibleEncounterTypes));
             }
             
+            Shuffle();
         }
 
 
         public void AppendDay(BaseStoryContext baseStoryContext, BaseStoryConfigs configs, GameBoardModel gameBoardModel)
         {
-            List<EncounterType> eligibleEncounterTypes = new List<EncounterType>() { EncounterType.Merchant };
+            List<EncounterType> eligibleEncounterTypes = new List<EncounterType>() { EncounterType.Merchant, EncounterType.Gift };
             
             for (int i = 0; i < configs.StoryDayLength - 1; i++)
             {
@@ -56,8 +57,14 @@ namespace Game.GameMode.StorySession.StoryLoop.StoryScripts.BasicStory.Services
             {
                 baseStoryContext.StoryEncounters.Add(GetEncounterSet(eligibleEncounterTypes));
             }
+            
+            Shuffle();
         }
-        
+
+        private void Shuffle()
+        {
+            _encounterDeckOrganizer.ShuffleInAllAll();
+        }
 
         private List<string> GetEncounterSet(List<EncounterType> eligibleEncounterTypes)
         {

@@ -38,6 +38,11 @@ namespace Game.GameMode.StorySession.Utilities.Decks
             deck.Return(item);
         }
 
+        public void ShuffleInAllOne(TKey deckKey)
+        {
+            GetDeck(deckKey).ShuffleInAll(RandomProvider);
+        }
+
         public void ShuffleInAllAll()
         {
             foreach (IDeck<TDeckContent> item in DeckRegistry.Values)

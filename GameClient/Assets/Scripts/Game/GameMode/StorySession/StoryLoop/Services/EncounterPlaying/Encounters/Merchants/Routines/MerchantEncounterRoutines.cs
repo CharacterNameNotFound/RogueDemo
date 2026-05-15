@@ -5,11 +5,10 @@ using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
-using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants;
 using UnityEngine;
 using Utils.UtilityTypes.AssetReferencing;
 
-namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Routines.Merchant
+namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Routines
 {
     public class MerchantEncounterRoutines : IMerchantEncounterRoutines
     {

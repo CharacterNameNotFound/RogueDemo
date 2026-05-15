@@ -3,7 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 
-namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Utilities
+namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Utilities
 {
     public interface IObtainableItemExclusionListBuilder
     {

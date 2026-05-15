@@ -198,7 +198,7 @@ MonoBehaviour:
     ItemStatSet:
       ItemValues:
         Stats:
-        - 20
+        - 40
         - 0
         - 0
         - 0
@@ -258,6 +258,7 @@ MonoBehaviour:
         - 0
         - 0
         - 0
+  IsPassiveItem: 0
   IsCooldownItem: 1
   CurrentCharge: 0
 --- !u!1 &6404135497036818591

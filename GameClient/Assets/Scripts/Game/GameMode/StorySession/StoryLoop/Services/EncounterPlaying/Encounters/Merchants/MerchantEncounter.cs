@@ -10,7 +10,7 @@ using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Utilities;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.Board.Views;
-using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Routines.Merchant;
+using Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encounters.Merchants.Routines;
 using Game.GameMode.StorySession.Utilities.EventArguments;
 using Game.GameMode.StorySession.Utilities.WorldInteractables.Awaiters;
 using UnityEngine;
@@ -105,9 +105,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.EncounterPlaying.Encount
             {
                 float value = _itemStatGetter.GetStatValue(
                     itemContainerComponents[i].StoredItem, 
-                    ItemStatType.Value,
-                    StatSet.StatSetComponent.Special, 
-                    StatSet.StatSetComponent.Special);
+                    ItemStatType.Value);
                 
                 itemContainerComponents[i].SetPriceTag(ValueToPrice(value));
 
