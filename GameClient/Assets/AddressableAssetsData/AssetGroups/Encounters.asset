@@ -16,12 +16,12 @@ MonoBehaviour:
   m_GUID: 249a336cc6ab4484cac036f3a0f805e8
   m_SerializeEntries:
   - m_GUID: 36a8ea703c0364d428090e9e90397233
-    m_Address: encounter/large_character_items
+    m_Address: encounter/large_character_items_merchant
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 527455851391c7442a68e99b04c6226c
-    m_Address: encounter/medium_character_items
+    m_Address: encounter/medium_character_items_merchant
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -31,7 +31,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6f43a894405a47d44bfcd5cc0a41cd83
-    m_Address: encounter/small_character_items
+    m_Address: encounter/small_character_items_merchant
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

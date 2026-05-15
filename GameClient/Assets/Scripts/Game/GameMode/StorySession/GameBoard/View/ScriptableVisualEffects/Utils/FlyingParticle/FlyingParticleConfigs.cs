@@ -8,6 +8,7 @@ namespace Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.Util
         [field: SerializeField] public Color SlowColor { get; set; }
 
         [field: SerializeField] public float FlyingParticlesDuration { get; private set; }
+        [field: SerializeField] public float CurveRandomPointRadiusModifier { get; private set; }
         
 
         

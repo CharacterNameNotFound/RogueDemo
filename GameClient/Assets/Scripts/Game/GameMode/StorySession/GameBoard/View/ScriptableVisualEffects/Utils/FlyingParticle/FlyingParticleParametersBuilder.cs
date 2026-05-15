@@ -23,10 +23,10 @@ namespace Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.Util
 
             
             Vector2[] points = new Vector2[4];
-            points[0] = GetOutsidePoint(originItemBounds);
+            points[0] = GetOutsidePoint(originItemBounds, flyingParticleConfigs);
             points[1] = vfxOrigin;
             points[2] = vfxDestination;
-            points[3] = GetOutsidePoint(destinationItemBounds);
+            points[3] = GetOutsidePoint(destinationItemBounds, flyingParticleConfigs);
             
 
             FlyingParticleParameters flyingParticleParameters = new FlyingParticleParameters();
@@ -38,9 +38,9 @@ namespace Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.Util
         }
 
         // If this not looks good enough, swap to randomizing inside item sector, not item itself Catmull–Rom should guaranty smooth line anyway
-        private static Vector2 GetOutsidePoint(Bounds itemBounds)
+        private static Vector2 GetOutsidePoint(Bounds itemBounds, FlyingParticleConfigs flyingParticleConfigs)
         {
-            Vector2 destinationMod = Random.insideUnitCircle;
+            Vector2 destinationMod = Random.insideUnitCircle * flyingParticleConfigs.CurveRandomPointRadiusModifier;
             
             return new Vector3(itemBounds.extents.x * destinationMod.x, itemBounds.extents.y * destinationMod.y, 0);
         }
