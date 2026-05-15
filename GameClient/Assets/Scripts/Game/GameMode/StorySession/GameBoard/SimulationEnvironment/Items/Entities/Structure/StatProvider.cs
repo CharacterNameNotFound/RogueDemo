@@ -6,6 +6,5 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entit
     {
         public abstract StatProvider GetCopy();
         public abstract float GetValue(Item item, IItemStatGetter statGetter);
-
     }
 }

@@ -18,7 +18,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.TriggerHandling
 {
     public class ItemChargedTriggerHandler : ITriggerHandler
     {
-        public Type HandledTriggerType => typeof(ItemChargedTrigger);
+        public Type HandledTriggerType => typeof(ItemChargedTriggerToken);
 
 
         private IEffectorHandlersRegistry _effectorHandlersRegistry;
@@ -34,9 +34,9 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.TriggerHandling
 
         public async UniTask HandleTrigger(TriggerToken triggerToken, BattleCache battleCache, CancellationToken cancellationToken)
         {
-            ItemChargedTrigger itemChargedTrigger = (ItemChargedTrigger)triggerToken;
+            ItemChargedTriggerToken itemChargedTriggerToken = (ItemChargedTriggerToken)triggerToken;
 
-            Item item = CacheShortcuts.GetItem(itemChargedTrigger.Index, itemChargedTrigger.Owner, battleCache);
+            Item item = CacheShortcuts.GetItem(itemChargedTriggerToken.Index, itemChargedTriggerToken.Owner, battleCache);
 
             OnChargedTrigger trigger = (OnChargedTrigger) item.Triggers.First(x => x is OnChargedTrigger);
 
@@ -52,11 +52,11 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.TriggerHandling
                     {
                         continue;
                     }
-                    handler.Handle(effector, itemChargedTrigger.Index, itemChargedTrigger.Owner, battleCache, cancellationToken).Forget();
+                    handler.Handle(effector, itemChargedTriggerToken.Index, itemChargedTriggerToken.Owner, battleCache, cancellationToken).Forget();
                 
                 }
                 
-                // ToDo: implement Animation (async hero for this reason), for now using dummy delay
+                // ToDo: Pool session rules
                 await UniTask.WaitForSeconds(0.25f, cancellationToken: cancellationToken);
             }
             

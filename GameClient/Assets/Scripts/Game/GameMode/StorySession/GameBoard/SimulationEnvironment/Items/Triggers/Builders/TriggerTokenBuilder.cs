@@ -5,9 +5,15 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Trigg
     // ToDo: implement pooling
     public static class TriggerTokenBuilder
     {
-        public static ItemChargedTrigger ItemCooldownTrigger(int index, int owner)
+        public static ItemChargedTriggerToken ItemCooldownTrigger(int index, int owner)
         {
-            return new ItemChargedTrigger(index, owner);
+            return new ItemChargedTriggerToken(index, owner);
         }
+
+        public static BattleStartTriggerToken BattleStartTriggerToken()
+        {
+            return new BattleStartTriggerToken();
+        }
+        
     }
 }

@@ -235,6 +235,18 @@ MonoBehaviour:
     m_Key: item_status_effects
     m_Metadata:
       m_Items: []
+  - m_Id: 26711380195479552
+    m_Key: on_fight_start_trigger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26742435652767744
+    m_Key: update_stat_value
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26758475619176448
+    m_Key: triggered_item_target_selector
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

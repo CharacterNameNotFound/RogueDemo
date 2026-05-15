@@ -40,6 +40,40 @@
             }
           ]
         }
+      },
+      {
+        "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Triggers.OnBattleStartTrigger, Game.GameMode.StorySession",
+        "Effectors": {
+          "$type": "System.Collections.Generic.List`1[[Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Structure.Effector, Game.GameMode.StorySession]], mscorlib",
+          "$values": [
+            {
+              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Effectors.UpdateStatValueEffector, Game.GameMode.StorySession",
+              "TargetSelector": {
+                "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.TargetSelectors.TriggeredItemTargetSelector, Game.GameMode.StorySession"
+              },
+              "StatProvider": {
+                "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.StatProviders.FixedValueStatProvider, Game.GameMode.StorySession",
+                "Value": 5.0
+              },
+              "ItemStatType": 1,
+              "ApplicationType": 1,
+              "IsCritAvailable": false
+            },
+            {
+              "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Effectors.UpdateStatValueEffector, Game.GameMode.StorySession",
+              "TargetSelector": {
+                "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.TargetSelectors.TriggeredItemTargetSelector, Game.GameMode.StorySession"
+              },
+              "StatProvider": {
+                "$type": "Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.StatProviders.FixedValueStatProvider, Game.GameMode.StorySession",
+                "Value": 1.0
+              },
+              "ItemStatType": 6,
+              "ApplicationType": 1,
+              "IsCritAvailable": false
+            }
+          ]
+        }
       }
     ]
   },

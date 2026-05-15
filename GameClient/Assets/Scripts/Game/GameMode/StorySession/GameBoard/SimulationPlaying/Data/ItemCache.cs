@@ -23,7 +23,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.Data
             OwnerIndex = ownerIndex;
         }
 
-        public ItemChargedTrigger ToItemCooldownTrigger()
+        public ItemChargedTriggerToken ToItemCooldownTrigger()
         {
             return TriggerTokenBuilder.ItemCooldownTrigger(Index, OwnerIndex);
         }

@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.Services.HeroModification;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Triggers;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Triggers.Builders;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Builders;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Data;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffects;
@@ -107,7 +108,9 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying
 
             List<ItemCache> playerItemCache = _battleCache.GetPlayer().ItemCache;
             List<ItemCache> encounterItemCache = _battleCache.GetEncounter().ItemCache;
-
+            
+            // As we're handling last frame Tokens, and on start we will make swap, pushing it on top
+            triggerBuffer.AddTrigger(TriggerTokenBuilder.BattleStartTriggerToken());
             
             do
             {

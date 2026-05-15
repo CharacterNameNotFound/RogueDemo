@@ -215,6 +215,7 @@ namespace Structure
             Container.Bind<ITriggerProcessor>().To<TriggerProcessor>().AsSingle();
             
             Container.Bind<ITriggerHandler>().To<ItemChargedTriggerHandler>().AsCached();
+            Container.Bind<ITriggerHandler>().To<BattleStartTriggerHandler>().AsCached();
         }
         
         private void InstallEffectorHandlers()
@@ -229,6 +230,7 @@ namespace Structure
             Container.Bind<IEffectorHandler>().To<ApplyBurnEffectorHandler>().AsCached();
             Container.Bind<IEffectorHandler>().To<ApplyPoisonEffectorHandler>().AsCached();
             Container.Bind<IEffectorHandler>().To<ApplyRegenerationEffectorHandler>().AsCached();
+            Container.Bind<IEffectorHandler>().To<UpdateStatValueEffectorHandler>().AsCached();
         }
 
         private void InstallStatProviding()
@@ -236,6 +238,7 @@ namespace Structure
             Container.Bind<IStatProviderHandlersRegistry>().To<StatProviderHandlersRegistry>().AsSingle();
             
             Container.Bind<IStatProvidingHandler>().To<UniversalItemStatProviderHandler>().AsCached();
+            Container.Bind<IStatProvidingHandler>().To<FixedValueStatProviderHandler>().AsCached();
         }
         
         private void InstallItemStatusEffects()
@@ -257,6 +260,7 @@ namespace Structure
             Container.Bind<ITargetSelectionHandler>().To<AllOwnerItemsTargetSelectorHandler>().AsCached();
             Container.Bind<ITargetSelectionHandler>().To<OwnerItemTargetSelectorHandler>().AsCached();
             Container.Bind<ITargetSelectionHandler>().To<OwnerTargetSelectorHandler>().AsCached();
+            Container.Bind<ITargetSelectionHandler>().To<TriggeredItemTargetSelectorHandler>().AsCached();
         }
 
         private void InstallHeroStatusEffects()

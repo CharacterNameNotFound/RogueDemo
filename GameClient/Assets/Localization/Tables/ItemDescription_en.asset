@@ -252,6 +252,19 @@ MonoBehaviour:
     m_Localized: 'Status effects:'
     m_Metadata:
       m_Items: []
+  - m_Id: 26711380195479552
+    m_Localized: On fight start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26742435652767744
+    m_Localized: '{0} {1} {2}'
+    m_Metadata:
+      m_Items:
+      - rid: 282318976177406045
+  - m_Id: 26758475619176448
+    m_Localized: to this item
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
@@ -273,3 +286,4 @@ MonoBehaviour:
         - id: 21110707923914760
         - id: 23067771894173696
         - id: 23067771931922432
+        - id: 26742435652767744

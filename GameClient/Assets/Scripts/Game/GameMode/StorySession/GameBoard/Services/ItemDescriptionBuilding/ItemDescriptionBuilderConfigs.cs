@@ -20,10 +20,6 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
         public LocalizedLineKey GoldRarityKey = new("gold_item_rarity", TranslationCategory.ItemDescription);
         public LocalizedLineKey DiamondRarityKey = new("diamond_item_rarity", TranslationCategory.ItemDescription);
         public LocalizedLineKey LegendaryRarityKey = new("legendary_item_rarity", TranslationCategory.ItemDescription);
-
-        public TranslationCategory ItemTagCategory = TranslationCategory.ItemDescription;
-        public string ItemStatSuffix = "_stat";
-        public string ItemTagSuffix = "_tag";
         
     }
 }

@@ -348,11 +348,7 @@ namespace Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLi
             ItemLineBuffer secondWorkerItemLineBuffer,
             CancellationToken cancellationToken)
         {
-            // trying to put into stash
-            if (originalLine != _gameBoardHolder.GameBoardComponent.ItemLineViewController.EncounterItemLine)
-            {
-                return false;
-            }
+            
 
             ItemLineComponent stashLine = _gameBoardHolder.GameBoardComponent.ItemLineViewController.InventoryItemLine;
                 

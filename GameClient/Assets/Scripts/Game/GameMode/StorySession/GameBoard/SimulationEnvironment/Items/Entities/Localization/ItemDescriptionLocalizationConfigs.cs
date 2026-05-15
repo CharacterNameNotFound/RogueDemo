@@ -1,3 +1,6 @@
+using System;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.ItemStatSets;
+using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.Special.Tags;
 using GameWideSystems.LocalizationWrapper;
 using UnityEngine;
 
@@ -9,6 +12,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entit
         
         // triggers
         public LocalizedLineKey OnChargeTrigger = new("on_charge_trigger", TranslationCategory.ItemDescription);
+        public LocalizedLineKey OnFightStartTrigger = new("on_fight_start_trigger", TranslationCategory.ItemDescription);
         
         
         // effectors
@@ -20,6 +24,7 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entit
         public LocalizedLineKey ApplyRegeneration = new("apply_x_regeneration", TranslationCategory.ItemDescription);
         public LocalizedLineKey ApplyShield = new("apply_x_shield", TranslationCategory.ItemDescription);
         public LocalizedLineKey ApplySlow = new("apply_slow", TranslationCategory.ItemDescription);
+        public LocalizedLineKey UpdateStatValue = new("update_stat_value", TranslationCategory.ItemDescription);
         
         
         // target
@@ -29,11 +34,25 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entit
         public LocalizedLineKey TargetOpponent = new("target_opponent", TranslationCategory.ItemDescription);
         public LocalizedLineKey TargetOpponentItems = new("target_opponent_items", TranslationCategory.ItemDescription);
         public LocalizedLineKey TargetOpponentItemsAll = new("target_opponent_items_all", TranslationCategory.ItemDescription);
+        public LocalizedLineKey TriggeredItem = new("triggered_item_target_selector", TranslationCategory.ItemDescription);
         
         // status effects
         public LocalizedLineKey HasteItemStatusEffect = new("haste_item_status_effect", TranslationCategory.ItemDescription);
         public LocalizedLineKey SlowItemStatusEffect = new("slow_item_status_effect", TranslationCategory.ItemDescription);
+
+        public TranslationCategory ItemTagCategory = TranslationCategory.ItemDescription;
+        public string ItemStatSuffix = "_stat";
+        public string ItemTagSuffix = "_tag";
         
+        public LocalizedLineKey ItemStatTypeToLocalizedLineKey(ItemStatType itemStatType)
+        {
+            return new LocalizedLineKey($"{itemStatType}{ItemStatSuffix}", ItemTagCategory);
+        }
+
+        public LocalizedLineKey ItemTagToLocalizationKey(ItemTag itemTag)
+        {
+            return new LocalizedLineKey($"{itemTag}{ItemTagSuffix}", ItemTagCategory);
+        }
         
         
     }

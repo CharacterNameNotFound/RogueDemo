@@ -81,8 +81,7 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
                 }
                 
                 _localizationManager.TryGetLocalized(
-                    $"{stat.Key.ToString()}{_descriptionBuilderConfigs.ItemStatSuffix}", 
-                    _descriptionBuilderConfigs.ItemTagCategory,
+                    _itemLocalizationConfigs.ItemStatTypeToLocalizedLineKey(stat.Key), 
                     out string line);
 
                 float statValue = _itemStatGetter.GetStatValue(item, stat.Key);
@@ -110,8 +109,7 @@ namespace Game.GameMode.StorySession.GameBoard.Services.ItemDescriptionBuilding
             foreach (ItemTag tag in item.Tags.TagsList)
             {
                 _localizationManager.TryGetLocalized(
-                    $"{tag.ToString()}{_descriptionBuilderConfigs.ItemTagSuffix}", 
-                    _descriptionBuilderConfigs.ItemTagCategory,
+                    _itemLocalizationConfigs.ItemTagToLocalizationKey(tag),
                     out string line);
 
                 itemDescription.Append($" {line},");
