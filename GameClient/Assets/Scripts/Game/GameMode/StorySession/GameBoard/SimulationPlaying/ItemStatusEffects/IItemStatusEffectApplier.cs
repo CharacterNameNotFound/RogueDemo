@@ -6,7 +6,8 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffec
 {
     public interface IItemStatusEffectApplier : IAutoDictionaryEntry<Type>
     {
-        public void Apply(Item item, float duration);
-        public void Remove(Item item);
+        // Returns true if effect was applied, return false if effect was updated
+        public bool Apply(Item item, float duration);
+        public bool Remove(Item item);
     }
 }

@@ -12,43 +12,46 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffec
         public Type AutoDictionaryKey => typeof(HasteItemStatusEffect);
 
         private IItemStatModificator _itemStatModificator;
-
-        public HasteItemStatusEffectApplier(IItemStatModificator itemStatModificator)
+        
+        public HasteItemStatusEffectApplier(
+            IItemStatModificator itemStatModificator)
         {
             _itemStatModificator = itemStatModificator;
         }
 
-        public void Apply(Item item, float duration)
+        public bool Apply(Item item, float duration)
         {
             if (item.StatusEffects.TryGetValue(typeof(SlowItemStatusEffect), out IItemStatusEffect value))
             {
                 ((HasteItemStatusEffect)value).Duration -= duration;
-                return;
+                return false;
             }
             
             if (item.StatusEffects.TryGetValue(typeof(HasteItemStatusEffect), out value))
             {
                 ((HasteItemStatusEffect)value).Duration += duration;
-                return;
+                return false;
             }
 
             HasteItemStatusEffect effect = new HasteItemStatusEffect(duration);
             item.StatusEffects.Add(typeof(HasteItemStatusEffect), effect);
 
-            // ToDo: rewire working on curses 
+            // ToDo: rewire working on curses (instead of 2 implement provider)
             _itemStatModificator.AddStatPercentilesValue(2, item, ItemStatType.ChargeSpeed, StatSet.StatSetComponent.CombatBonus);
-            
+
+            return true;
         }
 
-        public void Remove(Item item)
+        public bool Remove(Item item)
         {
             // in the future we will store effect power here
             if (!item.StatusEffects.Remove(typeof(HasteItemStatusEffect), out IItemStatusEffect value))
             {
-                return;
+                return false;
             }
             
             _itemStatModificator.AddStatPercentilesValue(0.5f, item, ItemStatType.ChargeSpeed, StatSet.StatSetComponent.CombatBonus);
+            return true;
         }
         
     }

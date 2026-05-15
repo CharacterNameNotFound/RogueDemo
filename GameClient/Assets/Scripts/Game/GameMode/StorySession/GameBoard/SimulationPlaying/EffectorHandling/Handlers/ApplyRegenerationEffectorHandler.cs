@@ -11,6 +11,7 @@ using Game.GameMode.StorySession.GameBoard.SimulationPlaying.TargetSelection;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Utils.Crit;
 using Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects;
 using Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.Utils;
+using Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.Utils.FlyingText;
 using GameWideSystems.LocalizationWrapper;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.EffectorHandling.Handlers

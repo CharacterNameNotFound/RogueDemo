@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace GameWideSystems.ScriptedVisualEffectManagement
@@ -30,7 +29,7 @@ namespace GameWideSystems.ScriptedVisualEffectManagement
             return scriptedVisualEffectPool.ExtendBy(preparedEffects, cancellationToken);
         }
 
-        public async UniTask PlayOnParent<T>(Transform parent, ScriptedVisualEffectParams scriptedVisualParams, CancellationToken cancellationToken) where T : ScriptedVisualEffectBase
+        public async UniTask Play<T>(ScriptedVisualEffectParams scriptedVisualParams, CancellationToken cancellationToken) where T : ScriptedVisualEffectBase
         {
             if (!_pools.TryGetValue(typeof(T), out ScriptedVisualEffectPool pool))
             {
@@ -41,11 +40,27 @@ namespace GameWideSystems.ScriptedVisualEffectManagement
             ScriptedVisualEffectBase poolableEntity = await pool.GetObject(cancellationToken);
             T visualEffect = (T)poolableEntity;
             
-            poolableEntity.transform.SetParent(parent);
             scriptedVisualParams.Manager = this;
             
             visualEffect.Play(scriptedVisualParams, cancellationToken).Forget();
         }
+        
+        public async UniTask<T> Get<T>(ScriptedVisualEffectParams scriptedVisualParams, CancellationToken cancellationToken) where T : ScriptedVisualEffectBase
+        {
+            if (!_pools.TryGetValue(typeof(T), out ScriptedVisualEffectPool pool))
+            {
+                _logger.Warn($"No SVE of type {typeof(T).Name} registered");
+                return null;
+            }
+
+            ScriptedVisualEffectBase poolableEntity = await pool.GetObject(cancellationToken);
+            T visualEffect = (T)poolableEntity;
+            
+            scriptedVisualParams.Manager = this;
+
+            return visualEffect;
+        }
+        
 
         public void ReturnEffect<T>(T effect) where T : ScriptedVisualEffectBase
         {

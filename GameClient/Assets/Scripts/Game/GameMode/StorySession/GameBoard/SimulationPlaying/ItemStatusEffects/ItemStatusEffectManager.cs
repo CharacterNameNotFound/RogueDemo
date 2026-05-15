@@ -5,16 +5,22 @@ using Cysharp.Threading.Tasks;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities.StatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Data;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffects.ItemStatusEffectVFXApplication;
 
 namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffects
 {
     public class ItemStatusEffectManager : IItemStatusEffectManager
     {
         private IItemStatusEffectApplierRegistry _applierRegistry;
+        private IItemStatusEffectVFXApplier _statusEffectVFXApplier; 
 
-        public ItemStatusEffectManager(IItemStatusEffectApplierRegistry applierRegistry)
+
+        public ItemStatusEffectManager(
+            IItemStatusEffectApplierRegistry applierRegistry, 
+            IItemStatusEffectVFXApplier statusEffectVFXApplier)
         {
             _applierRegistry = applierRegistry;
+            _statusEffectVFXApplier = statusEffectVFXApplier;
         }
 
         public void Update(List<ItemCache> items, float deltaTime)
@@ -32,12 +38,12 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffec
 
             foreach (ItemCache item in playerSide)
             {
-                ClearItem(item.Item);
+                ClearItem(item);
             }
             
             foreach (ItemCache item in encounterSide)
             {
-                ClearItem(item.Item);
+                ClearItem(item);
             }
 
             return UniTask.CompletedTask;
@@ -56,20 +62,31 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffec
 
                 _applierRegistry.Get(statusEffect.GetType(), out IItemStatusEffectApplier applier);
                 
-                applier.Remove(item.Item);
+                bool isRemoved = applier.Remove(item.Item);
+
+                if (isRemoved)
+                {
+                    _statusEffectVFXApplier.RemoveItemFrameParticles(applier.AutoDictionaryKey, item.Index, item.OwnerIndex);
+                }
+                
             }
             
             
         }
         
-        private void ClearItem(Item item)
+        private void ClearItem(ItemCache item)
         {
             // ToDo: optimize
-            foreach (IItemStatusEffect statusEffect in item.StatusEffects.Values.ToArray())
+            foreach (IItemStatusEffect statusEffect in item.Item.StatusEffects.Values.ToArray())
             {
                 _applierRegistry.Get(statusEffect.GetType(), out IItemStatusEffectApplier applier);
                 
-                applier.Remove(item);
+                bool isRemoved = applier.Remove(item.Item);
+                
+                if (isRemoved)
+                {
+                    _statusEffectVFXApplier.RemoveItemFrameParticles(applier.AutoDictionaryKey, item.Index, item.OwnerIndex);
+                }
             }
             
             

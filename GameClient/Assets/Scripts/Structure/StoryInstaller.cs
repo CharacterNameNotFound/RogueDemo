@@ -19,6 +19,7 @@ using Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffects;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffects.StatusEffectDisplaying;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.HeroStatusEffects.StatusEffectHandlers;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffects;
+using Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffects.ItemStatusEffectVFXApplication;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffects.StatusEffectAppliers;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.StatProviding;
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.StatProviding.Handlers;
@@ -29,7 +30,9 @@ using Game.GameMode.StorySession.GameBoard.SimulationPlaying.TriggerHandling.Han
 using Game.GameMode.StorySession.GameBoard.SimulationPlaying.Utils.Crit;
 using Game.GameMode.StorySession.GameBoard.View;
 using Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects;
-using Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.Utils;
+using Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.ItemFrameParticle;
+using Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.Utils.FlyingParticle;
+using Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.Utils.FlyingText;
 using Game.GameMode.StorySession.Services.SaveManagement;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemLineOrganization;
 using Game.GameMode.StorySession.StoryLoop.Services.BoardOrganization.ItemPresenting;
@@ -66,6 +69,7 @@ namespace Structure
             InstallBalancing();
             InstallSimulation();
             InstallSimulationEventHandling();
+            InstallVFX();
         }
 
         private void InstallServices()
@@ -95,8 +99,7 @@ namespace Structure
             Container.Bind<IHeroStatModificator>().To<HeroStatModificator>().AsSingle();
             Container.Bind<IItemStatGetter>().To<ItemStatGetter>().AsSingle();
             Container.Bind<IItemStatModificator>().To<ItemStatModificator>().AsSingle();
-            Container.Bind<IStoryVisualEffectManager>().To<StoryVisualEffectManager>().AsSingle();
-            Container.Bind<IPlayFlyingTextShortcuts>().To<PlayFlyingTextShortcuts>().AsSingle();
+            
             Container.Bind<IHeroStatusDisplayManager>().To<HeroStatusDisplayManager>().AsSingle();
             
             
@@ -272,6 +275,19 @@ namespace Structure
             Container.Bind<IPurchaseEventHandler>().To<PurchaseEventHandler>().AsSingle().NonLazy();
             Container.Bind<ISellEventHandler>().To<SellEventHandler>().AsSingle().NonLazy();
             Container.Bind<IUpgradeEventHandler>().To<UpgradeEventHandler>().AsSingle().NonLazy();
+        }
+        
+        private void InstallVFX()
+        {
+            Container.Bind<IStoryVisualEffectManager>().To<StoryVisualEffectManager>().AsSingle();
+            Container.Bind<IPlayFlyingTextShortcuts>().To<PlayFlyingTextShortcuts>().AsSingle();
+            Container.Bind<IFlyingParticleShortcuts>().To<FlyingParticleShortcuts>().AsSingle();
+            
+            Container.Bind<ItemFrameParticlesRegisterer>().To<ItemFrameParticlesRegisterer>().AsSingle();
+            Container.Bind<IItemFrameParticleShortcuts>().To<ItemFrameParticleShortcuts>().AsSingle();
+            Container.Bind<IItemStatusEffectVFXApplier>().To<ItemStatusEffectVFXApplier>().AsSingle();
+            
+            
         }
         
         

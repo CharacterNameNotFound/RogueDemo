@@ -7,6 +7,7 @@ using GameWideSystems.GameStateManagement;
 using GameWideSystems.LocalizationWrapper;
 using GameWideSystems.RNGManagement;
 using GameWideSystems.ScriptedVisualEffectManagement;
+using GameWideSystems.ScriptedVisualEffectManagement.FlyingParticleScriptedVisualEffect;
 using GameWideSystems.ScriptedVisualEffectManagement.FlyingTextScriptedVisualEffects;
 using GameWideSystems.SessionManagement.Sessions;
 using GameWideSystems.UIManagement;
@@ -99,6 +100,7 @@ namespace Structure.GameInstalling
         {
             Container.Bind<IScriptedVisualEffectManager>().To<ScriptedVisualEffectManager>().AsSingle();
             Container.Bind<FlyingTextScriptedVisualEffectRegisterer>().To<FlyingTextScriptedVisualEffectRegisterer>().AsSingle();
+            Container.Bind<FlyingParticleScriptedVisualEffectRegisterer>().To<FlyingParticleScriptedVisualEffectRegisterer>().AsSingle();
         }
         
     }

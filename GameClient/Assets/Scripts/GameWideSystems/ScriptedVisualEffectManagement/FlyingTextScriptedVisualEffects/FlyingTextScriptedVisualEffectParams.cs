@@ -4,6 +4,7 @@ namespace GameWideSystems.ScriptedVisualEffectManagement.FlyingTextScriptedVisua
 {
     public class FlyingTextScriptedVisualEffectParams : ScriptedVisualEffectParams
     {
+        public Transform Parent;
         public Vector3 StartPosition;
         public Vector3 DestinationPosition;
         public float Duration;
@@ -13,6 +14,7 @@ namespace GameWideSystems.ScriptedVisualEffectManagement.FlyingTextScriptedVisua
         public float FontSize;
 
         public FlyingTextScriptedVisualEffectParams(
+            Transform parent,
             Vector3 startPosition, 
             Vector3 destinationPosition, 
             float duration, 
@@ -28,6 +30,7 @@ namespace GameWideSystems.ScriptedVisualEffectManagement.FlyingTextScriptedVisua
             FadeValue = fadeValue;
             Text = text;
             FontSize = fontSize;
+            Parent = parent;
         }
     }
 }

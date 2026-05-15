@@ -16,7 +16,9 @@ namespace GameWideSystems.ScriptedVisualEffectManagement.FlyingTextScriptedVisua
         {
             FlyingTextScriptedVisualEffectParams configs = (FlyingTextScriptedVisualEffectParams) parameters;
             
+            
             //setting starting conditions
+            transform.SetParent(configs.Parent);
             _renderer.color = Color.white;
             transform.position = configs.StartPosition;
             _renderer.text = configs.Text;

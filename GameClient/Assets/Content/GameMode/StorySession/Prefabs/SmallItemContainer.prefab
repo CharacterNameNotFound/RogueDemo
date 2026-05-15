@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &76506497328385336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1471081539729557496}
+  - component: {fileID: 4993983412202529032}
+  m_Layer: 0
+  m_Name: VFXHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1471081539729557496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76506497328385336}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3524705349636261796}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4993983412202529032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76506497328385336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573e9ea5539b4d6b9488244f8442d0ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.View.Utils.VFXHolderComponent
 --- !u!1 &2200362951872669725
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +354,7 @@ Transform:
   - {fileID: 3009108787699549251}
   - {fileID: 8011951561149010603}
   - {fileID: 188659605948846992}
+  - {fileID: 1471081539729557496}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!210 &7831360993198409118
@@ -344,6 +389,7 @@ MonoBehaviour:
   <SortingGroup>k__BackingField: {fileID: 7831360993198409118}
   <Collider2D>k__BackingField: {fileID: 9157794181627106270}
   <PriceTag>k__BackingField: {fileID: 902973345266254891}
+  <VFXHolder>k__BackingField: {fileID: 4993983412202529032}
 --- !u!61 &9157794181627106270
 BoxCollider2D:
   m_ObjectHideFlags: 0

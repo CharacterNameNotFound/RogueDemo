@@ -2,7 +2,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.Utils
+namespace Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.Utils.FlyingText
 {
     public interface IPlayFlyingTextShortcuts
     {

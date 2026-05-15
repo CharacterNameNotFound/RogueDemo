@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.Utils
+namespace Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.Utils.FlyingText
 {
     public class PlayFlyingTextShortcutsConfigs : ScriptableObject
     {

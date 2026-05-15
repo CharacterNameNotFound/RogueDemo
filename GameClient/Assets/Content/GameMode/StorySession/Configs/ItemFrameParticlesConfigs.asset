@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5273b44f10b4fa7b2998d24994c3071, type: 3}
+  m_Name: ItemFrameParticlesConfigs
+  m_EditorClassIdentifier: Game.GameMode.StorySession::Game.GameMode.StorySession.GameBoard.View.ScriptableVisualEffects.ItemFrameParticle.ItemFrameParticlesConfigs
+  <Prefab>k__BackingField:
+    m_AssetGUID: 801aaa5d5fe08134c813dec96687163a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  <PooledCount>k__BackingField: 48
+  <HasteColor>k__BackingField: {r: 0.40392157, g: 0.8980392, b: 0.90588236, a: 0.5019608}
+  <SlowColor>k__BackingField: {r: 1, g: 0.5529412, b: 0.22352941, a: 0.5019608}
+  <ShapeSizeAdjustment>k__BackingField: {x: 1, y: 0.5}

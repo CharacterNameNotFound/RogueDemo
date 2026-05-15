@@ -65,6 +65,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b25a607dfbe6b843aa77647e214195f
+    m_Address: Assets/Sprites/Story/VFX/flying_particle.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1b5f59a4b8976dd469bed90c4c4e4326
     m_Address: Assets/Sprites/Story/Encounter/Bosses/healing_boss_3_vertical_portrait.png
     m_ReadOnly: 0
@@ -180,8 +185,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7dca6c5c26e118d49923b3a47627d5f9
+    m_Address: Assets/Content/GameMode/StorySession/VFX/FlyingParticle.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8008623ab8203c6468c25a8c2b92e8cb
     m_Address: Assets/Sprites/Story/Encounter/Merchants/HealingMerchant.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 801aaa5d5fe08134c813dec96687163a
+    m_Address: Assets/Content/GameMode/StorySession/VFX/ItemFrameParticles.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

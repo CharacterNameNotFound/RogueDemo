@@ -18,18 +18,18 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffec
             _itemStatModificator = itemStatModificator;
         }
 
-        public void Apply(Item item, float duration)
+        public bool Apply(Item item, float duration)
         {
             if (item.StatusEffects.TryGetValue(typeof(HasteItemStatusEffect), out IItemStatusEffect value))
             {
                 ((HasteItemStatusEffect)value).Duration -= duration;
-                return;
+                return false;
             }
             
             if (item.StatusEffects.TryGetValue(typeof(SlowItemStatusEffect), out value))
             {
                 ((SlowItemStatusEffect)value).Duration += duration;
-                return;
+                return false;
             }
 
             SlowItemStatusEffect effect = new SlowItemStatusEffect(duration);
@@ -37,18 +37,22 @@ namespace Game.GameMode.StorySession.GameBoard.SimulationPlaying.ItemStatusEffec
 
             // ToDo: rewire working on curses 
             _itemStatModificator.AddStatPercentilesValue(0.5f, item, ItemStatType.ChargeSpeed, StatSet.StatSetComponent.CombatBonus);
-            
+            return true;
         }
 
-        public void Remove(Item item)
+        public bool Remove(Item item)
         {
             // in the future we will store effect power here
             if (!item.StatusEffects.Remove(typeof(SlowItemStatusEffect), out IItemStatusEffect value))
             {
-                return;
+                return false;
             }
             
             _itemStatModificator.AddStatPercentilesValue(2f, item, ItemStatType.ChargeSpeed, StatSet.StatSetComponent.CombatBonus);
+            return true;
         }
+        
+        
+        
     }
 }

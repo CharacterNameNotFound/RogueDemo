@@ -1,7 +1,8 @@
-using System;
 using Game.GameMode.StorySession.GameBoard.SimulationEnvironment.Items.Entities;
+using Game.GameMode.StorySession.GameBoard.View.Utils;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
 using Utils.UtilityTypes.ObjectPooling;
 
@@ -16,6 +17,7 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board.Views
         [field: SerializeField] public SortingGroup SortingGroup { get; private set; }
         [field: SerializeField] public Collider2D Collider2D { get; private set; }
         [field: SerializeField] public TMP_Text PriceTag { get; private set; }
+        [field: SerializeField] public VFXHolderComponent VFXHolder { get; private set; }
 
 
         public Item StoredItem;
@@ -31,7 +33,7 @@ namespace Game.GameMode.StorySession.GameBoard.View.Board.Views
 
         public override void Dispose()
         {
-            
+            Addressables.ReleaseInstance(gameObject);
         }
 
         public Vector3 GetItemLinePivot()
