@@ -69,3 +69,5 @@ GameClient/UserSettings/Search.settings
 GameClient/UserSettings/
 
 GameClient/.utmp/
+
+GameClient/Assets/Localization/Google Sheets Service.asset.meta
