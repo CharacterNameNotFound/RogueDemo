@@ -57,6 +57,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+*Google Sheets Service.asset
 
 # Crashlytics generated file
 crashlytics-build.properties
